@@ -1,16 +1,19 @@
 {
   "files": {
-    "main.css": "/golden_goose/static/css/main.f855e6bc.css",
-    "main.js": "/golden_goose/static/js/main.0ee78f43.js",
+    "main.css": "/golden_goose/static/css/main.1a7c890d.css",
+    "main.js": "/golden_goose/static/js/main.582f9d81.js",
+    "static/js/774.b20609dc.chunk.js": "/golden_goose/static/js/774.b20609dc.chunk.js",
+    "static/js/746.435f23ca.chunk.js": "/golden_goose/static/js/746.435f23ca.chunk.js",
+    "static/js/451.2c72b718.chunk.js": "/golden_goose/static/js/451.2c72b718.chunk.js",
+    "static/js/944.72d3d26b.chunk.js": "/golden_goose/static/js/944.72d3d26b.chunk.js",
     "static/js/453.a3b47c6c.chunk.js": "/golden_goose/static/js/453.a3b47c6c.chunk.js",
-    "static/media/logo.svg": "/golden_goose/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/golden_goose/index.html",
-    "main.f855e6bc.css.map": "/golden_goose/static/css/main.f855e6bc.css.map",
-    "main.0ee78f43.js.map": "/golden_goose/static/js/main.0ee78f43.js.map",
+    "main.1a7c890d.css.map": "/golden_goose/static/css/main.1a7c890d.css.map",
+    "main.582f9d81.js.map": "/golden_goose/static/js/main.582f9d81.js.map",
     "453.a3b47c6c.chunk.js.map": "/golden_goose/static/js/453.a3b47c6c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f855e6bc.css",
-    "static/js/main.0ee78f43.js"
+    "static/css/main.1a7c890d.css",
+    "static/js/main.582f9d81.js"
   ]
 }
