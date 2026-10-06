@@ -44,7 +44,7 @@ test('scenario questions are drawn from one scenario and stay consecutive', () =
 
 test('focus areas restrict the pool and cap the count', () => {
   const qs = buildExam(tprm, { count: 50, domains: ['P', 'O'], rng: seeded(3) });
-  expect(qs).toHaveLength(11); // 7 portal + 4 other relationships
+  expect(qs).toHaveLength(27); // 18 portal + 9 other relationships
   expect(new Set(qs.map((q) => q.domain))).toEqual(new Set(['P', 'O']));
 });
 

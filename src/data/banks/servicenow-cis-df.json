@@ -1,0 +1,2941 @@
+{
+ "id": "servicenow-cis-df",
+ "vendor": "ServiceNow",
+ "code": "CIS-DF",
+ "name": "Certified Implementation Specialist – Data Foundations (CMDB and CSDM)",
+ "fullLength": 75,
+ "minutes": 90,
+ "passPercent": 70,
+ "readinessPercent": 85,
+ "sectioned": false,
+ "note": "ServiceNow does not publish a cut score for CIS-DF; community consensus puts it near 70%. Treat 85% here as your readiness bar. Items marked release-sensitive reference features, defaults, and CSDM terms that shift between releases; verify them against your own instance.",
+ "domains": [
+  {
+   "id": "CF",
+   "name": "Configuration",
+   "weight": "15%"
+  },
+  {
+   "id": "IN",
+   "name": "Ingest",
+   "weight": "19%"
+  },
+  {
+   "id": "GV",
+   "name": "Govern",
+   "weight": "35%"
+  },
+  {
+   "id": "IS",
+   "name": "Insight",
+   "weight": "20%"
+  },
+  {
+   "id": "CS",
+   "name": "CSDM Fundamentals",
+   "weight": "11%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "cisdf-1",
+   "domain": "CF",
+   "stem": "Where should an implementer define the identification rule, attributes, and health inclusion rules for a CI class?",
+   "options": [
+    "In the System Dictionary only",
+    "In a business rule on the class table",
+    "In CI Class Manager",
+    "In the Discovery schedule"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "CI Class Manager is the central place to manage a class: hierarchy, attributes, identification and reconciliation rules, dependent relationships, and health settings. Using it keeps class configuration consistent and visible.\n\nBusiness rules and direct dictionary edits bypass that structure. Discovery schedules control when discovery runs, not how classes are defined."
+  },
+  {
+   "id": "cisdf-2",
+   "domain": "CF",
+   "stem": "An organization needs to track a new type of infrastructure device with a few unique attributes. What is the recommended approach?",
+   "options": [
+    "Create a standalone custom table for the devices that does not extend cmdb_ci",
+    "Add the new attributes directly to the cmdb_ci base table so every class can use them",
+    "Track the devices in a spreadsheet attached to a parent CI and update it each quarter",
+    "Extend the closest existing CI class so it inherits attributes, identification, and rules"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Extending the closest existing class keeps the new type inside the CMDB hierarchy, so it inherits identification, health, and relationship behavior and works with features that expect CMDB classes.\n\nStandalone tables lose all CMDB capability. Adding fields to the base cmdb_ci table pollutes every class."
+  },
+  {
+   "id": "cisdf-3",
+   "domain": "CF",
+   "stem": "What is the main purpose of the Identification and Reconciliation Engine (IRE)?",
+   "options": [
+    "To match incoming data to existing CIs and decide which source may update each attribute",
+    "To build and refresh application service maps from traffic-based discovery data",
+    "To calculate the completeness, compliance, and correctness scores for each CI class",
+    "To schedule Discovery runs and decide which MID Server executes each probe"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "IRE applies identification rules to find existing CIs before inserting new ones, and reconciliation rules to decide which data source is authoritative for which attributes. Its job is CMDB integrity.\n\nScheduling, scoring, and mapping are handled by other components."
+  },
+  {
+   "id": "cisdf-4",
+   "domain": "CF",
+   "stem": "A hardware class identification rule has two identifier entries: serial number (priority 100) and name (priority 200). An incoming payload has a name but no serial number. What happens?",
+   "options": [
+    "The payload is rejected because the highest-priority identifier entry cannot be evaluated",
+    "IRE evaluates the serial number entry with a null value, which matches every CI in the class",
+    "IRE always inserts a new CI whenever the highest-priority identifier attributes are missing",
+    "IRE skips the serial number entry because its attributes are empty and tries the name entry"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Identifier entries are evaluated in priority order (lower number first). When the payload lacks values for an entry's criterion attributes, that entry is skipped and the next one is tried.\n\nRejecting or blindly inserting would defeat identification, and null values are not matched.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-5",
+   "domain": "CF",
+   "stem": "Why must a dependent CI, such as an application server instance, be sent to IRE with its relationship to a host?",
+   "options": [
+    "Dependent CIs are identified in the context of the CI they depend on, so the relationship is required",
+    "Relationships are only needed so the dependent CI appears correctly in reports and dashboards",
+    "IRE ignores relationships entirely, so they can be added later with a separate import job",
+    "Dependent CIs cannot be stored in the CMDB unless their host CI was created manually first"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A Tomcat instance named \"default\" could exist on hundreds of servers. Dependent CIs are identified within the scope of the CI they depend on, so without the relationship the payload can't be identified correctly.\n\nRelationships are core to identification here, not just reporting."
+  },
+  {
+   "id": "cisdf-6",
+   "domain": "CF",
+   "stem": "Discovery and an SCCM integration both update a server's RAM. Discovery should win. What should you configure?",
+   "options": [
+    "A reconciliation rule that gives Discovery priority for that attribute on the class",
+    "An identification rule that matches the server on serial number before name",
+    "A health inclusion rule that excludes SCCM-reported servers from correctness checks",
+    "A Data Manager policy that retires any server whose RAM value is changed by SCCM"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Reconciliation rules define which discovery source is authoritative for which attributes, so a lower-priority source cannot overwrite data from a higher-priority one.\n\nIdentification decides which CI a payload matches. Health inclusion and Data Manager govern scoring and lifecycle."
+  },
+  {
+   "id": "cisdf-7",
+   "domain": "CF",
+   "stem": "What is the purpose of dynamic reconciliation rules?",
+   "options": [
+    "To merge duplicate CIs automatically when two sources report the same device",
+    "To schedule CMDB Health jobs after each integration finishes loading its data",
+    "To delete any CI whose attribute values two or more sources disagree about",
+    "To resolve conflicting values with strategies such as last reported or most reported"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Dynamic reconciliation resolves conflicting values among sources by strategy — last reported, most reported, largest, smallest — when static priority rules don't apply.\n\nDeletion and merging are remediation actions; scheduling is unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-8",
+   "domain": "CF",
+   "stem": "What does Multisource CMDB provide?",
+   "options": [
+    "The values each source reported for a CI, so conflicts can be seen and values recomputed",
+    "A replicated copy of the CMDB kept in a second instance for disaster recovery",
+    "A supported way for trusted integrations to write to the CMDB without going through IRE",
+    "Automatic deletion of CIs that only one data source has ever reported"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Multisource CMDB keeps per-source reported values, letting you see what each source said about a CI, investigate conflicts, and recompute values from the stored source data. It works with IRE.\n\nIt is not replication, doesn't delete single-source CIs, and doesn't bypass IRE.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-9",
+   "domain": "CF",
+   "stem": "When are lookup rules used in identification?",
+   "options": [
+    "When identifying values live on a related table, such as serial numbers or network adapters",
+    "When calculating whether a CI has gone stale based on related records' update times",
+    "When choosing which MID Server should run discovery for a particular IP range",
+    "When building reports that join CI attributes from several related lookup tables"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Lookup rules let IRE identify a CI using values stored in related lookup tables — for example, the serial number table or network adapters — which helps when a device has several identifiers.\n\nThey have no role in reporting, scheduling, or staleness.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-10",
+   "domain": "IN",
+   "stem": "Which component executes horizontal discovery probes and patterns inside the customer network?",
+   "options": [
+    "The CMDB Health dashboard",
+    "The MID Server",
+    "The user's browser",
+    "The instance's scheduled job processor"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The MID Server runs inside the network, executes probes and patterns against targets, and returns results to the instance. Discovery depends on it to reach on-premises infrastructure.\n\nThe instance orchestrates but cannot reach private networks directly."
+  },
+  {
+   "id": "cisdf-11",
+   "domain": "IN",
+   "stem": "What is the correct order of the horizontal discovery phases?",
+   "options": [
+    "Identification, scanning, classification, exploration",
+    "Scanning, classification, identification, exploration",
+    "Classification, scanning, exploration, identification",
+    "Exploration, identification, classification, scanning"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Discovery scans for open ports, classifies the device type, identifies whether it already exists in the CMDB, then explores it for detailed attributes and relationships.\n\nIdentification must follow classification because rules are class-specific."
+  },
+  {
+   "id": "cisdf-12",
+   "domain": "IN",
+   "stem": "What is a primary advantage of a Service Graph Connector over a custom import?",
+   "options": [
+    "It's a certified integration that maps third-party data to CMDB classes and loads it via IRE",
+    "It writes directly to CMDB tables, which avoids the overhead of identification",
+    "It only works with data produced by ServiceNow Discovery and its MID Servers",
+    "It removes the need for reconciliation rules because its data is always authoritative"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Service Graph Connectors are certified integrations for sources such as Microsoft SCCM, Intune, and cloud providers. They use standard mappings and IRE, which gives you consistent, deduplicated data with far less effort than building your own import.\n\nReconciliation rules still determine which source wins."
+  },
+  {
+   "id": "cisdf-13",
+   "domain": "IN",
+   "stem": "An integrator wants a guided way to map a new third-party source to CMDB classes and load it through IRE without writing transform scripts. Which tool fits?",
+   "options": [
+    "A legacy transform map that writes directly to cmdb_ci_server",
+    "CMDB Query Builder",
+    "IntegrationHub ETL",
+    "Flow Designer approval actions"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "IntegrationHub ETL provides a guided UI to map source data to CMDB classes and relationships and sends it through IRE, which is also how Service Graph Connectors are built.\n\nDirect transform maps bypass IRE. Approvals and Query Builder are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-14",
+   "domain": "IN",
+   "stem": "A team imports servers with a transform map that writes directly to cmdb_ci_server. Duplicates keep appearing. What is the root cause?",
+   "options": [
+    "The MID Server used by the import is down, so records are inserted twice",
+    "CMDB Health jobs are disabled, so duplicate detection never runs for the class",
+    "The import bypasses IRE, so identification rules are never applied to the data",
+    "The servers are stale, and stale CIs are recreated each time they are imported"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Writing directly to CMDB tables skips identification, so existing CIs aren't matched and duplicates are inserted. Route imports through IRE — with IntegrationHub ETL or IRE-aware transform logic — instead.\n\nMID Server status, health jobs, and staleness don't create duplicates."
+  },
+  {
+   "id": "cisdf-15",
+   "domain": "IN",
+   "stem": "A custom scripted integration must create and update CIs correctly. How should it write to the CMDB?",
+   "options": [
+    "By importing a CSV file directly into the cmdb_ci base table",
+    "By opening and editing each CI through the standard form UI",
+    "With GlideRecord inserts directly on each CMDB class table",
+    "Through the IRE API, so each payload is identified and reconciled"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Calling the IRE API (for example, the identification engine's create-or-update method) applies identification and reconciliation. Direct GlideRecord inserts and CSV loads bypass both.\n\nManual UI edits don't scale for an integration.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-16",
+   "domain": "IN",
+   "stem": "A new integration needs its own precedence in reconciliation rules. What must it have?",
+   "options": [
+    "A Data Manager policy that retires CIs the integration hasn't updated recently",
+    "Its own discovery source value, so IRE can tell its data apart from other sources",
+    "Its own CI class, so its data never conflicts with what other sources report",
+    "Admin access to every CMDB table so it can overwrite values from other sources"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Reconciliation rules are defined per discovery source. A new integration should register its own discovery source value so its data can be prioritized appropriately.\n\nBroad admin access, new classes, and lifecycle policies don't establish precedence.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-17",
+   "domain": "IN",
+   "stem": "Why is manual CI creation discouraged for classes that have automated sources?",
+   "options": [
+    "The platform blocks manual CI creation for any class that has a discovery pattern",
+    "Manual data isn't refreshed, can conflict with automated data, and tends to go stale",
+    "Manually created CIs cannot have relationships to discovered CIs in the CMDB",
+    "Manually created CIs are excluded from all reports, dashboards, and health scores"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Manual records lack an automated source to keep them current and can collide with discovered data. Manual entry is appropriate for things no tool can discover, such as some logical CIs, with clear ownership.\n\nManual creation is possible, and manual CIs can have relationships and appear in reports."
+  },
+  {
+   "id": "cisdf-18",
+   "domain": "IN",
+   "stem": "What is the difference between horizontal discovery and top-down discovery?",
+   "options": [
+    "They are identical processes that use different names in different releases of the platform",
+    "Horizontal finds infrastructure CIs across the network; top-down maps the CIs behind one application service",
+    "Horizontal discovery only finds cloud resources, while top-down discovery finds on-premises servers",
+    "Top-down discovery doesn't use MID Servers, while horizontal discovery always requires one"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Horizontal discovery builds broad infrastructure inventory. Top-down discovery follows the traffic from an entry point, such as a URL, to map the components of a specific application service.\n\nBoth use MID Servers, and horizontal discovery covers more than cloud."
+  },
+  {
+   "id": "cisdf-19",
+   "domain": "IN",
+   "stem": "Which table tracks which source reported a CI along with that source's native key?",
+   "options": [
+    "cmdb_rel_ci",
+    "cmdb_health_result",
+    "sys_object_source",
+    "sys_user"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "sys_object_source records the source name, the native identifier from that source, and when it last reported, linking source data to the CI. It's useful for troubleshooting integrations.\n\ncmdb_rel_ci holds relationships; the others are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-20",
+   "domain": "IN",
+   "stem": "Select two benefits of routing every CI-writing integration through IRE. (Choose two.)",
+   "options": [
+    "Duplicates are prevented by applying identification rules",
+    "Health scores no longer need to be calculated",
+    "Integrations run without any access control",
+    "Reconciliation rules prevent lower-priority sources from overwriting authoritative data"
+   ],
+   "answer": [
+    0,
+    3
+   ],
+   "explanation": "IRE delivers both identification and reconciliation. Access control and health scoring are unaffected."
+  },
+  {
+   "id": "cisdf-21",
+   "domain": "GV",
+   "stem": "What are the three KPIs of CMDB Health?",
+   "options": [
+    "Accuracy, timeliness, and cost",
+    "Discovery, identification, and reconciliation",
+    "Availability, performance, and capacity",
+    "Completeness, compliance, and correctness"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "CMDB Health scores completeness (required and recommended fields), compliance (against audits and desired state), and correctness (duplicates, orphans, and staleness).\n\nThe other sets describe operations metrics or ingestion steps."
+  },
+  {
+   "id": "cisdf-22",
+   "domain": "GV",
+   "stem": "Which metrics make up the completeness KPI?",
+   "options": [
+    "Discovery schedule success",
+    "Audit results",
+    "Required and recommended fields",
+    "Duplicates and orphans"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Completeness measures whether required and recommended attributes are populated. Duplicates and orphans fall under correctness, and audits under compliance."
+  },
+  {
+   "id": "cisdf-23",
+   "domain": "GV",
+   "stem": "Select two metrics that count toward the correctness KPI. (Choose two.)",
+   "options": [
+    "Missing required fields",
+    "Failed audits",
+    "Orphan CIs",
+    "Duplicate CIs"
+   ],
+   "answer": [
+    2,
+    3
+   ],
+   "explanation": "Correctness covers duplicates, orphans, and stale CIs. Missing fields affect completeness, and failed audits affect compliance."
+  },
+  {
+   "id": "cisdf-24",
+   "domain": "GV",
+   "stem": "How is the compliance KPI measured?",
+   "options": [
+    "By comparing CIs against audits that define desired attribute values or states",
+    "By counting the duplicate and orphan CIs found in each class during health jobs",
+    "By measuring how long each Discovery schedule takes to finish its scans",
+    "By counting how many users with the itil role have viewed each CI recently"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Compliance audits check CIs against defined expectations — for example, that every production server has a managed-by group or specific configuration values. Failing CIs reduce the score.\n\nDuplicates belong to correctness."
+  },
+  {
+   "id": "cisdf-25",
+   "domain": "GV",
+   "stem": "What makes a CI stale?",
+   "options": [
+    "It has more relationships than the orphan rules for its class allow",
+    "It has no owner or managed-by group populated on its CI record",
+    "No source has updated it within the staleness period defined for its class",
+    "It was created manually instead of by Discovery or an integration"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Staleness measures how recently a CI was updated. If no source updates it within the configured period (60 days by default), it's flagged as stale, which suggests it may no longer exist.\n\nOwnership, relationships, and creation method are measured differently.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-26",
+   "domain": "GV",
+   "stem": "What is an orphan CI?",
+   "options": [
+    "A CI missing a relationship required by an orphan rule, such as an application with no host",
+    "A CI that two different sources update, with neither designated as authoritative",
+    "A CI that has no owner, managed-by group, or support group populated on its record",
+    "A CI that has been retired but still has open incidents or changes referencing it"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Orphan rules define relationships a class should have. CIs without them are orphans — often a sign of incomplete discovery or leftover records.\n\nMissing owners and multiple sources are separate concerns. Retired CIs are a lifecycle state."
+  },
+  {
+   "id": "cisdf-27",
+   "domain": "GV",
+   "stem": "A CMDB manager wants health scores to include only operational CIs and exclude retired ones. What should be configured?",
+   "options": [
+    "Health inclusion rules for the classes",
+    "Principal class settings for the classes",
+    "Reconciliation rules for the classes",
+    "Identification rules for the classes"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Health inclusion rules limit which CIs are evaluated, so retired or out-of-scope records don't distort scores.\n\nReconciliation and identification are IRE settings. Principal classes affect CI selection in forms."
+  },
+  {
+   "id": "cisdf-28",
+   "domain": "GV",
+   "stem": "IRE finds multiple existing CIs that match an incoming payload. What does it do?",
+   "options": [
+    "It silently deletes all but the most recently updated CI before applying the payload",
+    "It creates a de-duplication task so the duplicates can be reviewed and remediated",
+    "It discards the payload permanently and blocks the source from sending that CI again",
+    "It merges the matching CIs automatically into one record without any review"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "When identification finds duplicates, IRE flags them and creates de-duplication tasks so someone can choose the main CI and remediate safely.\n\nSilent deletion or automatic merging could lose data.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-29",
+   "domain": "GV",
+   "stem": "What happens when a duplicate is remediated with the duplicate CI remediation process?",
+   "options": [
+    "A main CI is chosen and attributes, relationships, and related records move to it first",
+    "Both the main CI and its duplicates are deleted, and Discovery recreates the device later",
+    "The newest CI is always kept, and older duplicates are deleted without any review",
+    "Only the CI names are merged; relationships and related records stay on the duplicates"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Remediation lets you pick the surviving CI and decide what to carry over — attributes, relationships, and related records such as incidents — before handling the duplicates.\n\nDeleting both or keeping one blindly loses information.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-30",
+   "domain": "GV",
+   "stem": "Duplicates reappear every week after being remediated. What should you investigate first?",
+   "options": [
+    "The identification rules, and whether the integration writes through IRE with identifying data",
+    "The number of CMDB groups defined for the class and whether any of them overlap",
+    "The principal class list and whether the duplicated class is included in it",
+    "The theme and color settings of the CMDB Health dashboard used to report duplicates"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Recurring duplicates point to a root cause upstream: weak identification rules, payloads missing identifying attributes, or an integration bypassing IRE. Remediation alone treats the symptom.\n\nThe other items don't cause duplicates."
+  },
+  {
+   "id": "cisdf-31",
+   "domain": "GV",
+   "stem": "What is CMDB Data Manager used for?",
+   "options": [
+    "Writing the identification rules IRE uses to match incoming payloads to CIs",
+    "Defining policies that retire, archive, and delete CIs, with tasks and approvals",
+    "Building and maintaining application service maps from discovered relationships",
+    "Running and scheduling horizontal Discovery against the organization's IP ranges"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Data Manager provides governed lifecycle policies so CIs are retired, archived, and eventually deleted consistently, with tasks and approvals where needed.\n\nService maps, Discovery, and identification are elsewhere.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-32",
+   "domain": "GV",
+   "stem": "In what order should Data Manager lifecycle policies typically act on an outdated CI?",
+   "options": [
+    "Archive, delete, retire",
+    "Delete, archive, retire",
+    "Retire, archive, delete",
+    "Delete only"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A CI is first retired (taken out of service), then archived (moved out of active tables while preserved), and finally deleted when retention allows. That sequence preserves history.\n\nDeleting first destroys records that may still be referenced.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-33",
+   "domain": "GV",
+   "stem": "What are principal classes used for?",
+   "options": [
+    "Deciding which data source is authoritative for each attribute on a class",
+    "Filtering CI reference fields on task forms to the classes users most need",
+    "Calculating how many days a CI can go without updates before it is stale",
+    "Storing CIs that have been retired so they no longer appear in active lists"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Principal classes are the classes users typically need to select — business applications, servers, services — and filtering by them keeps CI pickers on incident and change forms usable.\n\nThey don't affect reconciliation, staleness, or retirement."
+  },
+  {
+   "id": "cisdf-34",
+   "domain": "GV",
+   "stem": "Which experience gives CMDB managers a central place for health, search, and governance tasks?",
+   "options": [
+    "Service Portal",
+    "CMDB Workspace",
+    "Discovery Admin console only",
+    "Employee Center"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "CMDB Workspace brings CMDB search, health, governance tasks, and insights together for CMDB managers and data stewards.\n\nThe portals target end users, and the Discovery console covers ingestion only.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-35",
+   "domain": "GV",
+   "stem": "A team needs to certify a specific set of CIs owned by one department. What helps define that set?",
+   "options": [
+    "A reconciliation rule scoped to the department's sources",
+    "A CMDB group defined by a query or a manual list of CIs",
+    "A new CI class created just for that department's CIs",
+    "A Discovery schedule limited to the department's subnets"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "CMDB groups define sets of CIs for health, certification, and reporting — either by query or by listing them manually.\n\nCreating classes for scoping, or using IRE and Discovery settings, would be misuse."
+  },
+  {
+   "id": "cisdf-36",
+   "domain": "GV",
+   "stem": "What is the purpose of data certification in CMDB governance?",
+   "options": [
+    "Approving Discovery schedules before they run against production networks",
+    "Encrypting sensitive CI attributes so only certified users can read them",
+    "Having owners periodically verify that CI attribute values are accurate",
+    "Certifying the CMDB itself against ISO 27001 for external auditors"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Certification policies send tasks to CI owners to confirm or correct attribute values, which is valuable for data no tool can discover.\n\nIt isn't an ISO certification, scheduling, or encryption feature."
+  },
+  {
+   "id": "cisdf-37",
+   "domain": "GV",
+   "stem": "Which CI attribute assignment best supports operational accountability for data quality?",
+   "options": [
+    "The discovery source field, showing its origin",
+    "The CI's sys_id, used as its permanent key",
+    "The user recorded in the CI's created-by field",
+    "A managed-by group populated on every in-scope CI"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The managed-by group (with owned-by and supported-by under CSDM) identifies who is responsible for the CI, which is what governance tasks and remediation need.\n\nCreated-by and sys_id don't express responsibility. Discovery source indicates origin, not ownership.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-38",
+   "domain": "GV",
+   "stem": "Under current CSDM guidance, which fields should be used to represent where a CI is in its lifecycle?",
+   "options": [
+    "The updated-on timestamp of the CI",
+    "Only the legacy Install Status field value",
+    "Life Cycle Stage and Life Cycle Stage Status",
+    "The CI's short description field"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "CSDM standardizes lifecycle on Life Cycle Stage and Life Cycle Stage Status, which replace inconsistent use of install and operational status across classes.\n\nDescriptions and timestamps aren't lifecycle fields.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-39",
+   "domain": "GV",
+   "stem": "A large number of servers are flagged as stale. What is the recommended handling?",
+   "options": [
+    "Find out why sources stopped reporting, then retire confirmed decommissioned CIs via policy",
+    "Delete every stale CI immediately so the correctness score recovers before the next review",
+    "Turn off the staleness metric for the server class until the integrations are repaired",
+    "Run a script that updates each stale CI's timestamp so it no longer counts as stale"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Staleness can mean decommissioned assets or a broken integration. Investigate first, then use governed lifecycle policies to retire confirmed decommissioned CIs.\n\nImmediate deletion, disabling the metric, or faking updates all hide the real problem."
+  },
+  {
+   "id": "cisdf-40",
+   "domain": "GV",
+   "stem": "A class's health score suddenly drops after a new integration starts sending data. What is the most likely explanation?",
+   "options": [
+    "More users have logged in to the CMDB Workspace since the integration went live",
+    "The health dashboard's theme was changed, which resets the class's scoring weights",
+    "The integration is creating CIs without required fields or creating duplicates",
+    "The principal class list was updated, which changes how health scores are weighted"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "New sources commonly introduce incomplete records or duplicates, which lower completeness and correctness. Check the integration's mappings and identification.\n\nThe other changes don't affect scores."
+  },
+  {
+   "id": "cisdf-41",
+   "domain": "GV",
+   "stem": "Why should health scores be tracked over time rather than checked once?",
+   "options": [
+    "The platform doesn't support viewing a single score without historical data",
+    "Scores never change after the first calculation, so one check is only a formality",
+    "Tracking scores over time is a prerequisite for Discovery schedules to run",
+    "Trends show whether data quality is improving and expose regressions after changes"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Trending shows the effect of remediation and catches regressions early. A single snapshot can't show whether the program is working.\n\nScores change continuously, and trending isn't a Discovery dependency."
+  },
+  {
+   "id": "cisdf-42",
+   "domain": "IS",
+   "stem": "What does CMDB Query Builder let you do that a standard list view cannot?",
+   "options": [
+    "Edit attribute values on many CIs at once from a single list of results",
+    "Start a Discovery run against the CIs that match a saved list filter",
+    "Query across CI classes and related tables by following their relationships",
+    "Create or modify the identification rules used by IRE for a class"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Query Builder queries across classes and relationships — for example, all databases supporting a business application through several hops. List views filter one table.\n\nBulk editing, Discovery, and identification are elsewhere."
+  },
+  {
+   "id": "cisdf-43",
+   "domain": "IS",
+   "stem": "A change manager needs every Linux server supporting a particular business application, including those connected through intermediate CIs. Which tool fits best?",
+   "options": [
+    "A Data Manager policy",
+    "The server list view filtered by name",
+    "CMDB Query Builder",
+    "An identification rule"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Relationship-based queries across classes are Query Builder's purpose. A server list can't follow relationships to the application.\n\nData Manager and identification rules aren't query tools."
+  },
+  {
+   "id": "cisdf-44",
+   "domain": "IS",
+   "stem": "What is Unified Map used for?",
+   "options": [
+    "Visualizing CIs, their relationships, and service maps in one interactive map",
+    "Merging duplicate CIs after a de-duplication task has been approved",
+    "Scheduling Discovery runs and assigning MID Servers to each IP range",
+    "Calculating completeness, compliance, and correctness scores for each class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Unified Map provides one interactive visualization of CI relationships and service maps, with filtering and drill-down for impact analysis and troubleshooting.\n\nIt doesn't schedule, score, or remediate.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-45",
+   "domain": "IS",
+   "stem": "What is the purpose of the CMDB and CSDM foundation dashboards?",
+   "options": [
+    "To show whether foundational CMDB and CSDM data is in place and where gaps exist",
+    "To store attachments and evidence for CMDB certification tasks",
+    "To start Discovery runs and monitor their progress across MID Servers",
+    "To route normal and emergency changes to the right approvers"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Foundation dashboards show the readiness of CMDB and CSDM data — whether foundation records, business applications, services, and their relationships exist and are populated — so teams can prioritize.\n\nThey aren't operational tools.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-46",
+   "domain": "IS",
+   "stem": "How does an accurate CMDB reduce mean time to resolve incidents?",
+   "options": [
+    "Incidents linked to healthy CIs are closed automatically once monitoring clears the alert",
+    "Responders see affected CIs, dependencies, and recent changes, speeding diagnosis and routing",
+    "Alerts are suppressed for CIs with high health scores, which reduces incident volume",
+    "Support groups are no longer needed because the CMDB assigns incidents to individuals"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Knowing what a CI supports, what it depends on, and what recently changed is how CMDB data shortens triage. Accurate support groups also improve routing.\n\nThe CMDB doesn't close incidents or remove the need for support teams."
+  },
+  {
+   "id": "cisdf-47",
+   "domain": "IS",
+   "stem": "How does CMDB data improve change management?",
+   "options": [
+    "It approves standard and normal changes automatically when the CI is healthy",
+    "It replaces the change advisory board for changes to discovered CIs",
+    "It prevents any change from being scheduled against servers in production",
+    "It supports impact analysis by identifying affected services and dependent CIs"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Change impact relies on relationships: which services and CIs a change touches. Better data means better risk assessment and fewer surprise outages.\n\nAutomated approvals and CAB replacement aren't CMDB functions."
+  },
+  {
+   "id": "cisdf-48",
+   "domain": "IS",
+   "stem": "Select two business outcomes most directly enabled by a trusted CMDB. (Choose two.)",
+   "options": [
+    "Elimination of all outages",
+    "More accurate change impact assessment",
+    "Removal of the need for asset management",
+    "Faster incident triage through dependency context"
+   ],
+   "answer": [
+    1,
+    3
+   ],
+   "explanation": "Dependency context and impact analysis are direct outcomes of reliable data. No CMDB eliminates outages, and asset management remains a separate discipline."
+  },
+  {
+   "id": "cisdf-49",
+   "domain": "IS",
+   "stem": "An executive asks whether CMDB governance investment is paying off. What evidence is most persuasive?",
+   "options": [
+    "The overall size of the CMDB database in gigabytes compared with the previous year",
+    "The total number of CI classes created or extended since the governance program started",
+    "The number of users who have been granted access to the CMDB Workspace this year",
+    "Health score trends shown alongside metrics such as change success rate and resolution time"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Improving data quality tied to better operational outcomes demonstrates value. Class counts, user counts, and data volume say nothing about quality or impact."
+  },
+  {
+   "id": "cisdf-50",
+   "domain": "IS",
+   "stem": "How can CMDB Query Builder results be reused beyond the builder itself?",
+   "options": [
+    "Each query requires a fresh Discovery run before its results can be reused",
+    "Saved queries can be used as a source for reports and scheduled exports",
+    "Saved queries are deleted automatically after each run to protect performance",
+    "Results can only be viewed once and must be rebuilt for every new session"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Saving queries lets you reuse them in reporting and schedule them, so complex relationship queries become ongoing insight rather than one-off searches.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-51",
+   "domain": "IS",
+   "stem": "A health dashboard shows low completeness for the server class. What is the most useful next step?",
+   "options": [
+    "Drill into the failing CIs and missing fields to find patterns, such as a source never populating one",
+    "Disable completeness scoring for the server class until the integrations are reviewed",
+    "Export the dashboard to PDF, attach it to a task, and close the task as reviewed",
+    "Delete the server class and recreate it so the scores reset with a clean baseline"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Drill-down shows which attributes and sources cause the gap, so fixes can target the root cause, often an integration mapping.\n\nDisabling or deleting hides the problem."
+  },
+  {
+   "id": "cisdf-52",
+   "domain": "IS",
+   "stem": "Why use a relationship-aware view rather than a flat list when assessing what an outage on a database server affects?",
+   "options": [
+    "Impact depends on the apps and services that rely on the server, which only relationships show",
+    "Flat lists take much longer to load than relationship views when CMDB classes are large",
+    "Flat lists cannot be filtered by environment, location, or support group",
+    "Relationship views can display more attribute columns than a standard flat list"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "What an outage affects is defined by dependencies. A list of servers can't show which applications and services sit on top of them."
+  },
+  {
+   "id": "cisdf-53",
+   "domain": "IS",
+   "stem": "Which statement about CMDB insight tools is true?",
+   "options": [
+    "They correct bad data automatically whenever a user views an inaccurate CI",
+    "They replace the need for CSDM because they infer service models from CI data",
+    "They only work with data that came from ServiceNow Discovery, not integrations",
+    "Their value depends on the quality of the underlying CMDB data"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Maps, queries, and dashboards are only as accurate as the CMDB. Governance makes insight trustworthy.\n\nInsight tools don't fix data, work with any well-identified source, and don't replace a data model."
+  },
+  {
+   "id": "cisdf-54",
+   "domain": "CS",
+   "stem": "What is the Common Service Data Model (CSDM)?",
+   "options": [
+    "A prescriptive framework for consistently modeling services, applications, and related data in the CMDB",
+    "A library of Discovery patterns for identifying common applications and infrastructure",
+    "A reporting plugin that adds service dashboards to the CMDB Workspace",
+    "A licensing model that determines which CMDB classes an organization can use"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CSDM standardizes where and how to model business and technical services, applications, and their relationships, so products across the platform share consistent data.\n\nIt isn't a discovery tool, license, or plugin."
+  },
+  {
+   "id": "cisdf-55",
+   "domain": "CS",
+   "stem": "What is the difference between a business application and an application service in CSDM?",
+   "options": [
+    "Business applications only exist in the asset table and cannot be related to CIs",
+    "A business application is the software as the business knows it; an application service is a deployed instance",
+    "They are the same record, labeled differently depending on which team is viewing it",
+    "An application service is a desktop application; a business application is a web application"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A business application (\"Payroll\") is a logical portfolio record. Application services (\"Payroll – Production\") are deployed instances that relate to the infrastructure CIs delivering them.\n\nConfusing the two is the most common CSDM modeling error."
+  },
+  {
+   "id": "cisdf-56",
+   "domain": "CS",
+   "stem": "What distinguishes a business service from a technical service?",
+   "options": [
+    "Business services are consumed by business users; technical services support other services and IT",
+    "Technical services cannot have service offerings, while business services always do",
+    "Business services are always offered to external customers; technical services are internal",
+    "There is no difference; the terms describe the same record type in different releases"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Business services are what the business consumes, such as email or HR self-service. Technical services, such as database hosting, are IT capabilities that support them.\n\nBoth can have offerings."
+  },
+  {
+   "id": "cisdf-57",
+   "domain": "CS",
+   "stem": "Why does CSDM recommend service offerings?",
+   "options": [
+    "They store the hardware and software attributes of the CIs that deliver the service",
+    "They are used only for chargeback, to bill business units for the services they consume",
+    "They replace business applications as the portfolio record for each piece of software",
+    "They define a service's specific commitments, such as SLAs, support groups, and availability"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Offerings carry the commitments: SLAs, support and approval groups, and availability. They're what tasks and requests reference.\n\nThey complement rather than replace other records."
+  },
+  {
+   "id": "cisdf-58",
+   "domain": "CS",
+   "stem": "What is the recommended starting point when adopting CSDM?",
+   "options": [
+    "Establish foundation data, then business applications and application services, in stages",
+    "Customize all CSDM tables to match the current org chart before loading data",
+    "Skip foundation data and begin with technical services, which have no dependencies",
+    "Model every service offering in detail before loading any foundation data"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CSDM adoption is staged (crawl, walk, run, fly), starting with foundation data such as companies, locations, and groups, then business applications and application services.\n\nStarting at the end or customizing first leads to rework."
+  },
+  {
+   "id": "cisdf-59",
+   "domain": "CS",
+   "stem": "In CSDM, which domain does the business application record belong to?",
+   "options": [
+    "Service consumption",
+    "Foundation",
+    "Build and integration",
+    "Design and planning"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Business applications are portfolio records in the design and planning domain (called the \"Design\" domain in earlier CSDM versions). Consumption covers business services and offerings; foundation covers reference data such as companies and locations.\n\nDomain names changed between CSDM versions, so confirm against the version your instance follows.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-60",
+   "domain": "CS",
+   "stem": "How should a business service offering connect to the infrastructure that delivers it under CSDM?",
+   "options": [
+    "It should not be connected, since offerings describe commitments, not infrastructure",
+    "Through the application service that delivers it, which relates to the infrastructure CIs",
+    "Through a text field on the offering that lists the names of the servers",
+    "Directly to every server involved, bypassing application services and offerings entirely"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The service-to-infrastructure path runs through application services, which hold the dependency on infrastructure. That path is what makes impact analysis work.\n\nDirect links to servers bypass the model, and text fields aren't relationships.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-61",
+   "domain": "CF",
+   "stem": "A new class extends cmdb_ci_server. What does it get from its parent?",
+   "options": [
+    "The parent's attributes and, unless overridden, its identification rules",
+    "Nothing until an administrator copies the parent's dictionary entries by hand",
+    "The parent's CI records, which are copied into the new class automatically",
+    "Only the parent's name; every attribute has to be recreated on the new class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Class extension is inheritance: child classes get the parent's attributes and, unless they define their own, its identification and reconciliation rules.\n\nNo attributes need recreating, and existing records stay in their own class."
+  },
+  {
+   "id": "cisdf-62",
+   "domain": "CF",
+   "stem": "Why is \"name\" alone usually a weak identifier for hardware CIs?",
+   "options": [
+    "Names only exist on CIs that were created manually",
+    "Names are encrypted, so IRE can't compare them",
+    "Name fields can't be used in identification rules at all",
+    "Names aren't guaranteed unique and change often"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Hostnames are reused, renamed, and duplicated across environments. Strong identifiers such as serial numbers are stable and unique, so name is usually a lower-priority fallback.\n\nName can be used in rules, isn't encrypted, and exists on discovered CIs too."
+  },
+  {
+   "id": "cisdf-63",
+   "domain": "CF",
+   "stem": "A child class has no identification rule of its own. How does IRE identify its CIs?",
+   "options": [
+    "It rejects every payload for that class with an error",
+    "It inserts a new CI every time because there's no rule",
+    "It uses the rule of whichever class was created most recently",
+    "It uses the nearest parent class's identification rule"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Identification rules are inherited. Without its own rule, a class uses its nearest ancestor's rule, which is why most hardware classes share the hardware rule.\n\nIRE doesn't blindly insert, reject everything, or pick an unrelated rule."
+  },
+  {
+   "id": "cisdf-64",
+   "domain": "CF",
+   "stem": "An integration updates the same CIs every five minutes, overwriting values that another source updates daily. Which reconciliation feature limits how often a source may update a CI?",
+   "options": [
+    "Orphan rules",
+    "Principal class settings",
+    "Health inclusion rules",
+    "Data refresh rules"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Data refresh rules set how much time must pass before a source is allowed to update a CI again, which reduces churn from noisy sources.\n\nInclusion, orphan, and principal class settings govern health scoring and form filtering.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-65",
+   "domain": "CF",
+   "stem": "At what level are reconciliation rules defined?",
+   "options": [
+    "Per user, based on the roles of the user running the import",
+    "Once for the entire CMDB, applying to every class in the same way",
+    "Per CI record, set individually by each CI's owner",
+    "Per class and attribute, inherited by child classes unless overridden"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Reconciliation rules name a class, the attributes they govern, and the source priority, and child classes inherit them. That granularity lets Discovery own technical attributes while an asset tool owns financial ones.\n\nA single global rule is too coarse, and per-record or per-user rules would be unmanageable."
+  },
+  {
+   "id": "cisdf-66",
+   "domain": "CF",
+   "stem": "Which relationship type best describes an application that runs on a server?",
+   "options": [
+    "Contains::Contained by",
+    "Sends data to::Receives data from",
+    "Members::Member of",
+    "Runs on::Runs"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "\"Runs on::Runs\" is the standard type for software running on a host. Contains is for containment, Members for clusters and groups, and Sends data to for data flows.\n\nUsing consistent relationship types keeps maps and impact analysis accurate.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-67",
+   "domain": "CF",
+   "stem": "What is the purpose of suggested relationships in CI Class Manager?",
+   "options": [
+    "To delete relationships that don't match the class definition",
+    "To guide which relationship types are expected between classes",
+    "To replace identification rules for dependent CIs",
+    "To create relationships automatically for every CI in the class"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Suggested relationships define the relationships that make sense for a class, guiding users and integrations toward consistent modeling.\n\nThey don't create or delete relationships on their own, and they don't replace identification.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-68",
+   "domain": "CF",
+   "stem": "How do containment and hosting rules support identification?",
+   "options": [
+    "They define how long retired CIs are contained in archive tables",
+    "They define which users are allowed to contain and host new CI classes",
+    "They define valid paths for dependent CIs, like a VM hosted on a hypervisor",
+    "They define which MID Server hosts each Discovery schedule in the network"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Containment and hosting rules describe how dependent CIs relate to the CIs they live in or on, which IRE uses when identifying them in context.\n\nMID Server assignment, user permissions, and archiving are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-69",
+   "domain": "CF",
+   "stem": "Where are a class's recommended fields defined, which feed the completeness KPI?",
+   "options": [
+    "In the Discovery schedule that populates the class",
+    "In the CMDB Health dashboard's color settings",
+    "In each user's personal list layout for the class",
+    "In CI Class Manager, on the class's attribute settings"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Class Manager lets you mark attributes as recommended, and completeness scoring checks whether CIs populate them.\n\nList layouts, Discovery schedules, and dashboard colors don't define data expectations.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-70",
+   "domain": "CF",
+   "stem": "What does an IRE payload contain?",
+   "options": [
+    "Only the sys_id of each CI to update, with no attributes included",
+    "A list of users who should own each CI after it is created",
+    "A SQL statement that IRE runs against the CMDB tables directly",
+    "CI items with their class and attributes, plus the relationships between them"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "IRE takes structured items (class name and values) and relations, then identifies, reconciles, and writes them. Sending relationships lets dependent CIs be identified.\n\nSending only sys_ids skips identification, and IRE never runs raw SQL.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-71",
+   "domain": "CF",
+   "stem": "In a reconciliation rule, how is source precedence expressed?",
+   "options": [
+    "By whichever source has sent the most records",
+    "By a priority number, where a lower number means higher priority",
+    "By the order sources were installed, where the oldest always wins",
+    "By the alphabetical order of the source names"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Each source gets a priority, and lower numbers win for the attributes the rule covers. That makes precedence explicit and adjustable.\n\nInstallation order, names, and volume don't determine precedence.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-72",
+   "domain": "CF",
+   "stem": "A server's RAM value keeps changing, and nobody knows which source is changing it. Where should you look?",
+   "options": [
+    "The CI's short description history",
+    "The list of principal classes",
+    "The CMDB Health dashboard's overall score",
+    "The multisource view (CMDB 360) for that CI"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The multisource view shows the value each source reported and when, which identifies the conflicting source quickly.\n\nDescriptions, overall scores, and principal classes don't show per-source values.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-73",
+   "domain": "CF",
+   "stem": "A payload lacks values for every identifier entry in its class's identification rule. What happens?",
+   "options": [
+    "IRE can't identify it and returns an error instead of inserting a possible duplicate",
+    "IRE stores the payload and retries identification every hour indefinitely",
+    "IRE inserts a new CI anyway, using the name as a temporary identifier",
+    "IRE updates the most recently created CI in the class with the payload"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Without identifying values, IRE can't safely decide whether the CI exists, so it reports an error rather than guessing. Fixing the source payload is the remedy.\n\nGuessing would create duplicates or corrupt unrelated CIs.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-74",
+   "domain": "CF",
+   "stem": "Which attribute is typically the strongest identifier for physical hardware?",
+   "options": [
+    "Serial number",
+    "Hostname",
+    "Assigned user",
+    "IP address"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Serial numbers are assigned by the manufacturer and rarely change, so they're the preferred hardware identifier. Hostnames get renamed, IPs get reassigned, and assigned users change all the time."
+  },
+  {
+   "id": "cisdf-75",
+   "domain": "IN",
+   "stem": "A company has several segmented networks that can't reach each other. How should MID Servers be deployed for Discovery?",
+   "options": [
+    "Place MID Servers where they can reach the targets in each segment",
+    "Skip MID Servers and let the instance connect to targets directly",
+    "Use one MID Server in the DMZ to reach every network over the internet",
+    "Install a MID Server on each laptop that should be discovered"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "MID Servers need network access to the devices they discover, so segmented networks typically need MID Servers in or near each segment.\n\nRouting all discovery through one DMZ host or the internet is unsafe, laptops aren't MID hosts, and the instance can't reach private networks directly."
+  },
+  {
+   "id": "cisdf-76",
+   "domain": "IN",
+   "stem": "Where does Discovery get the credentials it uses to log in to targets?",
+   "options": [
+    "Discovery doesn't need credentials for any kind of exploration",
+    "From the credentials stored on the instance, which the MID Server uses during discovery",
+    "From the discovery admin's personal account, used for every probe",
+    "From each target device, which sends its password to the instance on request"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Credentials are stored securely on the instance and used by MID Servers to authenticate. Credential affinity remembers which credential worked for which target.\n\nDevices don't volunteer passwords, personal accounts are a security risk, and deep exploration needs credentials."
+  },
+  {
+   "id": "cisdf-77",
+   "domain": "IN",
+   "stem": "A team wants to find out which devices are alive on a range without exploring them in detail. What should they run?",
+   "options": [
+    "A full configuration item discovery",
+    "An IP-scan-only discovery schedule",
+    "A CMDB Health correctness job",
+    "A Service Mapping top-down discovery"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "IP scan schedules find responsive devices and open ports without classifying or exploring them — useful for coverage checks.\n\nFull discovery goes much deeper, Service Mapping starts from an application, and health jobs don't scan networks.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-78",
+   "domain": "IN",
+   "stem": "What do Discovery patterns do?",
+   "options": [
+    "They define the steps to identify and explore a type of CI and its relationships",
+    "They define the health scoring weights used for each class",
+    "They define which users can run Discovery schedules on the instance",
+    "They define the visual layout of the Unified Map for each class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Patterns are the instructions Discovery follows to collect attributes and relationships for a type of CI, and they can be extended with the pattern designer.\n\nMap layout, permissions, and health weights are configured elsewhere."
+  },
+  {
+   "id": "cisdf-79",
+   "domain": "IN",
+   "stem": "A Discovery schedule should skip a range of sensitive industrial devices. What should be configured?",
+   "options": [
+    "A health inclusion rule that ignores the devices' CIs",
+    "A Data Manager policy that retires the devices after discovery",
+    "An exclusion for that range in the schedule's IP configuration",
+    "A reconciliation rule that gives the devices lowest priority"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Excluding addresses from the schedule keeps Discovery from probing them at all.\n\nHealth inclusion, reconciliation, and Data Manager act after data exists — they don't stop probes.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-80",
+   "domain": "IN",
+   "stem": "How does ServiceNow discover resources in public clouds such as AWS and Azure?",
+   "options": [
+    "By installing a MID Server inside every virtual machine in the cloud",
+    "Through cloud discovery, using a service account with API access to the provider",
+    "By asking each cloud account owner to enter resources manually",
+    "Public cloud resources can't be discovered"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cloud discovery queries the provider's APIs with a configured service account, collecting resources such as VMs, databases, and networks. Service Graph Connectors are another option for some providers.\n\nMIDs aren't installed in every VM, and manual entry doesn't scale.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-81",
+   "domain": "IN",
+   "stem": "Devices that are often off the corporate network, such as remote laptops, need regular inventory updates. What helps?",
+   "options": [
+    "Asking users to update their laptop records each month",
+    "Agent-based collection, such as Agent Client Collector",
+    "More frequent agentless IP scans of the corporate ranges",
+    "Excluding remote laptops from the CMDB entirely"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Agents report from the device wherever it is, which suits endpoints that agentless discovery can't reach reliably.\n\nScanning corporate ranges misses off-network devices, and manual updates or exclusion leave gaps.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-82",
+   "domain": "IN",
+   "stem": "How is a Service Graph Connector typically added to an instance?",
+   "options": [
+    "Enabled by default on every instance with no configuration",
+    "Purchased from the third-party vendor and installed on the MID Server",
+    "Installed from the ServiceNow Store, then configured with its guided setup",
+    "Written from scratch by the customer as a scripted REST API"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Connectors are Store applications with guided setup for credentials, scheduling, and options, which keeps deployment consistent.\n\nThey aren't custom-built, enabled by default, or installed on MID Servers as vendor software.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-83",
+   "domain": "IN",
+   "stem": "What data does a Service Graph Connector for an endpoint management tool such as Microsoft SCCM or Intune typically bring into the CMDB?",
+   "options": [
+    "Computers, their hardware details, and installed software",
+    "Users' email messages and calendar entries",
+    "Business applications and their portfolio owners",
+    "Business service offerings and their SLAs"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Endpoint tools know about devices, hardware, and installed software, which is what their connectors load.\n\nPortfolio data, service offerings, and email aren't endpoint management data."
+  },
+  {
+   "id": "cisdf-84",
+   "domain": "IN",
+   "stem": "Before running a new IntegrationHub ETL transform against production data, how can an implementer check what IRE will do?",
+   "options": [
+    "Delta imports don't need a schedule and run whenever data changes",
+    "Delta imports delete every CI that wasn't included in the latest file",
+    "Delta imports skip IRE entirely, so they can never create duplicates",
+    "Only changed records are processed, cutting load time and processing"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "IntegrationHub ETL lets you test with sample data, review what IRE would insert or update, and roll back test results, which catches mapping mistakes early.\n\nTesting in production is risky, and IRE doesn't email previews.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-85",
+   "domain": "IN",
+   "stem": "Which engine processes IntegrationHub ETL transformations before sending data to IRE?",
+   "options": [
+    "The Robust Transform Engine",
+    "The Service Portal widget engine",
+    "The Performance Analytics engine",
+    "The Flow Designer approval engine"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "IntegrationHub ETL is built on the Robust Transform Engine (RTE), which transforms source data into the payloads IRE processes.\n\nThe other engines handle analytics, approvals, and portal rendering.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-86",
+   "domain": "IN",
+   "stem": "A legacy transform map must keep running, but it should go through IRE. What can be used in the transform script?",
+   "options": [
+    "CMDBTransformUtil, to pass each row through IRE instead of inserting directly",
+    "A business rule that deletes duplicates after each import completes",
+    "A GlideRecord insert on cmdb_ci, to bypass the transform map entirely",
+    "A client script that blocks duplicate entries on the import form"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CMDBTransformUtil lets a transform map hand records to IRE, so identification and reconciliation apply even for older imports.\n\nDirect inserts bypass IRE, cleaning up afterward treats symptoms, and client scripts don't run during imports.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-87",
+   "domain": "IN",
+   "stem": "What is the role of the staging table in an import set?",
+   "options": [
+    "It permanently stores the final CI records that users work with",
+    "It holds the list of users allowed to run the import",
+    "It holds the raw imported data before it is transformed into target tables",
+    "It stores the health scores calculated for imported CIs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Import sets load raw data into a staging table, and transforms then map it to targets — ideally through IRE for CMDB data. Keeping raw data separate makes troubleshooting easier.\n\nThe final CIs live in CMDB tables, and staging tables don't store permissions or scores."
+  },
+  {
+   "id": "cisdf-88",
+   "domain": "IN",
+   "stem": "Two sources report the same manufacturer as \"Hewlett Packard Enterprise\" and \"HPE\". Why normalize these values during ingestion?",
+   "options": [
+    "For logical records no tool can discover, such as business applications",
+    "For every server, because discovered server data is usually out of date",
+    "Never; every CMDB record must be created by an integration or Discovery",
+    "For network devices, because Discovery can't classify switches or routers"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Normalizing manufacturer and model data, often through product models, makes counts, lifecycle reporting, and matching reliable.\n\nIt isn't encryption, a MID Server prerequisite, or a deletion mechanism."
+  },
+  {
+   "id": "cisdf-89",
+   "domain": "IN",
+   "stem": "What is the main benefit of delta imports over full imports for a large integration?",
+   "options": [
+    "Delta imports don't need a schedule to run",
+    "Delta imports skip IRE, so they never create any duplicates",
+    "Only changed records are processed, cutting load time and processing",
+    "Delta imports delete every CI that wasn't in the latest file"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Processing only what changed reduces load on the source and the instance and shortens run times. Periodic full loads can still catch drift.\n\nDelta imports still go through IRE, don't delete unrelated CIs, and still run on schedules."
+  },
+  {
+   "id": "cisdf-90",
+   "domain": "IN",
+   "stem": "A Discovery run fails for a group of servers. Where should an administrator start troubleshooting?",
+   "options": [
+    "The CMDB Health dashboard's completeness score for the server class",
+    "The discovery status and its logs, plus the ECC queue records for those devices",
+    "The principal class list, to confirm servers are included",
+    "The CSDM foundation dashboard for missing business applications"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Discovery status, logs, and the ECC queue show what the MID Server tried and what came back — credential failures, unreachable ports, and pattern errors.\n\nHealth scores, principal classes, and CSDM dashboards don't show discovery errors."
+  },
+  {
+   "id": "cisdf-91",
+   "domain": "IN",
+   "stem": "When is manual creation the expected way to populate CMDB records?",
+   "options": [
+    "For network devices, because Discovery can't classify them",
+    "For every server, because discovered data is often out of date",
+    "For logical records no tool can discover, such as business applications",
+    "Never; every CMDB record must come from an integration"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Logical records such as business applications are defined by people. Even then, they need owners and governance to stay accurate.\n\nServers and network devices are discoverable, and some records can't come from tools at all."
+  },
+  {
+   "id": "cisdf-92",
+   "domain": "GV",
+   "stem": "How is a class's overall CMDB Health score derived?",
+   "options": [
+    "From its completeness, compliance, and correctness KPIs, combined by weight",
+    "From the age of the oldest CI in the class compared with the newest",
+    "From the number of Discovery schedules that target the class",
+    "From the number of users who opened CIs of the class during the week"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "The overall score combines the three KPIs using configurable weights, so organizations can emphasize what matters most to them.\n\nUsage, CI age, and schedule counts aren't part of the health model.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-93",
+   "domain": "GV",
+   "stem": "What is the difference between required and recommended fields for completeness?",
+   "options": [
+    "They're the same, and the platform uses the terms interchangeably",
+    "Required fields must be populated; recommended fields should be, and both count",
+    "Required fields are set by users; recommended fields are set by Discovery only",
+    "Recommended fields are mandatory on the form; required fields are optional"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Required fields are must-haves, and recommended fields are expected for useful data. Completeness measures both, so gaps in either lower the score.\n\nWho populates them doesn't define them, and the terms aren't interchangeable."
+  },
+  {
+   "id": "cisdf-94",
+   "domain": "GV",
+   "stem": "How does the duplicates metric identify duplicate CIs?",
+   "options": [
+    "It compares every CI's short description with every other CI in the class",
+    "It counts CIs that were created on the same day by the same source",
+    "It counts CIs that share the same assigned-to user or support group",
+    "It counts CIs that IRE or remediation processes have flagged as duplicates"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Duplicate detection comes from identification — IRE flags CIs that match the same identifiers — and the metric reports those flagged CIs.\n\nDescriptions, assignments, and creation dates don't indicate duplication.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-95",
+   "domain": "GV",
+   "stem": "Network devices are discovered weekly, but some manually maintained classes are updated only twice a year. How should staleness be handled?",
+   "options": [
+    "Set staleness rules per class to fit how each class is actually maintained",
+    "Delete manually maintained classes so they don't affect the score",
+    "Use the same short staleness period for every class to keep things simple",
+    "Turn off staleness for every class, since some classes are manual"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Staleness periods are configurable per class. A period that fits discovered devices would wrongly flag manual classes, which are better covered by certification.\n\nOne-size-fits-all settings, disabling staleness, or deleting classes all hide real problems.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-96",
+   "domain": "GV",
+   "stem": "Where are orphan rules for a class typically configured?",
+   "options": [
+    "In the user's personal notification preferences",
+    "In the Discovery schedule that populates the class",
+    "In each CI's form layout, using a UI policy",
+    "In CI Class Manager, as part of the class's health settings"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Orphan rules live with the class's health configuration, defining which relationships a CI of that class should have.\n\nDiscovery schedules, UI policies, and notification preferences don't define data rules.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-97",
+   "domain": "GV",
+   "stem": "A compliance audit finds production servers without a managed-by group. What can the audit be configured to do?",
+   "options": [
+    "Create remediation tasks for the failing CIs so owners can fix them",
+    "Assign the CIs to the CMDB administrator's group automatically",
+    "Lower the KPI's weight so the failure doesn't affect the overall score",
+    "Delete the failing CIs so they no longer lower the compliance score"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Audits can generate remediation tasks for failures, turning a score into actionable work.\n\nDeleting CIs, dumping them on admins, or reweighting the KPI all avoid fixing the data.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-98",
+   "domain": "GV",
+   "stem": "Remediation tasks for data quality issues need to reach the people who can fix them. What CI attribute is typically used to route them?",
+   "options": [
+    "The discovery source",
+    "The CI's sys_class_name",
+    "The managed-by group",
+    "The created-by user"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The managed-by group is accountable for maintaining the CI, so it's the natural routing target for data quality tasks.\n\nCreators, sources, and class names don't identify responsibility.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-99",
+   "domain": "GV",
+   "stem": "Which CMDB Data Manager policy type asks owners to confirm that CIs still exist and are accurate?",
+   "options": [
+    "Deletion",
+    "Attestation",
+    "Archive",
+    "Retirement"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Attestation policies send tasks to owners to confirm or update CIs. Retire, archive, and delete policies act on the CIs' lifecycle instead.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-100",
+   "domain": "GV",
+   "stem": "How do CMDB Data Manager policies determine which CIs they act on?",
+   "options": [
+    "By acting only on CIs whose class is listed as a principal class",
+    "With filters or CMDB groups that select the target CIs",
+    "By acting on every CI in the CMDB at once each time it runs",
+    "By picking a random sample of CIs each time the policy runs"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Policies scope their targets with conditions or CMDB groups — for example, \"servers not discovered in 90 days\".\n\nActing on everything or at random would be dangerous, and principal classes are about form filtering.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-101",
+   "domain": "GV",
+   "stem": "Why should a policy require approval before CIs are deleted?",
+   "options": [
+    "To confirm CIs aren't still needed or referenced before they're removed",
+    "To slow the policy down so it doesn't use too much processing",
+    "Because deleted CIs must be emailed to the auditors first",
+    "Because the platform can't delete CIs without a manager's password"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Approval gives owners a chance to catch mistakes — a CI may still be in use or referenced by open tasks — before data is lost.\n\nPasswords, performance throttling, and emailing auditors aren't the reason."
+  },
+  {
+   "id": "cisdf-102",
+   "domain": "GV",
+   "stem": "An organization moving to CSDM lifecycle fields has CIs with legacy install status values. What should be done?",
+   "options": [
+    "Delete every CI that uses legacy status values and rediscover them",
+    "Keep using install status and ignore the CSDM lifecycle fields",
+    "Map the legacy values to Life Cycle Stage and Life Cycle Stage Status",
+    "Copy install status into the CI's description field for reference"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Mapping legacy statuses to the CSDM fields preserves meaning while standardizing on the new model.\n\nDeleting CIs loses history, ignoring CSDM fragments the model, and descriptions aren't structured data.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-103",
+   "domain": "GV",
+   "stem": "Who is typically responsible for the definition and data quality of a specific CI class?",
+   "options": [
+    "The external auditor",
+    "Every user with the itil role",
+    "The MID Server service account",
+    "The class owner"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Class owners are accountable for how a class is defined and how good its data is, working with the CMDB manager and data stewards.\n\nBroad user groups, auditors, and service accounts don't own data quality."
+  },
+  {
+   "id": "cisdf-104",
+   "domain": "GV",
+   "stem": "What is the benefit of documenting a RACI for each important CI class?",
+   "options": [
+    "It lets the platform skip health calculations for the class",
+    "Everyone knows who maintains, approves, and uses the class's data",
+    "It replaces the need for identification rules on those classes",
+    "It removes the need for Discovery on documented classes"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Clear roles — who's responsible, accountable, consulted, and informed — prevent data quality gaps from falling between teams.\n\nDocumentation doesn't replace identification, health calculations, or Discovery."
+  },
+  {
+   "id": "cisdf-105",
+   "domain": "GV",
+   "stem": "The same kind of duplicate keeps appearing — for example, VMs reported by two tools with different name formats. What helps remediate these at scale?",
+   "options": [
+    "Remediating each duplicate by hand, with each person using their own approach",
+    "Increasing the staleness period for VMs so the duplicates age out of reports",
+    "De-duplication templates that define how to resolve that pattern consistently",
+    "Turning off identification for virtual machine classes until the tools agree"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Templates capture how to resolve a recurring duplicate pattern — which CI to keep and what to merge — so remediation is consistent and faster. Fixing the identification root cause still matters.\n\nAd hoc fixes are slow, disabling identification causes more duplicates, and staleness doesn't affect duplication.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-106",
+   "domain": "GV",
+   "stem": "Besides keeping CI pickers usable, why do principal classes matter for data governance?",
+   "options": [
+    "They are the only classes that can have health scores calculated",
+    "They prevent non-principal classes from being discovered at all",
+    "They are the only classes that IRE will identify and reconcile",
+    "They focus governance effort on the classes users actually work with"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Principal classes are the ones most visible to users on tasks, so they're a sensible priority for governance.\n\nOther classes still get health scores, identification, and discovery."
+  },
+  {
+   "id": "cisdf-107",
+   "domain": "GV",
+   "stem": "A class that's maintained manually shows many stale CIs, even though the data is accurate. What is a better way to keep that class trustworthy?",
+   "options": [
+    "Exclude the class from every CMDB report and dashboard so it isn't counted",
+    "Use periodic certification by owners instead of relying on discovery updates",
+    "Write a script that updates every CI's timestamp each night so none look stale",
+    "Delete the class's stale CIs and recreate them from a spreadsheet every month"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Certification asks owners to confirm data that no tool updates, which is the right control for manual classes. Staleness settings can be adjusted to match.\n\nFaking updates, recreating CIs, or hiding the class all undermine trust."
+  },
+  {
+   "id": "cisdf-108",
+   "domain": "GV",
+   "stem": "Why should custom relationship types be avoided where a standard type fits?",
+   "options": [
+    "Standard types keep maps, impact analysis, and reporting consistent",
+    "Custom types are automatically deleted at each upgrade",
+    "Standard relationship types are the only ones IRE can store",
+    "Custom relationship types are blocked by the platform"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Features and reports expect standard relationship types. Custom ones fragment the model and can break impact analysis.\n\nCustom types are allowed and stored, and upgrades don't delete them — they're just harder to govern."
+  },
+  {
+   "id": "cisdf-109",
+   "domain": "GV",
+   "stem": "How are CMDB Health scorecard results usually presented to show where action is needed?",
+   "options": [
+    "With thresholds that color scores by status, such as red, yellow, and green",
+    "As a single number for the whole company, with no class or KPI breakdown",
+    "Only in a spreadsheet export that is sent to CMDB managers once a year",
+    "As raw lists of every CI in each class, with no scoring or thresholds applied"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Thresholds and color coding make it easy to see which classes and KPIs need attention, with drill-down to details.\n\nA single number hides detail, raw lists lack context, and annual exports are too slow."
+  },
+  {
+   "id": "cisdf-110",
+   "domain": "GV",
+   "stem": "A decommissioned server still has old incidents and changes that reference it. What should happen to its CI?",
+   "options": [
+    "Leave it operational so the old records stay valid",
+    "Retire it so history stays intact while it's marked as out of service",
+    "Rename it so nobody can find it in searches",
+    "Delete it at once so it no longer appears in any CI picker"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Retiring keeps the CI and its history for reporting and audit while making clear it's no longer in service. Later archiving and deletion can follow policy.\n\nDeleting breaks references, leaving it operational is inaccurate, and renaming obscures data."
+  },
+  {
+   "id": "cisdf-111",
+   "domain": "GV",
+   "stem": "Retired CIs accumulate for years and slow down queries. What does an archive policy do?",
+   "options": [
+    "Deletes every retired CI immediately with no way to recover it",
+    "Marks retired CIs operational again so they're used in reports",
+    "Copies retired CIs into the knowledge base as articles",
+    "Moves eligible retired CIs out of the active tables while preserving them"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Archiving removes old CIs from active tables, improving performance, while keeping them available for history and compliance. Deletion, if needed, comes later.\n\nImmediate deletion loses data, reactivating is wrong, and knowledge articles aren't archives.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-112",
+   "domain": "GV",
+   "stem": "How is a certification policy typically set up?",
+   "options": [
+    "With a filter of CIs, the attributes to certify, and a schedule for owner tasks",
+    "With a Discovery pattern that certifies attributes during each scan",
+    "With a reconciliation rule that marks the owner's source as certified",
+    "With a principal class flag that certifies all CIs in the class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Certification policies define which CIs, which attributes, and how often owners must confirm them.\n\nPatterns, reconciliation rules, and principal class flags don't certify data.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-113",
+   "domain": "GV",
+   "stem": "What is the difference between a compliance audit and a certification?",
+   "options": [
+    "An audit checks CIs automatically against rules; certification asks people to confirm",
+    "An audit is done only by external auditors; certification is done by Discovery",
+    "There's no difference; the platform uses both names for one feature",
+    "An audit deletes failing CIs; certification archives them"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Audits are automated checks against defined expectations. Certification relies on owners verifying values that rules can't check.\n\nNeither is reserved for external auditors, and neither deletes or archives CIs."
+  },
+  {
+   "id": "cisdf-114",
+   "domain": "GV",
+   "stem": "A team wants to add a new custom CI class. What should happen first?",
+   "options": [
+    "A governance review to confirm an existing class can't be used",
+    "Copy an existing class and rename all of its fields",
+    "Add a new table without extending cmdb_ci for flexibility",
+    "Create the class directly in production and announce it"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Governance review prevents class sprawl. Often an existing class — or a CSDM-aligned one — already fits.\n\nCreating classes ad hoc, outside the hierarchy, or by copying leads to inconsistent data."
+  },
+  {
+   "id": "cisdf-115",
+   "domain": "GV",
+   "stem": "Health inclusion rules already exclude retired servers. How do CMDB groups differ from them?",
+   "options": [
+    "CMDB groups replace identification rules for the CIs they contain",
+    "CMDB groups define named sets of CIs for governance, reporting, and policies",
+    "CMDB groups decide which data source wins for each attribute",
+    "CMDB groups are the only way to exclude CIs from health scores"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Inclusion rules decide what counts in health scoring. CMDB groups define reusable sets of CIs — for certification, Data Manager policies, reporting, and health views.\n\nThey don't replace identification or reconciliation."
+  },
+  {
+   "id": "cisdf-116",
+   "domain": "GV",
+   "stem": "Two discovery tools report the same servers with different serial number formats, creating duplicates. What is the best fix?",
+   "options": [
+    "Delete duplicates by hand each week as they reappear",
+    "Normalize the serial numbers or use lookup rules so both identify the same CI",
+    "Exclude servers from the CMDB Health correctness KPI",
+    "Turn off one of the tools permanently, even if it has unique data"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Making identifying data consistent — by normalizing values or using lookup rules — lets IRE recognize the same server from both sources.\n\nTurning off a source loses data, manual cleanup treats symptoms, and hiding the KPI hides the problem."
+  },
+  {
+   "id": "cisdf-117",
+   "domain": "GV",
+   "stem": "An application CI is flagged as an orphan because it has no host relationship. What are the reasonable remediations?",
+   "options": [
+    "Add the missing relationship if the application is live, or retire it if not",
+    "Mark the application's class as a principal class so its orphans aren't checked",
+    "Delete the orphan rule so the application and others like it stop being flagged",
+    "Change the application's class to a class that doesn't have any orphan rule"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "An orphan either has a missing relationship that should be added or is no longer real and should be retired.\n\nRemoving the rule, abusing principal classes, or reclassifying the CI hides the problem."
+  },
+  {
+   "id": "cisdf-118",
+   "domain": "GV",
+   "stem": "Where should a CMDB team focus first when starting a health improvement program?",
+   "options": [
+    "High-value classes used in key processes, like servers and business apps",
+    "The classes with the fewest CIs, because they're the quickest ones to fix",
+    "Classes that no process uses, since changes there carry no operational risk",
+    "Every class in the CMDB at once, giving each class exactly the same priority"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Starting where data drives incident, change, and other key processes delivers visible value quickly.\n\nTrying to fix everything at once stalls progress, and small or unused classes deliver little value."
+  },
+  {
+   "id": "cisdf-119",
+   "domain": "GV",
+   "stem": "Why use CMDB Data Manager policies instead of scheduled scripts to remove old CIs?",
+   "options": [
+    "Policies give consistent, auditable lifecycle actions with approvals and tasks",
+    "Policies run faster than scripts because they bypass access controls entirely",
+    "Policies delete CIs immediately, without the delays of any review or approval",
+    "Scheduled scripts can't run against CMDB tables, so they can't remove any CIs"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Policies make lifecycle actions governed: defined criteria, approvals, tasks, and a record of what happened. Scripts are easy to get wrong and hard to audit.\n\nScripts can run, policies respect access controls, and policies include review steps.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-120",
+   "domain": "GV",
+   "stem": "A class has completeness at 100%. Does that mean its data is accurate?",
+   "options": [
+    "No, because completeness scores are always calculated lower than accuracy",
+    "Not necessarily — fields can be populated with wrong or outdated values",
+    "Yes, because complete data is by definition also accurate and up to date",
+    "Yes, because the platform validates the truth of every value before saving"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Completeness checks that fields are filled, not that values are right. Correctness, audits, and certification address accuracy.\n\nPopulated doesn't mean correct, and the platform doesn't validate the truth of every value."
+  },
+  {
+   "id": "cisdf-121",
+   "domain": "GV",
+   "stem": "What can be done from the health dashboard when it shows failing CIs?",
+   "options": [
+    "Change failing scores to passing directly on the dashboard",
+    "Nothing; the dashboard is display-only and can't lead to action",
+    "Delete all failing CIs in one step from the dashboard",
+    "Drill into them and create remediation tasks for the responsible groups"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The dashboard is a starting point for remediation, with drill-down and task creation that routes fixes to the right teams.\n\nMass deletion or overriding scores would undermine the program.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-122",
+   "domain": "GV",
+   "stem": "Which statement best describes the goal of CMDB governance?",
+   "options": [
+    "Ensure every CI is discovered by at least three different tools",
+    "Keep CMDB data trustworthy enough for the processes that depend on it",
+    "Load as many CIs into the CMDB as possible, whatever their quality",
+    "Lock down the CMDB so that only administrators can view it"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Governance exists so incident, change, security, and other processes can rely on CMDB data. Quality and fitness for purpose matter more than volume.\n\nMultiple sources and restricted visibility don't define the goal."
+  },
+  {
+   "id": "cisdf-123",
+   "domain": "IS",
+   "stem": "An analyst wants servers that have had more than five incidents this quarter. Can CMDB Query Builder help?",
+   "options": [
+    "No, Query Builder can only query CI attributes on a single class",
+    "Yes, queries can include non-CMDB tables such as incidents related to CIs",
+    "Yes, but only if each incident is converted into a CI first",
+    "No, incidents must be exported and joined in a spreadsheet"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Query Builder can combine CMDB classes with related non-CMDB tables, such as tasks referencing CIs, which makes operational questions like this answerable.\n\nIt isn't limited to a single class, and no exports or conversions are needed.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-124",
+   "domain": "IS",
+   "stem": "In CMDB Query Builder, how do you find databases two relationship hops away from a business application?",
+   "options": [
+    "Run a Discovery schedule scoped to the business application",
+    "Add the intermediate classes to the query and connect them with relationships",
+    "Ask the database owners to list which applications they support",
+    "Filter the database list by the business application's name in a text field"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Query Builder models the path: application → application service or server → database, connected by relationships. That's what lets it traverse hops.\n\nText filters, surveys, and Discovery don't traverse relationships."
+  },
+  {
+   "id": "cisdf-125",
+   "domain": "IS",
+   "stem": "From a CI's record, a responder opens Unified Map. What can they do there?",
+   "options": [
+    "Edit the identification rule that applies to the CI's class",
+    "Approve changes for every CI shown on the map",
+    "Expand relationships outward from the CI and see connected CIs",
+    "Run CMDB Health jobs for every CI on the map at once"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Unified Map starts from a CI and expands its relationships, so responders can see what it depends on and what depends on it.\n\nIdentification rules, health jobs, and change approvals are handled elsewhere.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-126",
+   "domain": "IS",
+   "stem": "What is an application service map?",
+   "options": [
+    "A geographic map showing where each datacenter is located",
+    "A list of every application installed on a single laptop",
+    "A view of the CIs and connections that deliver one application service",
+    "A chart of how many incidents each application had last year"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Service maps show the components behind an application service — load balancers, web servers, databases — and how they connect. They're built by Service Mapping or other population methods.\n\nInstalled software lists, datacenter locations, and incident charts are different views."
+  },
+  {
+   "id": "cisdf-127",
+   "domain": "IS",
+   "stem": "A database server goes down. How does the CMDB help identify which business services are affected?",
+   "options": [
+    "The server's description field lists every service it supports",
+    "Relationships from the server up through application services show impact",
+    "The CMDB Health score shows which services are affected",
+    "Each service owner is emailed to ask whether they're affected"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Impact flows through relationships from infrastructure up to application and business services, which is what impacted-service calculations use.\n\nDescriptions aren't structured, emailing owners is slow, and health scores measure data quality."
+  },
+  {
+   "id": "cisdf-128",
+   "domain": "IS",
+   "stem": "How can the CMDB help change management detect conflicts?",
+   "options": [
+    "By flagging other changes or blackout windows on the same or related CIs",
+    "By approving every change that touches a CI with a high health score",
+    "By blocking any change submitted outside business hours",
+    "By assigning every change to the CI's created-by user"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Conflict detection checks the CIs on a change against other scheduled changes and maintenance or blackout schedules, which depends on accurate CI data.\n\nHealth scores don't approve changes, and timing and assignment rules are separate."
+  },
+  {
+   "id": "cisdf-129",
+   "domain": "IS",
+   "stem": "How do event management and AIOps use the CMDB?",
+   "options": [
+    "They use the CMDB only to send users notifications",
+    "They replace the CMDB with their own separate inventory",
+    "They don't use CMDB data at all",
+    "Alerts are bound to CIs, so impact on services can be calculated"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Binding alerts to CIs lets event management group alerts and determine which services are affected.\n\nEvent management relies on the CMDB rather than replacing or ignoring it."
+  },
+  {
+   "id": "cisdf-130",
+   "domain": "IS",
+   "stem": "How does Vulnerability Response depend on the CMDB?",
+   "options": [
+    "It only uses the CMDB to check user permissions",
+    "Vulnerabilities are matched to CIs, which identify owners and impact",
+    "It doesn't use the CMDB; it relies on scanner data alone",
+    "It stores vulnerabilities as CI classes in the CMDB hierarchy"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Matching scanner findings to CIs tells security teams who owns the affected system and what it supports, which drives prioritization and routing.\n\nVulnerabilities aren't CI classes, and scanner data alone lacks ownership and business context."
+  },
+  {
+   "id": "cisdf-131",
+   "domain": "IS",
+   "stem": "What CMDB data does Software Asset Management rely on?",
+   "options": [
+    "CSDM technical service owners only",
+    "Business service offerings and their SLAs",
+    "The CMDB Health correctness score",
+    "Discovered software installations on devices"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SAM reconciles discovered software installations against entitlements, so accurate device and software data is essential.\n\nOfferings, health scores, and service owners aren't SAM inputs."
+  },
+  {
+   "id": "cisdf-132",
+   "domain": "IS",
+   "stem": "Which report helps assess discovery coverage?",
+   "options": [
+    "The number of knowledge articles about the CMDB",
+    "The number of users with the CMDB admin role",
+    "A list of open change requests by approver",
+    "CI counts by class and discovery source over time"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Breaking down CIs by class and source shows what each tool contributes and reveals drops that suggest a broken integration.\n\nAdmin counts, change lists, and knowledge counts don't measure coverage."
+  },
+  {
+   "id": "cisdf-133",
+   "domain": "IS",
+   "stem": "How can a team find networks that Discovery isn't covering?",
+   "options": [
+    "Compare known network ranges with the ranges in Discovery schedules",
+    "Check how many incidents mention the word \"network\" in their descriptions",
+    "Count how many servers each support group owns and compare the totals",
+    "Look for the CIs that have the most relationships to other CIs"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Comparing known IP ranges with what's scheduled exposes networks that are never scanned.\n\nOwnership counts, incident text, and relationship counts don't reveal coverage gaps."
+  },
+  {
+   "id": "cisdf-134",
+   "domain": "IS",
+   "stem": "Which metric best shows the CMDB's value to incident management?",
+   "options": [
+    "The number of times users opened the CMDB Workspace each week",
+    "The total number of CIs in the CMDB at the end of each month",
+    "The percentage of incidents with an accurate configuration item populated",
+    "The number of CI classes the CMDB team has created this year"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "If incidents reference the right CIs, the CMDB is being used to route, diagnose, and analyze. That's a usage-and-value measure.\n\nCI counts, class counts, and page views don't show value."
+  },
+  {
+   "id": "cisdf-135",
+   "domain": "IS",
+   "stem": "An infrastructure team plans maintenance on a storage array. How can they see what will be affected?",
+   "options": [
+    "Open the array in Unified Map and follow relationships up to services",
+    "Ask the service desk which users have reported storage issues",
+    "Search the knowledge base for articles that mention the array",
+    "Check the array's CMDB Health score before scheduling"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Following relationships from the array upward shows the servers, applications, and services that depend on it.\n\nKnowledge articles, health scores, and past reports don't show dependencies."
+  },
+  {
+   "id": "cisdf-136",
+   "domain": "IS",
+   "stem": "An organization needs to find application services running on operating systems that are past end of support. What's the best approach?",
+   "options": [
+    "Filter the business application list by the word \"Windows\" in its name",
+    "Ask each application owner to report their operating system by email",
+    "Run Discovery again and read every server record one by one",
+    "Query application services and their servers' OS versions in Query Builder"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A relationship query from application services to servers and their OS versions answers this directly and can be saved and reused.\n\nEmail surveys are slow, name filters are unreliable, and reading records one by one doesn't scale."
+  },
+  {
+   "id": "cisdf-137",
+   "domain": "IS",
+   "stem": "Why is lifecycle reporting on hardware and software models valuable?",
+   "options": [
+    "It shows which users opened CIs most frequently last month",
+    "It shows which CIs were created manually instead of being discovered",
+    "It shows which assets are nearing end of life so upgrades can be planned",
+    "It shows which Discovery patterns ran the longest last week"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Lifecycle data on models — end of sale, end of support — turns the CMDB into a planning tool for upgrades and risk reduction.\n\nCreation method, user activity, and pattern runtime are different questions."
+  },
+  {
+   "id": "cisdf-138",
+   "domain": "IS",
+   "stem": "During a major incident, how do impacted services help communication?",
+   "options": [
+    "They close the incident once the affected services are listed",
+    "They let the service desk skip recording affected CIs",
+    "They identify which business services and users to notify",
+    "They replace the need for a major incident manager"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Knowing which services are affected tells you which stakeholders to update and how widely the outage reaches.\n\nThey don't close incidents, replace roles, or remove the need to record CIs."
+  },
+  {
+   "id": "cisdf-139",
+   "domain": "IS",
+   "stem": "Stale CIs suddenly spike for one discovery source. What does this most likely indicate?",
+   "options": [
+    "The CIs have all been certified by their owners recently",
+    "More users have started using the CMDB Workspace",
+    "The principal class list was recently expanded",
+    "That integration or discovery source has stopped updating its CIs"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A spike concentrated on one source usually means that source broke — expired credentials, a failed schedule, or an API change.\n\nCertification, usage, and principal classes don't cause staleness spikes."
+  },
+  {
+   "id": "cisdf-140",
+   "domain": "IS",
+   "stem": "Who benefits most from CMDB Query Builder's visual, no-code approach?",
+   "options": [
+    "MID Servers that need instructions for running probes",
+    "End users who submit requests through the portal",
+    "External auditors who need direct database access",
+    "Analysts who need relationship queries without writing scripts"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Query Builder lets analysts and CMDB managers answer relationship questions without scripting.\n\nMID Servers, auditors needing raw database access, and portal users aren't its audience."
+  },
+  {
+   "id": "cisdf-141",
+   "domain": "CS",
+   "stem": "Which records belong to the CSDM foundation domain?",
+   "options": [
+    "Reference data such as companies, locations, departments, groups, and users",
+    "Application services and the infrastructure CIs that support them",
+    "Business service offerings and their service level commitments",
+    "Business applications and their portfolio lifecycle information"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Foundation data is the shared reference data everything else depends on. Offerings, application services, and business applications belong to other domains.\n\nGetting foundation data right comes first in CSDM adoption.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-142",
+   "domain": "CS",
+   "stem": "What is a technical service offering used for?",
+   "options": [
+    "Defining which MID Server discovers the CIs behind a technical service",
+    "Listing the software that a business user is allowed to request from the catalog",
+    "Defining a specific IT capability with its own support and commitments",
+    "Recording the cost center that pays for each business application"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Technical service offerings break a technical service into supportable units — for example, \"Database hosting – Oracle – Production\" — each with support groups and commitments.\n\nRequest lists, cost centers, and MID Server assignment are unrelated."
+  },
+  {
+   "id": "cisdf-143",
+   "domain": "CS",
+   "stem": "How does the request catalog relate to CSDM service offerings?",
+   "options": [
+    "Catalog items can be linked to service offerings to show what they fulfill",
+    "The request catalog has no relationship to services anywhere in CSDM",
+    "Catalog items replace service offerings entirely once CSDM has been adopted",
+    "Service offerings can only be requested by administrators, not end users"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Linking catalog items to offerings connects what users request with the services and commitments that fulfill them.\n\nCatalog items don't replace offerings, and offerings aren't admin-only.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-144",
+   "domain": "CS",
+   "stem": "What is a dynamic CI group commonly used for in CSDM?",
+   "options": [
+    "Deleting CIs automatically when they stop matching the group's query",
+    "Assigning random CIs to support groups so workloads stay balanced",
+    "Grouping CIs by a query so a technical service offering can reference them",
+    "Replacing the identification rules for the CIs that are in the group"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Dynamic CI groups collect CIs by query — such as all production Oracle databases — and relate them to technical service offerings, keeping support and impact accurate as CIs change.\n\nThey don't delete CIs, assign at random, or replace identification.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-145",
+   "domain": "CS",
+   "stem": "In CSDM, what does an SDLC component represent?",
+   "options": [
+    "A contract with a software vendor for licenses and support",
+    "A business service that end users consume through the portal",
+    "A deployed production server that hosts the finished software",
+    "A unit of software being built or maintained by a development team"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SDLC components represent what development teams build and maintain, linking development work to the applications they deliver.\n\nServers, business services, and contracts are modeled elsewhere.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-146",
+   "domain": "CS",
+   "stem": "In the staged CSDM adoption approach, which stage typically adds technical services and technical service offerings?",
+   "options": [
+    "Walk",
+    "Fly",
+    "Run",
+    "Crawl"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Crawl establishes foundation data, business applications, and application services. Walk adds technical services and offerings. Run adds business services and offerings, and Fly extends further.\n\nStage contents vary slightly between CSDM versions, so confirm against your version.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-147",
+   "domain": "CS",
+   "stem": "Which method can populate an application service with its CIs?",
+   "options": [
+    "Application services can't contain CIs",
+    "Only by importing a spreadsheet each quarter",
+    "Only by typing CI names into the service's description field",
+    "Service Mapping, tag-based mapping, or a dynamic or manual definition"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Application services can be populated by Service Mapping, by tags, by dynamic queries, or manually, depending on what's available.\n\nDescriptions and periodic spreadsheets aren't population methods, and services must contain CIs to be useful.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-148",
+   "domain": "CS",
+   "stem": "Which relationship connects a business application to an application service in CSDM?",
+   "options": [
+    "Runs on::Runs",
+    "Contains::Contained by",
+    "Consumes::Consumed by",
+    "Members::Member of"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "CSDM relates business applications to the application services that deliver them with \"Consumes::Consumed by\". Runs on, Contains, and Members describe infrastructure relationships.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-149",
+   "domain": "CS",
+   "stem": "Why does CSDM separate business services from application services instead of using one generic service class?",
+   "options": [
+    "They serve different purposes and audiences, so modeling them separately supports both",
+    "The platform can only store a limited number of records in one service class",
+    "Separating them is optional and has no effect on any platform features",
+    "Business services are always external, while application services are always internal"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Business services describe what users consume. Application services describe deployed technology. Keeping them separate lets each support its own processes — service portfolio management on one side, operations on the other.\n\nStorage limits aren't the reason, and features depend on the distinction."
+  },
+  {
+   "id": "cisdf-150",
+   "domain": "CS",
+   "stem": "What is the difference between a service owner and a business application owner?",
+   "options": [
+    "A service owner always manages servers; an app owner always manages users",
+    "There's no difference; CSDM uses the two titles interchangeably",
+    "A service owner approves every change; an app owner approves every incident",
+    "A service owner is accountable for a service; an app owner for an application"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Ownership follows the record: service owners are accountable for services and their offerings, while business application owners are accountable for the application in the portfolio.\n\nNeither role is defined by managing servers or users, or by approving every task."
+  },
+  {
+   "id": "cisdf-151",
+   "domain": "CF",
+   "stem": "An identifier entry lists two criterion attributes: serial number and serial number type. How does IRE use them?",
+   "options": [
+    "Both values must match for the entry to identify a CI",
+    "IRE uses whichever of the two attributes was updated more recently",
+    "Either value matching on its own is enough to identify the CI",
+    "IRE ignores the second attribute unless the first one is empty"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Attributes within one identifier entry are combined: all must match. Alternatives belong in separate entries with their own priorities.\n\nTreating them as \"either\" would cause false matches.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-152",
+   "domain": "CF",
+   "stem": "A higher-priority source has never reported a CI's warranty date, but a lower-priority source does. What generally happens?",
+   "options": [
+    "The value stays empty until the higher-priority source reports it",
+    "IRE rejects the whole payload from the lower-priority source",
+    "IRE creates a duplicate CI so each source has its own copy",
+    "The lower-priority source can populate the empty value"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Reconciliation protects values an authoritative source has set. Where it has never supplied a value, a lower-priority source can usually fill the gap, so CIs aren't left incomplete.\n\nRejecting payloads or creating duplicates would defeat IRE's purpose.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-153",
+   "domain": "CF",
+   "stem": "How can IRE identify a CI using the key a source system assigns to it, such as a cloud resource ID?",
+   "options": [
+    "By matching the CI's description text against the payload",
+    "By the source name and source native key stored for that CI",
+    "It can't; identification only uses class identifier entries",
+    "By the CI's sys_id, which the source must look up first"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "IRE can match on the combination of source and its native key recorded for a CI, which is useful when sources have stable internal IDs.\n\nSources don't know the instance's sys_ids, and descriptions aren't identifiers.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-154",
+   "domain": "CF",
+   "stem": "What is the difference between a required attribute and an identifying attribute?",
+   "options": [
+    "Required must be filled in; identifying is used to match existing CIs",
+    "There's no difference; both terms describe the same kind of attribute",
+    "Identifying attributes are set by users; required ones are set by Discovery",
+    "Required attributes are used for matching; identifying ones are optional"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Required attributes drive completeness and form validation. Identifying attributes are the ones identification rules use to recognize a CI. An attribute can be one, both, or neither.\n\nWho sets them doesn't define them."
+  },
+  {
+   "id": "cisdf-155",
+   "domain": "CF",
+   "stem": "In a \"Depends on::Used by\" relationship from an application to a database, which CI is the parent?",
+   "options": [
+    "The application, which depends on the database",
+    "Neither, because relationships have no direction",
+    "The database, because it stores the data",
+    "Whichever CI was created first in the CMDB"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Relationships have direction: the parent is the CI on the \"Depends on\" side, and the child is \"Used by\". Direction is what lets impact flow correctly from infrastructure up to services.\n\nCreation order and data storage don't set direction."
+  },
+  {
+   "id": "cisdf-156",
+   "domain": "IN",
+   "stem": "Discovery scans are slowing production systems during business hours. What should be adjusted?",
+   "options": [
+    "The principal class list for production servers",
+    "The CMDB Health weights for the affected classes",
+    "The identification rules for the scanned classes",
+    "The schedule's run time window, so scans run off-hours"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Schedules control when and how long discovery runs, so moving scans to off-hours and setting a maximum run time reduces load.\n\nHealth weights, principal classes, and identification rules don't control scan timing."
+  },
+  {
+   "id": "cisdf-157",
+   "domain": "IN",
+   "stem": "Why configure MID Servers in a cluster?",
+   "options": [
+    "So each MID Server can discover a different instance of ServiceNow",
+    "So MID Servers can calculate CMDB Health scores locally",
+    "For load balancing and failover, so discovery continues if one fails",
+    "So MID Servers can approve changes on discovered servers"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Clusters spread the workload and provide redundancy for discovery and integrations.\n\nMID Servers don't serve multiple instances this way, approve changes, or calculate health.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-158",
+   "domain": "IN",
+   "stem": "Which credential type does Discovery typically use for network switches and routers?",
+   "options": [
+    "Database login credentials",
+    "Windows domain credentials",
+    "SNMP credentials",
+    "Cloud service account keys"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Network devices are usually discovered over SNMP. Windows credentials are for Windows hosts, database credentials for database exploration, and cloud keys for cloud APIs."
+  },
+  {
+   "id": "cisdf-159",
+   "domain": "IN",
+   "stem": "A source system stops reporting a device that was decommissioned. How should the integration handle records missing from the source?",
+   "options": [
+    "Ignore missing records, since the CMDB should never change",
+    "Flag or retire them through governed lifecycle steps, not immediate deletion",
+    "Recreate the CIs from the previous import file each time",
+    "Delete the CIs immediately whenever they're absent from one import"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A missing record may mean decommissioning or a temporary source problem. Marking or retiring through policy preserves history and avoids mass deletion after a bad import.\n\nInstant deletion is risky, and ignoring or recreating records keeps stale data."
+  },
+  {
+   "id": "cisdf-160",
+   "domain": "IN",
+   "stem": "During discovery, what does the classification phase determine?",
+   "options": [
+    "Which business services rely on the device",
+    "Who owns the device and which group should support it",
+    "What kind of device it is, which decides the CI class and next steps",
+    "Whether the device's data is complete enough to score well"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Classification works out the device type — Windows server, Linux server, switch — from probe responses, which determines the class and which patterns run next.\n\nOwnership, service impact, and health scoring come later or from other sources."
+  },
+  {
+   "id": "cisdf-161",
+   "domain": "IN",
+   "stem": "A large integration import slows the instance for users during the day. What's the recommended approach?",
+   "options": [
+    "Turn off IRE for the import so that it runs much faster",
+    "Ask users to log off the instance while the import runs",
+    "Run all imports every hour so that each one is smaller",
+    "Schedule large loads off-peak and process changes in deltas"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Off-peak scheduling and delta loads reduce load when users need the instance. Disabling IRE trades speed for duplicates, and asking users to log off isn't practical."
+  },
+  {
+   "id": "cisdf-162",
+   "domain": "IN",
+   "stem": "Why should every CMDB integration have a named owner?",
+   "options": [
+    "The owner becomes the owner of every CI the integration loads",
+    "Integrations can't run unless a user is logged in as the owner",
+    "Someone must notice and fix failures before data goes stale",
+    "The owner approves every CI the integration creates"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Integrations break: credentials expire, APIs change. A named owner who watches run results keeps data flowing.\n\nIntegrations run unattended, don't need per-CI approval, and don't set CI ownership."
+  },
+  {
+   "id": "cisdf-163",
+   "domain": "IN",
+   "stem": "Agentless discovery fails against servers in a new network segment. What should be checked first?",
+   "options": [
+    "Whether firewalls allow the required ports from the MID Server",
+    "Whether the servers' business application owners are set",
+    "Whether CMDB Health jobs ran the previous night",
+    "Whether the class is listed as a principal class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Agentless discovery needs network access — ports such as SSH, WMI/WinRM, and SNMP — from the MID Server to targets. Blocked ports are a common cause of failure.\n\nOwnership, principal classes, and health jobs don't affect connectivity."
+  },
+  {
+   "id": "cisdf-164",
+   "domain": "GV",
+   "stem": "Why set target health scores and remediation timeframes for key classes?",
+   "options": [
+    "The platform blocks health scoring until targets are configured",
+    "They define what \"good enough\" means and make progress measurable",
+    "Targets lower the number of CIs that need to be scored",
+    "Targets let failing CIs be marked as passing automatically"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Targets turn health scores into goals teams can be held to, with clear expectations for fixing failures.\n\nScoring works without targets, and targets don't reduce scope or override results."
+  },
+  {
+   "id": "cisdf-165",
+   "domain": "GV",
+   "stem": "What is the difference between a CMDB manager and a data steward?",
+   "options": [
+    "There's no difference; the titles are interchangeable",
+    "Stewards configure Discovery; managers configure identification rules",
+    "The manager edits every CI personally; stewards only read reports",
+    "The manager owns the CMDB program; stewards keep specific data accurate"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "CMDB managers own strategy, standards, and governance. Data stewards — often within the teams that use the data — maintain quality for their classes or CIs.\n\nManagers don't edit every CI, and the roles aren't defined by tool configuration."
+  },
+  {
+   "id": "cisdf-166",
+   "domain": "GV",
+   "stem": "How can the CMDB help detect unauthorized changes to servers?",
+   "options": [
+    "Block Discovery from updating CIs that have open incidents",
+    "Compare discovered changes with approved change requests for those CIs",
+    "Lower the health score of any CI that has a change request",
+    "Delete any CI whose attributes change between two discovery runs"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "When discovered configuration changes don't match an approved change, that's a signal of unauthorized change worth investigating.\n\nDeleting CIs, blocking updates, or penalizing approved changes don't detect anything.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-167",
+   "domain": "GV",
+   "stem": "When should a compliance audit use a script instead of a simple filter?",
+   "options": [
+    "Always, because scripted audits run faster than filter audits",
+    "When the check is too complex to express with conditions alone",
+    "Only when the audit needs to delete failing CIs",
+    "Never, because audits can only use filter conditions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Filters cover most checks. Scripts handle logic conditions can't express, such as comparing related records. Prefer filters where possible because they're easier to maintain.\n\nAudits shouldn't delete CIs.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-168",
+   "domain": "GV",
+   "stem": "Data quality problems are scattered across many classes. What helps find the root causes?",
+   "options": [
+    "Fix each failing CI one at a time as it's reported",
+    "Ask each support group to fix whatever it notices",
+    "Disable health scoring until every class has been reviewed",
+    "Group failures by data source and class to spot the pattern"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Grouping by source and class often shows that one integration or mapping causes most failures, so one fix resolves many CIs.\n\nCI-by-CI fixes treat symptoms, and disabling scoring hides the problem."
+  },
+  {
+   "id": "cisdf-169",
+   "domain": "GV",
+   "stem": "Relationships between CIs that no longer exist still appear on maps. What should handle these?",
+   "options": [
+    "Nothing; stale relationships don't affect maps or impact analysis",
+    "Manual deletion of every relationship each time someone notices",
+    "A new CI class to store the outdated relationships separately",
+    "Relationship staleness and cleanup rules, alongside CI lifecycle"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Relationships go stale like CIs do. Governed cleanup keeps maps and impact analysis accurate.\n\nManual cleanup doesn't scale, new classes don't fix it, and stale relationships do distort impact.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-170",
+   "domain": "GV",
+   "stem": "Users keep manually overwriting attributes that Discovery maintains. What helps?",
+   "options": [
+    "Asking users to note their changes in the CI's description field",
+    "Removing Discovery so manual values are never overwritten again",
+    "Reconciliation rules and access controls that protect discovered attributes",
+    "Raising the staleness period so manual edits last longer"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Reconciliation rules make the authoritative source win, and access controls limit who can edit protected fields.\n\nRemoving Discovery loses automation, descriptions don't prevent overwrites, and staleness doesn't control edits.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-171",
+   "domain": "GV",
+   "stem": "Why publish CMDB standards, such as class definitions and required attributes?",
+   "options": [
+    "So everyone populating or using the CMDB follows the same rules",
+    "Because published standards make the CMDB Health score rise automatically",
+    "So the standards can replace identification and reconciliation rules",
+    "Because standards are needed before Discovery can be scheduled"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Shared standards keep teams and integrations consistent. They complement platform configuration rather than replacing it, and they don't change scores or Discovery on their own."
+  },
+  {
+   "id": "cisdf-172",
+   "domain": "GV",
+   "stem": "A new data source is being added to the CMDB. Which governance steps should happen first?",
+   "options": [
+    "Give it administrator access so it can update any CMDB table",
+    "Assign it the highest priority for every attribute on every class",
+    "Load all of its data into production first and clean up duplicates later",
+    "Define its classes, identification, reconciliation priority, and an owner"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Planning class mappings, identification, reconciliation precedence, and ownership before loading prevents duplicates and overwrites.\n\nLoading first, broad admin access, or blanket top priority all create data problems."
+  },
+  {
+   "id": "cisdf-173",
+   "domain": "GV",
+   "stem": "A CI was archived by policy, but an audit now needs it. What's generally possible?",
+   "options": [
+    "Nothing; archived CIs are permanently deleted from the instance",
+    "The CI must be rediscovered from scratch by a new Discovery run",
+    "Archived CIs can be restored, since archiving preserves them",
+    "Auditors must read the instance's database backups to find it"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Archiving moves records out of active tables while keeping them, so they can be retrieved when needed. That's why archiving comes before deletion.\n\nRediscovery or backups aren't needed for archived data.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-174",
+   "domain": "GV",
+   "stem": "Many CIs list owners who have left the company. Why is this a governance problem?",
+   "options": [
+    "Tasks and certifications route to people who can't act on them",
+    "It changes the CI's class to a retired class automatically",
+    "Former employees can still sign in and edit those CIs",
+    "The platform deletes CIs whose owners have been deactivated"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Stale ownership breaks accountability: remediation tasks, certifications, and approvals go nowhere. Regular ownership checks fix it.\n\nDeactivated users can't sign in, and CIs aren't deleted or reclassified automatically."
+  },
+  {
+   "id": "cisdf-175",
+   "domain": "GV",
+   "stem": "Before running a new Data Manager retire policy across thousands of servers, what's a sensible step?",
+   "options": [
+    "Run it only on weekends, with no review of the scope",
+    "Preview which CIs it will affect and confirm the scope",
+    "Disable approvals so the policy finishes faster",
+    "Run it immediately and restore anything removed by mistake"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Previewing the affected CIs catches a bad filter before it retires the wrong servers.\n\nRunning blind, skipping review, or removing approvals invites mistakes.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-176",
+   "domain": "GV",
+   "stem": "What role does a CMDB governance board typically play?",
+   "options": [
+    "Approves every incident that references a CI before it's assigned",
+    "Runs Discovery schedules and fixes MID Server credential failures",
+    "Reviews health, sets priorities, and approves changes to the data model",
+    "Edits CI attributes directly whenever anyone reports a data error"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A governance board oversees direction: health and priorities, standards, and schema changes such as new classes.\n\nHands-on data edits, Discovery operations, and incident approval belong to other roles."
+  },
+  {
+   "id": "cisdf-177",
+   "domain": "GV",
+   "stem": "Test and development servers make production health scores look worse. What's a reasonable approach?",
+   "options": [
+    "Delete all test and development servers from the CMDB entirely",
+    "Copy production attribute values onto the test servers' records",
+    "Score environments separately using inclusion rules or CMDB groups",
+    "Turn off health scoring for the entire server class until fixed"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Separating environments lets each be held to appropriate standards without hiding problems.\n\nDeleting non-production CIs loses useful data, copying values falsifies it, and disabling scoring hides everything."
+  },
+  {
+   "id": "cisdf-178",
+   "domain": "IS",
+   "stem": "Which servers aren't related to any application service? How can Query Builder answer this?",
+   "options": [
+    "Ask each server owner which applications run on their servers",
+    "Count relationships manually on each server's form",
+    "Use a \"not related\" condition between servers and application services",
+    "Filter the server list by the word \"application\" in its name"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Query Builder can find CIs that lack a relationship, which is useful for orphan analysis and service mapping coverage.\n\nName filters, surveys, and manual counts are unreliable or slow.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-179",
+   "domain": "IS",
+   "stem": "A Unified Map is too cluttered to read. What helps?",
+   "options": [
+    "Export the map as an image and crop it to the area of interest",
+    "Delete the relationships that make the map look busy and cluttered",
+    "Filter by relationship type, class, or depth to focus the view",
+    "Rename the CIs on the map so they have shorter display names"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Filters and depth controls narrow the map to what matters for the task.\n\nDeleting relationships destroys data, and cropping images or renaming CIs doesn't help analysis.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-180",
+   "domain": "IS",
+   "stem": "During an incident, what extra context can Unified Map show beyond relationships?",
+   "options": [
+    "The personal contact details and home addresses of every user of each CI",
+    "The purchase invoices and payment history for the hardware on the map",
+    "The full source code of the applications that run on each CI",
+    "Related operational records, such as open incidents, changes, and alerts"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Overlaying active incidents, recent changes, and alerts on the map helps responders spot likely causes.\n\nPersonal details, source code, and invoices aren't map overlays.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-181",
+   "domain": "IS",
+   "stem": "An analyst needs to find a specific CI quickly. Where should they start?",
+   "options": [
+    "The Discovery schedule list",
+    "CMDB search in the CMDB Workspace",
+    "The identification rule list",
+    "The system log"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "CMDB search is built for finding CIs across classes. Schedules, rules, and logs aren't CI search tools.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-182",
+   "domain": "IS",
+   "stem": "Which report most directly supports governance of business applications?",
+   "options": [
+    "Business applications sorted alphabetically by name",
+    "Business applications with the longest descriptions",
+    "Business applications with no owner or lifecycle status",
+    "Business applications created on a Monday"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Gaps in ownership and lifecycle data show where portfolio governance is weak. Sorting, creation day, and description length don't."
+  },
+  {
+   "id": "cisdf-183",
+   "domain": "IS",
+   "stem": "How can CMDB data help control cloud costs?",
+   "options": [
+    "By lowering the price the cloud provider charges per resource",
+    "By showing cloud resources by account and owner, revealing unused ones",
+    "By deleting cloud resources whenever their owner is unknown",
+    "By converting cloud resources into on-premises servers"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Discovered cloud resources with owners and relationships expose idle or orphaned resources that can be cleaned up.\n\nThe CMDB doesn't set prices, and deleting or converting resources isn't its job."
+  },
+  {
+   "id": "cisdf-184",
+   "domain": "IS",
+   "stem": "An auditor needs the list of servers in scope for PCI DSS. How can the CMDB help?",
+   "options": [
+    "Look at the CMDB Health score of the server class",
+    "Query servers related to the application services that handle card data",
+    "Ask the security team to keep a separate spreadsheet of PCI servers",
+    "List every server in the CMDB and mark them all as in scope"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Relationships from payment application services to their infrastructure define the in-scope set and keep it current.\n\nSpreadsheets drift, marking everything in scope inflates audit cost, and health scores don't define scope."
+  },
+  {
+   "id": "cisdf-185",
+   "domain": "IS",
+   "stem": "Which metric best shows that change management is using the CMDB?",
+   "options": [
+    "The number of change approvers in the organization",
+    "The percentage of changes with affected CIs populated",
+    "The total number of changes raised each month",
+    "The average length of change descriptions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "If changes reference the CIs they affect, impact analysis and conflict detection can work. The other measures don't show CMDB use."
+  },
+  {
+   "id": "cisdf-186",
+   "domain": "CS",
+   "stem": "In CSDM, what does an information object represent?",
+   "options": [
+    "A saved report built from CMDB Query Builder results for an application",
+    "A knowledge article that describes how to use a business application",
+    "A single file stored on a file server and recorded as its own CI",
+    "A type of data an application handles, used to describe its sensitivity"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Information objects describe the kinds of data a business application handles — such as customer payment data — which helps assess data sensitivity and risk.\n\nThey aren't individual files, articles, or reports.",
+   "verify": true
+  },
+  {
+   "id": "cisdf-187",
+   "domain": "CS",
+   "stem": "Why should application services carry an environment value, such as production or test?",
+   "options": [
+    "So impact, support, and reporting can treat environments differently",
+    "So test environments are deleted automatically each month",
+    "Because only production services can be related to business applications",
+    "Because environment determines which MID Server discovers the service"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Environment lets teams prioritize production incidents, apply different change controls, and report accurately.\n\nIt doesn't trigger deletion or MID Server selection, and non-production services can relate to business applications too."
+  },
+  {
+   "id": "cisdf-188",
+   "domain": "CS",
+   "stem": "What is a key benefit of adopting CSDM across ServiceNow products?",
+   "options": [
+    "It's required before any CI can be created in the CMDB",
+    "It lets each team define services however it prefers",
+    "Products like ITSM, ITOM, and SPM share consistent service data",
+    "It removes the need for Discovery and service mapping entirely"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A common model means service and application data means the same thing everywhere, so reporting and automation work across products.\n\nIt doesn't replace discovery, it standardizes rather than fragments, and it isn't a prerequisite for creating CIs."
+  }
+ ]
+}
