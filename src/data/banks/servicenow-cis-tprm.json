@@ -201,7 +201,7 @@
    "options": [
     "Inherent risk is calculated from assessment responses; residual risk comes from the IRQ",
     "Residual risk is always lower than inherent risk once any assessment has been closed",
-    "Inherent risk is exposure before controls; residual is what remains after controls are evaluated",
+    "Inherent risk is exposure before controls; residual is what remains after",
     "They are the same measure, captured at two different points in the assessment cycle"
    ],
    "answer": [
@@ -246,7 +246,7 @@
    "stem": "What is the practical function of third-party criticality within the program?",
    "options": [
     "It is calculated automatically from the number of engagements",
-    "It helps drive prioritization, assessment depth, and monitoring intensity",
+    "It helps drive prioritization and assessment depth",
     "It replaces the inherent risk tier for regulated third parties",
     "It determines which portal theme the third party sees"
    ],
@@ -322,7 +322,7 @@
    "stem": "What is the primary contact designation used for?",
    "options": [
     "It marks the contact as the third party's legal signatory for all contracts",
-    "It gives that contact admin rights over the company's other contacts and routing",
+    "It gives that contact admin rights over the company's contacts",
     "It restricts assessment responses so that only that person can answer them",
     "It determines the third party's inherent risk tier for every engagement"
    ],
@@ -337,9 +337,9 @@
    "stem": "Two teams have independently created records for the same supplier under slightly different names. What is the correct remediation?",
    "options": [
     "Convert one of the records into an engagement underneath the other record",
-    "Consolidate onto one record using a unique identifier, and retire the duplicate",
+    "Leave both records in place and filter reports so they use only the newer one",
     "Delete both records and recreate a single new record for the supplier from scratch",
-    "Leave both records in place and filter reports so they use only the newer one"
+    "Consolidate onto one record using a unique identifier, and retire the duplicate"
    ],
    "answer": [
     3
@@ -445,7 +445,7 @@
    "stem": "A submitted assessment is missing the evidence attachments several answers depend on. What is the correct handling?",
    "options": [
     "Score the affected questions as failures and close it complete",
-    "Return it to the third party for the missing information and keep it open",
+    "Return it to the third party for the missing evidence",
     "Close it incomplete and schedule an out-of-cycle reassessment",
     "Raise an issue and accept the responses as submitted"
    ],
@@ -567,7 +567,7 @@
    "stem": "A third-party respondent cannot answer the security questions and needs a colleague to handle that section. What does the application support?",
    "options": [
     "The internal assessor answers those questions on the third party's behalf",
-    "Delegate the assessment, or sections of it, to another registered contact",
+    "The respondent delegates the assessment, or sections, to another registered contact",
     "The assessment is cancelled and reissued to the colleague from scratch",
     "The respondent shares their login credentials with the colleague"
    ],
@@ -582,7 +582,7 @@
    "stem": "A respondent completes half a long questionnaire and closes the browser. What should happen?",
    "options": [
     "The assessment locks and requires assessor intervention",
-    "Progress is saved and the respondent resumes where they stopped",
+    "Progress is saved, and they resume where they stopped",
     "The assessment auto-submits with the answers given so far",
     "Responses are discarded and the questionnaire restarts"
    ],
@@ -702,9 +702,9 @@
    "domain": "P",
    "stem": "A third-party contact logs into the portal successfully but sees no assessments. What is the most likely cause?",
    "options": [
-    "The portal theme hasn't been published, so assessments are hidden from view",
-    "The contact's browser isn't supported, so the assessment list doesn't render",
     "Nothing is assigned to the contact, or it's linked to the wrong company record",
+    "The contact's browser isn't supported, so the assessment list doesn't render",
+    "The portal theme hasn't been published, so assessments are hidden from view",
     "The assessment is still within its due date window, so it isn't shown yet"
    ],
    "answer": [
@@ -717,7 +717,7 @@
    "domain": "P",
    "stem": "What prevents a third-party user from seeing another third party's data on the portal?",
    "options": [
-    "Access controls that scope visibility to the user's associated company",
+    "Access controls scoped to the user's company",
     "Assessments are delivered as read-only PDFs",
     "The portal only displays records created in the last 90 days",
     "Each third party gets its own instance"
@@ -840,7 +840,7 @@
    "options": [
     "In a script include attached to each questionnaire template",
     "In the portal theme and its widget configuration settings",
-    "In Flow Designer flows and the application's process configuration",
+    "In Flow Designer flows and process configuration",
     "In the assessment metric definitions for each questionnaire"
    ],
    "answer": [
@@ -961,7 +961,7 @@
    "stem": "A cloud provider you use relies on a separate company to run its datacenters. What is that company to you?",
    "options": [
     "Out of scope, because you have no contract with them",
-    "A fourth party, whose risk reaches you through your third party",
+    "A fourth party",
     "A direct third party that you must contract with yourself",
     "An internal business unit covered by your own policies"
    ],
@@ -1007,7 +1007,7 @@
    "options": [
     "Logo usage and marketing approval rights",
     "Office hours and holiday schedule terms",
-    "Right to audit and breach notification obligations",
+    "Right to audit and breach notification",
     "Invoice formatting and payment address details"
    ],
    "answer": [
@@ -1083,7 +1083,7 @@
     "Tier 1 skips due diligence, because critical vendors are pre-approved",
     "Both get the same full questionnaire, so results are always comparable",
     "Tier 3 gets more scrutiny, because low-risk vendors are less mature",
-    "Tier 1 gets deeper questionnaires and more evidence; tier 3 gets lighter review"
+    "Tier 1 gets deeper review and more evidence; tier 3 lighter"
    ],
    "answer": [
     3
@@ -1158,7 +1158,7 @@
     "Let the third party sign off on accepting the risk for you",
     "Proceed quietly and lower the residual rating so it's within appetite",
     "Delete the assessment so the residual risk no longer appears",
-    "A formal risk acceptance by an authorized person, with rationale and expiry"
+    "A formal, approved risk acceptance with an expiry"
    ],
    "answer": [
     3
@@ -1292,7 +1292,7 @@
    "options": [
     "The third party's legal name and its government tax identifier",
     "The third party's parent company and its corporate ownership",
-    "The specific service, its business owner, data involved, and dates",
+    "The service, its owner, data involved, and dates",
     "The third party's headquarters address and main phone number"
    ],
    "answer": [
@@ -1305,7 +1305,7 @@
    "domain": "C",
    "stem": "Why link engagements to their contracts?",
    "options": [
-    "So contract terms, renewal dates, and obligations connect to the risk being managed",
+    "So contract terms and renewals connect to the risk",
     "So the contract can be signed automatically when the assessment closes",
     "So contracts replace the need for engagement records",
     "So the third party can edit contract terms through the portal"
@@ -1321,7 +1321,7 @@
    "domain": "C",
    "stem": "Why relate an engagement to the business applications or services it supports?",
    "options": [
-    "It shows which business services are affected if the third party fails",
+    "It shows which services suffer if the vendor fails",
     "It automatically closes incidents on those applications",
     "It lets the third party edit those applications' CMDB records",
     "It removes the need for an inherent risk questionnaire"
@@ -1337,7 +1337,7 @@
    "stem": "An organization has 3,000 vendors in its ERP system. How should they be brought into TPRM?",
    "options": [
     "Have assessors type each vendor in by hand from printed reports",
-    "Import them through an integration or import set into third-party records",
+    "Import them through an integration or import set",
     "Leave them out until each vendor causes an incident",
     "Ask each vendor to register itself on the portal from scratch"
    ],
@@ -1354,7 +1354,7 @@
     "By assessors copying ratings into the assessment comments by hand",
     "By asking each third party to type its own rating into the portal each month",
     "They can't be brought in; assessors must look them up separately",
-    "Through integrations, often from the ServiceNow Store, that update third-party records"
+    "Through Store integrations that update third-party records"
    ],
    "answer": [
     3
@@ -1370,7 +1370,7 @@
     "By the date the third party was first added to the program",
     "By the number of engagements the third party currently has",
     "By the name of the internal business owner on the engagement",
-    "By identifiers such as the third party's primary domain or company ID"
+    "By identifiers such as the third party's domain"
    ],
    "answer": [
     3
@@ -1385,7 +1385,7 @@
    "options": [
     "The requester picks whichever tier they prefer",
     "Every engagement starts at tier 1 and moves down yearly",
-    "Answers carry scores, and the total maps to tier thresholds",
+    "Answers carry scores mapped to tier thresholds",
     "The third party chooses its own tier in the portal"
    ],
    "answer": [
@@ -1415,7 +1415,7 @@
    "domain": "C",
    "stem": "Security and privacy questionnaires need different expert reviewers. How should assessments be routed?",
    "options": [
-    "Assign assessor groups by questionnaire type so each goes to the right experts",
+    "Assign assessor groups by questionnaire type",
     "Send every assessment to one general mailbox for anyone to pick up",
     "Route all assessments to the platform administrator to triage",
     "Let each third party choose which assessor reviews its responses"
@@ -1430,7 +1430,7 @@
    "domain": "C",
    "stem": "What is the benefit of configuring the email notifications sent to third parties?",
    "options": [
-    "Clear, branded messages that link to the task improve response rates",
+    "It sends clear, branded messages with task links, improving responses",
     "It lets the third party turn off every reminder they receive from you",
     "It sends third parties a copy of their internal risk score",
     "It replaces the portal, so vendors answer by replying to email"
@@ -1462,7 +1462,7 @@
    "stem": "Why capture the types of data an engagement involves, such as personal or payment data?",
    "options": [
     "They decide which portal language the third party will use",
-    "They drive tiering and which due-diligence assessments are triggered",
+    "They drive tiering and which assessments are triggered",
     "They set the third party's contract payment terms",
     "They're only stored for reference and affect nothing"
    ],
@@ -1479,7 +1479,7 @@
     "As one enormous template that every third party completes in full",
     "As free-text emails that assessors write for each third party",
     "As a single yes/no question asking whether the vendor is secure",
-    "As separate questionnaire templates, issued based on tiering and data types"
+    "As separate templates, issued based on tiering"
    ],
    "answer": [
     3
@@ -1582,7 +1582,7 @@
    "stem": "While reviewing, an assessor finds one answer unclear. What's the best action?",
    "options": [
     "Ignore the question and score the rest",
-    "Request more information on that question from the third party",
+    "Request more information from the third party",
     "Score the question as a failure without asking",
     "Change the third party's answer to what seems likely"
    ],
@@ -1660,7 +1660,7 @@
    "options": [
     "Reports older than a week can't be read by assessors",
     "The platform deletes reports when they're a year old",
-    "Evidence ages, so you know when to request an updated report",
+    "Evidence ages, so you know when to request a new report",
     "The coverage period determines the vendor's tier"
    ],
    "answer": [
@@ -1674,7 +1674,7 @@
    "stem": "A vendor's SOC 2 report ended in June, and the next one won't be ready until March. What can the vendor provide to cover the gap?",
    "options": [
     "Nothing; gaps between reports can't be covered",
-    "A bridge letter stating no material control changes since the report period",
+    "A bridge letter covering the gap",
     "A copy of its marketing brochure describing its security features",
     "An email from its sales team saying everything is fine"
    ],
@@ -1765,7 +1765,7 @@
    "stem": "An engagement has security, privacy, and continuity assessments. How do they relate to its overall result?",
    "options": [
     "The assessment with the lowest score is ignored as an outlier",
-    "Each produces results that together inform the engagement's residual risk",
+    "Together they inform the engagement's residual risk",
     "Only the first assessment completed counts toward the result",
     "They must be merged into a single questionnaire after submission"
    ],
@@ -1780,7 +1780,7 @@
    "stem": "Several people at a third party contribute to one questionnaire. How can they coordinate before submitting?",
    "options": [
     "They email answers to the assessor, who enters them on their behalf",
-    "Collaborate on the saved draft, with sections delegated, before final submission",
+    "Collaborate on the saved draft before submitting",
     "Only one person can ever see the questionnaire at a time",
     "Each person submits their own copy, and the assessor merges them"
    ],
@@ -1826,7 +1826,7 @@
    "stem": "What typically triggers a privacy assessment for an engagement?",
    "options": [
     "The third party's headquarters being in the same country",
-    "IRQ answers showing the third party will process personal data",
+    "IRQ answers showing personal data processing",
     "The third party having a website privacy policy",
     "The engagement's contract value exceeding a threshold"
    ],
@@ -1840,7 +1840,7 @@
    "domain": "A",
    "stem": "Why use the same questionnaire template across similar third parties?",
    "options": [
-    "Results are comparable, which makes portfolio reporting meaningful",
+    "Results are comparable across vendors",
     "It means assessors no longer need to review the answers",
     "It's required before a third party can log in to the portal",
     "It lets every third party skip questions that don't suit them"
@@ -1858,7 +1858,7 @@
     "Put the important sections at the end of the form",
     "Make the important sections optional to answer",
     "Score only the important sections and ignore the rest",
-    "Weight the categories so important sections count for more"
+    "Weight the important categories more"
    ],
    "answer": [
     3
@@ -1917,7 +1917,7 @@
    "stem": "A third-party contact forgets their portal password. What is the best experience?",
    "options": [
     "Asking the third party to stop using the portal",
-    "Self-service password reset or SSO, so they can regain access without help",
+    "Self-service password reset or SSO",
     "Emailing their password to the internal assessor in plain text",
     "Creating a brand-new account and deactivating the old one"
    ],
@@ -1932,7 +1932,7 @@
    "stem": "When a third-party contact logs in to the portal, what should they see first?",
    "options": [
     "Every other third party's assessment results for comparison",
-    "Their open tasks: assessments to complete and issues to address",
+    "Their open assessments and issues",
     "The internal risk register for the whole organization",
     "The platform's system administration settings"
    ],
@@ -2026,7 +2026,7 @@
     "Transfer it to the internal assessor's name",
     "Leave it active in case they return to the company",
     "Delete the company record along with it",
-    "Deactivate it and reassign any open work to another contact"
+    "Deactivate it and reassign open work"
    ],
    "answer": [
     3
@@ -2072,7 +2072,7 @@
     "Ask third parties to report anything unexpected after go-live",
     "Assume the default settings are correct without testing",
     "Test only as an administrator, who can see everything",
-    "Test as sample third-party users, including ones from different companies"
+    "Test as sample third-party users from different companies"
    ],
    "answer": [
     3
@@ -2100,7 +2100,7 @@
    "stem": "How can procurement and TPRM work together when a new vendor is requested?",
    "options": [
     "Procurement signs the contract first, and TPRM reviews it next year",
-    "A procurement request triggers TPRM intake before the vendor is approved",
+    "A procurement request triggers TPRM intake first",
     "They work separately and share nothing",
     "TPRM only reviews vendors after the first invoice is paid"
    ],
@@ -2132,7 +2132,7 @@
     "Ask assessors to estimate how long reviews usually take",
     "Track nothing, since timing doesn't affect risk",
     "Measure only how long third parties take to respond",
-    "Use SLA timers on assessment stages, with reporting on breaches"
+    "Use SLA timers on assessment stages"
    ],
    "answer": [
     3
@@ -2145,7 +2145,7 @@
    "domain": "S",
    "stem": "A third party agrees to fix a finding. What should the remediation record include?",
    "options": [
-    "A remediation plan with actions, owners, and target dates",
+    "A plan with actions, owners, and dates",
     "Only a note saying \"will fix\" with no dates",
     "Nothing, since the vendor has agreed to fix it",
     "A promise to address it in next year's assessment"
@@ -2238,7 +2238,7 @@
    "options": [
     "It's only required for vendors in tier 3",
     "It lets decisions be changed later without anyone knowing",
-    "Auditors and regulators expect to see who decided what, and why",
+    "Auditors expect to see who decided what, and why",
     "The records are needed only if the vendor asks for them"
    ],
    "answer": [
@@ -2252,7 +2252,7 @@
    "stem": "How can the CMDB support third-party risk management?",
    "options": [
     "It can't; the CMDB and TPRM don't share data",
-    "By linking third parties to the applications and services they supply or support",
+    "By linking third parties to the services they support",
     "By storing each third party's questionnaire answers as CI attributes",
     "By replacing third-party company records with CIs"
    ],
@@ -2283,7 +2283,7 @@
    "options": [
     "Third-party data isn't used in continuity planning",
     "Continuity plans replace due-diligence assessments of vendors",
-    "Business impact analyses identify critical dependencies on third parties",
+    "Business impact analyses identify vendor dependencies",
     "Third parties write the organization's continuity plans"
    ],
    "answer": [
@@ -2313,7 +2313,7 @@
    "options": [
     "After the first invoice is paid, once the relationship is established",
     "Never; procurement and TPRM are separate",
-    "Before the purchase order is issued, so risk is reviewed before commitment",
+    "Before the purchase order, so risk is reviewed first",
     "Only at contract renewal, several years later"
    ],
    "answer": [

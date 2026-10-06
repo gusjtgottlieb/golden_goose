@@ -55,7 +55,7 @@
    "options": [
     "IRM replaces internal audit with automated control testing so assurance no longer depends on people",
     "IRM concentrates on regulatory compliance and leaves enterprise risk decisions to each business unit",
-    "IRM ties risk, compliance, and audit to shared data and live operational records for continuous monitoring",
+    "IRM ties risk, compliance, and audit to shared, live data for continuous monitoring",
     "IRM gives each line of defense its own dedicated platform so their data never overlaps or conflicts"
    ],
    "answer": [
@@ -188,7 +188,7 @@
    "domain": "IP",
    "stem": "Before configuring entity types, what information is most important to gather during planning?",
    "options": [
-    "Which tables hold the in-scope business units, applications, and vendors, and whether that data is accurate",
+    "Which tables hold in-scope business units and applications, and whether the data is accurate",
     "The exact number of fulfiller and business-user licenses purchased for each IRM application",
     "The branding, color scheme, and layout preferences for the risk and compliance workspaces",
     "The full list of reports and dashboards that executives expect to see at the end of the first phase"
@@ -204,7 +204,7 @@
    "stem": "What is an entity in ServiceNow IRM?",
    "options": [
     "A regulation or framework imported from a content provider and broken down into citations",
-    "Any record that risk and compliance work can be scoped to, such as a business unit, application, or vendor",
+    "Any record risk and compliance work can be scoped to, like a business unit or vendor",
     "A user who holds a GRC role and is responsible for attesting to controls or assessing risks",
     "A configuration item in the CMDB; other tables cannot represent things in scope for compliance"
    ],
@@ -236,7 +236,7 @@
    "options": [
     "It stores the attestation schedule and reminders used for controls on those entities",
     "It sets a default inherent risk score that applies to every entity in that class",
-    "It groups entity types into broader categories, such as IT or Organization, for reporting",
+    "It groups entity types into broader categories for reporting",
     "It defines which source table and filter condition the entities are generated from"
    ],
    "answer": [
@@ -296,7 +296,7 @@
    "stem": "Why is it a poor idea to create an entity type that makes every CI in the CMDB an entity?",
    "options": [
     "Configuration items cannot be assigned owners, so no one could attest to the generated controls",
-    "It creates huge numbers of unowned entities, controls, and risks, adding noise without improving assurance",
+    "It creates huge numbers of unowned entities, controls, and risks, adding noise",
     "Turning every CI into an entity disables the CMDB Health dashboard for the classes involved",
     "Entity types are not permitted to reference CMDB tables, so the configuration would fail to save"
    ],
@@ -406,7 +406,7 @@
     "They are two names for the same record, used differently by compliance and audit teams",
     "A citation is an internal policy, and the authority document is the record of its approval",
     "Citations are attestation responses that control owners submit against an authority document",
-    "An authority document is an external regulation or standard; citations are its individual requirements"
+    "An authority document is an external regulation; citations are its requirements"
    ],
    "answer": [
     3
@@ -604,7 +604,7 @@
    "domain": "PC",
    "stem": "What does a policy statement represent?",
    "options": [
-    "A control objective the organization commits to, which generates controls for in-scope entities",
+    "A control objective that generates controls for in-scope entities",
     "An employee's recorded acknowledgment that they have read and understood a published policy",
     "A specific control as implemented on one entity, with its own owner and attestation history",
     "A single section or requirement of an external regulation, imported from a content provider"
@@ -634,7 +634,7 @@
    "domain": "RK",
    "stem": "Which pairing of definitions is correct?",
    "options": [
-    "Inherent risk is exposure before controls are considered; residual risk is what remains after controls",
+    "Inherent risk is exposure before controls; residual risk is what remains after them",
     "Inherent and residual risk are always equal until a target risk assessment has been completed",
     "Residual risk is the level the organization wants to reach once planned responses are in place",
     "Inherent risk is exposure after controls are considered; residual risk is exposure before controls"
@@ -713,7 +713,7 @@
     "They replace periodic risk assessments once enough indicator history has been collected",
     "They store the approvals and rationale recorded when a risk owner accepts the risk",
     "They set the inherent risk score directly from the most recent indicator result",
-    "They track measurable signals tied to the risk and flag threshold breaches between assessments"
+    "They track signals tied to the risk and flag threshold breaches between assessments"
    ],
    "answer": [
     3
@@ -726,7 +726,7 @@
    "stem": "How is residual risk typically derived in an advanced risk assessment?",
    "options": [
     "It is copied from the target risk assessment once remediation has been planned",
-    "From inherent risk, adjusted by the assessed effectiveness of the related controls",
+    "From inherent risk, adjusted by assessed control effectiveness",
     "By averaging all of the risk's historical assessment scores over the past year",
     "From the number of open issues currently linked to the risk and its entity"
    ],
@@ -741,7 +741,7 @@
    "domain": "RK",
    "stem": "What is the purpose of recording risk events?",
    "options": [
-    "To capture actual losses and near misses, link them to risks, and inform assessments",
+    "To capture actual losses and near misses and link them to risks",
     "To create new entities automatically for business units affected by an incident",
     "To record approvals when a risk owner accepts a risk that exceeds appetite",
     "To schedule audit engagements for entities that have experienced repeated losses"
@@ -820,7 +820,7 @@
     "A separate risk framework per business unit",
     "Making every application a business unit",
     "Exporting every risk to a spreadsheet",
-    "Risk aggregation through the entity hierarchy"
+    "Risk aggregation through the hierarchy"
    ],
    "answer": [
     3
@@ -847,7 +847,7 @@
    "domain": "CE",
    "stem": "A compliance team wants to load ISO, NIST, and other frameworks with their requirements already mapped to common controls. Which integration supports this?",
    "options": [
-    "Unified Compliance Framework (UCF) content import",
+    "UCF content import",
     "IntegrationHub spoke for Slack",
     "Service Graph Connector for Microsoft SCCM",
     "Discovery"
@@ -864,7 +864,7 @@
    "stem": "What does regulatory change management add to a risk and compliance program?",
    "options": [
     "It replaces policy exceptions with regulator-approved waivers for affected business units",
-    "It tracks regulatory changes, assesses their impact on policies and controls, and drives updates",
+    "It tracks regulatory changes, assesses their impact, and drives updates",
     "It schedules control attestations to coincide with the effective dates of new regulations",
     "It automatically deletes authority documents that a regulator has replaced or withdrawn"
    ],
@@ -926,7 +926,7 @@
    "domain": "AU",
    "stem": "What is an audit engagement?",
    "options": [
-    "A planned audit, scoped to entities, that organizes activities, testing, and observations",
+    "A planned audit, scoped to entities, with activities and testing",
     "A policy acknowledgment campaign that internal audit runs for employees each year",
     "A formal risk acceptance reviewed and approved by the chief audit executive",
     "A single control attestation that an auditor sends to a control owner for completion"
@@ -956,7 +956,7 @@
    "domain": "AU",
    "stem": "What is a key benefit of running Audit Management on the same data as Policy and Compliance?",
    "options": [
-    "Auditors can test controls the business already defined and attested, instead of a separate set",
+    "Auditors can test the controls the business already defined and attested",
     "Auditors no longer need to remain independent, since they share data with the first line",
     "Controls that have been attested by their owners no longer need any independent testing",
     "Audit engagements replace control attestations, so control owners no longer need to respond"
@@ -1064,7 +1064,7 @@
     "A list of every user who holds the risk manager or risk admin role",
     "A register of external regulations and standards the company follows",
     "A log of every configuration change made to the risk application",
-    "A catalog of identified risks with their owners, ratings, and responses"
+    "A catalog of identified risks with owners and responses"
    ],
    "answer": [
     3
@@ -1155,7 +1155,7 @@
     "Replace the base tables with custom ones built from scratch",
     "Customize the application heavily to mirror every existing process step",
     "Delay the implementation until the base application matches current processes",
-    "Document current processes, adopt base functionality where possible, and justify deviations"
+    "Document processes, adopt base functionality, and justify deviations"
    ],
    "answer": [
     3
@@ -1383,7 +1383,7 @@
    "options": [
     "The user table, filtered to facilities staff",
     "The change request table",
-    "The location table, filtered to office locations",
+    "The location table, filtered to offices",
     "The knowledge base"
    ],
    "answer": [
@@ -1444,7 +1444,7 @@
    "stem": "Only applications that are in production should be in scope for an application entity type. How should this be handled?",
    "options": [
     "Ask application owners to decline attestations for non-production applications",
-    "Include an operational status condition in the entity type so only production applications match",
+    "Include an operational status condition in the entity type",
     "Create a separate policy for non-production applications that has no statements",
     "Create entities for all applications and retire non-production ones by hand each month"
    ],
@@ -1458,7 +1458,7 @@
    "domain": "EF",
    "stem": "A compliance team wants Linux servers and Oracle databases in scope for the same hardening policy. How many source tables can a single entity type use?",
    "options": [
-    "One, so use an entity type per table or one on a shared parent class with a condition",
+    "One, so use one entity type per table or a shared parent class",
     "None, because entity types reference entity classes rather than tables directly",
     "Any number of tables, listed together in the entity type's source table field",
     "Two at most, one primary table and one secondary table for related records"
@@ -1537,7 +1537,7 @@
    "stem": "An authority document has sections, subsections, and individual requirements. How are these represented?",
    "options": [
     "As separate authority documents for each subsection",
-    "As a hierarchy of citations under the authority document",
+    "As a hierarchy of citations",
     "As policy statements under the authority document",
     "As attachments on the authority document record"
    ],
@@ -1554,7 +1554,7 @@
    "options": [
     "Citations map to controls directly, so policy statements aren't involved in the mapping",
     "Each policy statement can map to only one citation, from one authority document",
-    "Many-to-many: a statement can meet several citations, and a citation can need several statements",
+    "Many-to-many: statements and citations can each map to several of the other",
     "Each citation must map to exactly one policy statement, so coverage stays easy to trace"
    ],
    "answer": [
@@ -1628,7 +1628,7 @@
    "domain": "PC",
    "stem": "What platform capability is used to design the questions in a control attestation?",
    "options": [
-    "The assessment designer in the Survey and Assessment framework",
+    "The assessment designer",
     "Flow Designer subflows built for each policy statement",
     "The service catalog item designer and its variable editor",
     "The knowledge article editor used for published policies"
@@ -1771,7 +1771,7 @@
    "options": [
     "Delete the control now and recreate it once a replacement owner is hired",
     "Mark the control compliant until a new owner has been found and assigned",
-    "Update ownership on the entity or control so attestations route to the new owner",
+    "Update ownership so attestations route to the new owner",
     "Leave the control assigned to the former employee until an auditor notices"
    ],
    "answer": [
@@ -1815,7 +1815,7 @@
    "domain": "PC",
    "stem": "The chief compliance officer wants to see how compliant the company is with each regulation. What is the most direct view?",
    "options": [
-    "Compliance by authority document, rolled up from controls",
+    "Compliance by authority document",
     "The number of users who hold compliance-related roles",
     "A count of the entity types configured on the instance",
     "A list of all controls, sorted by their creation date"
@@ -1877,7 +1877,7 @@
    "options": [
     "So the heat map shows only high risks",
     "So assessments can be skipped for low-impact risks",
-    "So different assessors rate similar risks consistently",
+    "So assessors rate similar risks consistently",
     "So every risk receives the same score"
    ],
    "answer": [
@@ -1891,7 +1891,7 @@
    "stem": "In advanced risk assessment, who typically participates in an assessment?",
    "options": [
     "Only the external auditors who review the risk program each year",
-    "An assessor who completes it and an approver who confirms the result",
+    "An assessor and an approver who confirms the result",
     "Only the platform administrator who configured the methodology",
     "Every employee in the business unit that owns the related entity"
    ],
@@ -1983,7 +1983,7 @@
    "domain": "RK",
    "stem": "What is the difference between risk appetite and risk tolerance?",
    "options": [
-    "Appetite is the overall risk level the organization will pursue; tolerance is acceptable variation for specific risks",
+    "Appetite is the overall risk the organization will pursue; tolerance is acceptable variation",
     "Tolerance is set by regulators for each industry, while appetite is set by the external auditors",
     "They mean exactly the same thing, and frameworks use the two terms interchangeably for the same limit",
     "Appetite applies only to financial risks, while tolerance applies only to information technology risks"
@@ -2169,7 +2169,7 @@
    "options": [
     "Nothing, because IRM can't use data from Security Operations",
     "Create a policy exception for every vulnerability that is discovered",
-    "Use indicators or automated factors that reference the vulnerability data",
+    "Use indicators that reference the vulnerability data",
     "Copy the vulnerabilities into the authority document as new citations"
    ],
    "answer": [
@@ -2184,7 +2184,7 @@
    "options": [
     "Automatic approval of risk acceptances that fall within appetite",
     "Additional entity types for common CMDB and organizational tables",
-    "Prebuilt indicators and dashboards for trends in compliance and risk",
+    "Prebuilt indicators and dashboards for trends",
     "New authority documents and citations for common regulations"
    ],
    "answer": [
@@ -2216,7 +2216,7 @@
     "Forward the regulatory alert to all employees so they're aware of the change",
     "Publish a new privacy policy immediately so employees learn about the change",
     "Delete the existing authority document so the new version can replace it",
-    "Assess whether it's relevant and which documents, policies, and controls it affects"
+    "Assess its relevance and which policies and controls it affects"
    ],
    "answer": [
     3
@@ -2229,7 +2229,7 @@
    "domain": "CE",
    "stem": "How do third-party risk processes connect to the IRM data model?",
    "options": [
-    "Vendors can be entities, so third-party work uses the same framework as internal work",
+    "Vendors can be entities, so they use the same framework",
     "Vendors must be modeled as policy statements under a third-party risk policy",
     "Third-party risk can't share any data with IRM, so it runs as a separate program",
     "Third parties are added as citations under a vendor management authority document"

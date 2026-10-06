@@ -13,6 +13,16 @@ export const VENDORS = [
 
 export const CERTS = [
   {
+    id: "servicenow-csa",
+    vendor: "ServiceNow",
+    code: "CSA",
+    name: "Certified System Administrator",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-csa.json"),
+  },
+  {
     id: "servicenow-cis-df",
     vendor: "ServiceNow",
     code: "CIS-DF",
@@ -21,6 +31,16 @@ export const CERTS = [
     fullLength: 75,
     minutes: 90,
     load: () => import("./banks/servicenow-cis-df.json"),
+  },
+  {
+    id: "servicenow-cis-itsm",
+    vendor: "ServiceNow",
+    code: "CIS-ITSM",
+    name: "IT Service Management",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-itsm.json"),
   },
   {
     id: "servicenow-cis-rc",
@@ -33,6 +53,16 @@ export const CERTS = [
     load: () => import("./banks/servicenow-cis-rc.json"),
   },
   {
+    id: "servicenow-cis-sir",
+    vendor: "ServiceNow",
+    code: "CIS-SIR",
+    name: "Security Incident Response",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-sir.json"),
+  },
+  {
     id: "servicenow-cis-tprm",
     vendor: "ServiceNow",
     code: "CIS-TPRM",
@@ -41,6 +71,16 @@ export const CERTS = [
     fullLength: 60,
     minutes: 90,
     load: () => import("./banks/servicenow-cis-tprm.json"),
+  },
+  {
+    id: "servicenow-cis-vr",
+    vendor: "ServiceNow",
+    code: "CIS-VR",
+    name: "Vulnerability Response",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-vr.json"),
   },
   {
     id: "microsoft-sc-900",

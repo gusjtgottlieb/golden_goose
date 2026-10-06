@@ -1,0 +1,2349 @@
+{
+ "id": "servicenow-cis-vr",
+ "vendor": "ServiceNow",
+ "code": "CIS-VR",
+ "name": "Certified Implementation Specialist – Vulnerability Response",
+ "fullLength": 60,
+ "minutes": 90,
+ "passPercent": 70,
+ "readinessPercent": 85,
+ "sectioned": false,
+ "note": "ServiceNow doesn't publish a cut score for CIS-VR; community consensus puts it near 70%. Treat 85% here as your readiness bar. Items marked release-sensitive reference tables, roles, rule names, and workspaces that change between releases; verify them against your own instance.",
+ "domains": [
+  {
+   "id": "AP",
+   "name": "Vulnerability Response Applications and Modules",
+   "weight": "25%"
+  },
+  {
+   "id": "DI",
+   "name": "Getting Data into Vulnerability Response",
+   "weight": "25%"
+  },
+  {
+   "id": "TL",
+   "name": "Tools to Manage Vulnerability Response",
+   "weight": "23%"
+  },
+  {
+   "id": "AU",
+   "name": "Automating Vulnerability Response",
+   "weight": "20%"
+  },
+  {
+   "id": "DR",
+   "name": "Vulnerability Response Dashboards and Reports",
+   "weight": "7%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "cisvr-1",
+   "domain": "AP",
+   "stem": "What is the main goal of ServiceNow Vulnerability Response?",
+   "options": [
+    "To run network scans in place of commercial vulnerability scanners",
+    "To prioritize and track remediation of vulnerabilities",
+    "To block every exploit attempt at the network perimeter automatically",
+    "To replace the patch management tools used by IT operations teams"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "VR takes findings from scanners and other sources, prioritizes them by risk, and drives remediation through IT workflows. It relies on scanners and patch tools rather than replacing them, and it doesn't block exploits."
+  },
+  {
+   "id": "cisvr-2",
+   "domain": "AP",
+   "stem": "What is the difference between a vulnerability and a vulnerable item?",
+   "options": [
+    "A vulnerable item is a patch that has been applied to fix a weakness",
+    "A vulnerability is the weakness; a vulnerable item is that weakness on a CI",
+    "A vulnerability is found on one CI; a vulnerable item describes the weakness in general",
+    "There's no difference; both terms refer to the same record"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A vulnerability, such as a CVE, describes the weakness. A vulnerable item (VI) records that weakness detected on a specific CI, and VIs are what get remediated."
+  },
+  {
+   "id": "cisvr-3",
+   "domain": "AP",
+   "stem": "Which record tracks a specific CVE detected on a specific server?",
+   "options": [
+    "A vulnerable item",
+    "A security incident created for that server",
+    "A change request raised for the server's owner",
+    "A vulnerability entry with no CI reference"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Vulnerable items link a vulnerability to the affected CI. Vulnerability entries describe the weakness generally, and incidents and changes are other processes.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-4",
+   "domain": "AP",
+   "stem": "Where does Vulnerability Response get its library of publicly known vulnerabilities?",
+   "options": [
+    "The CMDB Health dashboard for server classes",
+    "The organization's internal change calendar",
+    "The National Vulnerability Database (NVD)",
+    "The instance's knowledge base articles about patches"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "VR imports CVE data from the NVD, plus vendor-specific entries from scanners. Knowledge articles, CMDB health, and change calendars aren't vulnerability libraries."
+  },
+  {
+   "id": "cisvr-5",
+   "domain": "AP",
+   "stem": "What does a CVE identifier represent?",
+   "options": [
+    "A patch released by a vendor to fix several different weaknesses",
+    "A category describing the type of software weakness, such as injection",
+    "A score that rates how severe a vulnerability is on a scale of one to ten",
+    "A unique ID for a publicly disclosed vulnerability"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "CVE IDs name individual vulnerabilities. CVSS scores severity, CWE classifies weakness types, and patches are solutions."
+  },
+  {
+   "id": "cisvr-6",
+   "domain": "AP",
+   "stem": "What does a CVSS score measure?",
+   "options": [
+    "How many devices in your environment have the vulnerability today",
+    "How long remediation is expected to take for the vulnerability",
+    "How critical the affected application is to the business",
+    "A vulnerability's technical severity"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "CVSS rates the inherent severity of a vulnerability. Exposure, business criticality, and remediation time are separate factors VR combines with it to calculate risk."
+  },
+  {
+   "id": "cisvr-7",
+   "domain": "AP",
+   "stem": "What is the CWE?",
+   "options": [
+    "A government database of vendor patches and their release dates",
+    "A catalog of software weakness types",
+    "A scoring system for the business impact of vulnerabilities",
+    "A list of exploits currently used by ransomware groups"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The Common Weakness Enumeration classifies types of weaknesses, such as SQL injection. It isn't an exploit list, patch database, or impact score."
+  },
+  {
+   "id": "cisvr-8",
+   "domain": "AP",
+   "stem": "Why does Vulnerability Response rely heavily on the CMDB?",
+   "options": [
+    "The CMDB stores the raw scan results collected by each scanner",
+    "The CMDB decides which CVEs are imported from the NVD",
+    "The CMDB's CIs supply owners, support groups, and criticality",
+    "The CMDB runs the scans on a schedule for the security team"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Matching VIs to CIs tells VR who should fix them and how important the system is. Raw scan data, scanning, and CVE imports aren't CMDB functions."
+  },
+  {
+   "id": "cisvr-9",
+   "domain": "AP",
+   "stem": "Which Security Operations application handles weaknesses found in custom code by application security testing tools?",
+   "options": [
+    "Security Incident Response",
+    "Configuration Compliance",
+    "Application Vulnerability Response",
+    "Container Vulnerability Response"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Application Vulnerability Response ingests findings from SAST, DAST, and similar tools for applications. Container VR handles container images, SIR handles incidents, and Configuration Compliance handles misconfigurations.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-10",
+   "domain": "AP",
+   "stem": "Which application handles vulnerabilities in container images and their running containers?",
+   "options": [
+    "Application Vulnerability Response",
+    "Software Asset Management",
+    "Security Incident Response",
+    "Container Vulnerability Response"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Container Vulnerability Response brings in findings from container security tools, linking images and running containers to owners. The others address different needs.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-11",
+   "domain": "AP",
+   "stem": "What is the role of a vulnerability analyst in VR?",
+   "options": [
+    "Managing vulnerability data, risk, and exceptions",
+    "Patching every affected server personally across the company",
+    "Approving all changes raised by the infrastructure teams",
+    "Configuring the network scanners' hardware appliances"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Analysts triage and manage vulnerability data and approve or review exceptions. Remediation owners in IT do the fixing, change approvals belong to change management, and scanner hardware isn't the analyst's job.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-12",
+   "domain": "AP",
+   "stem": "Who typically fixes vulnerable items in VR?",
+   "options": [
+    "The scanner vendor's support engineers",
+    "Remediation owners in IT, such as server teams",
+    "The vulnerability analysts who imported the scan",
+    "The external auditors who review the program"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Remediation is done by the teams that own and support the systems, with VR routing tasks to them. Analysts coordinate, vendors support tools, and auditors review."
+  },
+  {
+   "id": "cisvr-13",
+   "domain": "AP",
+   "stem": "Which statement about VR roles is true?",
+   "options": [
+    "Every user needs the admin role to view vulnerable items",
+    "VR has a single role that all users share",
+    "Analysts, remediation owners, and admins have separate roles",
+    "Remediation owners must be given the security analyst role"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Role separation supports least privilege — remediation owners see their tasks, analysts manage data, admins configure. Admin for everyone or a single shared role isn't how it works.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-14",
+   "domain": "AP",
+   "stem": "What are remediation tasks in Vulnerability Response?",
+   "options": [
+    "Exceptions that defer remediation until a future date",
+    "Reports showing remediation progress to executives",
+    "Individual scanner findings that haven't yet been matched to a CI",
+    "Groups of vulnerable items assigned to a team to fix together"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Remediation tasks (formerly vulnerability groups) bundle related VIs — for example, by solution and assignment group — so teams work them efficiently.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-15",
+   "domain": "AP",
+   "stem": "Why group vulnerable items into remediation tasks instead of assigning each one separately?",
+   "options": [
+    "One fix often resolves many items, so grouping cuts effort",
+    "The platform can't assign individual vulnerable items to anyone",
+    "Grouped items no longer need to be rescanned after fixes",
+    "Grouping hides low-risk vulnerable items from dashboards"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A single patch might fix the same vulnerability on hundreds of servers, so grouping avoids hundreds of separate tickets. VIs can be assigned individually, grouping doesn't hide anything, and rescanning still confirms fixes."
+  },
+  {
+   "id": "cisvr-16",
+   "domain": "AP",
+   "stem": "What does Vulnerability Solution Management help with?",
+   "options": [
+    "Identifying the fix that resolves a set of vulnerabilities",
+    "Scheduling network scans for each subnet in the company",
+    "Calculating the license cost of each scanner integration",
+    "Writing custom exploits to test whether fixes are needed"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Solution management associates vulnerabilities with their remediating solutions (often patches), including superseded ones, so teams apply the right fix. Exploit writing, scan scheduling, and licensing are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-17",
+   "domain": "AP",
+   "stem": "Why does it matter that one patch can supersede another?",
+   "options": [
+    "Supersedence means the vulnerability can't be fixed at all",
+    "Teams can apply the latest patch instead of every older one",
+    "Superseded patches increase a vulnerability's CVSS score",
+    "Superseded patches must be installed before newer patches"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "If a newer patch includes earlier fixes, applying it resolves the older vulnerabilities too, reducing work."
+  },
+  {
+   "id": "cisvr-18",
+   "domain": "AP",
+   "stem": "How does Vulnerability Response relate to Security Incident Response?",
+   "options": [
+    "They're separate apps that can link when a weakness is exploited",
+    "They can't share any data because they're licensed separately",
+    "They're the same application with two different names",
+    "VR replaces SIR for any incident involving malware"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "VR manages weaknesses before they're exploited; SIR manages incidents. If an incident exploited a known vulnerability, the records can be linked."
+  },
+  {
+   "id": "cisvr-19",
+   "domain": "AP",
+   "stem": "What does a vulnerable item's risk score represent?",
+   "options": [
+    "The number of days since the scanner first detected the vulnerability",
+    "The total number of CIs affected by the same vulnerability",
+    "The CVSS base score copied directly from the NVD with no changes",
+    "A calculated priority combining severity, exploitability, and impact"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Risk scores blend factors such as CVSS, exploit availability, and asset criticality so teams fix what matters most. Age, raw CVSS alone, and CI counts are inputs or separate metrics.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-20",
+   "domain": "AP",
+   "stem": "Why prioritize by risk rather than by CVSS score alone?",
+   "options": [
+    "Risk scores are required by the NVD for every vulnerability",
+    "CVSS scores change every day for every vulnerability",
+    "CVSS scores are always wrong for Windows vulnerabilities",
+    "CVSS doesn't reflect active exploitation or asset criticality"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A high-CVSS vulnerability on an isolated test server may matter less than a medium one being actively exploited on a payment system. CVSS is still a useful input."
+  },
+  {
+   "id": "cisvr-21",
+   "domain": "AP",
+   "stem": "What does it mean when a vulnerability appears in CISA's Known Exploited Vulnerabilities catalog?",
+   "options": [
+    "The vulnerability's CVSS score has been set to zero",
+    "Attackers are known to be exploiting it, so it's urgent",
+    "The vulnerability only affects US government systems",
+    "The vulnerability has been fixed by every affected vendor"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "KEV lists vulnerabilities with evidence of active exploitation, which strongly raises urgency. It doesn't mean they're fixed, government-only, or unscored."
+  },
+  {
+   "id": "cisvr-22",
+   "domain": "AP",
+   "stem": "What is the purpose of the Vulnerability Response workspaces?",
+   "options": [
+    "A training environment for analysts who are new to VR",
+    "Role-focused views for managing and remediating vulnerabilities",
+    "A separate database that stores scanner data outside the CMDB",
+    "A public portal where vendors post new vulnerabilities"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Workspaces give analysts and remediation owners focused views of their work with relevant actions. They aren't separate databases, training sandboxes, or vendor portals.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-23",
+   "domain": "AP",
+   "stem": "What's the benefit of giving remediation owners their own view of assigned work?",
+   "options": [
+    "They see only what they must fix, with context and due dates",
+    "They no longer need to update task status when work is done",
+    "They can approve their own exceptions without any review",
+    "They can change risk scores to lower their workload"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Focused views help IT teams act on their tasks. Self-approving exceptions, editing scores, or skipping updates would undermine the program."
+  },
+  {
+   "id": "cisvr-24",
+   "domain": "AP",
+   "stem": "How does VR fit with the rest of the ServiceNow platform?",
+   "options": [
+    "It uses shared data, like the CMDB and change, to drive fixes",
+    "It runs on a separate instance from IT service management",
+    "It replaces change management for any patch it recommends",
+    "It can only send email to IT teams about each vulnerability"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "VR's value comes from using platform data and workflows: the CMDB for context, assignment for routing, and change management for controlled remediation."
+  },
+  {
+   "id": "cisvr-25",
+   "domain": "AP",
+   "stem": "Which Security Operations capability focuses on misconfigurations, such as weak settings, rather than software vulnerabilities?",
+   "options": [
+    "Container Vulnerability Response",
+    "Configuration Compliance",
+    "Threat Intelligence",
+    "Application Vulnerability Response"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Configuration Compliance handles findings from configuration assessment tools. The other applications address containers, application code, and threat data.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-26",
+   "domain": "AP",
+   "stem": "An application vulnerable item comes from a code scanner. What does it usually link to?",
+   "options": [
+    "A firewall rule protecting the application from attacks",
+    "A physical server's serial number in the asset register",
+    "The user who most recently logged in to the application",
+    "The application or code component that has the weakness"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Application findings belong to the application or component so development owners can fix them. Server serials, user logins, and firewall rules aren't where code flaws live.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-27",
+   "domain": "AP",
+   "stem": "Who typically remediates application vulnerabilities found in custom code?",
+   "options": [
+    "The service desk that handles password resets",
+    "The network team that manages the firewalls",
+    "The facilities team that manages the datacenter",
+    "The development team that owns the application"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Code flaws are fixed by developers. Network, service desk, and facilities teams don't change application code."
+  },
+  {
+   "id": "cisvr-28",
+   "domain": "AP",
+   "stem": "Why should vulnerable items be linked to the business services their CIs support?",
+   "options": [
+    "It makes every linked vulnerable item critical by default",
+    "It removes the need to match items to individual CIs",
+    "It lets business users close vulnerable items themselves",
+    "It shows business impact and helps prioritize remediation"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Service context reveals which vulnerabilities threaten important services. Business users don't close VIs, CI matching is still needed, and not everything becomes critical."
+  },
+  {
+   "id": "cisvr-29",
+   "domain": "AP",
+   "stem": "What happens to a vulnerable item when a rescan shows the vulnerability is no longer present?",
+   "options": [
+    "It can close automatically as fixed",
+    "It's converted into a security incident",
+    "It's deleted along with its history",
+    "It stays open until an auditor closes it"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Scanner confirmation that a vulnerability is gone typically closes the VI as fixed, keeping history. Deleting, waiting for auditors, or creating incidents isn't the default.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-30",
+   "domain": "AP",
+   "stem": "What's the purpose of the \"first found\" and \"last found\" dates on vulnerable items?",
+   "options": [
+    "They record when the CVE was first published by the NVD",
+    "They set the date the patch will be installed by IT operations",
+    "They show how long it has existed and whether it's still detected",
+    "They show when the analyst was hired and their last review"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "First and last found dates track a VI's age and current presence, which feed remediation targets and staleness checks. They aren't patch schedules, staff dates, or CVE publication dates.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-31",
+   "domain": "AP",
+   "stem": "What should happen if a vulnerable item hasn't been seen by the scanner for a long time?",
+   "options": [
+    "Raise its risk score to critical automatically",
+    "Assign it to the CISO for personal review",
+    "Leave it open forever in case it reappears",
+    "Handle it by policy, such as closing it as stale"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Items not seen in many scans may be fixed or decommissioned, so policies close or review them. Leaving them open inflates backlogs, and the other options don't fit.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-32",
+   "domain": "AP",
+   "stem": "Which team usually owns the configuration of Vulnerability Response itself?",
+   "options": [
+    "The scanner vendor, through their support portal",
+    "The VR admin or platform team, with security input",
+    "Each remediation owner, for their own assigned items",
+    "Every employee who uses the ServiceNow portal"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "VR configuration — rules, integrations, calculators — belongs to admins working with the security team. Remediation owners, vendors, and end users don't configure the application."
+  },
+  {
+   "id": "cisvr-33",
+   "domain": "AP",
+   "stem": "Why might the same CVE produce vulnerable items on hundreds of CIs?",
+   "options": [
+    "The scanner duplicates every finding by mistake",
+    "Each CI reports the CVE once per user",
+    "The software is installed on many systems",
+    "The NVD assigns each CVE to hundreds of CIs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Widely deployed software creates the same weakness everywhere it's installed. That's why grouping by solution is so useful."
+  },
+  {
+   "id": "cisvr-34",
+   "domain": "AP",
+   "stem": "What does \"time to remediate\" measure?",
+   "options": [
+    "How long it takes analysts to log in to the workspace",
+    "How long it takes to fix vulnerable items after they're found",
+    "How long the NVD takes to publish a new CVE after discovery",
+    "How long a scanner takes to complete a full network scan"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Time to remediate tracks how quickly the organization closes VIs, a key VR performance measure. Scan duration, publication delay, and logins are other things."
+  },
+  {
+   "id": "cisvr-35",
+   "domain": "AP",
+   "stem": "What is a remediation owner's main responsibility in VR?",
+   "options": [
+    "Fixing assigned vulnerabilities or requesting exceptions",
+    "Configuring the vulnerability risk calculators",
+    "Importing new CVEs from the NVD each night",
+    "Approving exceptions requested by other remediation owners"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Owners act on their tasks: patch, mitigate, or request an exception when they can't. Approvals, imports, and calculator configuration belong to other roles."
+  },
+  {
+   "id": "cisvr-36",
+   "domain": "AP",
+   "stem": "Why can't every vulnerability be fixed immediately?",
+   "options": [
+    "The NVD prevents organizations from fixing new vulnerabilities",
+    "Vulnerability Response limits each team to one fix per month",
+    "Fixes need testing and maintenance windows, or may not exist yet",
+    "Scanners stop detecting vulnerabilities after one week"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Patches may break applications, require downtime, or not be available yet, which is why prioritization and exceptions exist."
+  },
+  {
+   "id": "cisvr-37",
+   "domain": "AP",
+   "stem": "What does mean time to remediate by risk rating show leadership?",
+   "options": [
+    "How many CVEs the NVD published during the period",
+    "Whether the riskiest items are fixed fastest",
+    "How many scanners the organization currently licenses",
+    "Which analysts have closed the most vulnerable items"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Breaking remediation time down by risk shows whether the program is focusing on what matters. Scanner counts, individual analysts, and NVD volume don't answer that."
+  },
+  {
+   "id": "cisvr-38",
+   "domain": "AP",
+   "stem": "What's the advantage of handling vulnerabilities in ServiceNow rather than in each scanner's own console?",
+   "options": [
+    "Scanners stop working once their data is imported into the platform",
+    "ServiceNow finds vulnerabilities that scanners can't detect",
+    "Findings from many tools are prioritized and tracked in one place",
+    "Each scanner's console becomes read-only after integration"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "VR unifies data across scanners and connects it to owners and workflows. Scanners keep working, and VR doesn't detect vulnerabilities on its own."
+  },
+  {
+   "id": "cisvr-39",
+   "domain": "DI",
+   "stem": "How do findings from scanners such as Qualys, Tenable, or Rapid7 usually get into Vulnerability Response?",
+   "options": [
+    "By emailing the scanner's PDF reports to the instance mailbox",
+    "By copying scanner databases directly into the CMDB tables",
+    "By analysts typing each finding into a new vulnerable item record",
+    "Through Store integrations that import scan data on a schedule"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Certified scanner integrations import findings, hosts, and vulnerability details automatically. Manual entry, emailed reports, and direct database copies don't scale or keep data consistent.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-40",
+   "domain": "DI",
+   "stem": "What must happen for a scanner finding to become a vulnerable item on the right CI?",
+   "options": [
+    "The scanner must be installed on the instance",
+    "The CVE must be manually approved by an auditor",
+    "The CI must be deleted and recreated first",
+    "The scanned host must be matched to a CI"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "VR identifies which CI a scanned host corresponds to before creating the VI. Without matching, there's no owner or context."
+  },
+  {
+   "id": "cisvr-41",
+   "domain": "DI",
+   "stem": "What does VR use to match scanned hosts to existing CIs?",
+   "options": [
+    "The order in which hosts appear in the scanner's report",
+    "The scanner's own list of CI sys_ids, sent with every finding",
+    "CI lookup rules matching on IP, hostname, and similar",
+    "A manual assignment by the analyst for every host in each scan"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Lookup rules (and IRE-based identification) compare scanner host data — IP, FQDN, MAC, scanner IDs — with CMDB attributes. Scanners don't know sys_ids, manual matching doesn't scale, and order is meaningless.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-42",
+   "domain": "DI",
+   "stem": "A scanned host can't be matched to any CI. What typically happens?",
+   "options": [
+    "The finding is silently discarded with no record kept",
+    "The whole import fails until the host is fixed",
+    "It's held as unmatched or creates a CI by policy",
+    "It's matched to the first CI alphabetically by name"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Unmatched hosts are kept for review or, depending on configuration, used to create CIs. Discarding data, random matching, or failing the import would be harmful.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-43",
+   "domain": "DI",
+   "stem": "Why is a high number of unmatched hosts a concern?",
+   "options": [
+    "Unmatched hosts double the CVSS score of their vulnerabilities",
+    "Unmatched hosts are automatically marked as false positives",
+    "Unmatched hosts slow the scanner's next network scan",
+    "Their vulnerabilities have no owner and may never get fixed"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Without a CI, there's no assignment or business context, so risk sits unaddressed. Scanner speed, false positives, and scoring aren't affected."
+  },
+  {
+   "id": "cisvr-44",
+   "domain": "DI",
+   "stem": "What is the best long-term fix for many unmatched hosts?",
+   "options": [
+    "Delete unmatched findings after every import",
+    "Assign all unmatched items to one analyst",
+    "Improve CMDB coverage and identifying data",
+    "Stop scanning hosts that can't be matched"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Better discovery and consistent identifiers let VR match hosts. Deleting findings or stopping scans hides risk, and dumping items on one person doesn't fix the cause."
+  },
+  {
+   "id": "cisvr-45",
+   "domain": "DI",
+   "stem": "What does importing NVD data add to Vulnerability Response?",
+   "options": [
+    "Remediation tasks assigned automatically to IT teams",
+    "A list of every device on the internet that has each CVE",
+    "CVE details like descriptions and CVSS scores",
+    "Patches that install themselves on affected servers"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The NVD provides authoritative vulnerability details. It doesn't inventory devices, install patches, or create tasks."
+  },
+  {
+   "id": "cisvr-46",
+   "domain": "DI",
+   "stem": "Why do scanners often provide their own vulnerability entries in addition to CVEs?",
+   "options": [
+    "They detect issues without a CVE and add their own context",
+    "Scanner entries can only be used for container findings",
+    "CVEs are never accurate enough to be used by scanners",
+    "Scanner entries replace the need for the NVD entirely"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Scanner-specific entries (third-party vulnerabilities) cover detections such as missing configuration or vendor-specific checks, mapped to CVEs where possible.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-47",
+   "domain": "DI",
+   "stem": "What's an advantage of scheduling scanner imports to run regularly?",
+   "options": [
+    "New findings and fixes appear in VR without manual work",
+    "Scheduled imports guarantee no false positives are imported",
+    "Scheduled imports delete fixed vulnerabilities from the scanner",
+    "Scheduled imports bypass all CI matching rules"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Regular imports keep VR current, so new vulnerabilities are prioritized and fixed ones close. Matching still applies, scanners aren't altered, and false positives can still occur."
+  },
+  {
+   "id": "cisvr-48",
+   "domain": "DI",
+   "stem": "An import of scanner data fails partway. Where should an admin look first?",
+   "options": [
+    "The knowledge base articles about patching",
+    "Each remediation owner's notification settings",
+    "The integration run history and errors",
+    "The CMDB Health score for the server class"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Integration run records show what was processed and why failures happened, such as credentials or API errors. The other options don't track imports.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-49",
+   "domain": "DI",
+   "stem": "Which kind of tool feeds Application Vulnerability Response?",
+   "options": [
+    "HR systems that track which developers wrote each application",
+    "Network firewalls that log blocked connections to applications",
+    "Backup tools that copy application data each night",
+    "Application security testing tools, such as SAST and DAST"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "AVR ingests findings from static and dynamic testing tools and similar sources. Firewall logs, HR data, and backups aren't vulnerability findings.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-50",
+   "domain": "DI",
+   "stem": "Which kind of tool feeds Container Vulnerability Response?",
+   "options": [
+    "Web proxies that filter employee browsing",
+    "Email security gateways that scan attachments",
+    "Container security tools scanning images",
+    "Endpoint backup agents on employee laptops"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Container security platforms report vulnerabilities in images and running containers. The other tools address different security areas.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-51",
+   "domain": "DI",
+   "stem": "How does enrichment add value to imported vulnerabilities?",
+   "options": [
+    "It increases every vulnerability's CVSS score by one point",
+    "It assigns every vulnerability to the security team",
+    "It adds context like exploit availability and threat intelligence",
+    "It deletes vulnerabilities that don't affect Windows systems"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Enrichment adds information — known exploits, threat activity, vendor details — that improves prioritization. It doesn't inflate scores, filter by platform, or assign everything to security."
+  },
+  {
+   "id": "cisvr-52",
+   "domain": "DI",
+   "stem": "Why might an organization integrate more than one scanner with VR?",
+   "options": [
+    "Multiple scanners remove the need for a CMDB",
+    "Different scanners cover different assets",
+    "The platform requires at least three scanners to work",
+    "Using more scanners lowers every vulnerability's risk score"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Organizations often use specialized scanners for different environments. VR consolidates them. There's no minimum, scores aren't lowered, and the CMDB remains essential."
+  },
+  {
+   "id": "cisvr-53",
+   "domain": "DI",
+   "stem": "Two scanners report the same vulnerability on the same server. What's the desired outcome in VR?",
+   "options": [
+    "One vulnerable item, with both sources recorded",
+    "Two separate items assigned to two different teams",
+    "The item with the lower score is deleted",
+    "Neither item is imported because they conflict"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Consolidating duplicate detections avoids double work while keeping each source's evidence. How this is handled can depend on configuration.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-54",
+   "domain": "DI",
+   "stem": "What information is typically needed to configure a scanner integration?",
+   "options": [
+    "The serial number of the scanner vendor's own servers",
+    "The scanner's API URL, credentials, and import schedule",
+    "Every employee's email address and phone number",
+    "The CVSS score for each vulnerability you expect to find"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Integrations need to know where to connect, how to authenticate, and when to run. Employee details, expected scores, and vendor hardware aren't required."
+  },
+  {
+   "id": "cisvr-55",
+   "domain": "DI",
+   "stem": "A scanner sits inside the corporate network and isn't reachable from the internet. How can VR import from it?",
+   "options": [
+    "By opening the scanner to the public internet",
+    "Through a MID Server in the network",
+    "By emailing exports to analysts each day",
+    "It can't; only cloud scanners are supported"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "MID Servers relay data from internal systems securely. Exposing the scanner or emailing exports creates risk and manual effort."
+  },
+  {
+   "id": "cisvr-56",
+   "domain": "DI",
+   "stem": "What does the \"last found\" date on a vulnerable item rely on?",
+   "options": [
+    "Regular scans that detect the vulnerability again",
+    "The remediation task's due date",
+    "The analyst updating the date by hand each week",
+    "The NVD's publication date for the CVE"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Each scan that sees the vulnerability updates the last found date, which supports staleness and closure logic. It isn't manual or tied to NVD or task dates."
+  },
+  {
+   "id": "cisvr-57",
+   "domain": "DI",
+   "stem": "Why is authenticated scanning generally preferred over unauthenticated scanning?",
+   "options": [
+    "It can't produce false positives at all",
+    "It sees installed software more accurately",
+    "It scans only the internet-facing systems",
+    "It doesn't need any credentials to run"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "With credentials, scanners inspect hosts directly, finding missing patches more reliably. It needs credentials by definition, isn't limited to external systems, and can still produce false positives."
+  },
+  {
+   "id": "cisvr-58",
+   "domain": "DI",
+   "stem": "What does importing asset data from a scanner — not just vulnerabilities — help with?",
+   "options": [
+    "Replacing Discovery as the CMDB's only data source",
+    "Calculating the purchase cost of each scanned asset",
+    "Automatically patching every asset the scanner finds",
+    "Matching hosts to CIs and finding CMDB gaps"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Host details help identification and can reveal coverage gaps. Scanners don't replace Discovery, patch assets, or provide financial data."
+  },
+  {
+   "id": "cisvr-59",
+   "domain": "DI",
+   "stem": "What is a vulnerability's \"solution\" in VR?",
+   "options": [
+    "The name of the scanner that found it first",
+    "The remediation that fixes it, often a specific patch",
+    "The date the vulnerable item will be closed",
+    "The workaround analysts use to hide it from reports"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Solutions describe how to remediate, such as applying a vendor update. They aren't ways to hide findings, scanner names, or closure dates.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-60",
+   "domain": "DI",
+   "stem": "Why do vulnerability imports benefit from accurate business criticality on CIs?",
+   "options": [
+    "It feeds risk scores, prioritizing critical systems",
+    "It sets the CVSS score for each vulnerability found",
+    "It decides which scanner is allowed to scan each CI",
+    "It determines how often the NVD publishes updates"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Criticality is a key risk input. It doesn't control scanners, CVSS, or NVD timing."
+  },
+  {
+   "id": "cisvr-61",
+   "domain": "DI",
+   "stem": "What should be validated after configuring a new scanner integration?",
+   "options": [
+    "That no vulnerabilities are found in the first import",
+    "That the scanner's logo appears on the vulnerability form",
+    "That every vulnerable item is assigned to the same group",
+    "That findings import, match to CIs, and look right"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Check that imports work end to end and that matching and field values are accurate. Logos, uniform assignment, and zero findings aren't success criteria."
+  },
+  {
+   "id": "cisvr-62",
+   "domain": "DI",
+   "stem": "What is threat intelligence used for during vulnerability enrichment?",
+   "options": [
+    "Identifying which employees reported each vulnerability",
+    "Writing patches for vulnerabilities vendors haven't fixed",
+    "Removing vulnerabilities from the scanner's database",
+    "Showing which vulnerabilities attackers are actively using"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Threat intelligence highlights exploitation in the wild, which raises priority. It doesn't produce patches, change scanners, or track reporters."
+  },
+  {
+   "id": "cisvr-63",
+   "domain": "DI",
+   "stem": "An organization wants to bring in vulnerabilities from a tool with no Store integration. What's a reasonable approach?",
+   "options": [
+    "Ask analysts to copy findings from the tool by hand",
+    "Replace the tool with a spreadsheet of known issues",
+    "Build an import using the platform's integration tools",
+    "Ignore the tool's findings until an integration appears"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Custom imports through standard integration features can bring in any source. Manual copying, ignoring findings, or spreadsheets leave gaps."
+  },
+  {
+   "id": "cisvr-64",
+   "domain": "DI",
+   "stem": "Why are cloud assets sometimes hard to match to CIs?",
+   "options": [
+    "Cloud assets can't be stored in the CMDB at all",
+    "They're short-lived and their IPs change often",
+    "Cloud providers forbid vulnerability scanning",
+    "Scanners can never scan cloud workloads"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Ephemeral instances and changing addresses make identification harder, so cloud-specific identifiers and discovery help. Cloud assets can be in the CMDB, scanned, and assessed."
+  },
+  {
+   "id": "cisvr-65",
+   "domain": "DI",
+   "stem": "What does a scanner's plugin or QID typically identify?",
+   "options": [
+    "The CI's business owner in the CMDB",
+    "The date the patch will be deployed",
+    "The check that detected it",
+    "The analyst who reviewed the vulnerable item"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Scanner plugin IDs (Tenable) or QIDs (Qualys) identify the detection check, which maps to vulnerability entries. They don't identify people, owners, or dates.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-66",
+   "domain": "DI",
+   "stem": "What does it mean if a vulnerable item's CI is retired in the CMDB?",
+   "options": [
+    "It may no longer apply and should be reviewed",
+    "The item's risk score should be raised to the maximum",
+    "Nothing; retired CIs don't affect vulnerable items",
+    "The item should be reassigned to the CISO"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Vulnerabilities on decommissioned assets don't need remediation, so they should be reviewed and closed per policy."
+  },
+  {
+   "id": "cisvr-67",
+   "domain": "DI",
+   "stem": "How often should scanner imports typically run?",
+   "options": [
+    "Matching scan schedules, like daily or weekly",
+    "Only when a major vulnerability is announced",
+    "Once a year, before the external audit",
+    "Never; data should be imported manually"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Import frequency should keep pace with scanning so VR reflects current exposure. Annual or ad hoc imports leave VR out of date."
+  },
+  {
+   "id": "cisvr-68",
+   "domain": "DI",
+   "stem": "What does \"detection\" mean in Vulnerability Response?",
+   "options": [
+    "A scanner observation of a vulnerability on an asset",
+    "A patch being installed on an affected server",
+    "A remediation task being assigned to a team",
+    "An analyst's approval of a vulnerability exception"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Detections are the individual observations from scans that roll up into vulnerable items. Approvals, installations, and assignments are later steps.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-69",
+   "domain": "DI",
+   "stem": "Why keep scanner credentials in a secure credential store rather than in scripts?",
+   "options": [
+    "So every user can read the scanner password",
+    "To protect them and allow easy rotation",
+    "Because credential stores make imports run faster",
+    "Because scripts can't connect to external systems"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Secure storage limits exposure and simplifies rotation. Scripts can connect, credential stores don't speed things up, and passwords shouldn't be widely visible."
+  },
+  {
+   "id": "cisvr-70",
+   "domain": "DI",
+   "stem": "What is a good reason to scope scanner imports to certain asset groups at first?",
+   "options": [
+    "Because integrations can import only one host at a time",
+    "To validate matching and data quality before scaling up",
+    "To prevent critical servers from being assessed",
+    "Because full imports delete existing vulnerable items"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Starting small makes it easier to find matching and mapping problems. Integrations handle many hosts, full imports don't delete items, and critical servers should be assessed."
+  },
+  {
+   "id": "cisvr-71",
+   "domain": "DI",
+   "stem": "How does the CMDB's \"managed by group\" help when vulnerabilities are imported?",
+   "options": [
+    "It sets the scanner's scan schedule for the CI",
+    "It changes the vulnerability's CVSS score",
+    "It decides whether the vulnerability is imported at all",
+    "It can be used to route remediation to the right team"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Assignment rules often use CI support or managed-by groups to route work. It doesn't filter imports, schedule scans, or change scores."
+  },
+  {
+   "id": "cisvr-72",
+   "domain": "DI",
+   "stem": "What does Container Vulnerability Response link vulnerabilities to?",
+   "options": [
+    "Users' laptops that run container tools",
+    "Physical servers' serial numbers only",
+    "Images and the containers that use them",
+    "Network switches that route container traffic"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Container findings relate to images and their running instances, so owners can rebuild images. Serial numbers, laptops, and switches aren't the target.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-73",
+   "domain": "DI",
+   "stem": "What's the main risk of importing scan data without good CI matching?",
+   "options": [
+    "The scanner's license being cancelled by the vendor",
+    "Duplicate or orphaned items that no one owns or fixes",
+    "The NVD refusing to share further CVE data",
+    "Every vulnerability being marked as critical"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Poor matching creates noise and ownerless risk. Licensing, NVD access, and severity aren't affected."
+  },
+  {
+   "id": "cisvr-74",
+   "domain": "DI",
+   "stem": "Why record which source reported each vulnerable item?",
+   "options": [
+    "To trace findings back and judge source reliability",
+    "To bill each scanner vendor for the items found",
+    "Because items can't be closed without a source",
+    "To hide items from sources that are less reliable"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Source attribution supports troubleshooting and validation. It isn't for billing or hiding findings, and closure depends on remediation evidence."
+  },
+  {
+   "id": "cisvr-75",
+   "domain": "DI",
+   "stem": "What should happen when the NVD updates a CVE's CVSS score?",
+   "options": [
+    "The CVE is deleted and imported again as new",
+    "Analysts must re-enter every affected item by hand",
+    "Existing vulnerable items keep the old score forever",
+    "VR updates the vulnerability, and risk recalculates"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Updated NVD data flows into VR so risk reflects current information. Keeping stale scores, deleting CVEs, or manual re-entry isn't how it works.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-76",
+   "domain": "TL",
+   "stem": "What do assignment rules do in Vulnerability Response?",
+   "options": [
+    "Route vulnerable items or tasks to the right group",
+    "Choose which scanner scans each subnet in the network",
+    "Decide which CVEs are imported from the NVD each night",
+    "Set the CVSS score for vulnerabilities without one"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Assignment rules use conditions — often CI support group or ownership — to route work. They don't control imports, scoring, or scanning.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-77",
+   "domain": "TL",
+   "stem": "What do remediation task rules define?",
+   "options": [
+    "How vulnerable items are grouped into remediation tasks",
+    "Which dashboards appear in the vulnerability workspace",
+    "Which analysts are allowed to approve exceptions",
+    "How long each scanner import is allowed to run"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Remediation task rules group VIs — for example, by solution, assignment group, or CI — so teams get efficient work units. The other options belong to other configurations.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-78",
+   "domain": "TL",
+   "stem": "What do remediation target rules set?",
+   "options": [
+    "The color of vulnerable items in list views",
+    "The scanner that's allowed to detect each CVE",
+    "The patch file each server should install next",
+    "Due dates for fixing items, often based on risk"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Target rules assign remediation due dates — for example, 7 days for critical, 30 for high — which drive SLA-style tracking. They don't pick patches, scanners, or colors.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-79",
+   "domain": "TL",
+   "stem": "What do vulnerability calculators do?",
+   "options": [
+    "Estimate how long a full network scan will take",
+    "Count the number of scanners connected to the instance",
+    "Calculate risk scores and ratings from defined inputs",
+    "Calculate each remediation owner's performance bonus"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Calculators combine factors such as CVSS, exploitability, and asset criticality into risk scores and ratings that drive prioritization. The other options aren't calculator functions.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-80",
+   "domain": "TL",
+   "stem": "An organization wants vulnerabilities with known exploits to rank higher. Where should this be configured?",
+   "options": [
+    "In each scanner's own scan policy",
+    "In the NVD's published CVSS scores",
+    "In the remediation owner's preferences",
+    "In the risk calculator rules"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Calculator rules can weight exploit availability, raising risk for exploited vulnerabilities. Scanner policies, NVD data, and user preferences don't set VR priority.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-81",
+   "domain": "TL",
+   "stem": "What do classification or filter rules help VR do?",
+   "options": [
+    "Categorize items so they're handled consistently",
+    "Encrypt vulnerability data stored in the CMDB",
+    "Delete vulnerabilities that come from low-priority scanners",
+    "Hide vulnerable items from the remediation owners"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Classification rules group or tag items by criteria — such as end-of-life software — so downstream rules handle them appropriately. They don't delete, hide, or encrypt data.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-82",
+   "domain": "TL",
+   "stem": "A critical vulnerability on a payment server should be fixed within 7 days, but a low one on a test server within 90. What makes this happen?",
+   "options": [
+    "Scanner policies that delay low-risk findings",
+    "Remediation target rules based on risk rating",
+    "Asking each owner to choose their own deadline",
+    "A single due date applied to every vulnerability"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Risk-based target rules set appropriate deadlines automatically. One-size-fits-all dates, self-chosen deadlines, or scanner delays don't reflect risk."
+  },
+  {
+   "id": "cisvr-83",
+   "domain": "TL",
+   "stem": "Why is the order of assignment rules important?",
+   "options": [
+    "Order determines how often scans run",
+    "Later rules delete assignments made by earlier ones",
+    "Rules only run in alphabetical order by name",
+    "The first matching rule usually decides the assignment"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Like many rule engines, assignment rules evaluate in order, so more specific rules should come first. Alphabetical order, deletion, and scan frequency aren't factors.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-84",
+   "domain": "TL",
+   "stem": "A vulnerable item matches no assignment rule. What should happen?",
+   "options": [
+    "It's deleted because nobody can fix it",
+    "A default assignment routes it for triage",
+    "It's assigned to every group at once",
+    "It's closed automatically as a false positive"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A fallback assignment ensures nothing sits unowned. Deleting, closing, or assigning to everyone causes lost risk or confusion."
+  },
+  {
+   "id": "cisvr-85",
+   "domain": "TL",
+   "stem": "What's a sensible way to group vulnerable items for a Windows server team?",
+   "options": [
+    "By the analyst who imported the scan",
+    "By solution (patch) and the team's assignment group",
+    "By the day of the week each item was detected",
+    "By the alphabetical order of the CVE descriptions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Grouping by fix and team gives tasks the team can act on in one change. Alphabetical, weekday, or importer grouping isn't actionable."
+  },
+  {
+   "id": "cisvr-86",
+   "domain": "TL",
+   "stem": "What is the vulnerability manager's workspace mainly used for?",
+   "options": [
+    "Managing employee onboarding tasks",
+    "Writing patches for vendor software",
+    "Overseeing risk, exceptions, and progress",
+    "Configuring scanner hardware appliances"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The workspace gives vulnerability managers an overview of exposure, queues, and exceptions to manage the program. Writing patches, configuring hardware, and onboarding aren't VR tasks.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-87",
+   "domain": "TL",
+   "stem": "How do remediation owners usually work their vulnerability tasks?",
+   "options": [
+    "By reading weekly PDF reports from the security team",
+    "By editing CMDB records to remove vulnerabilities",
+    "By logging in to each scanner's console separately",
+    "Through a remediation-focused workspace or task list"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Owners work from focused views of assigned tasks with context and due dates. Scanner consoles and PDFs are fragmented, and editing the CMDB doesn't fix anything.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-88",
+   "domain": "TL",
+   "stem": "Why should calculator inputs include asset criticality?",
+   "options": [
+    "So scanners scan critical assets more often",
+    "So critical assets don't need remediation tasks",
+    "So vulnerabilities on critical assets are prioritized",
+    "So the NVD publishes CVEs faster for critical assets"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Weighting by criticality focuses effort where business impact is greatest. It doesn't affect scanning frequency, NVD publication, or the need to remediate."
+  },
+  {
+   "id": "cisvr-89",
+   "domain": "TL",
+   "stem": "What's the effect of changing a risk calculator's rules?",
+   "options": [
+    "All existing vulnerable items are deleted and imported again",
+    "Nothing changes for items that already exist in VR",
+    "Every scanner integration must be reinstalled from the Store",
+    "Scores recalculate, changing priorities and dates"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Calculator changes flow through to scores and anything that depends on them, such as targets. Test changes before applying them broadly.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-90",
+   "domain": "TL",
+   "stem": "What is a vulnerability's \"risk rating\" used for?",
+   "options": [
+    "The vendor's estimate of how hard the patch is to install",
+    "The date the vulnerability will be closed",
+    "The number of scanners that have detected the vulnerability",
+    "A simple label, like critical or high, used for prioritization"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Ratings bucket risk scores into labels that drive targets, reporting, and attention. They aren't counts, vendor estimates, or dates."
+  },
+  {
+   "id": "cisvr-91",
+   "domain": "TL",
+   "stem": "Several teams own different parts of a server. How can VR route vulnerabilities to the right team?",
+   "options": [
+    "Let every team pick items from a shared queue as they see fit",
+    "Create a separate CI for each team that touches the server",
+    "Assignment rules that consider the software or component affected",
+    "Assign all of the server's items to the team that owns the hardware"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Rules can route by affected software — for example, database vulnerabilities to the DBA team — rather than by host alone. Defaulting to one team, free-for-all queues, or fake CIs cause confusion.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-92",
+   "domain": "TL",
+   "stem": "Why should remediation target dates be visible to remediation owners?",
+   "options": [
+    "So they can change the dates to suit them",
+    "So they can lower the risk ratings",
+    "So they can plan work to meet deadlines",
+    "So they can close items without fixing them"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Visible targets help owners prioritize. Changing dates, closing unfixed items, or lowering ratings should go through proper processes."
+  },
+  {
+   "id": "cisvr-93",
+   "domain": "TL",
+   "stem": "What happens when a remediation target date passes without a fix?",
+   "options": [
+    "The item is deleted from the workspace",
+    "The item's risk score drops to zero",
+    "The item is closed automatically as resolved",
+    "The item is flagged overdue and escalated"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Overdue items should be visible and escalated. Auto-closing, zeroing scores, or deleting would hide unmanaged risk.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-94",
+   "domain": "TL",
+   "stem": "What's the benefit of rule-based configuration in VR over manual triage?",
+   "options": [
+    "Rules let remediation owners skip patch testing",
+    "Rules remove the need to ever review the program again",
+    "Consistent, scalable handling of large volumes of findings",
+    "Rules make the scanner find fewer vulnerabilities"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Rules apply the same logic to thousands of items. Programs still need review, rules don't change detection, and testing still matters."
+  },
+  {
+   "id": "cisvr-95",
+   "domain": "TL",
+   "stem": "Why might remediation tasks be grouped by CI instead of by solution?",
+   "options": [
+    "To ensure each vulnerable item ends up in several remediation tasks",
+    "Because grouping by solution isn't supported in Vulnerability Response",
+    "Because grouping by CI deletes the solution information from items",
+    "When one team fixes all issues on a server in one maintenance window"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Grouping choices depend on how teams work — some patch by host, others by fix. Both are possible, solution data isn't lost, and items shouldn't be duplicated."
+  },
+  {
+   "id": "cisvr-96",
+   "domain": "TL",
+   "stem": "What does a risk score threshold for \"critical\" in the calculator determine?",
+   "options": [
+    "Which items are labeled critical",
+    "Which CVEs the NVD marks as critical",
+    "Which scanners are allowed to report critical findings",
+    "Which users can view critical items"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Thresholds map scores to ratings. Scanners, NVD labels, and visibility are controlled elsewhere.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-97",
+   "domain": "TL",
+   "stem": "An analyst notices vulnerable items routed to a team that was disbanded. What should be fixed?",
+   "options": [
+    "The NVD import schedule",
+    "The scanner's credentials",
+    "The vulnerability calculator",
+    "The assignment rules or CI data"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Outdated routing comes from rules or CMDB ownership data. NVD schedules, credentials, and calculators don't control assignment."
+  },
+  {
+   "id": "cisvr-98",
+   "domain": "TL",
+   "stem": "What's the advantage of showing related solutions on a remediation task?",
+   "options": [
+    "It increases the task's risk score automatically",
+    "It lets owners close tasks without applying the fix",
+    "It hides the CVE details from the owner",
+    "It shows owners exactly which fix resolves the items"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Knowing the fix speeds remediation. It doesn't allow closure without fixing, change scores, or hide details."
+  },
+  {
+   "id": "cisvr-99",
+   "domain": "TL",
+   "stem": "How can VR handle vulnerabilities in end-of-life software that will never get a patch?",
+   "options": [
+    "Delete them because they can't be remediated",
+    "Wait for the vendor to release a patch, however long it takes",
+    "Lower their risk score to zero because no fix exists",
+    "Route them for upgrade, replacement, or exception"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "EOL software needs a different response: upgrade, replace, isolate, or a formal exception. Waiting, zeroing, or deleting ignores the risk."
+  },
+  {
+   "id": "cisvr-100",
+   "domain": "TL",
+   "stem": "What does the \"state\" of a vulnerable item, such as open, in review, or closed, help with?",
+   "options": [
+    "Choosing which instance stores the item",
+    "Tracking each item's lifecycle",
+    "Deciding which scanner found the item",
+    "Setting the item's CVSS score"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "States show progress and drive automation and reporting. CVSS, source, and storage aren't determined by state.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-101",
+   "domain": "TL",
+   "stem": "Why test new assignment or grouping rules before activating them?",
+   "options": [
+    "Bad rules could misroute thousands of items at once",
+    "Untested rules delete vulnerable items",
+    "Rules can't be deactivated once they're activated",
+    "Testing increases the number of rules allowed"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Rules act at scale, so mistakes spread quickly. Rules can be deactivated, testing doesn't change limits, and untested rules don't inherently delete data."
+  },
+  {
+   "id": "cisvr-102",
+   "domain": "TL",
+   "stem": "How can managers see which teams have the most overdue vulnerabilities?",
+   "options": [
+    "By reading the NVD's monthly summary",
+    "By counting rows in each scanner's console",
+    "By reporting overdue items by group",
+    "By asking each team lead in a weekly meeting"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Overdue reporting by assignment group shows where to focus. Meetings, scanner consoles, and NVD summaries don't reflect your remediation status."
+  },
+  {
+   "id": "cisvr-103",
+   "domain": "TL",
+   "stem": "What's the purpose of reassigning a remediation task?",
+   "options": [
+    "Moving it to the team that can actually fix it",
+    "Lowering the risk rating of every item in the task",
+    "Closing the vulnerable items it contains",
+    "Resetting the remediation target date to a later one"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Reassignment corrects routing. It shouldn't be used to extend deadlines, lower ratings, or close items."
+  },
+  {
+   "id": "cisvr-104",
+   "domain": "TL",
+   "stem": "An organization wants internet-facing assets to get higher risk scores. How can this be done?",
+   "options": [
+    "Move internet-facing servers to a different instance",
+    "Include internet exposure in calculator rules",
+    "Ask the scanner vendor to raise their CVSS scores",
+    "Assign every internet-facing item to the CISO"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Calculators can use CI attributes such as exposure to raise risk. Vendors don't change CVSS for you, and instances and assignments don't affect scoring."
+  },
+  {
+   "id": "cisvr-105",
+   "domain": "TL",
+   "stem": "What's the difference between a vulnerable item's risk score and its CVSS score?",
+   "options": [
+    "Risk is set by the NVD; CVSS by your analysts",
+    "Risk reflects your context; CVSS doesn't",
+    "CVSS includes business criticality; risk doesn't",
+    "They're always the same number"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "CVSS rates the weakness in general. Risk adjusts for your environment — exploitability, asset criticality, exposure. The NVD provides CVSS, and your calculators set risk."
+  },
+  {
+   "id": "cisvr-106",
+   "domain": "TL",
+   "stem": "Why might a remediation task be split into several smaller tasks?",
+   "options": [
+    "Splitting tasks closes their vulnerable items",
+    "The platform limits tasks to one vulnerable item",
+    "Different parts need different teams or windows",
+    "Smaller tasks always have lower risk scores"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Splitting lets work match how teams operate. Size doesn't change risk, tasks can hold many items, and splitting doesn't close anything.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-107",
+   "domain": "TL",
+   "stem": "Which records should a remediation owner update when a fix is deployed?",
+   "options": [
+    "The scanner's plugin definition",
+    "The calculator's rule conditions",
+    "The NVD entry for the CVE",
+    "The remediation task, with notes"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Owners record what they did on their task; a rescan then confirms the fix. NVD entries, scanner plugins, and calculators aren't theirs to change."
+  },
+  {
+   "id": "cisvr-108",
+   "domain": "TL",
+   "stem": "What happens after a remediation owner marks a task as fixed?",
+   "options": [
+    "The CI is retired from the CMDB",
+    "A rescan confirms the fix first",
+    "The CVE is removed from the NVD",
+    "The vulnerable items are deleted immediately"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Verification by rescan prevents closing items that aren't actually fixed. Deleting items, changing the NVD, or retiring CIs aren't part of the process.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-109",
+   "domain": "TL",
+   "stem": "What is a good reason to review vulnerability rules regularly?",
+   "options": [
+    "Rules stop working after each upgrade",
+    "Teams, assets, and threats change",
+    "Rules expire automatically after 30 days",
+    "Reviews are needed to keep scanners licensed"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Organizational and threat changes make rules outdated. They don't expire, affect licensing, or necessarily break on upgrade."
+  },
+  {
+   "id": "cisvr-110",
+   "domain": "TL",
+   "stem": "What does it mean if most of a team's vulnerable items are in a \"deferred\" state?",
+   "options": [
+    "The team has fixed all of its vulnerabilities",
+    "The team has many approved exceptions",
+    "The items were imported from the wrong scanner",
+    "The items have no CI and can't be assigned"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Deferred items carry accepted risk until exceptions expire, so they deserve attention. They aren't fixed, mis-sourced, or unmatched.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-111",
+   "domain": "AU",
+   "stem": "A remediation owner can't patch a server until next quarter. What should they request?",
+   "options": [
+    "Reassignment of the items to the security team instead",
+    "Deletion of the vulnerable items until the patch is ready",
+    "A deferral exception with justification and an expiry date",
+    "A change to the CVSS score so the item looks less urgent"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Exceptions formally accept risk for a limited time with approval. Deleting items, changing scores, or reassigning to security hides the risk.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-112",
+   "domain": "AU",
+   "stem": "What should happen when a vulnerability exception expires?",
+   "options": [
+    "The exception renews automatically",
+    "The items are deleted",
+    "The items return to active remediation",
+    "The items are closed as fixed"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Exceptions are time-bound, so expired items become active again and visible. Closing, auto-renewing, or deleting would hide the risk.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-113",
+   "domain": "AU",
+   "stem": "A remediation owner believes a vulnerability was reported incorrectly. What should they do?",
+   "options": [
+    "Close the vulnerable item without telling anyone",
+    "Delete the vulnerability from the NVD import",
+    "Ask the scanner vendor to remove the CI",
+    "Request a false positive with evidence"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "False positive requests are reviewed and approved, documenting why the finding is wrong. Silent closure, editing NVD data, or asking vendors to remove CIs aren't appropriate.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-114",
+   "domain": "AU",
+   "stem": "Why do exception and false positive requests require approval?",
+   "options": [
+    "They accept risk, which needs accountable approval",
+    "The platform can't save requests without an approver",
+    "Approvals lower the item's CVSS score automatically",
+    "Approvals make the scanner stop finding the issue"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Accepting risk or dismissing a finding is a decision with consequences, so it needs accountable approval. Approvals don't change scanners or scores."
+  },
+  {
+   "id": "cisvr-115",
+   "domain": "AU",
+   "stem": "What can exception rules automate?",
+   "options": [
+    "Applying exceptions to matching items",
+    "Deleting items that already have an exception",
+    "Approving every exception request without review",
+    "Lowering risk scores for all items in a group"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Exception rules apply pre-approved exceptions consistently — for example, for a known compensating control. They don't bypass approval policy, delete items, or change scores.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-116",
+   "domain": "AU",
+   "stem": "How can Flow Designer help automate vulnerability remediation?",
+   "options": [
+    "By publishing new CVEs to the NVD",
+    "By creating changes from remediation tasks",
+    "By rewriting the scanner's detection logic",
+    "By changing CVSS scores for older vulnerabilities"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Flows can open changes, notify owners, request approvals, and trigger patch tools. They don't modify scanners, the NVD, or CVSS."
+  },
+  {
+   "id": "cisvr-117",
+   "domain": "AU",
+   "stem": "Why create a change request for a large patch deployment from a remediation task?",
+   "options": [
+    "So the scanner knows which patch was installed",
+    "Because vulnerable items can't be closed without one",
+    "Because change requests raise the item's risk score",
+    "So the fix follows change control"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Change management controls risk from the fix itself and keeps an audit trail linking remediation to vulnerabilities. Closure, scanner knowledge, and scores aren't the reason.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-118",
+   "domain": "AU",
+   "stem": "What does automating vulnerability close-out typically rely on?",
+   "options": [
+    "The NVD deleting the CVE",
+    "Rescans confirming it's gone",
+    "The remediation target date passing",
+    "Owners marking items closed whenever they choose"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Evidence from rescans is the reliable basis for closure. Self-closing without evidence, deadlines, or NVD changes aren't proof of remediation.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-119",
+   "domain": "AU",
+   "stem": "What's a good use of automated notifications in VR?",
+   "options": [
+    "Sending exception approvals to remediation owners to approve",
+    "Notifying the scanner vendor about each finding",
+    "Emailing every vulnerable item to every employee daily",
+    "Alerting owners about new critical items and upcoming deadlines"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Targeted notifications drive timely action. Mass emails cause fatigue, vendors don't need your findings, and owners shouldn't approve their own exceptions."
+  },
+  {
+   "id": "cisvr-120",
+   "domain": "AU",
+   "stem": "Why might a flow escalate overdue critical vulnerabilities to a manager?",
+   "options": [
+    "So overdue high-risk work gets attention",
+    "To lower the risk rating of overdue items",
+    "To punish the remediation owner publicly",
+    "To close the items before the audit"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Escalation brings management attention to overdue risk. It isn't about punishment, premature closure, or lowering ratings."
+  },
+  {
+   "id": "cisvr-121",
+   "domain": "AU",
+   "stem": "How can patch management tools connect with VR automation?",
+   "options": [
+    "They can approve exceptions on behalf of analysts",
+    "They can replace VR's need for scanner data",
+    "They can change NVD records for installed patches",
+    "They can be triggered by flows that record results"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Integrating with tools like Microsoft Configuration Manager lets VR initiate or track patching. They don't replace scanning, approve exceptions, or change the NVD.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-122",
+   "domain": "AU",
+   "stem": "What should an exception request include?",
+   "options": [
+    "Justification, compensating controls, and an end date",
+    "A promise that the vulnerability isn't real",
+    "The scanner vendor's support contract number",
+    "Only the remediation owner's name and nothing else"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Approvers need to know why, how risk is reduced meanwhile, and when it will be revisited. A name alone, false claims, or contract numbers don't support a decision."
+  },
+  {
+   "id": "cisvr-123",
+   "domain": "AU",
+   "stem": "What's the risk of approving exceptions with no expiry?",
+   "options": [
+    "The accepted risk is forgotten and never revisited",
+    "The scanner will stop scanning the CI",
+    "The exception will be deleted at the next import",
+    "The vulnerable item will be closed as fixed"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Open-ended exceptions turn temporary decisions into permanent blind spots. They don't get deleted, close items, or stop scanning."
+  },
+  {
+   "id": "cisvr-124",
+   "domain": "AU",
+   "stem": "Why automate the grouping and assignment of new vulnerable items?",
+   "options": [
+    "Automation removes the need for remediation owners",
+    "Teams get actionable work quickly without manual triage",
+    "Automated grouping deletes low-risk vulnerabilities",
+    "It prevents scanners from finding new vulnerabilities"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Automation makes remediation start sooner at scale. Owners still fix things, low-risk items aren't deleted, and scanning continues."
+  },
+  {
+   "id": "cisvr-125",
+   "domain": "AU",
+   "stem": "A false positive is approved. What should prevent it from reappearing as new work after the next scan?",
+   "options": [
+    "Removing the CI from the CMDB",
+    "Raising the item's risk score",
+    "Deleting the finding from the scanner manually",
+    "The approved state persisting across rescans"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "VR tracks the false positive so future detections of the same issue don't create new work. Editing scanners, deleting CIs, or raising scores is wrong.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-126",
+   "domain": "AU",
+   "stem": "How can automation help verify that a patch fixed a vulnerability?",
+   "options": [
+    "By closing items as soon as the change request is approved",
+    "By lowering the risk score once the patch is downloaded",
+    "By asking the owner to confirm by email",
+    "By requesting a rescan of affected hosts after deployment"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Triggered rescans confirm fixes quickly. Change approval or downloading isn't proof, and email confirmation isn't evidence.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-127",
+   "domain": "AU",
+   "stem": "What does \"close-out\" mean for a remediation task?",
+   "options": [
+    "Completing it once items are resolved",
+    "Lowering its priority to the minimum",
+    "Deleting the task and its items from the system",
+    "Transferring it to a different instance"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Close-out completes the task when all its items are resolved or formally excepted. Deleting, transferring, or reprioritizing isn't close-out.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-128",
+   "domain": "AU",
+   "stem": "Why use subflows for common VR automation steps?",
+   "options": [
+    "To hide automation from the audit trail",
+    "To reuse logic across flows",
+    "Because flows can't contain more than one step",
+    "Because subflows run without any permissions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Subflows centralize reusable logic. Flows can have many steps, actions are auditable, and permissions still apply."
+  },
+  {
+   "id": "cisvr-129",
+   "domain": "AU",
+   "stem": "An exception was approved for a vulnerable item, but the asset's risk later increases. What should happen?",
+   "options": [
+    "The exception stays regardless of risk",
+    "The vulnerable item should be deleted",
+    "The asset's criticality should be lowered",
+    "The exception should be re-evaluated"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Exceptions assume a risk level. If risk rises — for example, an exploit appears — the decision should be revisited. Ignoring, deleting, or lowering criticality hides the change."
+  },
+  {
+   "id": "cisvr-130",
+   "domain": "AU",
+   "stem": "What's a good first automation for a new VR deployment?",
+   "options": [
+    "Auto-deleting all low-risk vulnerabilities",
+    "Auto-approving every exception request",
+    "Auto-assigning items using CI ownership",
+    "Auto-changing CVSS scores for old CVEs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automated routing delivers quick value with low risk. Auto-approving exceptions, deleting items, or changing scores undermine the program."
+  },
+  {
+   "id": "cisvr-131",
+   "domain": "AU",
+   "stem": "How should automation handle a vulnerability that's reported fixed but reappears on the next scan?",
+   "options": [
+    "Delete the CI from the CMDB",
+    "Reopen it and notify the owner",
+    "Create a security incident automatically",
+    "Ignore it, since it was already closed"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Reappearing vulnerabilities need to be worked again. Ignoring them hides risk, and incidents or CI deletion aren't the right response.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-132",
+   "domain": "AU",
+   "stem": "What's the benefit of an approval workflow for false positives?",
+   "options": [
+    "A second person checks the evidence first",
+    "It closes all other open items on the same CI",
+    "It makes the scanner produce fewer findings automatically",
+    "It lets owners dismiss any item without needing evidence"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Independent review prevents real vulnerabilities from being wrongly dismissed. It doesn't remove evidence requirements, change scanner output, or affect other items."
+  },
+  {
+   "id": "cisvr-133",
+   "domain": "AU",
+   "stem": "Why might a flow automatically raise a vulnerable item's priority?",
+   "options": [
+    "The scanner was upgraded to a new version",
+    "The item was viewed by an analyst",
+    "It's being actively exploited",
+    "The remediation owner went on vacation"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Active exploitation changes urgency, so automation can raise priority and notify owners. Vacations, scanner upgrades, and views don't change risk."
+  },
+  {
+   "id": "cisvr-134",
+   "domain": "AU",
+   "stem": "Which is an appropriate automated action when a remediation target is about to be missed?",
+   "options": [
+    "Lower the item's risk rating",
+    "Remind the owner and their manager",
+    "Close the task to avoid an overdue metric",
+    "Extend the target date by another month"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Reminders prompt action before deadlines. Silently extending dates, closing tasks, or lowering ratings distort metrics and hide risk."
+  },
+  {
+   "id": "cisvr-135",
+   "domain": "AU",
+   "stem": "How does automation support audit readiness in VR?",
+   "options": [
+    "It records actions and approvals",
+    "It hides overdue items from auditors",
+    "It deletes records older than one year",
+    "It removes the need for exceptions"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Consistent records of who did what, when, and why make audits straightforward. Hiding, deleting, or skipping exceptions would fail an audit."
+  },
+  {
+   "id": "cisvr-136",
+   "domain": "AU",
+   "stem": "What should happen to vulnerable items when their remediation task's change request is cancelled?",
+   "options": [
+    "They're deleted with the change",
+    "They close automatically as fixed",
+    "They stay open for another fix",
+    "Their risk scores drop to zero"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Cancelling a change doesn't fix anything, so the items remain open. Closing, deleting, or zeroing scores would be wrong."
+  },
+  {
+   "id": "cisvr-137",
+   "domain": "AU",
+   "stem": "What's the main purpose of automating Vulnerability Response workflows?",
+   "options": [
+    "Removing the need for a CMDB",
+    "Reducing the number of vulnerabilities scanners report",
+    "Shortening the time from detection to verified fix",
+    "Replacing scanners with ServiceNow automation"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automation speeds routing, remediation, and verification. It doesn't replace scanners, change detection, or remove the need for CMDB context."
+  },
+  {
+   "id": "cisvr-138",
+   "domain": "AU",
+   "stem": "Why should automated exception handling log who approved each exception?",
+   "options": [
+    "Logs are needed to import NVD data",
+    "Accepted risk needs clear accountability",
+    "Logs raise the item's risk score",
+    "Logging approvals speeds up rescans"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Knowing who accepted risk is essential for governance and audits. It doesn't affect scans, imports, or scores."
+  },
+  {
+   "id": "cisvr-139",
+   "domain": "AU",
+   "stem": "What's a risk of fully automatic closure based on a single missed detection?",
+   "options": [
+    "The NVD may remove the CVE as a result",
+    "Items may close when a scan missed a host",
+    "Scanners may stop working after closures",
+    "Remediation owners may lose their roles"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A host that was offline during a scan isn't necessarily fixed, so closure logic should require reliable evidence. The other effects don't happen.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-140",
+   "domain": "AU",
+   "stem": "How can VR automation help with vulnerabilities in container images?",
+   "options": [
+    "Notify image owners and track rebuilds",
+    "Delete the container registry",
+    "Patch running containers in place forever",
+    "Lower the image's risk score"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Container fixes usually mean rebuilding images, so automation routes findings to image owners and tracks progress. Patching running containers isn't best practice, and the other actions are harmful.",
+   "verify": true
+  },
+  {
+   "id": "cisvr-141",
+   "domain": "DR",
+   "stem": "Which metric best shows whether the vulnerability backlog is shrinking?",
+   "options": [
+    "The number of users with the analyst role",
+    "The number of CVEs published by the NVD this month",
+    "The total number of scanners connected to the instance",
+    "Trend of open vulnerable items by risk rating over time"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A trend of open items by risk shows whether remediation is outpacing new findings. Scanner, NVD, and user counts don't measure your backlog."
+  },
+  {
+   "id": "cisvr-142",
+   "domain": "DR",
+   "stem": "Why use Performance Analytics for vulnerability metrics?",
+   "options": [
+    "It keeps scores over time for trends",
+    "It replaces the scanners' detection engines",
+    "It patches the systems with the most findings",
+    "It removes exceptions that are about to expire"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "PA keeps historical scores, so you can show improvement and compare with targets. It doesn't scan, patch, or manage exceptions."
+  },
+  {
+   "id": "cisvr-143",
+   "domain": "DR",
+   "stem": "An executive wants a quick view of overall exposure. What should the dashboard emphasize?",
+   "options": [
+    "Every vulnerable item's full description and details",
+    "Critical and high risk items, overdue counts, and trends",
+    "The scanner's technical configuration settings",
+    "The list of CVEs published worldwide this year"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Executives need risk-focused summaries and trends. Full details, scanner settings, or global CVE lists don't communicate your exposure."
+  },
+  {
+   "id": "cisvr-144",
+   "domain": "DR",
+   "stem": "What does a remediation owner most need on their dashboard?",
+   "options": [
+    "The organization's total CVE count since 1999",
+    "Their items, due dates, and overdue work",
+    "A list of scanner license expiry dates",
+    "The configuration of the risk calculators"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Owners need actionable lists of their work. Historical totals, calculator settings, and license dates aren't useful to them."
+  },
+  {
+   "id": "cisvr-145",
+   "domain": "DR",
+   "stem": "Which report helps show compliance with remediation targets?",
+   "options": [
+    "Number of exceptions requested by each analyst",
+    "Average length of vulnerability descriptions",
+    "Share of items fixed by target date",
+    "Number of scanners that ran last week"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "On-time remediation rate shows whether SLAs are being met. Exception counts by analyst, scanner runs, and description length don't."
+  },
+  {
+   "id": "cisvr-146",
+   "domain": "DR",
+   "stem": "Why break vulnerability dashboards down by assignment group?",
+   "options": [
+    "To show which teams need help or attention",
+    "To rank employees for performance reviews",
+    "To hide items from other teams' views",
+    "To change each team's risk calculator"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Group breakdowns reveal where backlog or overdue work is concentrated. They aren't for ranking individuals, hiding data, or changing calculators."
+  },
+  {
+   "id": "cisvr-147",
+   "domain": "DR",
+   "stem": "What does a rising number of exceptions over time suggest?",
+   "options": [
+    "The scanners are finding fewer vulnerabilities",
+    "The remediation program is fully on track",
+    "The organization is accepting more risk",
+    "The NVD is publishing fewer CVEs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Growing exceptions can signal capacity problems or over-reliance on risk acceptance. They don't indicate fewer findings or a healthy program."
+  },
+  {
+   "id": "cisvr-148",
+   "domain": "DR",
+   "stem": "Which visualization best shows how risk is distributed across business services?",
+   "options": [
+    "A pie chart of CVE publication years",
+    "Open risk broken down by service",
+    "A list of every scanner's IP address",
+    "A chart of analysts' login times"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Service-level views tie vulnerabilities to business impact. Scanner IPs, logins, and publication years don't show business risk."
+  },
+  {
+   "id": "cisvr-149",
+   "domain": "DR",
+   "stem": "What's a sensible way to share VR reports with stakeholders who don't use the platform?",
+   "options": [
+    "Schedule reports to email them regularly",
+    "Give them all the vulnerability admin role",
+    "Export the whole database to a shared drive",
+    "Post raw scan files on the intranet"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Scheduled reports deliver the right information without broad access. Admin roles, database exports, and public scan files are excessive or risky."
+  },
+  {
+   "id": "cisvr-150",
+   "domain": "DR",
+   "stem": "Why track mean time to remediate separately for critical items?",
+   "options": [
+    "The fastest response should go to the highest risks",
+    "Critical items can't be included in overall averages",
+    "The NVD requires a separate metric for critical items",
+    "Critical items are never assigned to teams"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Overall averages can hide slow handling of critical vulnerabilities. They can be included in totals, the NVD doesn't require it, and critical items are assigned like others."
+  }
+ ]
+}

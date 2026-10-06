@@ -104,7 +104,7 @@
    "domain": "CF",
    "stem": "Why must a dependent CI, such as an application server instance, be sent to IRE with its relationship to a host?",
    "options": [
-    "Dependent CIs are identified in the context of the CI they depend on, so the relationship is required",
+    "Dependent CIs are identified in the context of the CI they depend on",
     "Relationships are only needed so the dependent CI appears correctly in reports and dashboards",
     "IRE ignores relationships entirely, so they can be added later with a separate import job",
     "Dependent CIs cannot be stored in the CMDB unless their host CI was created manually first"
@@ -137,7 +137,7 @@
     "To merge duplicate CIs automatically when two sources report the same device",
     "To schedule CMDB Health jobs after each integration finishes loading its data",
     "To delete any CI whose attribute values two or more sources disagree about",
-    "To resolve conflicting values with strategies such as last reported or most reported"
+    "To resolve conflicting values, such as by last reported"
    ],
    "answer": [
     3
@@ -166,7 +166,7 @@
    "domain": "CF",
    "stem": "When are lookup rules used in identification?",
    "options": [
-    "When identifying values live on a related table, such as serial numbers or network adapters",
+    "When identifying values live on a related table",
     "When calculating whether a CI has gone stale based on related records' update times",
     "When choosing which MID Server should run discovery for a particular IP range",
     "When building reports that join CI attributes from several related lookup tables"
@@ -212,7 +212,7 @@
    "domain": "IN",
    "stem": "What is a primary advantage of a Service Graph Connector over a custom import?",
    "options": [
-    "It's a certified integration that maps third-party data to CMDB classes and loads it via IRE",
+    "It's a certified integration that loads mapped data through IRE",
     "It writes directly to CMDB tables, which avoids the overhead of identification",
     "It only works with data produced by ServiceNow Discovery and its MID Servers",
     "It removes the need for reconciliation rules because its data is always authoritative"
@@ -261,7 +261,7 @@
     "By importing a CSV file directly into the cmdb_ci base table",
     "By opening and editing each CI through the standard form UI",
     "With GlideRecord inserts directly on each CMDB class table",
-    "Through the IRE API, so each payload is identified and reconciled"
+    "Through the IRE API, so payloads are identified"
    ],
    "answer": [
     3
@@ -306,7 +306,7 @@
    "stem": "What is the difference between horizontal discovery and top-down discovery?",
    "options": [
     "They are identical processes that use different names in different releases of the platform",
-    "Horizontal finds infrastructure CIs across the network; top-down maps the CIs behind one application service",
+    "Horizontal inventories infrastructure; top-down maps one application service",
     "Horizontal discovery only finds cloud resources, while top-down discovery finds on-premises servers",
     "Top-down discovery doesn't use MID Servers, while horizontal discovery always requires one"
    ],
@@ -415,7 +415,7 @@
    "options": [
     "It has more relationships than the orphan rules for its class allow",
     "It has no owner or managed-by group populated on its CI record",
-    "No source has updated it within the staleness period defined for its class",
+    "No source has updated it within its class's staleness period",
     "It was created manually instead of by Discovery or an integration"
    ],
    "answer": [
@@ -429,7 +429,7 @@
    "domain": "GV",
    "stem": "What is an orphan CI?",
    "options": [
-    "A CI missing a relationship required by an orphan rule, such as an application with no host",
+    "A CI missing a relationship its orphan rule requires",
     "A CI that two different sources update, with neither designated as authoritative",
     "A CI that has no owner, managed-by group, or support group populated on its record",
     "A CI that has been retired but still has open incidents or changes referencing it"
@@ -491,7 +491,7 @@
    "domain": "GV",
    "stem": "Duplicates reappear every week after being remediated. What should you investigate first?",
    "options": [
-    "The identification rules, and whether the integration writes through IRE with identifying data",
+    "The identification rules, and whether the integration uses IRE",
     "The number of CMDB groups defined for the class and whether any of them overlap",
     "The principal class list and whether the duplicated class is included in it",
     "The theme and color settings of the CMDB Health dashboard used to report duplicates"
@@ -722,7 +722,7 @@
    "domain": "IS",
    "stem": "What is the purpose of the CMDB and CSDM foundation dashboards?",
    "options": [
-    "To show whether foundational CMDB and CSDM data is in place and where gaps exist",
+    "To show whether foundational data is in place and where gaps are",
     "To store attachments and evidence for CMDB certification tasks",
     "To start Discovery runs and monitor their progress across MID Servers",
     "To route normal and emergency changes to the right approvers"
@@ -815,7 +815,7 @@
    "domain": "IS",
    "stem": "A health dashboard shows low completeness for the server class. What is the most useful next step?",
    "options": [
-    "Drill into the failing CIs and missing fields to find patterns, such as a source never populating one",
+    "Drill into failing CIs and missing fields to find patterns",
     "Disable completeness scoring for the server class until the integrations are reviewed",
     "Export the dashboard to PDF, attach it to a task, and close the task as reviewed",
     "Delete the server class and recreate it so the scores reset with a clean baseline"
@@ -830,7 +830,7 @@
    "domain": "IS",
    "stem": "Why use a relationship-aware view rather than a flat list when assessing what an outage on a database server affects?",
    "options": [
-    "Impact depends on the apps and services that rely on the server, which only relationships show",
+    "Impact depends on what relies on the server, which relationships show",
     "Flat lists take much longer to load than relationship views when CMDB classes are large",
     "Flat lists cannot be filtered by environment, location, or support group",
     "Relationship views can display more attribute columns than a standard flat list"
@@ -860,7 +860,7 @@
    "domain": "CS",
    "stem": "What is the Common Service Data Model (CSDM)?",
    "options": [
-    "A prescriptive framework for consistently modeling services, applications, and related data in the CMDB",
+    "A prescriptive framework for modeling services and applications in the CMDB",
     "A library of Discovery patterns for identifying common applications and infrastructure",
     "A reporting plugin that adds service dashboards to the CMDB Workspace",
     "A licensing model that determines which CMDB classes an organization can use"
@@ -876,7 +876,7 @@
    "stem": "What is the difference between a business application and an application service in CSDM?",
    "options": [
     "Business applications only exist in the asset table and cannot be related to CIs",
-    "A business application is the software as the business knows it; an application service is a deployed instance",
+    "A business application is the software; an application service is a deployed instance",
     "They are the same record, labeled differently depending on which team is viewing it",
     "An application service is a desktop application; a business application is a web application"
    ],
@@ -890,7 +890,7 @@
    "domain": "CS",
    "stem": "What distinguishes a business service from a technical service?",
    "options": [
-    "Business services are consumed by business users; technical services support other services and IT",
+    "Business services serve business users; technical services support IT",
     "Technical services cannot have service offerings, while business services always do",
     "Business services are always offered to external customers; technical services are internal",
     "There is no difference; the terms describe the same record type in different releases"
@@ -920,7 +920,7 @@
    "domain": "CS",
    "stem": "What is the recommended starting point when adopting CSDM?",
    "options": [
-    "Establish foundation data, then business applications and application services, in stages",
+    "Establish foundation data, then applications and services, in stages",
     "Customize all CSDM tables to match the current org chart before loading data",
     "Skip foundation data and begin with technical services, which have no dependencies",
     "Model every service offering in detail before loading any foundation data"
@@ -1094,7 +1094,7 @@
     "In the Discovery schedule that populates the class",
     "In the CMDB Health dashboard's color settings",
     "In each user's personal list layout for the class",
-    "In CI Class Manager, on the class's attribute settings"
+    "In CI Class Manager"
    ],
    "answer": [
     3
@@ -1110,7 +1110,7 @@
     "Only the sys_id of each CI to update, with no attributes included",
     "A list of users who should own each CI after it is created",
     "A SQL statement that IRE runs against the CMDB tables directly",
-    "CI items with their class and attributes, plus the relationships between them"
+    "CI items with class and attributes, plus relationships"
    ],
    "answer": [
     3
@@ -1155,7 +1155,7 @@
    "domain": "CF",
    "stem": "A payload lacks values for every identifier entry in its class's identification rule. What happens?",
    "options": [
-    "IRE can't identify it and returns an error instead of inserting a possible duplicate",
+    "IRE returns an error instead of risking a duplicate",
     "IRE stores the payload and retries identification every hour indefinitely",
     "IRE inserts a new CI anyway, using the name as a temporary identifier",
     "IRE updates the most recently created CI in the class with the payload"
@@ -1202,7 +1202,7 @@
    "stem": "Where does Discovery get the credentials it uses to log in to targets?",
    "options": [
     "Discovery doesn't need credentials for any kind of exploration",
-    "From the credentials stored on the instance, which the MID Server uses during discovery",
+    "From credentials stored on the instance, used by the MID Server",
     "From the discovery admin's personal account, used for every probe",
     "From each target device, which sends its password to the instance on request"
    ],
@@ -1232,7 +1232,7 @@
    "domain": "IN",
    "stem": "What do Discovery patterns do?",
    "options": [
-    "They define the steps to identify and explore a type of CI and its relationships",
+    "They define how to identify and explore a type of CI",
     "They define the health scoring weights used for each class",
     "They define which users can run Discovery schedules on the instance",
     "They define the visual layout of the Unified Map for each class"
@@ -1264,7 +1264,7 @@
    "stem": "How does ServiceNow discover resources in public clouds such as AWS and Azure?",
    "options": [
     "By installing a MID Server inside every virtual machine in the cloud",
-    "Through cloud discovery, using a service account with API access to the provider",
+    "Through cloud discovery with a provider service account",
     "By asking each cloud account owner to enter resources manually",
     "Public cloud resources can't be discovered"
    ],
@@ -1311,7 +1311,7 @@
    "domain": "IN",
    "stem": "What data does a Service Graph Connector for an endpoint management tool such as Microsoft SCCM or Intune typically bring into the CMDB?",
    "options": [
-    "Computers, their hardware details, and installed software",
+    "Computers, hardware details, and installed software",
     "Users' email messages and calendar entries",
     "Business applications and their portfolio owners",
     "Business service offerings and their SLAs"
@@ -1326,10 +1326,10 @@
    "domain": "IN",
    "stem": "Before running a new IntegrationHub ETL transform against production data, how can an implementer check what IRE will do?",
    "options": [
-    "Delta imports don't need a schedule and run whenever data changes",
-    "Delta imports delete every CI that wasn't included in the latest file",
-    "Delta imports skip IRE entirely, so they can never create duplicates",
-    "Only changed records are processed, cutting load time and processing"
+    "ETL transforms can't be tested before they run",
+    "Ask IRE to email a summary of the changes it would make",
+    "Run it in production and fix any duplicates afterward",
+    "Use the ETL test run to preview and roll back"
    ],
    "answer": [
     3
@@ -1358,7 +1358,7 @@
    "domain": "IN",
    "stem": "A legacy transform map must keep running, but it should go through IRE. What can be used in the transform script?",
    "options": [
-    "CMDBTransformUtil, to pass each row through IRE instead of inserting directly",
+    "CMDBTransformUtil, to pass each row through IRE",
     "A business rule that deletes duplicates after each import completes",
     "A GlideRecord insert on cmdb_ci, to bypass the transform map entirely",
     "A client script that blocks duplicate entries on the import form"
@@ -1376,7 +1376,7 @@
    "options": [
     "It permanently stores the final CI records that users work with",
     "It holds the list of users allowed to run the import",
-    "It holds the raw imported data before it is transformed into target tables",
+    "It holds raw imported data before it's transformed",
     "It stores the health scores calculated for imported CIs"
    ],
    "answer": [
@@ -1389,10 +1389,10 @@
    "domain": "IN",
    "stem": "Two sources report the same manufacturer as \"Hewlett Packard Enterprise\" and \"HPE\". Why normalize these values during ingestion?",
    "options": [
-    "For logical records no tool can discover, such as business applications",
-    "For every server, because discovered server data is usually out of date",
-    "Never; every CMDB record must be created by an integration or Discovery",
-    "For network devices, because Discovery can't classify switches or routers"
+    "Consistent values make reporting and matching reliable",
+    "Normalization encrypts manufacturer data so only admins can read it",
+    "Normalization deletes CIs from manufacturers that aren't recognized",
+    "Normalized values are required before the MID Server can start"
    ],
    "answer": [
     0
@@ -1404,10 +1404,10 @@
    "domain": "IN",
    "stem": "What is the main benefit of delta imports over full imports for a large integration?",
    "options": [
-    "Delta imports don't need a schedule to run",
-    "Delta imports skip IRE, so they never create any duplicates",
+    "Delta imports don't need a schedule and run whenever data changes",
+    "Delta imports skip IRE entirely, so they can never create duplicates",
     "Only changed records are processed, cutting load time and processing",
-    "Delta imports delete every CI that wasn't in the latest file"
+    "Delta imports delete every CI that wasn't included in the latest file"
    ],
    "answer": [
     2
@@ -1420,7 +1420,7 @@
    "stem": "A Discovery run fails for a group of servers. Where should an administrator start troubleshooting?",
    "options": [
     "The CMDB Health dashboard's completeness score for the server class",
-    "The discovery status and its logs, plus the ECC queue records for those devices",
+    "The discovery status, logs, and ECC queue for those devices",
     "The principal class list, to confirm servers are included",
     "The CSDM foundation dashboard for missing business applications"
    ],
@@ -1434,10 +1434,10 @@
    "domain": "IN",
    "stem": "When is manual creation the expected way to populate CMDB records?",
    "options": [
-    "For network devices, because Discovery can't classify them",
-    "For every server, because discovered data is often out of date",
+    "For network devices, because Discovery can't classify switches or routers",
+    "For every server, because discovered server data is usually out of date",
     "For logical records no tool can discover, such as business applications",
-    "Never; every CMDB record must come from an integration"
+    "Never; every CMDB record must be created by an integration or Discovery"
    ],
    "answer": [
     2
@@ -1449,7 +1449,7 @@
    "domain": "GV",
    "stem": "How is a class's overall CMDB Health score derived?",
    "options": [
-    "From its completeness, compliance, and correctness KPIs, combined by weight",
+    "From its three KPIs, combined by weight",
     "From the age of the oldest CI in the class compared with the newest",
     "From the number of Discovery schedules that target the class",
     "From the number of users who opened CIs of the class during the week"
@@ -1515,7 +1515,7 @@
     "In the user's personal notification preferences",
     "In the Discovery schedule that populates the class",
     "In each CI's form layout, using a UI policy",
-    "In CI Class Manager, as part of the class's health settings"
+    "In CI Class Manager's health settings"
    ],
    "answer": [
     3
@@ -1592,7 +1592,7 @@
    "domain": "GV",
    "stem": "Why should a policy require approval before CIs are deleted?",
    "options": [
-    "To confirm CIs aren't still needed or referenced before they're removed",
+    "To confirm CIs aren't still needed before removal",
     "To slow the policy down so it doesn't use too much processing",
     "Because deleted CIs must be emailed to the auditors first",
     "Because the platform can't delete CIs without a manager's password"
@@ -1699,7 +1699,7 @@
    "domain": "GV",
    "stem": "Why should custom relationship types be avoided where a standard type fits?",
    "options": [
-    "Standard types keep maps, impact analysis, and reporting consistent",
+    "Standard types keep maps and impact analysis consistent",
     "Custom types are automatically deleted at each upgrade",
     "Standard relationship types are the only ones IRE can store",
     "Custom relationship types are blocked by the platform"
@@ -1730,7 +1730,7 @@
    "stem": "A decommissioned server still has old incidents and changes that reference it. What should happen to its CI?",
    "options": [
     "Leave it operational so the old records stay valid",
-    "Retire it so history stays intact while it's marked as out of service",
+    "Retire it so its history stays intact",
     "Rename it so nobody can find it in searches",
     "Delete it at once so it no longer appears in any CI picker"
    ],
@@ -1747,7 +1747,7 @@
     "Deletes every retired CI immediately with no way to recover it",
     "Marks retired CIs operational again so they're used in reports",
     "Copies retired CIs into the knowledge base as articles",
-    "Moves eligible retired CIs out of the active tables while preserving them"
+    "Moves retired CIs out of active tables, preserving them"
    ],
    "answer": [
     3
@@ -1760,7 +1760,7 @@
    "domain": "GV",
    "stem": "How is a certification policy typically set up?",
    "options": [
-    "With a filter of CIs, the attributes to certify, and a schedule for owner tasks",
+    "With a CI filter, attributes to certify, and a schedule",
     "With a Discovery pattern that certifies attributes during each scan",
     "With a reconciliation rule that marks the owner's source as certified",
     "With a principal class flag that certifies all CIs in the class"
@@ -1776,7 +1776,7 @@
    "domain": "GV",
    "stem": "What is the difference between a compliance audit and a certification?",
    "options": [
-    "An audit checks CIs automatically against rules; certification asks people to confirm",
+    "An audit checks CIs automatically; certification asks people",
     "An audit is done only by external auditors; certification is done by Discovery",
     "There's no difference; the platform uses both names for one feature",
     "An audit deletes failing CIs; certification archives them"
@@ -1791,7 +1791,7 @@
    "domain": "GV",
    "stem": "A team wants to add a new custom CI class. What should happen first?",
    "options": [
-    "A governance review to confirm an existing class can't be used",
+    "A governance review of whether an existing class fits",
     "Copy an existing class and rename all of its fields",
     "Add a new table without extending cmdb_ci for flexibility",
     "Create the class directly in production and announce it"
@@ -1807,7 +1807,7 @@
    "stem": "Health inclusion rules already exclude retired servers. How do CMDB groups differ from them?",
    "options": [
     "CMDB groups replace identification rules for the CIs they contain",
-    "CMDB groups define named sets of CIs for governance, reporting, and policies",
+    "CMDB groups define named sets of CIs for governance",
     "CMDB groups decide which data source wins for each attribute",
     "CMDB groups are the only way to exclude CIs from health scores"
    ],
@@ -1822,7 +1822,7 @@
    "stem": "Two discovery tools report the same servers with different serial number formats, creating duplicates. What is the best fix?",
    "options": [
     "Delete duplicates by hand each week as they reappear",
-    "Normalize the serial numbers or use lookup rules so both identify the same CI",
+    "Normalize serial numbers or use lookup rules",
     "Exclude servers from the CMDB Health correctness KPI",
     "Turn off one of the tools permanently, even if it has unique data"
    ],
@@ -1900,7 +1900,7 @@
     "Change failing scores to passing directly on the dashboard",
     "Nothing; the dashboard is display-only and can't lead to action",
     "Delete all failing CIs in one step from the dashboard",
-    "Drill into them and create remediation tasks for the responsible groups"
+    "Drill into them and create remediation tasks"
    ],
    "answer": [
     3
@@ -1929,7 +1929,7 @@
    "stem": "An analyst wants servers that have had more than five incidents this quarter. Can CMDB Query Builder help?",
    "options": [
     "No, Query Builder can only query CI attributes on a single class",
-    "Yes, queries can include non-CMDB tables such as incidents related to CIs",
+    "Yes, queries can include tables such as incidents",
     "Yes, but only if each incident is converted into a CI first",
     "No, incidents must be exported and joined in a spreadsheet"
    ],
@@ -1977,7 +1977,7 @@
    "options": [
     "A geographic map showing where each datacenter is located",
     "A list of every application installed on a single laptop",
-    "A view of the CIs and connections that deliver one application service",
+    "A view of the CIs delivering one application service",
     "A chart of how many incidents each application had last year"
    ],
    "answer": [
@@ -1991,7 +1991,7 @@
    "stem": "A database server goes down. How does the CMDB help identify which business services are affected?",
    "options": [
     "The server's description field lists every service it supports",
-    "Relationships from the server up through application services show impact",
+    "Relationships from the server up to services show impact",
     "The CMDB Health score shows which services are affected",
     "Each service owner is emailed to ask whether they're affected"
    ],
@@ -2023,7 +2023,7 @@
     "They use the CMDB only to send users notifications",
     "They replace the CMDB with their own separate inventory",
     "They don't use CMDB data at all",
-    "Alerts are bound to CIs, so impact on services can be calculated"
+    "Alerts are bound to CIs, so service impact can be calculated"
    ],
    "answer": [
     3
@@ -2036,7 +2036,7 @@
    "stem": "How does Vulnerability Response depend on the CMDB?",
    "options": [
     "It only uses the CMDB to check user permissions",
-    "Vulnerabilities are matched to CIs, which identify owners and impact",
+    "Vulnerabilities are matched to CIs with owners",
     "It doesn't use the CMDB; it relies on scanner data alone",
     "It stores vulnerabilities as CI classes in the CMDB hierarchy"
    ],
@@ -2097,7 +2097,7 @@
    "options": [
     "The number of times users opened the CMDB Workspace each week",
     "The total number of CIs in the CMDB at the end of each month",
-    "The percentage of incidents with an accurate configuration item populated",
+    "The percentage of incidents with the right CI",
     "The number of CI classes the CMDB team has created this year"
    ],
    "answer": [
@@ -2110,7 +2110,7 @@
    "domain": "IS",
    "stem": "An infrastructure team plans maintenance on a storage array. How can they see what will be affected?",
    "options": [
-    "Open the array in Unified Map and follow relationships up to services",
+    "Open it in Unified Map and follow relationships up",
     "Ask the service desk which users have reported storage issues",
     "Search the knowledge base for articles that mention the array",
     "Check the array's CMDB Health score before scheduling"
@@ -2173,7 +2173,7 @@
     "The CIs have all been certified by their owners recently",
     "More users have started using the CMDB Workspace",
     "The principal class list was recently expanded",
-    "That integration or discovery source has stopped updating its CIs"
+    "That source has stopped updating its CIs"
    ],
    "answer": [
     3
@@ -2188,7 +2188,7 @@
     "MID Servers that need instructions for running probes",
     "End users who submit requests through the portal",
     "External auditors who need direct database access",
-    "Analysts who need relationship queries without writing scripts"
+    "Analysts who need queries without scripts"
    ],
    "answer": [
     3
@@ -2200,7 +2200,7 @@
    "domain": "CS",
    "stem": "Which records belong to the CSDM foundation domain?",
    "options": [
-    "Reference data such as companies, locations, departments, groups, and users",
+    "Reference data like companies, locations, and groups",
     "Application services and the infrastructure CIs that support them",
     "Business service offerings and their service level commitments",
     "Business applications and their portfolio lifecycle information"
@@ -2249,7 +2249,7 @@
    "options": [
     "Deleting CIs automatically when they stop matching the group's query",
     "Assigning random CIs to support groups so workloads stay balanced",
-    "Grouping CIs by a query so a technical service offering can reference them",
+    "Grouping CIs by query for a technical service offering",
     "Replacing the identification rules for the CIs that are in the group"
    ],
    "answer": [
@@ -2266,7 +2266,7 @@
     "A contract with a software vendor for licenses and support",
     "A business service that end users consume through the portal",
     "A deployed production server that hosts the finished software",
-    "A unit of software being built or maintained by a development team"
+    "A unit of software built by a development team"
    ],
    "answer": [
     3
@@ -2298,7 +2298,7 @@
     "Application services can't contain CIs",
     "Only by importing a spreadsheet each quarter",
     "Only by typing CI names into the service's description field",
-    "Service Mapping, tag-based mapping, or a dynamic or manual definition"
+    "Service Mapping, tags, or a dynamic or manual definition"
    ],
    "answer": [
     3
@@ -2482,7 +2482,7 @@
    "stem": "A source system stops reporting a device that was decommissioned. How should the integration handle records missing from the source?",
    "options": [
     "Ignore missing records, since the CMDB should never change",
-    "Flag or retire them through governed lifecycle steps, not immediate deletion",
+    "Flag or retire them through governed lifecycle steps",
     "Recreate the CIs from the previous import file each time",
     "Delete the CIs immediately whenever they're absent from one import"
    ],
@@ -2498,7 +2498,7 @@
    "options": [
     "Which business services rely on the device",
     "Who owns the device and which group should support it",
-    "What kind of device it is, which decides the CI class and next steps",
+    "What kind of device it is, which sets its CI class",
     "Whether the device's data is complete enough to score well"
    ],
    "answer": [
@@ -2541,7 +2541,7 @@
    "domain": "IN",
    "stem": "Agentless discovery fails against servers in a new network segment. What should be checked first?",
    "options": [
-    "Whether firewalls allow the required ports from the MID Server",
+    "Whether firewalls allow the needed ports from the MID",
     "Whether the servers' business application owners are set",
     "Whether CMDB Health jobs ran the previous night",
     "Whether the class is listed as a principal class"
@@ -2587,7 +2587,7 @@
    "stem": "How can the CMDB help detect unauthorized changes to servers?",
    "options": [
     "Block Discovery from updating CIs that have open incidents",
-    "Compare discovered changes with approved change requests for those CIs",
+    "Compare discovered changes with approved changes",
     "Lower the health score of any CI that has a change request",
     "Delete any CI whose attributes change between two discovery runs"
    ],
@@ -2651,7 +2651,7 @@
    "options": [
     "Asking users to note their changes in the CI's description field",
     "Removing Discovery so manual values are never overwritten again",
-    "Reconciliation rules and access controls that protect discovered attributes",
+    "Reconciliation rules and access controls",
     "Raising the staleness period so manual edits last longer"
    ],
    "answer": [
@@ -2744,7 +2744,7 @@
    "options": [
     "Approves every incident that references a CI before it's assigned",
     "Runs Discovery schedules and fixes MID Server credential failures",
-    "Reviews health, sets priorities, and approves changes to the data model",
+    "Reviews health, sets priorities, and approves model changes",
     "Edits CI attributes directly whenever anyone reports a data error"
    ],
    "answer": [
@@ -2774,7 +2774,7 @@
    "options": [
     "Ask each server owner which applications run on their servers",
     "Count relationships manually on each server's form",
-    "Use a \"not related\" condition between servers and application services",
+    "Use a \"not related\" condition to application services",
     "Filter the server list by the word \"application\" in its name"
    ],
    "answer": [
@@ -2838,7 +2838,7 @@
    "options": [
     "Business applications sorted alphabetically by name",
     "Business applications with the longest descriptions",
-    "Business applications with no owner or lifecycle status",
+    "Business apps with no owner or lifecycle status",
     "Business applications created on a Monday"
    ],
    "answer": [
@@ -2852,7 +2852,7 @@
    "stem": "How can CMDB data help control cloud costs?",
    "options": [
     "By lowering the price the cloud provider charges per resource",
-    "By showing cloud resources by account and owner, revealing unused ones",
+    "By showing cloud resources by owner, revealing unused ones",
     "By deleting cloud resources whenever their owner is unknown",
     "By converting cloud resources into on-premises servers"
    ],
