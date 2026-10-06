@@ -49,5 +49,5 @@ test('builds a 10-question study exam, reveals answers, and records seen questio
   expect(JSON.parse(localStorage.getItem('gg-seen-servicenow-cis-tprm'))).toHaveLength(10);
 
   fireEvent.click(screen.getByRole('button', { name: /build a new exam/i }));
-  expect(screen.getByText(/seen 10 of 60 questions/)).toBeInTheDocument();
+  expect(screen.getByText(/seen 10 of 150 questions/)).toBeInTheDocument();
 });

@@ -7,8 +7,14 @@ Current question banks:
 
 | Vendor | Certification | Bank size | Full-length exam |
 |--------|---------------|-----------|------------------|
-| ServiceNow | CIS-TPRM (Third-party Risk Management) | 60 | 60 questions / 90 min |
+| ServiceNow | CIS-DF (Data Foundations: CMDB and CSDM) | 188 | 75 questions / 90 min |
+| ServiceNow | CIS-RC (Risk and Compliance) | 150 | 60 questions / 90 min |
+| ServiceNow | CIS-TPRM (Third-party Risk Management) | 150 | 60 questions / 90 min |
+| Microsoft | SC-900 (Security, Compliance, and Identity Fundamentals) | 115 | 45 questions / 45 min |
 | Microsoft | SC-401 (Information Security Administrator) | 150 | 50 questions / 100 min |
+
+Banks hold about 2.5× a full-length exam, split across domains by blueprint weight, so repeat
+attempts draw fresh questions.
 
 Users pick a certification, then build an exam: **exam mode** (timed, scored at the end) or
 **study mode** (untimed, explanation after each answer), a length (10, 25, full length, or custom),
