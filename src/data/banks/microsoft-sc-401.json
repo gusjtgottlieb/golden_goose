@@ -430,7 +430,7 @@
    "answer": [
     0
    ],
-   "explanation": "A is correct. When content matches rules in several DLP policies, the most restrictive action (the block from Policy A) is enforced, and incident reports and alerts from every matching rule — including Policy B's admin notification — are still sent. B is wrong because separate policies do not suppress each other based on priority. C is wrong because the lower threshold does not 'win' across policies — both are evaluated. D is wrong because notifications still fire even when a block is in place; the 'most restrictive wins' shortcut does not apply across separate policies."
+   "explanation": "A is correct. When content matches rules in several DLP policies, the most restrictive action (the block from Policy A) is enforced, and incident reports and alerts from every matching rule — including Policy B's admin notification — are still sent. B is wrong because separate policies do not suppress each other based on priority. C is wrong because the lower threshold does not 'win' across policies — both are evaluated. D is wrong because, although the block is the action that's enforced, notifications and incident reports from every matching rule still fire."
   },
   {
    "id": "sc401-1-26",
@@ -960,7 +960,7 @@
    "domain": "MC",
    "stem": "When should you use Double Key Encryption (DKE) rather than standard sensitivity label encryption with Azure Rights Management?",
    "options": [
-    "When rules require that no cloud provider, including Microsoft, can read it",
+    "When rules require that no cloud provider, even Microsoft, can read the content",
     "When you need to apply encryption retroactively to large volumes of existing documents at scale",
     "When you need to encrypt emails sent to external recipients who do not use Outlook",
     "When users need to access encrypted content from both Windows and macOS devices simultaneously"
@@ -1005,7 +1005,7 @@
    "domain": "MC",
    "stem": "To implement Double Key Encryption (DKE), where must the organization host its second encryption key?",
    "options": [
-    "In a dedicated Microsoft Purview DKE vault provisioned through the compliance portal",
+    "In a dedicated Microsoft Purview DKE vault provisioned through the Purview portal",
     "On a service the organization hosts and controls, outside Microsoft's cloud",
     "Distributed across both Azure and on-premises Active Directory using a hybrid key sharing configuration",
     "In Azure Key Vault within the organization own Azure subscription, separate from Microsoft-managed key vaults"
@@ -1621,7 +1621,7 @@
     "The next time a user opens and saves the document in an Office application",
     "Within 1 hour — as the label policy synchronizes to all Office applications automatically",
     "Only when the user manually removes and re-applies the label to the document",
-    "Immediately — as soon as the label configuration is saved in the Purview compliance portal"
+    "Immediately — as soon as the label configuration is saved in the Purview portal"
    ],
    "answer": [
     0
@@ -1949,14 +1949,14 @@
    "stem": "The FileAccessed audit event in the unified audit log records which activity?",
    "options": [
     "When a file in SharePoint or OneDrive is opened or previewed by a user",
-    "When a file in SharePoint is permanently deleted by a user",
+    "When a file in SharePoint is deleted by a user",
     "When a sensitivity label is applied to a file for the first time",
     "When a file is checked out for exclusive editing by a user in SharePoint"
    ],
    "answer": [
     0
    ],
-   "explanation": "A is correct. FileAccessed is generated in the SharePoint and OneDrive audit log when a user opens or previews a file — capturing user identity, IP address, file name, file path, and site URL. B (file permanently deleted) is FileDeleted — different operation. C (sensitivity label applied) is SensitivityLabelApplied — different operation. D (file checked out) is CheckOut — different operation."
+   "explanation": "A is correct. FileAccessed is generated in the SharePoint and OneDrive audit log when a user opens or previews a file — capturing user identity, IP address, file name, file path, and site URL. B (file deleted) is FileDeleted — different operation. C (sensitivity label applied) is SensitivityLabelApplied — different operation. D (file checked out) is CheckOut — different operation."
   },
   {
    "id": "sc401-3-28",
@@ -2053,7 +2053,7 @@
    "domain": "MC",
    "stem": "For Microsoft Purview to capture Microsoft 365 Copilot interaction events in the unified audit log, what is required?",
    "options": [
-    "Unified audit logging must be enabled in the Microsoft Purview compliance portal",
+    "Unified audit logging must be enabled for the tenant",
     "Microsoft 365 E5 Advanced Audit licensing is required for all Copilot event types",
     "Microsoft Defender for Endpoint deployed on all devices used with Copilot",
     "DSPM for AI must have an active policy configured before Copilot events are logged"

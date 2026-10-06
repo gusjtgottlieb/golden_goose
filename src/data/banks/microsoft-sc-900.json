@@ -250,13 +250,13 @@
    "options": [
     "Security Administrator",
     "Global Administrator",
-    "Application Administrator",
-    "Helpdesk Administrator"
+    "Helpdesk Administrator",
+    "Password Administrator"
    ],
    "answer": [
     3
    ],
-   "explanation": "Helpdesk Administrator can reset passwords for non-administrators and handle basic support tasks without broad permissions.\n\nGlobal Administrator is far too broad, and the other roles don't fit the task."
+   "explanation": "Password Administrator can reset passwords for non-administrators (and other Password Administrators) and nothing else. Helpdesk Administrator can also reset these passwords but has extra permissions, such as invalidating refresh tokens, so it's broader than needed.\n\nGlobal Administrator is far too broad, and Security Administrator manages security settings rather than passwords."
   },
   {
    "id": "sc900-16",
@@ -1766,7 +1766,7 @@
    "answer": [
     3
    ],
-   "explanation": "Audit (Premium) extends retention and adds high-value events, such as when mail items are accessed, which help forensic investigations. Standard already provides searchable audit logs.",
+   "explanation": "Audit (Premium) adds longer default retention, custom audit log retention policies, and intelligent insights — such as what users searched for in Exchange and SharePoint — which help forensic investigations. Standard already provides searchable audit logs, kept for 180 days.",
    "verify": true
   }
  ]
