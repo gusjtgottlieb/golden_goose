@@ -13,6 +13,16 @@ export const VENDORS = [
 
 export const CERTS = [
   {
+    id: "servicenow-csa",
+    vendor: "ServiceNow",
+    code: "CSA",
+    name: "Certified System Administrator",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-csa.json"),
+  },
+  {
     id: "servicenow-cis-df",
     vendor: "ServiceNow",
     code: "CIS-DF",
