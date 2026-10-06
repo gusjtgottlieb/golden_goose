@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Home from "./components/Home";
-import Exam from "./components/Exam";
-import { findExam } from "./data/catalog";
+import CertPage from "./components/CertPage";
+import { findCert } from "./data/catalog";
 
 // Hash-based routing keeps deep links working on GitHub Pages, which has no
 // server-side fallback for client routes.
 function parseRoute() {
-  const m = window.location.hash.match(/^#\/exam\/([\w-]+)/);
-  return m ? { page: "exam", examId: m[1] } : { page: "home" };
+  const m = window.location.hash.match(/^#\/cert\/([\w-]+)/);
+  return m ? { page: "cert", certId: m[1] } : { page: "home" };
 }
 
 function App() {
@@ -23,11 +23,11 @@ function App() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  const exam = route.page === "exam" ? findExam(route.examId) : null;
+  const cert = route.page === "cert" ? findCert(route.certId) : null;
 
   return (
     <>
-      {exam ? <Exam key={exam.id} meta={exam} /> : <Home />}
+      {cert ? <CertPage key={cert.id} cert={cert} /> : <Home />}
       <footer className="foot">
         <div className="wrap">
           Independent practice material, free to use. Not affiliated with or endorsed by

@@ -1,0 +1,2301 @@
+{
+ "id": "microsoft-sc-401",
+ "vendor": "Microsoft",
+ "code": "SC-401",
+ "name": "Microsoft Certified: Information Security Administrator Associate",
+ "fullLength": 50,
+ "minutes": 100,
+ "passPercent": 70,
+ "readinessPercent": 80,
+ "note": "Microsoft scores SC-401 on a 1–1000 scale with 700 to pass. Practice exams here report a straight percentage; treat 80% as your readiness bar.",
+ "sectioned": true,
+ "domains": [
+  {
+   "id": "CS",
+   "name": "Case study",
+   "weight": "4 of 50"
+  },
+  {
+   "id": "MC",
+   "name": "Multiple choice",
+   "weight": "40 of 50"
+  },
+  {
+   "id": "YN",
+   "name": "Yes / No",
+   "weight": "6 of 50"
+  }
+ ],
+ "groups": {
+  "cs1": {
+   "title": "Case Study — Northwind Traders (Legal Services)",
+   "body": "Northwind Traders is a legal services firm with 1,500 employees on Microsoft 365 E5.\n\n• Client matter numbers stored in a SQL database (format: MATTER-XXXXXX)\n• NDA templates and legal briefs stored in SharePoint Online\n• Legacy client documents on on-premises Windows file servers\n• BYOD iOS and Android devices managed via Microsoft Intune\n• External clients and opposing counsel receive confidential legal briefs via email\n• Microsoft 365 Copilot deployed for 200 senior attorneys"
+  },
+  "yn1": {
+   "title": "Yes / No",
+   "body": "Northwind Traders applies two retention labels: Client Matter — Regulatory Record (Regulatory Record type, 7-year period) and Internal Documents (Regular Record type, 3-year period). A sensitivity label Strictly Confidential uses Assign permissions now encryption scoped to senior attorneys only.\n\nFor each statement, select Yes if it is true or No if it is false."
+  },
+  "cs2": {
+   "title": "Case Study — Adatum Corporation (Pharma Research)",
+   "body": "Adatum Corporation is a pharmaceutical research company with 8,000 employees on Microsoft 365 E5.\n\n• Scanned lab reports (PDF images from flatbed scanners) uploaded to SharePoint Online\n• Proprietary drug compound names unique to Adatum — not publicly documented, no consistent alphanumeric pattern\n• Most sensitive trade secret documents require encryption that no cloud provider can access\n• External academic collaborators have B2B guest accounts in Adatum Teams and SharePoint\n• FDA 21 CFR Part 11 compliance required for all electronic records"
+  },
+  "yn2": {
+   "title": "Yes / No",
+   "body": "Adatum configures the MPIP Scanner on Windows Server 2022 to scan on-premises network shares. A content scan job is created with Policy enforcement set to Off (Discover mode). SQL Server Express is installed on the scanner server.\n\nFor each statement, select Yes if it is true or No if it is false."
+  },
+  "cs3": {
+   "title": "Case Study — Litware Inc (Technology Company)",
+   "body": "Litware Inc is a technology company with 3,000 employees on Microsoft 365 E5.\n\n• Developer-heavy workforce; GitHub repositories connected to Microsoft Defender for Cloud Apps\n• SharePoint Online used for project documentation and design specifications\n• BYOD allowed for managers — iOS and Android devices enrolled in Microsoft Intune\n• Microsoft 365 Copilot deployed for all 200 managers\n• GDPR compliance required — EU customer personal data is processed and stored in M365"
+  },
+  "yn3": {
+   "title": "Yes / No",
+   "body": "Litware has Microsoft 365 E5 licenses. The compliance admin reviews this PowerShell command:\n\n    Search-UnifiedAuditLog -StartDate 05/01/2026 -EndDate 05/20/2026 -RecordType SharePointFileOperation -Operations FileAccessed\n\nLitware also has a 5-year custom SharePoint retention policy and a default 90-day org-wide retention policy applied to the same SharePoint locations.\n\nFor each statement, select Yes if it is true or No if it is false."
+  }
+ },
+ "questions": [
+  {
+   "id": "sc401-1-1",
+   "domain": "CS",
+   "group": "cs1",
+   "stem": "Northwind must detect documents with the same structural layout as their blank NDA template — without relying on keywords or regex patterns. Which SIT approach should they use?",
+   "options": [
+    "A custom regex SIT matching NDA section headers and terminology",
+    "An Exact Data Match (EDM) classifier using NDA field values",
+    "Document fingerprinting based on the blank NDA template file",
+    "A trainable classifier trained on signed NDA examples"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Document fingerprinting hashes the structural layout of a template — field positions, section ordering, paragraph skeleton — and detects new documents that share the same structure regardless of the data filled in. This is purpose-built for blank forms like NDAs, W-2s, and standardized contracts. A is wrong because regex matches text patterns and the question explicitly rules out keyword/regex approaches. B (EDM) is wrong because EDM compares document content against actual database values, which is useful for matter numbers or SSNs but not for structural similarity. D (trainable classifier) is wrong because classifiers identify content TOPICS from training examples; a classifier trained on signed NDAs would match documents 'about' NDAs broadly but could not reliably isolate Northwind's specific template structure."
+  },
+  {
+   "id": "sc401-1-2",
+   "domain": "CS",
+   "group": "cs1",
+   "stem": "Northwind must detect actual client matter numbers from their SQL database to eliminate false positives from similar-looking codes in documents. Which SIT type should they create?",
+   "options": [
+    "A custom regex SIT with the MATTER-[0-9]{6} pattern and keyword corroboration",
+    "An Exact Data Match (EDM) classifier referencing the actual SQL database records",
+    "A document fingerprint based on a matter intake form template",
+    "A named entity SIT for financial matter identifiers"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. EDM hashes the actual matter-number values from Northwind's SQL database and uses those hashes as the match source — so a string only counts as a match if it exists in the source data. This eliminates false positives from unrelated codes that merely look like MATTER-XXXXXX. A is wrong because a regex SIT matches anything fitting the format whether or not the matter number is real — exactly the false-positive problem they need to solve. C is wrong because fingerprinting detects template structure, not specific data values. D is wrong because there is no built-in 'financial matter identifiers' named entity SIT — named entity SITs cover broad categories (person names, addresses, medical terms), not custom internal identifiers."
+  },
+  {
+   "id": "sc401-1-3",
+   "domain": "CS",
+   "group": "cs1",
+   "stem": "BYOD users access SharePoint sites containing sensitive legal documents from personal browser sessions. Northwind wants to prevent file downloads and printing from unmanaged (non-Intune) sessions without fully blocking access. What should they configure?",
+   "options": [
+    "A DLP policy blocking SharePoint downloads on non-Intune-enrolled devices",
+    "A sensitivity label with Assign permissions now encryption on all documents in the site",
+    "A container sensitivity label on the SharePoint site configured to allow web-only access for unmanaged devices",
+    "A conditional access policy requiring Intune compliance before any SharePoint access is permitted"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Container sensitivity labels on SharePoint sites include an 'Unmanaged devices' setting with three options: block access, allow limited web-only access (view in browser, no download/print/sync), or allow full access. Web-only meets both requirements — users can still read documents but cannot extract them from BYOD devices. The setting leverages Entra ID Conditional Access App Control under the hood but is configured directly on the container label. A is wrong because SharePoint DLP has no device-state condition — DLP inspects content, not device posture; recognizing whether a device is Intune-managed is the job of Conditional Access. B is wrong because file-level encryption applies uniformly to all access regardless of device — it doesn't selectively block download on BYOD while allowing it on corporate endpoints, and it doesn't gate printing differently per device. D is wrong because requiring Intune compliance for ANY SharePoint access fully blocks BYOD usage, contradicting the requirement to allow read access."
+  },
+  {
+   "id": "sc401-1-4",
+   "domain": "CS",
+   "group": "cs1",
+   "stem": "Northwind must send legal briefs to external clients via email. The emails must expire after 30 days and must be revocable after sending if the client relationship ends. Which technology provides BOTH capabilities?",
+   "options": [
+    "A sensitivity label with Do Not Forward IRM permissions applied before sending",
+    "Standard Office 365 Message Encryption using the Encrypt-Only protection template",
+    "S/MIME certificate-based encryption with client-side key management",
+    "Microsoft Purview Advanced Message Encryption with expiration date and revocation configured"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "D is correct. Advanced Message Encryption (an M365 E5 capability) is the only Microsoft email encryption option that supports BOTH time-based expiration (the message becomes unreadable after a configured date) AND post-send revocation (the sender or admin can revoke access to a message that has already been delivered). A is wrong because Do Not Forward IRM prevents forwarding/printing/copying but cannot expire or revoke. B is wrong because standard OME Encrypt-Only encrypts at send time but has no expiration timer and no revocation. C is wrong because S/MIME relies on certificate-based encryption between endpoints; once the recipient decrypts the message, the sender has no mechanism to expire or revoke it."
+  },
+  {
+   "id": "sc401-1-5",
+   "domain": "MC",
+   "stem": "Which named entity SIT should you use to detect full person names across diverse European, Asian, and Middle Eastern naming conventions for GDPR subject rights compliance?",
+   "options": [
+    "All Physical Addresses",
+    "EU Passport Number",
+    "All Full Names",
+    "All Personal Data Identifiers"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (All Full Names) is correct. It is a named entity SIT that uses an ML model trained on multilingual name data to recognize person names across European, Asian, Middle Eastern, and other naming conventions without relying on fixed patterns. A (All Physical Addresses) is wrong because it detects addresses, not names. B (EU Passport Number) is wrong — it is a structured regex SIT for travel document identifiers, not person names. D is wrong because 'All Personal Data Identifiers' is not a named entity SIT in Microsoft Purview — Purview's bundled GDPR SITs have specific names like 'EU Driver's License Number,' 'EU National Identification Number,' or the 'EU GDPR Enhanced' bundle, but none is named 'All Personal Data Identifiers.'"
+  },
+  {
+   "id": "sc401-1-6",
+   "domain": "MC",
+   "stem": "In an Exact Data Match (EDM) sensitive information type, what is the role of the primary element?",
+   "options": [
+    "It specifies the hashing algorithm applied to the database records before upload",
+    "It is the main sensitive field the SIT actively searches for in document or email content",
+    "It defines which users have permission to view EDM-matched content in DLP reports",
+    "It sets the confidence threshold above which EDM results are reported"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. The primary element is the central sensitive field EDM actively searches for in content — for example, the SSN column in an HR data table. Supporting elements (last name, date of birth) corroborate the match in proximity and raise confidence from medium to high, but the primary element MUST match for any result to fire. A is wrong because the hashing algorithm is fixed by EDM itself and not defined by the primary element. C is wrong because access to EDM-matched content in DLP reports is governed by RBAC roles, not by SIT configuration. D is wrong because confidence thresholds are set on the DLP rule, not embedded in the primary element definition."
+  },
+  {
+   "id": "sc401-1-7",
+   "domain": "MC",
+   "stem": "A container sensitivity label is applied to a Microsoft Teams team. Which settings does it control?",
+   "options": [
+    "Whether files in team channels are automatically encrypted when uploaded",
+    "Whether Teams meeting recordings are labeled when saved to SharePoint",
+    "The team privacy (Public/Private), external user access, and unmanaged device access for the team and its connected SharePoint site",
+    "Whether DLP policies apply to chat messages in that specific team"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Container labels on Teams teams (which also govern the connected M365 Group and SharePoint site) control: privacy (public vs private), external/guest access, and unmanaged-device access. They govern the container itself — not files inside. A is wrong because container labels do NOT automatically encrypt files in channels; file-level encryption is a document-level sensitivity-label setting. B is wrong because Teams meeting recordings are labeled by meeting-scoped or file-scoped sensitivity labels, not by the container label on the team. D is wrong because container labels do not configure DLP scope — DLP policies have their own location targeting and conditions, independent of the team's container label."
+  },
+  {
+   "id": "sc401-1-8",
+   "domain": "MC",
+   "stem": "What control does Microsoft 365 Customer Key provide that standard Microsoft-managed encryption does NOT?",
+   "options": [
+    "End-to-end encryption of emails without requiring Outlook or Microsoft 365",
+    "Per-user granular encryption keys scoped to individual mailboxes",
+    "The ability for your organization to control and revoke the root encryption keys used for Microsoft 365 data at rest",
+    "Encryption of data flowing between Microsoft datacenter regions"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Customer Key (BYOK at the Microsoft 365 service layer) lets the organization supply and control the root keys that wrap Microsoft's data-at-rest encryption keys for Exchange, SharePoint, OneDrive, and Teams. By revoking those keys, the organization can render its M365 data unreadable — even to Microsoft. A is wrong because Customer Key does not change message-level end-to-end encryption — it operates at the service storage layer. B is wrong because Customer Key keys are tenant- or DEP-scoped, not per-user mailbox keys. D is wrong because encryption of data in transit between Microsoft datacenter regions is a separate Microsoft platform capability and is not what Customer Key controls."
+  },
+  {
+   "id": "sc401-1-9",
+   "domain": "MC",
+   "stem": "Your organization requires that classified documents cannot be decrypted by Microsoft, Azure, or any cloud provider — even under legal compulsion. Which encryption technology satisfies this requirement?",
+   "options": [
+    "Azure Rights Management with Bring Your Own Key (BYOK)",
+    "Microsoft Purview Customer Key (M365-layer key control)",
+    "Double Key Encryption (DKE)",
+    "S/MIME with an organization-owned certificate authority"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (DKE) is correct. Double Key Encryption protects content with two keys simultaneously: one held in Azure RMS and one held by the organization on infrastructure outside Microsoft. Both keys are required for decryption — Microsoft alone cannot decrypt DKE content, even under legal compulsion. A is wrong because Azure RMS with BYOK still allows Microsoft operational access to the key when wrapping/unwrapping content. B is wrong for the same reason — Customer Key allows Microsoft operational access to keys stored in Azure Key Vault. D is wrong because S/MIME is a message-level technology between endpoints; it is not designed for cloud-stored documents and does not provide DKE's two-key model."
+  },
+  {
+   "id": "sc401-1-10",
+   "domain": "MC",
+   "stem": "Unlike Microsoft Purview Message Encryption (OME), what is a distinctive infrastructure requirement for S/MIME to function?",
+   "options": [
+    "Both sender and recipient must have Microsoft 365 E5 licensing",
+    "The recipient must access the message via Outlook on the web to decrypt it",
+    "Both sender and recipient must have valid X.509 digital certificates installed from a trusted certificate authority",
+    "S/MIME requires Microsoft Entra ID accounts for both communicating parties"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. S/MIME is built on PKI: both sender and recipient must hold X.509 certificates issued by a trusted CA and installed on their devices/clients. Without those certificates, S/MIME cannot sign or encrypt. A is wrong — S/MIME is not tied to E5 licensing; it ships in Outlook/Exchange. B is wrong because that describes the OME web-portal experience for external recipients, not S/MIME. D is wrong — S/MIME does not require Entra ID accounts on either side; it works between any two parties with valid certificates, including cross-organization."
+  },
+  {
+   "id": "sc401-1-11",
+   "domain": "MC",
+   "stem": "A label policy has a default label of Internal. A user creates a new Word document and saves it without changing the label. Does this satisfy mandatory labeling?",
+   "options": [
+    "No — mandatory labeling still requires the user to actively confirm the label even when a default is configured",
+    "Yes — the default label is automatically applied and fully satisfies the mandatory labeling requirement",
+    "No — the default label is applied but the user must confirm it within 24 hours before sharing",
+    "Yes, but only if the default label configuration includes encryption"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When a sensitivity-label policy is configured with a default label, that label is applied automatically to new content at creation time. Because the document is labeled, mandatory labeling is satisfied without re-prompting the user. A is wrong because no extra user confirmation is required when a default is in effect. C is wrong because there is no 24-hour confirmation grace period. D is wrong because the encryption configuration of the default label is irrelevant to mandatory labeling — what matters is that a label is applied."
+  },
+  {
+   "id": "sc401-1-12",
+   "domain": "MC",
+   "stem": "What is the minimum number of seed content items required to initiate training of a custom trainable classifier?",
+   "options": [
+    "10 items",
+    "25 items",
+    "50 items",
+    "200 items"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (50 items) is correct. Custom trainable classifiers in Microsoft Purview require a minimum of 50 (and up to 500) seed items placed in a dedicated SharePoint folder before training can begin. A (10) and B (25) are wrong because both are below the documented minimum and the classifier will not begin training. D (200) is wrong because, although 200 is within the allowed seed range, the question asks for the MINIMUM — and 200 is far above it."
+  },
+  {
+   "id": "sc401-1-13",
+   "domain": "MC",
+   "stem": "A label hierarchy has parent label Confidential with sublabel Confidential - Legal. A user selects Confidential - Legal from the sensitivity bar in Word. What is applied to the document?",
+   "options": [
+    "Both Confidential and Confidential - Legal labels are applied simultaneously to the document",
+    "Only Confidential - Legal is applied — the parent is implied by the hierarchy but not separately applied",
+    "Only the parent label Confidential is applied — sublabel settings inherit into the parent",
+    "The user must first apply Confidential and then separately apply the sublabel in a second step"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When a user selects a sublabel from the sensitivity bar, only that single sublabel is applied — Office records exactly one sensitivity label per file. The parent provides organization in the menu and may share visual marking/encryption settings, but it is not separately stored on the document. A is wrong because a document carries exactly one label at a time, not both parent and sublabel simultaneously. C is wrong because applying the sublabel does not back-apply the parent — the sublabel itself is what is recorded. D is wrong because no two-step apply workflow exists; selecting the sublabel applies it directly."
+  },
+  {
+   "id": "sc401-1-14",
+   "domain": "MC",
+   "stem": "A Highly Confidential sensitivity label with encryption is applied to a Power BI semantic model. A user exports the dataset to Excel. What happens to the sensitivity label?",
+   "options": [
+    "The label is removed — Excel manages its own label policy independently",
+    "The label is applied to the Excel file but encryption is removed for application compatibility",
+    "The label and encryption are both transferred to the exported Excel file",
+    "The user must manually re-apply the label in Excel after completing the export"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. When Power BI semantic models are exported to Office formats (Excel, PowerPoint, PDF), the sensitivity label AND its protection settings — encryption, content marking text, watermarks — flow through to the exported file. This is how Power BI's label-aware export keeps protection attached to data leaving the model. A is wrong because Excel does not maintain a separate label policy; sensitivity labels are tenant-wide. B is wrong because Power BI preserves encryption on export; encryption is not dropped 'for compatibility.' D is wrong because no manual re-application is needed — Power BI handles this automatically."
+  },
+  {
+   "id": "sc401-1-15",
+   "domain": "MC",
+   "stem": "You want the MPIP Scanner to identify files containing sensitive information on on-premises file shares WITHOUT applying labels or modifying any files. Which scanner configuration achieves this?",
+   "options": [
+    "Deploy the scanner with Policy enforcement set to On (Enforce mode)",
+    "Deploy the scanner with Policy enforcement set to Off (Discover mode) to generate a report only",
+    "Deploy the scanner with TestWithNotifications mode to preview labeling actions",
+    "Deploy the scanner in Audit mode with an instance count threshold set to zero"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Setting Policy enforcement = Off on the content scan job puts the MPIP Scanner in Discover (audit-only) mode — it scans, identifies matches, and reports without applying labels or modifying files. This is the recommended validation step before enabling Enforce mode. A is wrong because Enforce mode (Policy enforcement = On) actively applies labels and protection. C is wrong because 'TestWithNotifications' is DLP-policy terminology, not an MPIP Scanner mode — the Scanner's modes are Discover (Off) and Enforce (On). D is wrong because 'Audit mode with instance count threshold zero' is not a Scanner configuration; the Scanner's behavior is governed by the Policy enforcement flag."
+  },
+  {
+   "id": "sc401-1-16",
+   "domain": "MC",
+   "stem": "Mandatory labeling is enabled in the label policy. No default label is configured. A user composes an email in Outlook and clicks Send without selecting a label. What happens?",
+   "options": [
+    "The email sends with an auto-generated None classification applied",
+    "The email is queued and held for admin review until a label is applied",
+    "Outlook blocks sending and prompts the user to select a sensitivity label",
+    "Outlook applies the most recently used label from the user's label history"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. With mandatory labeling enabled and no default label, Outlook blocks the Send action and prompts the user to select a sensitivity label before the message can leave the client. A is wrong because there is no 'auto-generated None' classification — mandatory labeling does not invent a placeholder. B is wrong because emails are not queued for admin review; the user is blocked client-side. D is wrong because Outlook does not silently apply a recently used label to satisfy mandatory labeling — the user must make the choice explicitly."
+  },
+  {
+   "id": "sc401-1-17",
+   "domain": "MC",
+   "stem": "A sensitivity label is configured with Teams meetings scope only. Where is this label available for users to apply?",
+   "options": [
+    "In Teams channels when creating a new post or announcement",
+    "In Teams group chats and one-on-one conversations",
+    "When scheduling or configuring a Teams meeting in the calendar or meeting options",
+    "In the Teams admin center when managing meeting configuration policies"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Teams meeting-scoped labels surface in meeting scheduling and meeting options (in the Teams calendar and Outlook calendar). They configure lobby rules, who can present, end-to-end encryption requirements, recording permissions, and chat behavior. A is wrong because channel posts are governed by file/site labels and DLP, not meeting labels. B is wrong because chats are not meetings and do not expose meeting labels. D is wrong because the Teams admin center manages tenant Teams settings — sensitivity labels are administered in the Microsoft Purview portal, not the Teams admin center."
+  },
+  {
+   "id": "sc401-1-18",
+   "domain": "MC",
+   "stem": "An event-based retention label has a 5-year period linked to event type Contract Expiry. The label is applied to a contract on January 1, 2025, but no Contract Expiry event is created. When does the 5-year clock start?",
+   "options": [
+    "January 1, 2025 — when the label is applied to the document",
+    "When the contract natural expiry date passes based on the document content",
+    "The clock does not start until a Contract Expiry event is created in Microsoft Purview",
+    "January 1, 2026 — one year after label application as a default trigger"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Event-based retention does not start when the label is applied — it starts only when an event of the matching event type is created in Microsoft Purview (via portal, Graph API, or PowerShell). Until that event is created, the retention clock has not started. A is wrong precisely because label application alone does not start the clock. B is wrong because Purview cannot infer a natural expiry date from document content. D is wrong because there is no automatic 1-year default trigger — the event is the only trigger."
+  },
+  {
+   "id": "sc401-1-19",
+   "domain": "MC",
+   "stem": "You need to apply a 3-year retention policy to Viva Engage community messages. Which location should you select in the Microsoft Purview retention policy configuration?",
+   "options": [
+    "Microsoft Teams — channel messages (Viva Engage integrates into Teams)",
+    "Exchange Online — public folders",
+    "Viva Engage — community messages",
+    "SharePoint Online — Viva Engage community sites"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Viva Engage (formerly Yammer) has dedicated retention locations in Purview: 'Viva Engage community messages' and 'Viva Engage user messages.' These are separate from Teams, Exchange, and SharePoint and must be explicitly selected. A is wrong because Viva Engage is NOT covered by Teams channel retention — it is a separate workload. B is wrong because Viva Engage data is not stored in Exchange public folders. D is wrong because while Viva Engage uses some SharePoint storage under the hood, retention is configured against the Viva Engage location, not the underlying SharePoint sites."
+  },
+  {
+   "id": "sc401-1-20",
+   "domain": "MC",
+   "stem": "A SharePoint site covered by an active 3-year Microsoft Purview retention policy is deleted by a Site Collection Administrator. What happens to the site content?",
+   "options": [
+    "The site and all content are permanently deleted — site deletion overrides any active retention policies",
+    "Content moves to the Site Collection recycle bin for 93 days and is then permanently deleted",
+    "Content is preserved in the Preservation Hold Library for the full 3-year retention period despite the site deletion",
+    "Content is transferred to a SharePoint archive site created automatically by the retention system"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Retention policies survive site deletion. When a site under an active retention policy is deleted, its content is captured in the Preservation Hold Library for the full retention period and remains searchable via eDiscovery — even after the site itself is gone. A is wrong because site deletion does NOT override retention. B is wrong because while the SharePoint recycle bin holds deleted items for 93 days, the retention policy preserves content for the full 3 years beyond the recycle bin. D is wrong because Microsoft does not auto-provision an 'archive site' — the mechanism is the Preservation Hold Library."
+  },
+  {
+   "id": "sc401-1-21",
+   "domain": "MC",
+   "stem": "When is an Exchange Online mailbox converted to an inactive mailbox rather than being permanently deleted when the user account is removed?",
+   "options": [
+    "When the mailbox has had no activity for more than 30 days prior to deletion",
+    "When a hold or retention policy is applied to the mailbox before the associated user account is deleted",
+    "When the organization has Microsoft 365 E5 licensing at the time of account deletion",
+    "When the mailbox size exceeds 50 GB at the time of account deletion"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. An inactive mailbox is created automatically when a user account is deleted IF a hold (litigation hold, eDiscovery hold) or a retention policy is in place on the mailbox at deletion time. The hold prevents permanent removal, and Exchange retains the mailbox indefinitely for compliance and eDiscovery. A is wrong because mailbox-activity history is not the determinant. C is wrong because E5 licensing does not automatically convert a mailbox to inactive — the hold/retention policy does. D is wrong because mailbox size has no bearing on inactive-mailbox creation."
+  },
+  {
+   "id": "sc401-1-22",
+   "domain": "MC",
+   "stem": "Who can be designated as a disposition reviewer for a retention label in Microsoft Purview?",
+   "options": [
+    "Only users in the Records Management or Compliance Administrator role groups",
+    "Any internal Microsoft 365-licensed user or mail-enabled distribution group",
+    "Only eDiscovery Managers with active content search permissions",
+    "Only Global Administrators and Compliance Administrators"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Any internal Microsoft 365–licensed user or mail-enabled distribution group can be designated as a disposition reviewer in the retention label configuration. There is no special admin-role requirement to BE a reviewer (though managing the disposition workflow itself does require Records Management or equivalent rights). A is wrong because reviewers do not have to be in Records Management or Compliance Administrator. C is wrong because eDiscovery roles do not gate disposition review. D is wrong because Global/Compliance Admin roles are not required for reviewers."
+  },
+  {
+   "id": "sc401-1-23",
+   "domain": "MC",
+   "stem": "What is the maximum number of sequential disposition review stages that can be configured in a single retention label?",
+   "options": [
+    "2 stages",
+    "3 stages",
+    "5 stages",
+    "10 stages"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (5 stages) is correct. A single retention label supports up to 5 sequential disposition review stages, each with its own reviewers and time window. After all configured stages complete, the disposition outcome (retain, dispose, relabel) is finalized. A (2) and B (3) are wrong because both are below the documented 5-stage maximum. D (10 stages) is wrong because Microsoft caps stages at 5 — not 10."
+  },
+  {
+   "id": "sc401-1-24",
+   "domain": "MC",
+   "stem": "A DLP rule is set to Block, but allow business justification override. A user attempts to email a file with 15 credit card numbers externally. What is the user experience?",
+   "options": [
+    "The send action is permanently blocked with no option to proceed",
+    "The file credit card numbers are automatically redacted before sending",
+    "The user sees a policy tip and can provide a business justification to override and send",
+    "The email is routed to an admin approval queue before delivery to the external recipient"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Block-with-override shows the user a policy tip explaining the violation and offers a business-justification field. After supplying a justification (and optionally a category/reason), the user can proceed; the override action and justification text are logged in DLP activity reports for compliance review. A is wrong because overrides are explicitly permitted in this configuration. B is wrong because DLP does not auto-redact content — that is not an out-of-the-box DLP action. D is wrong because there is no admin-approval queue in block-with-override; the override is self-service with an audit trail."
+  },
+  {
+   "id": "sc401-1-25",
+   "domain": "MC",
+   "stem": "Two separate DLP policies target the same Exchange email. Policy A (priority 0): block when credit card count exceeds 10. Policy B (priority 1): notify admin when count exceeds 5. The email contains 12 credit card numbers. What happens?",
+   "options": [
+    "Only Policy A fires — higher priority policy suppresses all lower-priority policies for the same item",
+    "Only Policy B fires — it has a lower count threshold so it matches first",
+    "Both policies apply independently — the email is blocked (Policy A) AND an admin notification is sent (Policy B)",
+    "The email is blocked and no notification is sent — the most restrictive action wins across all policies"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Across separate DLP policies, actions are cumulative — Policy A blocks AND Policy B notifies. First-match-wins applies only to multiple RULES inside one policy, not across policies. A is wrong because separate policies do not suppress each other based on priority. B is wrong because the lower threshold does not 'win' across policies — both are evaluated. D is wrong because notifications still fire even when a block is in place; the 'most restrictive wins' shortcut does not apply across separate policies."
+  },
+  {
+   "id": "sc401-1-26",
+   "domain": "MC",
+   "stem": "A Windows 11 device onboarded to MDE is offline with no internet connectivity. Endpoint DLP policies are deployed. What happens to DLP enforcement while offline?",
+   "options": [
+    "DLP enforcement is completely suspended until the device reconnects to the corporate network",
+    "Only block actions continue offline — audit and notify actions are paused",
+    "DLP policies continue enforcing based on the last synced policy settings cached locally on the device",
+    "The device is isolated by MDE and DLP is bypassed during the offline period by design"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Endpoint DLP caches the most recently synced policy locally on the device (via MDE). When the device is offline, the cached policy continues to enforce — blocks, audits, and notifications all stay active. New policy changes do not take effect until the device reconnects and syncs. A is wrong because enforcement is NOT suspended offline. B is wrong because audit and notify actions also continue offline — not just blocks. D is wrong because going offline does not trigger MDE device isolation; offline is a normal state for an enrolled device."
+  },
+  {
+   "id": "sc401-1-27",
+   "domain": "MC",
+   "stem": "Endpoint DLP must block printing of Confidential labeled files to all printers EXCEPT the corporate print server. What should you configure?",
+   "options": [
+    "A DLP policy with a Block all print action and an IP-address-based exception for the corporate printer",
+    "A printer group in Endpoint DLP global settings containing the authorized print server, with a DLP rule blocking prints to all printers NOT in the corporate group",
+    "A SharePoint DLP policy preventing downloads of Confidential files before they reach the print spooler",
+    "A Microsoft Defender for Endpoint Attack Surface Reduction rule excluding the corporate print server"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Endpoint DLP has 'Printer groups' in global settings — you define groups by printer friendly name, IP range, or USB device ID, then reference those groups in DLP rules (e.g., 'block printing Confidential files to any printer NOT in the Corporate Printers group'). A is wrong because Endpoint DLP rule actions do not take an inline IP-exception field; the proper construct is a printer group. C is wrong because SharePoint DLP cannot control endpoint print events. D is wrong because ASR (Attack Surface Reduction) targets exploit and process behaviors, not data-loss print controls."
+  },
+  {
+   "id": "sc401-1-28",
+   "domain": "MC",
+   "stem": "You need Endpoint DLP to restrict uploads of sensitive files to personal cloud storage (Google Drive, personal OneDrive) while allowing uploads to corporate SharePoint. What should you configure?",
+   "options": [
+    "A Web Content Filtering policy in Microsoft Defender for Endpoint blocking consumer storage sites",
+    "Sensitive service domain groups in Endpoint DLP global settings, then DLP rules referencing those groups to block uploads to restricted domains",
+    "A Microsoft Defender for Cloud Apps session policy blocking uploads to non-corporate cloud storage URLs",
+    "A Microsoft Intune network isolation policy preventing access to non-corporate URLs from managed devices"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. 'Sensitive service domain groups' in Endpoint DLP global settings let you categorize cloud-service URLs (corporate vs personal storage, approved vs unapproved). DLP rules then reference those groups to block, audit, or allow uploads to specific domain categories — providing granular control. A is wrong because Web Content Filtering in MDE blocks navigation entirely; it does not selectively manage uploads of sensitive content. C is wrong because the scenario specifies Endpoint DLP, not MDCA — and while MDCA session policies can also do this, sensitive service domain groups are the canonical Endpoint DLP mechanism. D is wrong because Intune network isolation is too coarse; it blocks all access, not just sensitive uploads."
+  },
+  {
+   "id": "sc401-1-29",
+   "domain": "MC",
+   "stem": "A DLP policy must detect credit card numbers in Power BI semantic models and notify data stewards. Where should this DLP policy be configured?",
+   "options": [
+    "Microsoft Defender for Cloud Apps with Power BI connected via an API connector",
+    "Microsoft Purview compliance portal — DLP policy with Power BI workspaces as the location",
+    "Power BI admin portal — Data protection settings for individual datasets",
+    "Microsoft Purview auto-labeling policy targeting Power BI workspace content"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Microsoft Purview DLP has native Power BI support — when creating a DLP policy you can select 'Power BI workspaces' as a location and configure SIT conditions and notification/restriction actions against semantic models. A is wrong because MDCA can monitor Power BI but is not the native Purview DLP path. C is wrong because the Power BI admin portal manages tenant-wide settings (label enablement, sensitivity-label settings), not DLP rules. D is wrong because auto-labeling policies apply SENSITIVITY labels, not DLP actions."
+  },
+  {
+   "id": "sc401-1-30",
+   "domain": "MC",
+   "stem": "You want a retention label to auto-apply to SharePoint documents that contain specific classification keywords in their text content. Which auto-apply condition should you configure?",
+   "options": [
+    "Auto-apply using a trainable classifier trained on example documents",
+    "Auto-apply using a KQL keyword query that searches document content for the classification terms",
+    "Auto-apply using a named entity SIT for the classification identifiers",
+    "Auto-apply triggered by a SharePoint column default value in the document library"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Auto-apply retention label policies support a KQL query condition that searches document content and indexed metadata. When documents match, the retention label applies automatically — no user action required. A (trainable classifier) is wrong here because classifiers detect content categories from training examples, not specific keyword lists; KQL is the right tool for explicit terms. C is wrong because named entity SITs are designed for entity classes (person names, addresses), not arbitrary classification keywords. D is wrong because library-column defaults trigger labeling only at the document-library level, not based on a search of document text."
+  },
+  {
+   "id": "sc401-1-31",
+   "domain": "MC",
+   "stem": "A Teams DLP policy is active. Users frequently share files via cloud attachment links (SharePoint/OneDrive links in Teams chat). What must you enable in the DLP policy to inspect the actual linked file content?",
+   "options": [
+    "Add SharePoint Online and OneDrive as additional locations to the same DLP policy",
+    "Enable Scan cloud attachments in the DLP policy configuration to inspect file content referenced in Teams links",
+    "Create a separate SharePoint DLP policy with the same SITs targeting the same files",
+    "Enable session monitoring in MDCA for all Teams file link interactions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Enabling 'Scan cloud attachments' in a Teams DLP policy tells the policy to inspect the content of SharePoint/OneDrive files shared as cloud links inside Teams chat — not just the message text. Without this setting, the rule sees only the chat message and misses sensitive content inside linked files. A is wrong because adding SharePoint/OneDrive as additional locations applies DLP to those workloads separately; it does not connect the Teams chat detection to the linked content. C is wrong for the same reason — a separate SharePoint DLP policy is a parallel pipeline, not an integration. D is wrong because MDCA session monitoring is not required for this scenario; Purview Teams DLP handles cloud-attachment scanning natively."
+  },
+  {
+   "id": "sc401-1-32",
+   "domain": "MC",
+   "stem": "Insider Risk Management sequence detection generates an alert when which scenario occurs?",
+   "options": [
+    "A single upload event exceeds the volume threshold defined in the IRM policy",
+    "A user daily activity volume exceeds their personal 30-day behavioral baseline by a statistically significant margin",
+    "A user performs a specific series of activities in a defined order within a configurable time window",
+    "Multiple users in the same department exhibit similar risk indicators within the same time period"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Sequence detection in IRM looks for ORDERED chains of activities — for example download → rename → upload to personal cloud → external forward — within a configurable time window. Individual steps may be benign; the sequence implies intent. A describes a single-event threshold, not a sequence. B describes anomaly detection against a behavioral baseline — a different IRM signal. D describes coordinated multi-user behavior, which is not what sequence detection covers."
+  },
+  {
+   "id": "sc401-1-33",
+   "domain": "MC",
+   "stem": "The IRM cumulative exfiltration detection feature evaluates total data activity volumes over a rolling window. Which time window options are available?",
+   "options": [
+    "24 hours, 7 days, or 30 days only",
+    "1, 7, 14, or 30 days",
+    "7, 30, or 90 days",
+    "3, 7, 14, or 30 days"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B (1, 7, 14, or 30 days) is correct — these are the four configurable rolling windows for IRM cumulative exfiltration detection. A is wrong because 1 day and 14 days are both supported, and the list is not limited to 24h/7d/30d. C is wrong because 90 days is not a supported option and 1 and 14 are missing. D (3, 7, 14, or 30) is wrong because 3 days is not a supported window — the shortest supported window is 1 day."
+  },
+  {
+   "id": "sc401-1-34",
+   "domain": "MC",
+   "stem": "A user is designated as a Priority User in IRM global settings. What is the effect on IRM risk scoring for that user?",
+   "options": [
+    "Priority users are automatically enrolled in all active IRM policies regardless of their department or role",
+    "Priority users receive a higher insider risk score weighting for the same activities compared to standard users",
+    "Priority users are excluded from IRM monitoring to reduce false positive alerts",
+    "Priority user activities are automatically escalated to the CISO dashboard without review"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Designating a user as a Priority User in IRM boosts the risk-score weighting of their activities — their risk scores accumulate faster and they reach alert thresholds at lower activity volumes. This reflects the elevated business impact of activities by executives, privileged admins, or other high-stakes employees. A is wrong because designating a Priority User does not auto-enroll them in policies — they must still be in scope of a policy. C is wrong because Priority Users are MORE scrutinized, not excluded. D is wrong because there is no automatic CISO escalation pipeline — alerts follow the standard reviewer workflow."
+  },
+  {
+   "id": "sc401-1-35",
+   "domain": "MC",
+   "stem": "What are IRM notice templates used for in the case management workflow?",
+   "options": [
+    "Automatically notifying affected users managers when an IRM alert fires",
+    "Sending standardized communications to supervised users during case investigation — such as policy awareness notices or formal warnings",
+    "Notifying external regulators when a confirmed data breach requires regulatory disclosure",
+    "Generating automated weekly compliance summary reports sent to the CISO"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Notice templates store pre-defined communications (awareness reminders, caution letters, formal warnings) that an IRM investigator can send to a supervised user from within the case workflow. They are dispatched manually, when an investigator decides to. A is wrong because notice templates do not auto-fire to a user's manager when an alert triggers — alerts and notices are separate constructs. C is wrong because IRM does not generate external regulator notifications; breach disclosure is a separate process. D is wrong because IRM does not produce automated weekly CISO digests."
+  },
+  {
+   "id": "sc401-1-36",
+   "domain": "MC",
+   "stem": "Which IRM indicator detects when users browse to websites categorized as risky or in a restricted domain list defined by the organization?",
+   "options": [
+    "Cumulative exfiltration threshold indicator",
+    "Security policy violation indicator",
+    "Risky browser usage indicator",
+    "Sensitive email forwarding indicator"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. The 'Risky browser usage' IRM indicator fires when monitored users navigate to domains categorized as risky (adult content, extremism, known exfiltration sites, etc.) — using categorization data from Microsoft Defender for Endpoint's web protection. It requires MDE integration to ingest browser signals. A is a separate indicator (cumulative exfiltration threshold). B is the 'Security policy violation' indicator — endpoint controls being bypassed or disabled. D is the 'Sensitive email forwarding' indicator — a different signal entirely."
+  },
+  {
+   "id": "sc401-1-37",
+   "domain": "MC",
+   "stem": "A compliance admin needs to identify all files permanently deleted from a specific SharePoint site over the past 60 days using the unified audit log. Which audit operation should they filter on?",
+   "options": [
+    "FileAccessed",
+    "FilePreviewed",
+    "FileModified",
+    "FileDeleted"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "D (FileDeleted) is correct. The FileDeleted operation in the SharePoint audit log records permanent deletions (from recycle bin, second-stage recycle bin, or via Shift-Delete equivalents). FileRecycled records the prior step (move to recycle bin). A (FileAccessed) is wrong — that logs reads/previews. B (FilePreviewed) is wrong — preview operations, not deletions. C (FileModified) is wrong — edits to file content or metadata."
+  },
+  {
+   "id": "sc401-1-38",
+   "domain": "MC",
+   "stem": "The MailItemsAccessed audit event records when Exchange Online mailbox items are accessed. What license is required per user for these events to be captured?",
+   "options": [
+    "Microsoft 365 E3 with the Exchange Online Plan 2 add-on license",
+    "Any license with unified audit logging enabled at the tenant level",
+    "Microsoft 365 E5 or Microsoft 365 E5 Compliance assigned to the individual user",
+    "Microsoft Defender for Office 365 Plan 2 for the mailbox owner"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. MailItemsAccessed is an Audit (Premium) event. Capturing it requires Microsoft 365 E5 or E5 Compliance assigned PER USER — the per-user license drives Premium audit event collection. A is wrong because Exchange Online Plan 2 alone does not unlock Audit (Premium) events; E5 or E5 Compliance is the requirement. B is wrong because tenant-level unified audit logging captures Standard events; Premium events specifically require the user-level license. D is wrong because Defender for Office 365 Plan 2 protects against email threats and does not license Audit (Premium)."
+  },
+  {
+   "id": "sc401-1-39",
+   "domain": "MC",
+   "stem": "When you use the keyword list format in a content search (one keyword per row), what additional reporting does this provide compared to a single compound query?",
+   "options": [
+    "A geographic heatmap showing where matching content is stored across sites and mailboxes",
+    "Per-keyword match counts and location statistics for each individual search term",
+    "Confidence scores indicating how accurately each keyword matched the target content",
+    "Estimated eDiscovery processing costs broken down per individual keyword"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. The keyword-list format (one keyword per row) produces per-keyword statistics — match counts and locations for each individual term. This helps refine searches by spotting which keywords are over- or under-performing. A is wrong because Content Search does not produce a geographic heatmap. C is wrong because keyword matches do not produce ML-style confidence scores — that is a SIT/classifier concept. D is wrong because Content Search does not estimate per-keyword processing costs."
+  },
+  {
+   "id": "sc401-1-40",
+   "domain": "MC",
+   "stem": "Which information is displayed in the DSPM for AI dashboard in Microsoft Purview?",
+   "options": [
+    "Number of AI model parameters and training dataset sources used by Microsoft 365 Copilot",
+    "Sensitivity labels on content accessed by Copilot, oversharing risk assessment, and AI interaction activity metrics",
+    "Real-time token usage and per-user cost analytics for Microsoft 365 Copilot interactions",
+    "Specific prompt text entered by users in Copilot sessions and the full response content"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DSPM for AI shows three primary signal types: (1) sensitivity labels present on content accessed by Copilot, (2) oversharing risk — broadly accessible or unlabeled content being surfaced — and (3) AI interaction activity metrics. A is wrong because the dashboard does not expose model parameters or training data sources — those are Copilot internals, not customer data. C is wrong because token usage and per-user cost analytics live in admin/billing reports, not DSPM for AI. D is wrong because raw prompt and response text is explicitly NOT exposed — only metadata and risk signals are."
+  },
+  {
+   "id": "sc401-1-41",
+   "domain": "MC",
+   "stem": "Why is investigating a DLP alert in Microsoft Defender XDR advantageous over reviewing it only in the Microsoft Purview portal?",
+   "options": [
+    "Defender XDR processes and surfaces DLP alerts faster due to real-time streaming pipelines",
+    "Defender XDR automatically remediates DLP violations using machine learning-based response",
+    "Defender XDR correlates DLP events with identity risk, device health, and email threat signals into a unified security incident",
+    "Defender XDR provides per-file encryption status details not visible in the Purview DLP alert dashboard"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Defender XDR ingests DLP alerts and correlates them with signals from Defender for Endpoint (device risk), Entra ID Protection (sign-in/identity risk), and Defender for Office 365 (email threats) into a single unified incident with cross-product context. The Purview portal shows DLP alerts in isolation. A is wrong — the differentiator is correlation, not raw alert speed. B is wrong because Defender XDR does not auto-remediate DLP violations with machine learning. D is wrong because per-file encryption status is not surfaced in either portal — this option is fabricated."
+  },
+  {
+   "id": "sc401-1-42",
+   "domain": "MC",
+   "stem": "Employees in the trading division are sending regulatory non-compliant investment advice in Microsoft Teams. Which Microsoft Purview solution should you configure to detect and review these communications?",
+   "options": [
+    "A DLP policy targeting Teams messages for financial sensitive information types",
+    "A Microsoft Purview Communication Compliance policy using a financial regulatory communications template",
+    "An Insider Risk Management data leaks policy targeted at the trading division",
+    "An eDiscovery case with a Teams-location keyword search for regulatory terminology"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Communication Compliance with the financial-regulatory communications template applies classifiers tuned to detect regulatory non-compliance language — insider-trading indicators, Reg FD violations, fiduciary conflicts, and inappropriate investment advice — in email and Teams messages. A is wrong because DLP detects sensitive DATA (credit cards, SSNs); it cannot infer whether advice is regulatory-compliant. C is wrong because IRM detects user RISK behaviors (downloads, exfiltration) — not message content compliance. D is wrong because eDiscovery searches existing content; it does not provide ongoing supervision or content classification."
+  },
+  {
+   "id": "sc401-1-43",
+   "domain": "MC",
+   "stem": "The Legal and M&A Advisory teams must be prevented from communicating with each other in Microsoft Teams due to conflict of interest rules. Which Microsoft Purview feature enforces this?",
+   "options": [
+    "Sensitivity labels with restricted user-based access on shared Teams channels",
+    "Microsoft Purview Information Barriers configured between the two organizational segments",
+    "Communication Compliance policies monitoring cross-team message content for conflict keywords",
+    "Microsoft Entra ID access packages restricting Teams membership for both groups"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Information Barriers (IB) define organizational segments and prevent specified segments from communicating in Teams chat/channels, SharePoint sharing, and OneDrive sharing — explicitly designed for ethical walls between groups like Legal/M&A advisory and trading/research. A is wrong because sensitivity labels gate access to CONTENT, not communication between user populations. C is wrong because Communication Compliance MONITORS messages but does not prevent the communication itself. D is wrong because Entra ID access packages govern application/resource access, not interpersonal communication blocks."
+  },
+  {
+   "id": "sc401-1-44",
+   "domain": "MC",
+   "stem": "A document in SharePoint has a manually applied Client Hold retention label. An auto-apply retention label policy targets the same site and runs. What happens to that document?",
+   "options": [
+    "The auto-apply policy replaces the manual label with its configured label",
+    "Both labels are applied — SharePoint supports multiple retention labels per item",
+    "The auto-apply policy does not apply its label — the existing manually applied label is preserved",
+    "The auto-apply policy applies its label only if it has a higher priority number than the existing label"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Once a retention label has been manually applied to a document, auto-apply retention label policies do NOT overwrite it. The manual label takes precedence — this protects deliberate human/compliance decisions from automated overrides. A is wrong because auto-apply does not replace manual labels. B is wrong because a SharePoint item carries exactly one retention label at a time; multiple retention labels per item are not supported. D is wrong because no priority-number comparison occurs — manual labels are simply preserved."
+  },
+  {
+   "id": "sc401-1-45",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "Once a document is labeled Client Matter — Regulatory Record, no user or compliance administrator can remove the label or modify the document.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Regulatory Record labels lock content permanently — no user, records manager, Compliance Administrator, or even Global Administrator can remove the label or modify the document. This permanent immutability is exactly what distinguishes Regulatory Records from Regular Records (which CAN be temporarily unlocked by an authorized admin). No would be wrong because it implies someone retains an unlock capability, which Regulatory Records explicitly do not allow."
+  },
+  {
+   "id": "sc401-1-46",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "A compliance administrator can unlock a document labeled Internal Documents (Regular Record type) to allow temporary editing.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Regular Record labels permit a records administrator to temporarily unlock the record, allow edits, and re-lock it. This admin-unlock capability is the defining contrast with Regulatory Records, which cannot be unlocked by any administrator. No would be wrong because it would conflate Regular Records with Regulatory Records."
+  },
+  {
+   "id": "sc401-1-47",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "If Preservation Lock is applied to the 7-year retention policy, a Global Administrator can extend the policy duration to 10 years.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Preservation Lock prohibits WEAKENING the policy: shortening the duration, removing locations from scope, or deleting the policy. It PERMITS changes that make retention MORE restrictive — extending duration or adding locations. Extending a 7-year policy to 10 years is a permitted operation. No would be wrong because extension is explicitly allowed under Preservation Lock."
+  },
+  {
+   "id": "sc401-1-48",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "Microsoft 365 Copilot will not surface a document encrypted with the Strictly Confidential label to attorneys not listed in the label permissions.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Microsoft 365 Copilot honors sensitivity label encryption — content protected with 'Assign permissions now' is only retrievable by users in the permission set, regardless of underlying SharePoint or OneDrive access permissions. Attorneys not listed in label permissions will not see the document in Copilot's grounding results. No would be wrong because it implies Copilot can bypass label encryption — it cannot."
+  },
+  {
+   "id": "sc401-1-49",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "When a user downgrades a document from Strictly Confidential to a lower-priority label, no justification is required as long as mandatory labeling is not enabled.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. Label downgrade justification is a SEPARATE policy setting from mandatory labeling — the two are configured independently in the sensitivity label policy. If 'Require justification for downgrade or removal' is enabled, the user must provide a justification regardless of whether mandatory labeling is on. Yes would be wrong because it incorrectly couples two independent policy switches."
+  },
+  {
+   "id": "sc401-1-50",
+   "domain": "YN",
+   "group": "yn1",
+   "stem": "An auto-apply retention label policy targeting the Northwind SharePoint site will overwrite a manually applied Client Matter — Regulatory Record label on existing documents.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. Auto-apply retention label policies do not overwrite manually applied retention labels by default — the existing manual label is preserved. On top of that, Regulatory Record labels are permanently immutable: no automated policy can remove or replace them. Yes would be wrong on both counts — both manual-label precedence and Regulatory immutability protect the label."
+  },
+  {
+   "id": "sc401-2-1",
+   "domain": "CS",
+   "group": "cs2",
+   "stem": "Adatum uploads scanned PDF lab reports to SharePoint. DLP policies must detect SSNs and compound codes in these scanned images, but detection is failing for PDF files. What must be enabled in Microsoft Purview first?",
+   "options": [
+    "Advanced classification scanning in Microsoft Defender for Endpoint",
+    "Document fingerprinting for PDF file formats",
+    "Optical Character Recognition (OCR) in Microsoft Purview Information Protection settings",
+    "Enhanced PDF protection in sensitivity label encryption configuration"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. OCR (Optical Character Recognition) must be explicitly enabled in Microsoft Purview Information Protection settings before DLP and auto-labeling policies can read text out of scanned PDFs and image files. OCR is OFF by default. Once on, OCR extracts text from images during content scanning so SITs can match against the extracted text. A is wrong because 'Advanced classification scanning in MDE' is not the gating setting for image-based content classification in Purview — Purview OCR is. B is wrong because document fingerprinting matches structural template layout, not image-to-text conversion. D is wrong because 'Enhanced PDF protection' is not a real Purview setting and would not enable image OCR even if it existed."
+  },
+  {
+   "id": "sc401-2-2",
+   "domain": "CS",
+   "group": "cs2",
+   "stem": "Adatum needs to detect documents containing proprietary compound names that no built-in SIT recognizes. The names follow no consistent alphanumeric pattern and cannot be enumerated in a finite list. What should they build?",
+   "options": [
+    "A custom regex SIT with a pattern matching the general structure of compound names",
+    "A trainable classifier trained on example documents containing compound name content",
+    "An EDM classifier using a database table of all compound names",
+    "A keyword dictionary SIT listing all known compound names"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Trainable classifiers use machine learning to recognize content categories from training examples — ideal when content has no consistent pattern and cannot be enumerated. Because Adatum's compound names have no fixed alphanumeric pattern and the full list cannot be reliably enumerated, a classifier trained on documents containing compound-name content is the strongest match. A (regex SIT) is wrong because no consistent pattern exists to write a regex for. C (EDM) is wrong because EDM requires a finite, enumerable data table — and Adatum cannot enumerate all compound names. D (keyword dictionary SIT) is wrong because it requires listing all terms; the question states the names cannot be enumerated."
+  },
+  {
+   "id": "sc401-2-3",
+   "domain": "CS",
+   "group": "cs2",
+   "stem": "Adatum requires that the most sensitive trade secret documents be encrypted such that Microsoft, Azure, and any cloud provider cannot decrypt them — even under legal compulsion. What encryption technology meets this requirement?",
+   "options": [
+    "Azure Rights Management with Bring Your Own Key (BYOK)",
+    "Double Key Encryption (DKE)",
+    "Microsoft Purview Customer Key for M365 data at rest",
+    "Advanced Message Encryption with custom branding and access control"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B (DKE) is correct. DKE uses two simultaneous encryption keys: one held in Azure RMS (Microsoft) and one held exclusively by the organization on infrastructure Microsoft does not operate. Both keys are required for decryption — Microsoft cannot decrypt DKE content alone, even under legal compulsion. A (Azure RMS with BYOK) is wrong because while the customer supplies the root, Microsoft still has operational access to the key in Azure. C (Customer Key) is wrong for the same reason — Microsoft has operational access to keys in Azure Key Vault. D (Advanced Message Encryption) is wrong because AME is for emails, not document-level encryption, and Microsoft retains operational access to AME keys."
+  },
+  {
+   "id": "sc401-2-4",
+   "domain": "CS",
+   "group": "cs2",
+   "stem": "External academic collaborators (B2B guests) need access to SharePoint documents labeled Confidential - Research. The label uses Assign permissions now encryption scoped to internal Adatum users only. Collaborators receive Access Denied errors. What should Adatum configure?",
+   "options": [
+    "Remove the encryption from the Confidential - Research label for any document shared externally with guests",
+    "Create a sublabel Confidential - Research (External) that grants access to the collaborator email domains or specific guest accounts",
+    "Grant collaborators SharePoint Site Owner permissions to bypass sensitivity label encryption restrictions",
+    "Switch the label from Assign permissions now to Let users assign permissions for all externally shared documents"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. 'Assign permissions now' grants access ONLY to the specific users, groups, or domains explicitly defined in the label. To extend access to external academic collaborators without dropping protection on internal use, create a sublabel of Confidential - Research that explicitly grants access to the collaborator email addresses or domains. This adds a targeted encrypted variant for external sharing while keeping the internal label intact. A is wrong because removing encryption defeats the purpose of the label and exposes content to anyone with the link. C is wrong because SharePoint Site Owner permissions do NOT bypass label encryption — encryption operates at the identity layer regardless of SharePoint role. D is wrong because 'Let users assign permissions' shifts the burden to senders and creates inconsistent protection — not a sustainable enterprise pattern."
+  },
+  {
+   "id": "sc401-2-5",
+   "domain": "MC",
+   "stem": "How do named entity SITs (such as All Full Names or All Physical Addresses) differ from standard pattern-based SITs?",
+   "options": [
+    "Named entity SITs use regular expressions; standard SITs use machine learning models",
+    "Named entity SITs use machine learning models; standard SITs use rules, regex patterns, and keyword lists",
+    "Named entity SITs only detect content in English; standard SITs support multiple languages",
+    "Named entity SITs require EDM for high-confidence matching; standard SITs are self-contained"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Named entity SITs (All Full Names, All Physical Addresses, Medical Terms) use machine-learning models to detect real-world entities that vary significantly in format, language, and structure — traditional regex cannot reliably capture them. Standard pattern-based SITs use regex with supporting keyword lists, ideal for structured data like credit card numbers or SSNs. A reverses the technologies — that is the opposite of how the two SIT families work. C is wrong because named entity SITs cover multiple languages, not just English. D is wrong because named entity SITs do not require EDM corroboration; they are self-contained ML detectors."
+  },
+  {
+   "id": "sc401-2-6",
+   "domain": "MC",
+   "stem": "When must you re-upload and re-hash the sensitive data table for an EDM classifier?",
+   "options": [
+    "Every 90 days — EDM hashes expire automatically on a fixed schedule",
+    "Only when the EDM schema definition (column structure) changes",
+    "Whenever the underlying database records change and you need current matching accuracy",
+    "Once per year during the annual data governance review period"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. EDM hashes represent the data at a specific point in time. When the underlying database records change — new hires, account updates, departures — you must re-hash and re-upload the data table for EDM to reflect the current records. There is no automatic expiration; the customer chooses the refresh cadence based on data volatility. A is wrong because hashes do not expire on a fixed 90-day schedule. B is wrong because schema changes do require re-upload but record-level changes ALSO require it — schema isn't the only trigger. D is wrong because the cadence depends on how often data changes, not an annual governance review."
+  },
+  {
+   "id": "sc401-2-7",
+   "domain": "MC",
+   "stem": "An EDM SIT has one primary element (SSN) and two supporting elements (Last Name, Date of Birth). Which condition produces a High confidence match?",
+   "options": [
+    "The SSN primary element matches the database exactly on its own",
+    "The SSN primary element matches AND at least one supporting element is present in the document",
+    "All three elements — SSN, Last Name, and Date of Birth — are found together in proximity and match the same database record",
+    "The SSN primary element matches any record in the database regardless of supporting element presence"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. High-confidence EDM matching requires the primary element to match AND supporting elements to also be present in close proximity, all aligned to the SAME database record. This multi-field corroboration distinguishes legitimate records from coincidental pattern hits. A is wrong because matching the primary alone yields a lower confidence level. B is wrong because at least one supporting element doesn't necessarily mean both — and high confidence requires all configured supporting elements to align. D is wrong because the primary alone is not enough for high confidence."
+  },
+  {
+   "id": "sc401-2-8",
+   "domain": "MC",
+   "stem": "During a trainable classifier testing phase, you review candidate items and mark some as Not a match. What does this labeling provide to the classifier?",
+   "options": [
+    "A positive sample confirming this content is a good example of the target category",
+    "A negative sample teaching the classifier that this content does NOT belong to the target category",
+    "A neutral sample that has no measurable impact on classifier accuracy",
+    "A false positive correction that permanently removes the item from the candidate pool"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. During the testing phase, items marked 'Not a match' become negative samples that teach the classifier what the target category does NOT look like — improving its ability to distinguish target content from similar-but-different content. Both positive AND negative feedback improve accuracy. A is wrong because 'Not a match' is a negative sample, not a positive confirmation. C is wrong because negative samples do measurably affect classifier accuracy. D is wrong because marking an item does not 'remove it from the candidate pool' — it labels the item for training purposes."
+  },
+  {
+   "id": "sc401-2-9",
+   "domain": "MC",
+   "stem": "An external user with a Microsoft account receives a document labeled with Assign permissions now encryption. The label grants access to Adatum internal users only. Can the external user open the document?",
+   "options": [
+    "Yes — external users with valid Microsoft accounts can always access sensitivity label encrypted content",
+    "No — Assign permissions now grants access ONLY to the specific users, groups, or domains defined in the label configuration",
+    "Yes — if the external user has guest status in Adatum Entra ID directory",
+    "No — only users in the same Entra ID tenant can decrypt any sensitivity label encrypted content"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. 'Assign permissions now' encryption grants access ONLY to users/groups/domains explicitly defined in the label configuration. External users not in those permissions cannot decrypt the content — regardless of whether they have a Microsoft account, guest status, or any SharePoint role. Encryption enforces access at the identity layer. A is wrong because a Microsoft account alone does not grant access to encrypted content. C is wrong because guest status in the directory does not bypass label permissions. D is wrong because cross-tenant access is possible when the label explicitly grants it — the limit is the label's permission list, not the tenant boundary."
+  },
+  {
+   "id": "sc401-2-10",
+   "domain": "MC",
+   "stem": "Your organization used Azure Information Protection (AIP) with labels defined in the Azure portal. After migrating to Microsoft Purview Information Protection, where are sensitivity labels managed?",
+   "options": [
+    "Azure Portal — Information Protection blade (still active for legacy labels after migration)",
+    "Microsoft Purview compliance portal — Information Protection — Labels",
+    "Microsoft Entra ID admin center — Data classification settings",
+    "Microsoft 365 admin center — Information governance policies"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. After migrating from Azure Information Protection (AIP) to Microsoft Purview Information Protection, all label management moves to the Microsoft Purview compliance portal under Information Protection → Labels. The Azure portal Information Protection blade is deprecated for new work. A is wrong because the Azure blade is no longer the management surface. C is wrong because Entra ID admin center does not manage sensitivity labels. D is wrong because the M365 admin center holds tenant-level settings but not label management."
+  },
+  {
+   "id": "sc401-2-11",
+   "domain": "MC",
+   "stem": "When should you use Double Key Encryption (DKE) rather than standard sensitivity label encryption with Azure Rights Management?",
+   "options": [
+    "When you need to encrypt emails sent to external recipients who do not use Outlook",
+    "When regulatory or legal requirements mandate that no cloud provider — including Microsoft — can ever access the plaintext content",
+    "When you need to apply encryption retroactively to large volumes of existing documents at scale",
+    "When users need to access encrypted content from both Windows and macOS devices simultaneously"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DKE is reserved for the most sensitive content where regulatory or contractual requirements forbid any cloud provider — including Microsoft — from ever accessing the plaintext. Standard sensitivity-label encryption uses Azure RMS, where Microsoft has operational key access. DKE adds a second organization-controlled key so no single party can decrypt. A is wrong because DKE is not designed for non-Outlook email encryption; OME is. C is wrong because DKE does not specialize in retroactive bulk encryption; auto-labeling does that. D is wrong because cross-platform access (Windows/macOS) is not what DKE addresses; standard label encryption already works across platforms."
+  },
+  {
+   "id": "sc401-2-12",
+   "domain": "MC",
+   "stem": "What is the correct sequence to configure Adaptive Protection so that DLP policies can dynamically enforce controls based on a user's current insider risk level?",
+   "options": [
+    "Configure the DLP policy first with the insider risk level condition, then enable Adaptive Protection in IRM settings",
+    "Enable Adaptive Protection in IRM global settings first; once active, add the insider risk level is condition to DLP policy rules",
+    "Enable Adaptive Protection in Compliance Manager, then link it to both IRM and DLP policies from a central dashboard",
+    "Create an adaptive scope in data lifecycle management, then reference it in both the IRM policy and DLP rule conditions"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. The required sequence is: (1) enable Adaptive Protection in IRM global settings — this activates risk-level assignment (Minor, Moderate, Elevated) for users in IRM policy scope; (2) once Adaptive Protection is running, the 'Insider risk level is' condition becomes available in DLP rules; (3) add the condition to DLP rules to apply tiered enforcement (e.g., Elevated = block, Moderate = block with override, Minor = audit). A is wrong because DLP cannot reference risk levels before Adaptive Protection is enabled. C is wrong because Compliance Manager does not configure Adaptive Protection. D is wrong because adaptive scopes target retention policy populations, not insider-risk-driven DLP enforcement."
+  },
+  {
+   "id": "sc401-2-13",
+   "domain": "MC",
+   "stem": "A sensitivity label policy is scoped to the Legal department (50 users). A Finance employee who is NOT in the policy scope receives a Word document with a Confidential - Legal sensitivity label applied. What happens when the Finance employee opens the document?",
+   "options": [
+    "Word blocks the Finance employee from opening the document — label policy scoping enforces content access control by department",
+    "The Finance employee can open the document and see the label, but Confidential - Legal does not appear in their sensitivity bar for applying to other documents",
+    "Word automatically adds Confidential - Legal to the Finance employee sensitivity bar when they interact with the labeled document",
+    "Word prompts the Finance employee to select a label from their own policy before they can view the document"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Sensitivity label policies control which labels are AVAILABLE for users to apply — not which labels users can open. The Finance employee can open and read the labeled document normally (assuming they have SharePoint/Exchange access and decryption rights). However, Confidential - Legal will not appear in their sensitivity bar because the publishing policy isn't scoped to them — they cannot apply it themselves. A is wrong because label policy scoping does not gate read access — encryption does. C is wrong because the label is not auto-added to the Finance user's bar via interaction. D is wrong because Word does not prompt them to select a label from their policy before viewing."
+  },
+  {
+   "id": "sc401-2-14",
+   "domain": "MC",
+   "stem": "To implement Double Key Encryption (DKE), where must the organization host its second encryption key?",
+   "options": [
+    "In Azure Key Vault within the organization own Azure subscription, separate from Microsoft-managed key vaults",
+    "On a server or service hosted and controlled entirely by the organization — on-premises or in a private cloud that Microsoft does not operate",
+    "In a dedicated Microsoft Purview DKE vault provisioned through the compliance portal",
+    "Distributed across both Azure and on-premises Active Directory using a hybrid key sharing configuration"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DKE requires the organization to host the second key on infrastructure that Microsoft does NOT control — typically on-premises servers, or a non-Microsoft private cloud. The organization key never lives in Azure. Microsoft holds one key in Azure RMS infrastructure; the customer holds the second on its own service. Both keys are required simultaneously for decryption, so neither party can decrypt alone. A is wrong because Azure Key Vault is Microsoft-operated infrastructure — hosting the second key in Azure defeats DKE's purpose. C is wrong because there is no 'Purview DKE vault' product. D is wrong because hybrid AD key sharing is not the DKE model; DKE is two distinct keys, not a single shared key."
+  },
+  {
+   "id": "sc401-2-15",
+   "domain": "MC",
+   "stem": "Which built-in Microsoft Purview role allows a user to create and manage sensitivity labels and auto-labeling policies without granting access to DLP policy management, retention labels, eDiscovery cases, or Insider Risk Management?",
+   "options": [
+    "Security Reader",
+    "Compliance Data Administrator",
+    "Information Protection Administrator",
+    "Records Management"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. The Information Protection Administrator role is scoped to creating and managing sensitivity labels, label policies, auto-labeling policies, and protection settings (including DKE and Customer Key). It does NOT grant DLP, retention, eDiscovery, or IRM access — useful for least-privilege delegation of label administration. A (Security Reader) is wrong because it is read-only across security workloads. B (Compliance Data Administrator) is wrong because it is broader than label administration. D (Records Management) is wrong because it covers retention/records, not sensitivity labels."
+  },
+  {
+   "id": "sc401-2-16",
+   "domain": "MC",
+   "stem": "Which statement correctly distinguishes Activity Explorer from Content Explorer in Microsoft Purview?",
+   "options": [
+    "Activity Explorer shows current labeled items; Content Explorer shows label change event history",
+    "Content Explorer shows the current inventory of labeled items; Activity Explorer shows historical label and DLP activity events",
+    "Both tools display the same data but with different visualization formats for different audiences",
+    "Activity Explorer is specifically for IRM behavioral events; Content Explorer is exclusively for DLP rule matches"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Content Explorer = current INVENTORY of labeled and sensitive items across SharePoint, Exchange, and OneDrive — what is labeled right now (snapshot). Activity Explorer = HISTORY of labeling events, DLP rule matches, and endpoint activities — what changed, when, by whom (timeline). A reverses the two — Activity Explorer is history, not current state, and Content Explorer is inventory, not change history. C is wrong because the two tools surface fundamentally different data, not the same data in different formats. D is wrong because Activity Explorer covers labeling, DLP, and endpoint events broadly, and Content Explorer covers labeled content broadly — neither is restricted to IRM or DLP alone."
+  },
+  {
+   "id": "sc401-2-17",
+   "domain": "MC",
+   "stem": "A user applies a Highly Confidential sensitivity label to a Word document and then saves it as PDF. What happens to the sensitivity label?",
+   "options": [
+    "The label is lost during PDF conversion — PDF files do not support sensitivity labels",
+    "The PDF inherits the sensitivity label and its protection settings from the Office application",
+    "The PDF retains visual markings (header, watermark) but encryption is removed for compatibility",
+    "The user must manually re-apply the label to the PDF after saving it to the new format"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When a labeled Office document is saved or exported as PDF directly from Word, Excel, or PowerPoint, the sensitivity label and its protection (encryption, content marking text) transfer to the PDF. The label persists across the format conversion when Office apps perform the conversion. A is wrong because PDFs DO support sensitivity labels. C is wrong because encryption is NOT dropped on export — both visual markings and encryption carry over. D is wrong because manual re-application is unnecessary; Office handles label propagation automatically."
+  },
+  {
+   "id": "sc401-2-18",
+   "domain": "MC",
+   "stem": "A sensitivity label has content expiration set to 60 days. A user applies the label to a document on January 1. What happens on March 2 (day 61)?",
+   "options": [
+    "The label is automatically removed and the document becomes an unprotected file",
+    "The document is permanently deleted from SharePoint by the expiration policy",
+    "Users with access permissions receive an access denied error when attempting to open the document",
+    "The document enters disposition review and is sent to the designated reviewer queue"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Content expiration in a sensitivity label defines how long after protection is applied users can access the content. After expiration, the Azure Rights Management service returns an access-expired/access-denied response to attempted opens. The document itself is NOT deleted — it simply can no longer be decrypted. A is wrong because the label and its encryption stay on the file; it does not become unprotected. B is wrong because expiration does not delete content from SharePoint. D is wrong because content expiration is a sensitivity-label setting, not a disposition-review workflow."
+  },
+  {
+   "id": "sc401-2-19",
+   "domain": "MC",
+   "stem": "How does a retention label configured as Retain for 5 years, then delete differ from one configured as Retain for 5 years only when the retention period expires?",
+   "options": [
+    "Both labels automatically delete covered content when the 5-year period expires",
+    "Retain then delete triggers a mandatory disposition review at period end; Retain only does not require any review",
+    "Retain then delete permanently deletes content when the period ends; Retain only applies no delete action — content simply loses its retention protection and can be deleted by users normally",
+    "Both labels require administrator action to delete content — neither label type auto-deletes without manual intervention"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. 'Retain X years, then delete' actively schedules permanent deletion (or disposition review) at the end of the retention period. 'Retain only' protects content from user deletion DURING the period but takes NO delete action at the end — content survives and is simply no longer retention-protected. A is wrong precisely because Retain only does NOT delete at period end. B is wrong because Retain then delete does not require disposition review — it permanently deletes by default unless a review is configured. D is wrong because both labels operate without manual administrator action at period end (within their configurations)."
+  },
+  {
+   "id": "sc401-2-20",
+   "domain": "MC",
+   "stem": "Your organization requires that electronic records under FDA 21 CFR Part 11 cannot be altered or deleted for 10 years. Which retention label type satisfies this regulatory immutability requirement?",
+   "options": [
+    "Regular record label with Preservation Lock applied to the parent retention policy",
+    "Regulatory record label applied directly to the electronic records",
+    "A default retention label with the delete action disabled for the 10-year period",
+    "A sensitivity label with encryption preventing modification of document content"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Regulatory record labels provide permanent immutability — once applied, no user or administrator can remove the label, modify the document, or delete it before the retention period expires. This is exactly what FDA 21 CFR Part 11 immutability requirements call for. A is wrong because Regular records allow admin unlocking — Regulatory records do not. Preservation Lock prevents weakening the policy but does not make individual records permanently immutable. C is wrong because a 'delete-disabled' retention label is not an immutability primitive; users with appropriate permissions could still modify it. D is wrong because sensitivity-label encryption controls access — it does not provide record immutability."
+  },
+  {
+   "id": "sc401-2-21",
+   "domain": "MC",
+   "stem": "You want all new documents uploaded to a specific SharePoint document library to automatically receive the Internal sensitivity label. What should you configure?",
+   "options": [
+    "An auto-apply sensitivity label policy targeting that library using a KQL keyword query",
+    "A default sensitivity label in the SharePoint document library settings",
+    "A retention label with default labeling configured in the SharePoint site content type",
+    "A DLP policy with an auto-labeling action triggered for new uploads to the library"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. SharePoint document libraries support a default sensitivity label configuration (in library settings). Any document uploaded that does not already carry a label receives the default at upload time — directly in the library settings, separate from Purview auto-labeling policies. A (auto-apply with KQL) is wrong because that approach uses Purview auto-labeling and a content query, not a per-library default. C is wrong because retention labels are a different label family — and content type defaults are a separate, less-flexible mechanism. D is wrong because DLP does not include an auto-labeling action; DLP enforces, while labeling is configured in Information Protection."
+  },
+  {
+   "id": "sc401-2-22",
+   "domain": "MC",
+   "stem": "A DLP rule must block external email sharing of sensitive content EXCEPT when the recipient domain is in an approved partner list. Which DLP rule element should you use to implement this exception?",
+   "options": [
+    "An OR operator between the external sharing condition and the approved domain exclusion condition",
+    "An exception (unless) condition in the DLP rule that excludes emails sent to approved partner domains",
+    "A separate higher-priority DLP rule that explicitly allows sharing to approved domains",
+    "A sensitivity label exclusion in the DLP policy that marks approved-partner emails as exempt from detection"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DLP rules support exception ('unless') conditions that exclude specific scenarios from triggering the rule action. Adding 'except if recipient domain is in approved-partner-domains' means the block applies ONLY when external recipients are NOT on the approved list — no need for a second rule or complex OR logic. A is wrong because an OR condition would expand the rule's matches, not narrow them. C is wrong because a separate higher-priority rule that 'allows' is awkward — DLP rules are evaluated within a policy first-match-wins, and an 'allow' rule isn't the cleanest pattern. D is wrong because there is no 'sensitivity-label exclusion' marking partner emails as exempt in DLP — exceptions belong on rule conditions."
+  },
+  {
+   "id": "sc401-2-23",
+   "domain": "MC",
+   "stem": "A user provides a business justification and overrides a DLP Block with override action. Where is this override event recorded for compliance review?",
+   "options": [
+    "In the user Entra ID audit log as a policy exception event",
+    "In Microsoft Purview DLP incident management and Activity Explorer",
+    "In an email notification automatically sent to the user manager upon override",
+    "In a SharePoint compliance list maintained by the information security team"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Block-with-override events — including the user-provided justification text, user identity, timestamp, and the involved content — are logged in the Purview DLP incident management dashboard and surfaced in Activity Explorer. Compliance admins can review override patterns to spot abuse or refine policy. A is wrong because the Entra ID audit log tracks identity events, not DLP justifications. C is wrong because manager emails are not the audit-of-record (and aren't sent by default). D is wrong because there is no built-in SharePoint compliance list for DLP overrides."
+  },
+  {
+   "id": "sc401-2-24",
+   "domain": "MC",
+   "stem": "A DLP policy is in Test mode without policy tips. Which statement accurately describes its behavior?",
+   "options": [
+    "Users see policy tips; admins receive email alerts; no blocking or enforcement occurs",
+    "No user policy tips are shown and no admin alerts are generated — the policy runs completely silently",
+    "No user policy tips are shown; DLP matches ARE reported in DLP activity reports for admin review; no blocking occurs",
+    "Users see policy tips; blocking occurs on high-confidence matches only; admins receive alerts"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. 'Test mode without policy tips' (formerly TestWithoutNotifications) runs the DLP engine in evaluation-only mode: no user policy tips, no enforcement actions, but matches ARE recorded in DLP activity reports and Activity Explorer for admin review. This lets admins assess policy impact before enabling enforcement. A is wrong because policy tips are NOT shown in this mode. B is wrong because matches ARE reported even though the policy runs without user-facing tips — it is not entirely silent. D is wrong because no blocking occurs in test mode regardless of confidence."
+  },
+  {
+   "id": "sc401-2-25",
+   "domain": "MC",
+   "stem": "A Windows device with Endpoint DLP enabled is connected to the corporate network. A user copies a sensitive file from a local drive to a mapped network drive. Can Endpoint DLP monitor this activity?",
+   "options": [
+    "No — Endpoint DLP only monitors local disk operations, not network file share paths",
+    "Yes — Endpoint DLP includes copy to network share as a monitorable and controllable activity",
+    "Yes — but only if the network drive is within the same Active Directory domain as the device",
+    "No — network drive activity requires a separate SharePoint DLP policy to detect the file movement"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Endpoint DLP monitors a range of file activities on Windows devices — including 'copy or move to network share.' This lets organizations detect and restrict sensitive files being moved from devices to file shares, a common exfiltration vector. The activity can be audited, warned on, or blocked per DLP rule. A is wrong because Endpoint DLP DOES monitor network-share copy operations. C is wrong because there is no AD-domain restriction on Endpoint DLP's network-share monitoring. D is wrong because SharePoint DLP is for SharePoint Online, not for network file shares."
+  },
+  {
+   "id": "sc401-2-26",
+   "domain": "MC",
+   "stem": "You want a retention policy to dynamically include all Microsoft 365 users in the Legal department, automatically adding new hires and removing departures. Which adaptive scope type should you use?",
+   "options": [
+    "Site scope — based on SharePoint site URL patterns",
+    "User scope — based on user attributes such as Department in Entra ID",
+    "Group scope — based on M365 Group membership or group attributes",
+    "Role scope — based on administrative roles assigned in Entra ID"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Adaptive scopes come in three flavors — User (targets user mailboxes/OneDrive based on Entra ID attributes like Department, Title, Country), Site (SharePoint sites based on site properties), and M365 Group (group mailboxes/SharePoint based on group attributes). A User scope with Department = Legal dynamically includes current and future Legal employees with no manual policy updates. A (Site) is wrong because the targeting unit is users in Legal, not specific SharePoint sites. C (Group) is wrong because the requirement is by department, not group membership. D (Role) is wrong because 'Role scope' targets Entra admin roles — and is not the right granularity for a department's worth of users."
+  },
+  {
+   "id": "sc401-2-27",
+   "domain": "MC",
+   "stem": "A Microsoft Teams private channel has messages that must be retained for 5 years. Which retention policy location should you select?",
+   "options": [
+    "Microsoft Teams — channel messages",
+    "Microsoft Teams — private channel messages",
+    "Exchange Online — shared mailboxes (each private channel has its own mailbox)",
+    "SharePoint Online — the private channel connected SharePoint site"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Teams private channel messages have a dedicated retention location ('Teams private channel messages') separate from standard channel messages. Selecting 'Teams channel messages' does NOT cover private channels — they must be explicitly added. A is wrong because standard 'Teams channel messages' does not include private channels. C is wrong because while each private channel has its own connected mailbox, you do not target it via 'Exchange Online shared mailboxes' in retention — the dedicated private-channel location is the right path. D is wrong because the private-channel SharePoint site is a separate target for FILE retention, not message retention."
+  },
+  {
+   "id": "sc401-2-28",
+   "domain": "MC",
+   "stem": "An eDiscovery hold is placed on a SharePoint site. A user then deletes a document from the site. Where is the document preserved and can the user retrieve it?",
+   "options": [
+    "In the SharePoint recycle bin — the user can retrieve it within 93 days",
+    "In the Preservation Hold Library — it is not visible to or accessible by end users",
+    "In a legal hold container accessible to both eDiscovery managers and site collection administrators",
+    "In the eDiscovery case collection results within the Microsoft Purview portal"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When a hold is placed on a SharePoint site, deleted documents are moved to the hidden Preservation Hold Library — accessible only to compliance administrators and eDiscovery managers via compliance tools. End users cannot see or self-recover from it. A is wrong because the recycle bin holds items for 93 days but is bypassed under hold — items go directly to Preservation Hold Library. C is wrong because Site Collection Administrators do not have rights to the Preservation Hold Library beyond what compliance tools provide. D is wrong because the Preservation Hold Library lives in SharePoint, not in the Purview portal — case results are a separate concept."
+  },
+  {
+   "id": "sc401-2-29",
+   "domain": "MC",
+   "stem": "Your organization stores sensitive research data in Azure Blob Storage containers. Can Microsoft Purview Content Search search this data for eDiscovery?",
+   "options": [
+    "Yes — Content Search covers all Microsoft cloud storage including Azure infrastructure services",
+    "Yes — if the Azure storage account is registered in Microsoft Purview Data Map first",
+    "No — Content Search only covers Microsoft 365 workloads: Exchange, SharePoint, OneDrive, Teams, and similar M365 services",
+    "Yes — when Azure Blob Storage is connected via a Microsoft Defender for Cloud Apps API connector"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Microsoft Purview Content Search (eDiscovery) covers only Microsoft 365 workloads — Exchange Online, SharePoint Online, OneDrive for Business, Teams, Viva Engage. Azure Blob Storage, Azure Data Lake, and other Azure infrastructure storage are NOT searchable through Content Search. A is wrong because Content Search is M365-scoped, not 'all Microsoft cloud storage.' B is wrong because registering Azure storage in Purview Data Map enables data governance discovery — not Content Search/eDiscovery. D is wrong because the MDCA API connector does not extend Content Search to Azure storage."
+  },
+  {
+   "id": "sc401-2-30",
+   "domain": "MC",
+   "stem": "Which statement best describes a retention label configured as auto-apply based on sensitive information type?",
+   "options": [
+    "Users select the label from the SharePoint label menu and the auto-apply policy validates their choice",
+    "The policy automatically applies the label to matching content without user interaction; manually applied labels take precedence and are not overwritten",
+    "The policy notifies users to manually apply the label — it does not apply the label itself",
+    "The label is applied to ALL content in scope, overriding any existing retention labels already applied"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Auto-apply retention label policies apply labels to matching content automatically — no user action needed. However, if a user has already manually applied a retention label, the auto-apply policy respects the existing label and does not overwrite it. Manual labels take precedence. A is wrong because auto-apply does not require user menu selection — that is the manual flow. C is wrong because auto-apply applies labels; it does not merely notify users. D is wrong because manual labels are preserved — auto-apply does not override existing labels."
+  },
+  {
+   "id": "sc401-2-31",
+   "domain": "MC",
+   "stem": "Your tenant has Microsoft 365 E3 licenses only. What is the default retention period for unified audit log events?",
+   "options": [
+    "30 days",
+    "90 days",
+    "180 days",
+    "1 year"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A (90 days) is correct. Microsoft 365 E3 provides 90 days of default audit log retention. (M365 E5 or E5 Compliance increases the default to 1 year; the 10-year retention adds-on extends further.) B (180 days) is wrong — there is no 180-day default. C (1 year) is wrong — that is the E5 default, not E3. D (3 years) is wrong — no Microsoft default audit retention is 3 years; custom retention policies can hit that figure but not by default."
+  },
+  {
+   "id": "sc401-2-32",
+   "domain": "MC",
+   "stem": "An eDiscovery Manager runs a content search and wants to export results to PST files but receives a permission error. The manager has the eDiscovery Manager role. What else is required?",
+   "options": [
+    "The Global Administrator role must authorize the export operation",
+    "The Export role must be explicitly added to the eDiscovery Manager role group membership",
+    "A Microsoft 365 E5 Compliance license is required for all data export operations",
+    "Site Collection Administrator rights are required on all searched SharePoint sites"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. The eDiscovery Manager role alone does not grant export rights — Export is a separate, explicitly assigned role. This separation of duties ensures investigators cannot extract data without additional authorization. The Export role is added via the Permissions section in the Purview portal. A is wrong because Global Admin authorization is not the mechanism — the specific Export role is. C is wrong because licensing alone does not grant export rights; role membership does. D is wrong because Site Collection Administrator rights are not the export authorization mechanism — the Export role group is."
+  },
+  {
+   "id": "sc401-2-33",
+   "domain": "MC",
+   "stem": "How does a DLP alert differ from an IRM (Insider Risk Management) alert?",
+   "options": [
+    "DLP alerts trigger on detection of sensitive data matching a rule; IRM alerts trigger on user behavioral patterns indicating potential insider risk",
+    "DLP alerts are shown to end users via policy tips; IRM alerts are visible only to administrators",
+    "DLP alerts are generated in real time; IRM alerts are generated only during nightly scheduled risk analysis",
+    "DLP alerts can trigger only on email content; IRM alerts trigger on activities across all M365 workloads"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A is correct. DLP detects sensitive CONTENT — specific data types (credit cards, SSNs) in specific locations. IRM detects risky USER BEHAVIOR PATTERNS — chains of downloads, exfiltration activities, and policy violations analyzed by ML risk scoring. Both generate alerts, but for fundamentally different signal types. B is wrong because DLP policy tips and IRM admin alerts are surface-level differences, not the core distinction. C is wrong because both DLP and IRM can generate alerts in near-real-time; IRM is not limited to nightly batch. D is wrong because DLP covers Exchange, SharePoint, OneDrive, Teams, and endpoint; it is not email-only."
+  },
+  {
+   "id": "sc401-2-34",
+   "domain": "MC",
+   "stem": "Which factors primarily determine a user insider risk score in IRM?",
+   "options": [
+    "The user salary band, performance rating, and tenure at the organization",
+    "The volume, frequency, and type of detected indicator activities, weighted by whether the user is a Priority User",
+    "The number of DLP policy violations attributed to the user in the previous 30 days only",
+    "The sensitivity labels on content the user has accessed in SharePoint and OneDrive"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. IRM risk scores are calculated from detected indicator activities (downloads, USB copies, email forwards, cloud uploads, sequences), the volume and frequency of those activities, and Priority User weighting if applicable. A is wrong because salary, performance rating, and tenure are not IRM inputs. C is wrong because IRM risk is broader than DLP violations alone — many indicators contribute. D is wrong because content access metadata (which sensitivity labels a user has seen) is not a direct risk-score input."
+  },
+  {
+   "id": "sc401-2-35",
+   "domain": "MC",
+   "stem": "An IRM Analyst is reviewing alerts and sees users as Anonymized User A and Anonymized User B. The analyst needs to see real identities. What must happen?",
+   "options": [
+    "The Analyst clicks the identity to de-anonymize since they are a designated IRM reviewer",
+    "An IRM Investigator or IRM Admin must perform the de-anonymization action",
+    "A Global Administrator must approve the de-anonymization request before names are revealed",
+    "De-anonymization is not possible once anonymization is enabled in IRM global settings"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When IRM anonymization is enabled, all reviewers see pseudonyms by default. Only users in the IRM Investigator or IRM Admin role group have the de-anonymize permission to reveal real identities — this role separation protects employee privacy during initial triage. IRM Analysts cannot de-anonymize on their own. A is wrong precisely because the Analyst role does not include de-anonymization rights. C is wrong because Global Admin approval is not the workflow — IRM Investigator/Admin roles control it directly. D is wrong because de-anonymization IS possible — it is just gated by role."
+  },
+  {
+   "id": "sc401-2-36",
+   "domain": "MC",
+   "stem": "An IRM alert is reviewed and determined to be a false positive — the activity was legitimate business use. Which action should the IRM reviewer take?",
+   "options": [
+    "Dismiss the alert as a false positive to remove it from the active alert queue",
+    "Escalate the alert to the IRM Investigator role for mandatory secondary review",
+    "Convert the alert to a full case and then close the case as resolved",
+    "Leave the alert open — dismissed alerts must remain visible to prevent future recurrence"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A is correct. Alerts confirmed as false positives or benign activity should be dismissed from the triage view — this removes them from the active queue while preserving them in the historical audit log. Alerts should be promoted to a case only when investigation and action are warranted. B is wrong because mandatory escalation for every dismissed alert would create unnecessary review work. C is wrong because converting a false positive into a case is excessive — dismiss is the correct path. D is wrong because dismissed alerts remain in the historical log for audit even after being removed from the active queue."
+  },
+  {
+   "id": "sc401-2-37",
+   "domain": "MC",
+   "stem": "When configuring the HR Connector to import employee departure data from an HR system CSV with additional columns and non-standard date formats, what flexibility does the connector provide?",
+   "options": [
+    "The CSV must exactly match Microsoft required column headers and date format — no customization is permitted",
+    "The connector field mapping configuration allows you to map your CSV columns to the required Purview IRM fields",
+    "The CSV must be converted to JSON format before the HR Connector can process it",
+    "Only departure dates in MM/DD/YYYY format are accepted — all other formats must be pre-converted externally"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. The HR Connector setup includes field mapping configuration — you specify which CSV column corresponds to each required field (employee email, resignation date, termination date, last working day). Extra columns are ignored. Date format configuration is also supported. A is wrong because the CSV does not have to exactly match a fixed Microsoft template. C is wrong because the CSV does not need to be converted to JSON. D is wrong because the connector accepts multiple date formats configured at setup time."
+  },
+  {
+   "id": "sc401-2-38",
+   "domain": "MC",
+   "stem": "With Microsoft 365 E5 licensing, what is the DEFAULT unified audit log retention period without any custom audit retention policies configured?",
+   "options": [
+    "90 days",
+    "180 days",
+    "1 year",
+    "10 years"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (1 year) is correct. Microsoft 365 E5 (and E5 Compliance) provides 1-year default audit log retention per licensed user. (E3 defaults to 90 days.) Custom audit retention policies can extend retention further, up to 10 years with the Audit (Premium) 10-Year Retention add-on. A (90 days) is wrong — that is the E3 default. B (180 days) is wrong — there is no Microsoft default at that figure. D (10 years) is wrong because 10-year retention is NOT a default — it requires the separate Audit (Premium) 10-Year Retention add-on license on top of E5."
+  },
+  {
+   "id": "sc401-2-39",
+   "domain": "MC",
+   "stem": "Which of the following is NOT available in the DSPM for AI dashboard in Microsoft Purview?",
+   "options": [
+    "Which sensitivity labels are present on content accessed by Microsoft 365 Copilot",
+    "Which users or sites are identified as oversharing content surfaced by Copilot",
+    "The specific prompt text typed by users in their Microsoft 365 Copilot interactions",
+    "Whether content accessed by Copilot was unlabeled or broadly accessible across the organization"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct — specific prompt text is NOT available in DSPM for AI. The dashboard surfaces metadata and risk signals (label coverage, oversharing, activity volume), but raw prompt/response content is treated as user data and is not exposed in the dashboard. A is wrong because label coverage on Copilot-accessed content IS shown. B is wrong because oversharing identification IS shown. D is wrong because unlabeled and broadly accessible content surfaced by Copilot IS shown."
+  },
+  {
+   "id": "sc401-2-40",
+   "domain": "MC",
+   "stem": "Who can review flagged communications in a Communication Compliance policy?",
+   "options": [
+    "Any member of the Compliance Administrator role group in the tenant",
+    "Only users explicitly designated as reviewers when the policy was created",
+    "Any member of the eDiscovery Manager role group assigned to the policy",
+    "Any member of the Communication Compliance role group regardless of policy assignment"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Communication Compliance policies have designated reviewers specified at policy creation time. Only users explicitly added as reviewers for that specific policy can access and review the flagged communications — protecting employee privacy by strictly scoping access. A is wrong because Compliance Administrators do not automatically gain review access to flagged content. C is wrong because eDiscovery Manager role does not unlock Communication Compliance review. D is wrong because the Communication Compliance role group has rights only when assigned to that specific policy."
+  },
+  {
+   "id": "sc401-2-41",
+   "domain": "MC",
+   "stem": "What is the primary purpose of Microsoft Purview Compliance Manager?",
+   "options": [
+    "Enforcing DLP and retention policies across all Microsoft 365 workloads",
+    "Providing a compliance score and guided improvement actions for compliance with regulations and standards",
+    "Monitoring and alerting on insider risk behavioral activities using machine learning analytics",
+    "Managing sensitivity label configurations and deployment across the entire tenant"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Compliance Manager helps organizations assess and improve compliance posture against regulations (GDPR, HIPAA, ISO 27001, NIST, etc.). It produces a compliance score based on implemented controls, maps Microsoft controls to regulatory requirements, and offers prioritized improvement actions. A is wrong because Compliance Manager does not enforce DLP/retention — those are dedicated policy solutions. C is wrong because IRM, not Compliance Manager, monitors insider-risk behaviors. D is wrong because sensitivity labels are managed in Information Protection, not Compliance Manager."
+  },
+  {
+   "id": "sc401-2-42",
+   "domain": "MC",
+   "stem": "You run a Content Search scoped to a Microsoft 365 Group. Which content locations are included in the search?",
+   "options": [
+    "Only the group Exchange Online shared mailbox",
+    "Only the group connected SharePoint site",
+    "Both the group Exchange Online shared mailbox AND the group connected SharePoint site",
+    "The group mailbox, SharePoint site, AND each member personal OneDrive for Business"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Content Search against a Microsoft 365 Group includes the group's Exchange Online shared mailbox (conversations, calendar) AND the group's connected SharePoint site (files, wiki, pages). Individual member personal mailboxes and OneDrive accounts are NOT automatically included in a group-scoped search. A is wrong because both the mailbox AND SharePoint site are in scope, not just the mailbox. B is wrong for the same reason — the mailbox is also in scope. D is wrong because personal OneDrive accounts of members are not part of a group-scoped search."
+  },
+  {
+   "id": "sc401-2-43",
+   "domain": "MC",
+   "stem": "When should you use Microsoft Purview eDiscovery (Standard or Premium) instead of a basic Content Search?",
+   "options": [
+    "When you need to search content for general compliance assessment with no legal proceeding involved",
+    "When you need to place holds on content locations, manage a structured legal investigation, or use advanced analytics (Premium)",
+    "Content Search is deprecated — eDiscovery is always required for all search and discovery scenarios",
+    "When searching more than 1 TB of data exceeds the inherent limitations of Content Search"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Content Search is designed for ad-hoc search and export with no hold management. eDiscovery Standard adds hold management — preserving content locations tied to a legal case. eDiscovery Premium adds custodian management, advanced analytics, review sets, predictive coding, and threading — for complex litigation. A is wrong because Content Search is fine for general compliance assessment; eDiscovery is for legal proceedings. C is wrong because Content Search is still available and supported. D is wrong because data volume is not the differentiator — feature set is (holds, custodians, analytics)."
+  },
+  {
+   "id": "sc401-2-44",
+   "domain": "MC",
+   "stem": "A complex litigation case involves 15 key individuals whose mailboxes, OneDrive accounts, and Teams content must all be preserved under legal hold and searched together as a structured investigation. Which Microsoft Purview solution supports managing these individuals as named custodians with mapped data sources?",
+   "options": [
+    "Microsoft Purview Content Search with a static location list covering all 15 users",
+    "Microsoft Purview eDiscovery Standard — apply individual holds to each mailbox and OneDrive manually",
+    "Microsoft Purview eDiscovery Premium — custodian management with data source mapping and custodian-specific holds",
+    "Microsoft Purview Insider Risk Management — create a case and add the 15 users as supervised subjects"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. eDiscovery Premium introduces custodian management — you define custodians (the key individuals), map each custodian's relevant data sources (mailbox, OneDrive, Teams, SharePoint), apply custodian-level holds in bulk, manage legal hold notifications, and track responses, all within a structured case workflow. A is wrong because Content Search lacks hold and custodian management. B is wrong because eDiscovery Standard requires manual per-location hold application without custodian-centric workflow. D is wrong because IRM is for insider-risk behavior monitoring, not litigation case management."
+  },
+  {
+   "id": "sc401-2-45",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "In Discover mode (Policy enforcement = Off), the scanner generates a report of files matching classification rules without applying labels or modifying any files.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Discover mode (Policy enforcement = Off) is read-only — the MPIP Scanner identifies and reports matches against configured rules without applying labels or modifying any files. This is the recommended first mode to validate results before enabling Enforce mode. No would be wrong because that would imply Discover mode modifies files, which contradicts its purpose."
+  },
+  {
+   "id": "sc401-2-46",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "A SQL Server instance is required for the MPIP Scanner to store its configuration database and scan job results.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. The MPIP Scanner requires a SQL Server instance (Standard or Express) to store its configuration database, scan job settings, and scan results. SQL must be installed and accessible before the scanner can be configured and registered with the Purview portal. No would be wrong because SQL is a hard prerequisite — the scanner cannot run without it."
+  },
+  {
+   "id": "sc401-2-47",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "The MPIP Scanner can apply sensitivity labels to files on on-premises network file shares when Policy enforcement is set to On (Enforce mode).",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. When Policy enforcement is set to On (Enforce mode), the MPIP Scanner applies sensitivity labels and protection settings to files on on-premises network file shares per the configured content scan job. In Discover mode it only reports; in Enforce mode it labels. No would be wrong because labeling is exactly what Enforce mode does."
+  },
+  {
+   "id": "sc401-2-48",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "The MPIP Scanner can label and apply protection to files in SharePoint Online document libraries.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. The MPIP Scanner targets ON-PREMISES environments — Windows file servers, network shares, and SharePoint Server (on-premises). SharePoint Online is covered by Microsoft Purview cloud auto-labeling policies, NOT by the MPIP Scanner. These are separate, complementary solutions for different environments. Yes would be wrong because it conflates the on-prem scanner's scope with the cloud auto-labeling product."
+  },
+  {
+   "id": "sc401-2-49",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "When in Enforce mode, the MPIP Scanner can apply sensitivity labels that include encryption (protection) — not just visual markings.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. In Enforce mode, the MPIP Scanner applies the full configuration of the matched sensitivity label — including encryption (Rights Management protection), content marking text, and other settings. The scanner is not limited to visual markings. No would be wrong because the Scanner does apply encryption when the matched label is configured with it."
+  },
+  {
+   "id": "sc401-2-50",
+   "domain": "YN",
+   "group": "yn2",
+   "stem": "Microsoft Defender for Endpoint must be deployed on the scanner server for the MPIP Scanner to function.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. The MPIP Scanner is a standalone agent communicating with the Purview portal via the Azure Information Protection service — it does NOT require Microsoft Defender for Endpoint on the scanner machine. MDE is required for Endpoint DLP on Windows clients, not for the MPIP Scanner. Yes would be wrong because it would invent a dependency that does not exist."
+  },
+  {
+   "id": "sc401-3-1",
+   "domain": "CS",
+   "group": "cs3",
+   "stem": "Managers use BYOD devices (enrolled in Intune) to access SharePoint project sites from personal browsers. Litware wants to prevent file downloads and printing from these unmanaged browser sessions without blocking read access entirely. Which configuration achieves this?",
+   "options": [
+    "A DLP policy blocking SharePoint downloads from devices not enrolled in Intune",
+    "A sensitivity label with Assign permissions now encryption applied to all files in the SharePoint site",
+    "A container sensitivity label applied to the SharePoint site, configured to restrict unmanaged devices to web-only access (no download, no print)",
+    "A conditional access policy requiring full Intune compliance before any SharePoint access is permitted"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Container sensitivity labels on SharePoint sites include an 'Unmanaged devices' setting with three options: block access, allow limited web-only access (view, no download/print/sync), or allow full access. Web-only meets both requirements — read access is preserved while download/print/sync are blocked for unmanaged sessions. The configuration leverages Entra ID Conditional Access App Control but is set directly on the container label. A is wrong because SharePoint DLP does not have a device-state condition — distinguishing managed from unmanaged is conditional access territory. B is wrong because file-level encryption applies uniformly regardless of device — it doesn't selectively limit download from BYOD. D is wrong because requiring Intune compliance for ANY access fully blocks BYOD, contradicting the requirement to preserve read access."
+  },
+  {
+   "id": "sc401-3-2",
+   "domain": "CS",
+   "group": "cs3",
+   "stem": "When a Litware employee account is deleted, their OneDrive contained project files covered by an active 5-year retention policy. What happens to the OneDrive content?",
+   "options": [
+    "Content is immediately deleted with the user account",
+    "Content is preserved for 30 days and then deleted per the standard account deletion process",
+    "Content remains preserved for the full 5-year retention period in the Preservation Hold Library",
+    "Content is automatically transferred to the deleted employee manager OneDrive account"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Retention policies survive account deletion. OneDrive content covered by an active retention policy is preserved in the Preservation Hold Library for the full policy duration, regardless of the user account being removed. A is wrong because retention policy explicitly prevents immediate deletion. B is wrong because the standard 30-day OneDrive retention applies only when no retention policy is in effect. D is wrong because Microsoft does not auto-transfer OneDrive content to the manager — that would require a separate offboarding step and is not driven by retention policy."
+  },
+  {
+   "id": "sc401-3-3",
+   "domain": "CS",
+   "group": "cs3",
+   "stem": "Litware CISO wants a dashboard showing which project documents Copilot is accessing, whether they are sensitivity labeled, and whether sensitive unlabeled content is being surfaced to Copilot users. Which solution provides this visibility?",
+   "options": [
+    "Microsoft Defender XDR — Advanced Hunting with CopilotInteraction event type queries",
+    "Microsoft Purview Insider Risk Management scoped to Copilot-enabled users",
+    "Microsoft Purview DSPM for AI",
+    "Microsoft Entra ID audit logs filtered for Microsoft 365 Copilot service principal activity"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (DSPM for AI) is correct. Data Security Posture Management for AI is the purpose-built Purview solution for Copilot governance visibility — sensitivity label coverage on content accessed by Copilot, oversharing risk on broadly accessible/unlabeled content, and AI interaction activity metrics. A is wrong because Defender XDR Advanced Hunting can query CopilotInteraction audit events but does not provide the dashboard-level governance view that DSPM for AI does. B is wrong because IRM detects user RISK behaviors, not Copilot content exposure. D is wrong because Entra ID audit logs show sign-in/service activity, not Copilot content access or labeling exposure."
+  },
+  {
+   "id": "sc401-3-4",
+   "domain": "CS",
+   "group": "cs3",
+   "stem": "Litware must detect full names of EU residents in SharePoint documents to comply with GDPR data subject rights requests. Names include many European cultural variations. Which SIT provides the best detection?",
+   "options": [
+    "A custom regex SIT with patterns matching common European name formats",
+    "A keyword list SIT populated with employee names extracted from the HR database",
+    "The All Full Names named entity SIT using ML-based detection across cultural name variations",
+    "An EDM classifier mapping names to a GDPR data subject registry maintained in SQL"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (All Full Names) is correct. It is a named entity SIT using machine learning to detect person names across European, Asian, Middle Eastern, and other naming conventions without relying on fixed patterns. Ideal for GDPR scenarios where name formats vary widely across EU member states. A is wrong because no general 'European name format' regex can capture the cultural variation — and named entity SITs were specifically built to solve this. B is wrong because a keyword list from HR captures only employees, not all EU residents in customer data. D is wrong because building an EDM classifier of every EU subject's name is operationally infeasible and unnecessary when a named entity SIT does the job."
+  },
+  {
+   "id": "sc401-3-5",
+   "domain": "MC",
+   "stem": "A sensitivity label Confidential has its header text changed from CONFIDENTIAL to CONFIDENTIAL — LITWARE INC in the Purview portal. When does the updated header appear on a previously labeled document?",
+   "options": [
+    "Immediately — as soon as the label configuration is saved in the Purview compliance portal",
+    "The next time a user opens and saves the document in an Office application",
+    "Only when the user manually removes and re-applies the label to the document",
+    "Within 1 hour — as the label policy synchronizes to all Office applications automatically"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Visual-marking changes (headers, footers, watermarks) on sensitivity labels take effect the next time a user opens and re-saves a labeled document in an Office application. Previously saved files do not retroactively update — the document must be re-opened and saved in Office after the updated label policy has propagated to the client (typically within an hour). A is wrong because the change is not applied immediately to previously saved documents — only on next save. C is wrong because manual remove-and-re-apply is not required; a normal save is enough. D is wrong because policy synchronization within an hour delivers the new label DEFINITION to Office, but the document itself still needs to be saved to receive the updated markings."
+  },
+  {
+   "id": "sc401-3-6",
+   "domain": "MC",
+   "stem": "A compliance officer needs to determine what percentage of SharePoint documents are currently labeled versus unlabeled across the entire tenant. Which Microsoft Purview tool provides this inventory?",
+   "options": [
+    "Activity Explorer — shows labeling change events sorted by date",
+    "Microsoft Purview Audit — filter for SensitivityLabelApplied operations across the tenant",
+    "Microsoft Purview Compliance Manager — data classification control assessment",
+    "Content Explorer — provides a current inventory of items by sensitivity label, SIT, and location"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "D is correct. Content Explorer provides the current inventory of labeled and sensitive items across SharePoint, Exchange, and OneDrive — filtered by label, SIT, or location. You can view item counts per label and identify coverage gaps. A (Activity Explorer) is wrong because it shows the HISTORY of labeling events, not the current state. B (Audit) is wrong because audit captures discrete events; aggregating into a tenant-wide inventory is what Content Explorer is for. C (Compliance Manager) is wrong because Compliance Manager tracks regulatory control implementation, not current label inventory."
+  },
+  {
+   "id": "sc401-3-7",
+   "domain": "MC",
+   "stem": "Which statement correctly compares the scope of the MPIP Scanner versus Microsoft Purview cloud auto-labeling policies?",
+   "options": [
+    "Both the MPIP Scanner and cloud auto-labeling policies can label content in SharePoint Online and on-premises file shares",
+    "The MPIP Scanner labels on-premises file shares and SharePoint Server; cloud auto-labeling policies label Exchange Online, SharePoint Online, and OneDrive for Business",
+    "Cloud auto-labeling is a superset of MPIP Scanner — the Scanner is only needed for EDM classification, not for actual labeling",
+    "The MPIP Scanner operates on Windows and macOS devices; cloud auto-labeling covers Linux servers and cloud storage"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. MPIP Scanner targets on-premises Windows file shares and SharePoint Server (on-premises). Cloud auto-labeling policies target Exchange Online, SharePoint Online, and OneDrive for Business (the Microsoft 365 cloud). The two are complementary; neither covers the other's scope. A is wrong because they have distinct, non-overlapping scopes — the Scanner doesn't touch SPO and auto-labeling doesn't touch on-prem shares. C is wrong because cloud auto-labeling cannot label on-premises content, and the Scanner is more than an EDM tool — it applies any configured sensitivity label. D is wrong because the Scanner is not a Windows/macOS client agent — it is a server-side service."
+  },
+  {
+   "id": "sc401-3-8",
+   "domain": "MC",
+   "stem": "Your financial services organization needs to detect potentially non-compliant investment advice and conflicts of interest in employee email and Teams messages. Which Communication Compliance policy template is designed for this scenario?",
+   "options": [
+    "Offensive language — uses classifiers to detect harassment, threats, and discriminatory content",
+    "Sensitive information — detects messages containing sensitive information types such as credit card numbers or SSNs",
+    "Regulatory compliance — uses classifiers trained to detect financial regulatory language and potential policy violations",
+    "Custom policy — no built-in template covers financial regulatory compliance scenarios"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. The Regulatory compliance template in Communication Compliance uses ML classifiers trained on financial-regulatory language — detecting potential insider-trading indicators, Reg FD violations, fiduciary conflicts, and inappropriate investment advice. Financial-services firms should use this template as a starting point. A (Offensive language) is wrong because it targets harassment/discrimination, not regulatory matters. B (Sensitive information) is wrong because it detects structured DATA types (SSNs, credit cards), not regulatory content. D is wrong because a built-in regulatory compliance template DOES exist — a custom policy isn't required as the starting point."
+  },
+  {
+   "id": "sc401-3-9",
+   "domain": "MC",
+   "stem": "Litware needs a second OME branding configuration for the Legal department, in addition to the existing corporate OME branding. Which PowerShell cmdlet creates a NEW OME branding template?",
+   "options": [
+    "Set-OMEConfiguration — modifies the existing default template with new branding settings",
+    "New-OMEConfiguration — creates a new additional OME branding configuration template",
+    "Add-OMETemplate — appends branding elements to the existing default configuration",
+    "New-TransportRule with -ApplyOMETemplate — creates both the template and transport rule simultaneously"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B (New-OMEConfiguration) is correct. Set-OMEConfiguration only modifies the existing default OME template. New-OMEConfiguration creates an entirely new, separate OME branding configuration; multiple OME configurations can coexist in a tenant and are referenced from transport rules via the -ApplyOMETemplate parameter. A (Set-OMEConfiguration) is wrong because Set modifies the default, not creates a new template. C (Add-OMETemplate) is wrong because no such cmdlet exists. D is wrong because New-TransportRule creates the rule but does not create OME templates — the template must already exist before the rule references it."
+  },
+  {
+   "id": "sc401-3-10",
+   "domain": "MC",
+   "stem": "A Confidential sensitivity label includes a watermark configured in the label settings. A user prints a document with this label applied. Where does the watermark appear on the printed output?",
+   "options": [
+    "The watermark appears only on screen — sensitivity label watermarks do not appear on printed output",
+    "The watermark is embedded in the document rendering and appears on printed pages",
+    "The watermark appears only on printed output from Windows — macOS printing omits watermarks",
+    "The watermark appears only on the first page — subsequent pages require a separate label configuration"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Sensitivity-label watermarks are inserted as document content — they appear both on screen AND in printed output across platforms. They are rendered as part of the document, not as a DRM-style screen overlay. A is wrong because watermarks DO appear on print. C is wrong because watermarks render on macOS prints as well — they are not OS-specific. D is wrong because watermarks repeat across pages, not just the first."
+  },
+  {
+   "id": "sc401-3-11",
+   "domain": "MC",
+   "stem": "Which content marking types can a sensitivity label apply to a document?",
+   "options": [
+    "Header text, footer text, and watermark text",
+    "Header text, footer text, watermark text, and a digital signature stamp",
+    "Watermark only — headers and footers are controlled by the document template settings",
+    "Header text and watermark only — footer text is not supported as a content marking"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A is correct. Microsoft Purview sensitivity labels support exactly three content-marking types: header text (top of pages), footer text (bottom of pages), and watermark text (diagonal overlay on each page). B is wrong because sensitivity labels do not insert a digital signature stamp as a content marking — the markings are limited to three text-based types. C is wrong because headers AND footers ARE supported in addition to watermarks. D is wrong because footer text IS a supported marking type."
+  },
+  {
+   "id": "sc401-3-12",
+   "domain": "MC",
+   "stem": "In a sensitive information type (SIT), what is the purpose of a supporting element?",
+   "options": [
+    "It defines the data format that the primary element regex pattern must match",
+    "It provides corroborating evidence — keywords or additional patterns — that raises the confidence level when found near the primary element",
+    "It specifies which users are authorized to view content matched by the SIT in DLP reports",
+    "It links the SIT to an EDM schema for exact-data validation of the primary element"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Supporting elements in a SIT (keywords, additional regex patterns, proximity conditions) provide corroborating evidence — when found near a primary-element match, they raise the confidence level (e.g., from medium to high). Without supporting elements, the primary match still fires but at a lower confidence level. A is wrong because the primary element's regex is fixed in its own configuration — supporting elements do not define it. C is wrong because RBAC governs report access, not SIT internals. D is wrong because EDM schemas are a separate SIT type — supporting elements are general SIT corroboration mechanisms."
+  },
+  {
+   "id": "sc401-3-13",
+   "domain": "MC",
+   "stem": "You configure a service-side auto-labeling policy for SharePoint Online. The target sensitivity label uses which encryption configuration type?",
+   "options": [
+    "Only labels with Let users assign permissions — service-side cannot apply pre-set permission labels",
+    "Only labels with Assign permissions now — pre-defined permissions requiring no user interaction",
+    "Both Let users assign and Assign permissions now label configurations are equally supported",
+    "Labels with no encryption only — service-side auto-labeling cannot apply any encrypted label"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Service-side (cloud-based) auto-labeling can only apply labels configured with 'Assign permissions now' — because those permissions are pre-defined in the label and require no user decision at apply time. 'Let users assign permissions' requires interactive user input in an Office application and cannot be applied by an automated service-side policy. A is wrong — it reverses the relationship. C is wrong because the two encryption types are NOT equally supported by service-side auto-labeling. D is wrong because service-side auto-labeling CAN apply encrypted labels, as long as the encryption is 'Assign permissions now' type."
+  },
+  {
+   "id": "sc401-3-14",
+   "domain": "MC",
+   "stem": "Litware must detect EU residents full names in SharePoint documents for GDPR subject rights compliance. Names include many European cultural variations. Which SIT provides the most accurate detection?",
+   "options": [
+    "EU Passport Number (SIT for travel identity documents)",
+    "Person Name — English (limited to English-format name patterns only)",
+    "All Full Names (named entity SIT using ML, covering multicultural name formats)",
+    "All Personal Identifiers (a broad bundled SIT covering multiple EU personal data categories)"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (All Full Names) is correct. As a named entity SIT, it uses ML to detect person names across European, Asian, Middle Eastern, and other naming conventions without depending on a fixed format — ideal for multinational GDPR scenarios. A (EU Passport Number) is wrong because it detects travel document IDs, not names. B (Person Name - English) is wrong because it is limited to English-formatted name patterns and would miss most European name variations. D is wrong because 'All Personal Identifiers' is not a real bundled SIT name in Microsoft Purview."
+  },
+  {
+   "id": "sc401-3-15",
+   "domain": "MC",
+   "stem": "An employee notifies HR of their resignation effective in three weeks. Your organization wants IRM to immediately begin monitoring this employee for bulk downloads, USB copies, and unusual external email forwards during the notice period. Which IRM policy type should you configure?",
+   "options": [
+    "Security policy violations — detects users circumventing device security controls or disabling protective software",
+    "Data leaks — general — detects sensitive content being shared broadly across the organization or externally",
+    "Data theft by departing employees — triggered by departure signals from the HR Connector and monitors exfiltration risk indicators",
+    "Offensive language in the workplace — detects policy violations in employee communications"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. 'Data theft by departing employees' is the IRM policy template designed for this scenario. When combined with HR Connector signals about resignation/termination, it activates heightened risk scoring during the notice period — monitoring for bulk downloads, USB copies, cloud uploads, and external forwards that may indicate pre-departure exfiltration. A (Security policy violations) is wrong because it targets users disabling/circumventing endpoint controls — different signal type. B (Data leaks - general) is wrong because it covers broad sharing/exfiltration without the departure-specific risk weighting. D is wrong because it is a Communication Compliance scenario, not IRM."
+  },
+  {
+   "id": "sc401-3-16",
+   "domain": "MC",
+   "stem": "A retention label is configured with retention period starting from When labeled. A user applies the label to a document on March 1, 2025. The document was originally created January 1, 2023. The retention period is 5 years. When does the retention period end?",
+   "options": [
+    "January 1, 2028 — 5 years after the document creation date",
+    "March 1, 2030 — 5 years after the label application date",
+    "January 1, 2025 — 5 years calculated retroactively from the creation date",
+    "March 1, 2025 — the label application date itself, as retention triggers immediately"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. 'When labeled' starts the retention clock at the date and time the label is applied — not the creation or modification date. March 1, 2025 plus 5 years equals March 1, 2030. The January 1, 2023 creation date is irrelevant to a 'When labeled' policy. A is wrong because that uses creation date, which is a different retention-basis option. C is wrong because retroactive calculation is not how 'When labeled' works. D is wrong because retention does not expire on the day the label is applied — the clock starts then."
+  },
+  {
+   "id": "sc401-3-17",
+   "domain": "MC",
+   "stem": "Litware is a multinational company. EU employee data must not be accessible to US-based eDiscovery managers. Which Microsoft Purview feature restricts eDiscovery search scope by organizational geography or division?",
+   "options": [
+    "Information Barriers configured between EU and US organizational units",
+    "Microsoft Purview Compliance Boundaries for eDiscovery",
+    "Microsoft Entra ID administrative units limiting the search scope",
+    "Microsoft data residency commitments in the standard GDPR data protection addendum"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Compliance Boundaries in Microsoft Purview eDiscovery restrict which content locations (mailboxes, SharePoint sites) an eDiscovery manager can search and hold. They are designed for organizations with multiple divisions, geographies, or subsidiaries that need eDiscovery segmentation — exactly Litware's EU vs US separation. A (Information Barriers) is wrong because IB restricts user communication, not eDiscovery search scope. C (Entra administrative units) is wrong because admin units scope Entra administrative actions, not eDiscovery scope. D is wrong because data residency commitments protect storage location but do not segment eDiscovery roles by geography."
+  },
+  {
+   "id": "sc401-3-18",
+   "domain": "MC",
+   "stem": "What is a key advantage of using a Microsoft Purview DLP policy over an Exchange mail flow rule (transport rule) for protecting sensitive information?",
+   "options": [
+    "Mail flow rules cannot apply to messages sent within the same organization; DLP policies can",
+    "DLP policies detect sensitive information across multiple workloads (Exchange, SharePoint, Teams, endpoint) using SITs; mail flow rules are limited to Exchange message attributes",
+    "DLP policies evaluate content in real time before queuing; mail flow rules evaluate content only after queuing",
+    "Mail flow rules cannot block messages; only DLP policies can enforce blocking actions on email"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DLP policies use SITs (and other condition types) to detect sensitive CONTENT across multiple workloads — Exchange, SharePoint, OneDrive, Teams, endpoint, Power BI. Mail flow rules operate on Exchange message attributes (headers, subject, envelope, sender/recipient) and cannot inspect content for SITs. For multi-workload, content-aware protection, DLP is required. A is wrong because mail flow rules can match internal-to-internal messages. C is wrong because both technologies evaluate before final delivery — the differentiator is content awareness, not timing. D is wrong because mail flow rules CAN block messages (Reject the message); blocking is not exclusive to DLP."
+  },
+  {
+   "id": "sc401-3-19",
+   "domain": "MC",
+   "stem": "Litware needs a custom SIT to detect any of 75,000 proprietary technology terms in documents. Standard keyword list SITs have a character limit too small for this. What SIT feature supports large keyword lists?",
+   "options": [
+    "Extended keyword SIT with dynamic lookup from a SharePoint list",
+    "Keyword dictionary SIT supporting up to 1 million unique terms",
+    "A trainable classifier seeded with documents containing the 75,000 terms",
+    "An EDM SIT using a 75,000-row database table of proprietary terms"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Keyword dictionaries in Microsoft Purview SITs support up to 1 million unique terms (about 1 MB of UTF-8 text). For large proprietary term lists like 75,000 technology terms, a keyword-dictionary SIT is the right choice. A is wrong because there is no 'dynamic SharePoint list lookup' SIT type. C is wrong because trainable classifiers learn content topics from examples — they are not the mechanism for matching a specific list of terms. D is wrong because EDM matches structured rows of data with primary/supporting fields — not arbitrary technology terms."
+  },
+  {
+   "id": "sc401-3-20",
+   "domain": "MC",
+   "stem": "You want a DLP alert to be generated only when a single incident involves more than 50 sensitive items — to reduce alert fatigue from low-volume matches. Where should you configure this threshold?",
+   "options": [
+    "In the sensitivity label policy alert settings for the matching label",
+    "In the DLP policy alert configuration — set the threshold to generate an alert only when the count meets or exceeds 50 items",
+    "In Microsoft Sentinel — create a custom analytics rule that filters DLP signals below the threshold",
+    "In Compliance Manager — set an incident count threshold per compliance control"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DLP alert configurations include threshold settings — you can specify the minimum match count before an alert is generated. Setting a 50-item threshold means lower-volume incidents are still logged in DLP activity reports but no admin alert fires, reducing noise. A is wrong because alert thresholds are configured on the DLP policy, not on sensitivity label policy alerts. C is wrong because Sentinel is out of scope for SC-401 — it would be an over-engineered solution to a Purview-native problem. D is wrong because Compliance Manager assesses regulatory implementation, not DLP alert volumes."
+  },
+  {
+   "id": "sc401-3-21",
+   "domain": "MC",
+   "stem": "Adaptive Protection in IRM assigns users to insider risk levels. Which risk level triggers the most restrictive DLP enforcement actions when combined with a DLP policy?",
+   "options": [
+    "Minor",
+    "Moderate",
+    "Elevated",
+    "Critical"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C (Elevated) is correct. Adaptive Protection assigns three risk levels: Minor (lowest), Moderate, and Elevated (highest). DLP policies using the 'Insider risk level is' condition can apply tiered enforcement — Elevated typically triggers the strictest action (block), Moderate often block-with-override, Minor audit-only. D (Critical) is wrong because 'Critical' is NOT a valid Adaptive Protection level. A (Minor) and B (Moderate) are wrong because Elevated is more restrictive than both."
+  },
+  {
+   "id": "sc401-3-22",
+   "domain": "MC",
+   "stem": "A user permanently deletes an email from their Exchange Online mailbox (purges it from Deleted Items). Where is the item stored and for how long by default?",
+   "options": [
+    "The item is permanently and immediately deleted when purged from Deleted Items",
+    "The item is moved to Recoverable Items — Deletions folder and retained for 14 days by default",
+    "The item is moved to the archive mailbox Recoverable Items and retained for 90 days",
+    "The item moves to the archive mailbox immediately and is retained indefinitely"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When a user purges an item from Deleted Items (Shift+Delete or empties the folder), the item moves to the hidden Recoverable Items → Deletions subfolder for 14 days by default. Litigation holds, eDiscovery holds, or retention policies extend this period — potentially indefinitely — and make the items discoverable via Content Search. A is wrong because the item is NOT immediately and permanently deleted; it goes to Recoverable Items first. C is wrong because the archive mailbox is not the default landing spot — the user's mailbox Recoverable Items is. D is wrong because items do not automatically migrate to the archive immediately, and they are not retained indefinitely without a hold."
+  },
+  {
+   "id": "sc401-3-23",
+   "domain": "MC",
+   "stem": "A retention policy is configured with Retain only action (no delete) for a 5-year period applied to Exchange Online mailboxes. What happens to emails after the 5-year retention period ends?",
+   "options": [
+    "Emails are automatically deleted by the retention policy after the 5-year period expires",
+    "Emails remain in the mailbox indefinitely — Retain only has no automatic delete component",
+    "Emails are automatically moved to the archive mailbox after 5 years",
+    "Emails are flagged for disposition review at the 5-year mark and held pending review decision"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. 'Retain only' ensures content CANNOT be permanently deleted by users during the retention period — but it does NOT schedule deletion at period end. After the period expires, the retention protection lapses and content is simply no longer shielded by the policy. Compare with 'Retain X years, then delete,' which actively schedules disposition. A is wrong because Retain only does not auto-delete. C is wrong because Retain only does not move content to archive. D is wrong because Retain only does not trigger disposition review at period end — that requires Retain-then-delete with reviewers configured."
+  },
+  {
+   "id": "sc401-3-24",
+   "domain": "MC",
+   "stem": "Where should a compliance administrator navigate in Microsoft Purview to create a custom audit log retention policy extending retention for specific operations to 3 years?",
+   "options": [
+    "Microsoft Purview portal — Data lifecycle management — Retention policies",
+    "Microsoft Purview portal — Audit — Audit retention policies",
+    "Microsoft 365 admin center — Settings — Security and privacy — Audit",
+    "Microsoft Entra ID admin center — Monitoring — Audit logs — Retention configuration"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Custom audit log retention policies are configured in the Microsoft Purview portal under Audit, then on the Retention policies tab. These are separate from data lifecycle retention policies. Audit retention policies specify which workload record types to retain, for how long, and for which users/activities. A is wrong because Data lifecycle management retention policies cover content retention (emails, files), not audit logs. C is wrong because the M365 admin center does not house audit retention policy configuration. D is wrong because Entra ID admin center handles Entra audit logs separately — not Microsoft Purview unified audit log retention."
+  },
+  {
+   "id": "sc401-3-25",
+   "domain": "MC",
+   "stem": "A DLP alert fires for a user who also has a high-risk Entra ID sign-in alert and a suspicious process execution alert from Defender for Endpoint. In which portal are all three signals consolidated into a unified security incident automatically?",
+   "options": [
+    "Microsoft Purview portal — DLP alert management dashboard",
+    "Microsoft Defender XDR portal — Incidents queue",
+    "Microsoft Entra ID portal — Risk events — Identity protection",
+    "Microsoft Sentinel — Incidents (requires individual data connector configuration for each source)"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Microsoft Defender XDR automatically correlates related alerts from Microsoft Purview (DLP), Entra ID Protection (identity risk), and Defender for Endpoint (device alerts) into a single unified incident with a complete attack story. A is wrong because the Purview DLP dashboard surfaces DLP alerts only — no cross-product correlation. C is wrong because Entra ID portal handles identity-risk events but is not the consolidation point for DLP + endpoint signals. D is wrong because while Sentinel can do this, it requires manual data connector configuration per source — Defender XDR provides the correlation natively for first-party signals."
+  },
+  {
+   "id": "sc401-3-26",
+   "domain": "MC",
+   "stem": "Adaptive Protection is enabled and a user is assigned an Elevated insider risk level. A DLP policy rule uses the condition Insider risk level is Elevated with a Block action. The user attempts to upload a file — which contains no sensitive information types — to a personal cloud storage domain. What happens?",
+   "options": [
+    "The upload proceeds — the insider risk level condition is informational only and does not trigger enforcement without a matching sensitive information type",
+    "The upload is blocked — the user Elevated insider risk level alone satisfies the DLP rule condition and triggers the block action",
+    "The upload is blocked only after a second violation in the same session — the first attempt generates a warning",
+    "IRM blocks the upload directly — Adaptive Protection does not route enforcement through DLP policies"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When Adaptive Protection is active, the DLP condition 'Insider risk level is' can trigger enforcement based on the user's behavioral risk level ALONE — a matching SIT is NOT required. If the user is Elevated and the DLP rule blocks for Elevated, the upload is blocked regardless of file content. This enables proactive behavior-based enforcement on high-risk users. A is wrong because the condition does enforce without a SIT match. C is wrong because there is no automatic two-strike warning behavior built into the condition. D is wrong because IRM itself does not directly block — IRM provides the risk-level signal that DLP enforces against."
+  },
+  {
+   "id": "sc401-3-27",
+   "domain": "MC",
+   "stem": "The FileAccessed audit event in the unified audit log records which activity?",
+   "options": [
+    "When a file in SharePoint is permanently deleted by a user",
+    "When a file in SharePoint or OneDrive is opened or previewed by a user",
+    "When a sensitivity label is applied to a file for the first time",
+    "When a file is checked out for exclusive editing by a user in SharePoint"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. FileAccessed is generated in the SharePoint and OneDrive audit log when a user opens or previews a file — capturing user identity, IP address, file name, file path, and site URL. A (file permanently deleted) is FileDeleted — different operation. C (sensitivity label applied) is SensitivityLabelApplied — different operation. D (file checked out) is CheckOut — different operation."
+  },
+  {
+   "id": "sc401-3-28",
+   "domain": "MC",
+   "stem": "A compliance administrator wants to search unified audit logs for Teams meeting recording activity using PowerShell. Which command sequence is correct?",
+   "options": [
+    "Connect-IPPSSession; then Search-UnifiedAuditLog -RecordType MicrosoftTeams",
+    "Connect-ExchangeOnline; then Search-UnifiedAuditLog -RecordType MicrosoftTeams",
+    "Connect-MgGraph; then Get-MgAuditLogSignIn -Filter recordType eq MicrosoftTeams",
+    "Connect-IPPSSession; then Get-ComplianceCase -RecordType MicrosoftTeams"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Search-UnifiedAuditLog is an Exchange Online PowerShell cmdlet — it REQUIRES Connect-ExchangeOnline before it can run, even though it queries the unified audit log that spans all M365 workloads. The cmdlet lives in the Exchange Online module, NOT in the Security & Compliance (IPPSSession) module. This is one of the most frequently tested SC-401 exam traps. A is wrong because Connect-IPPSSession does not expose Search-UnifiedAuditLog. C is wrong because Microsoft Graph audit cmdlets do not include Search-UnifiedAuditLog and Get-MgAuditLogSignIn is for Entra sign-ins. D is wrong because Get-ComplianceCase manages eDiscovery cases — not audit log search."
+  },
+  {
+   "id": "sc401-3-29",
+   "domain": "MC",
+   "stem": "An eDiscovery hold is placed on a user Exchange Online mailbox as part of an eDiscovery Standard case. The user then deletes several emails and empties their Deleted Items folder. What happens to those deleted emails?",
+   "options": [
+    "The emails are permanently deleted — eDiscovery holds only prevent future deletion, not items deleted after the hold is placed",
+    "The emails are preserved in the mailbox Recoverable Items folder and remain discoverable via content search within the case",
+    "The deleted emails are automatically added to the eDiscovery case review set when the user deletes them",
+    "The hold fails for newly deleted items — Litigation Hold must be used instead for prospective mailbox preservation"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. When an eDiscovery hold is placed on a mailbox, items the user deletes are moved to Recoverable Items → DiscoveryHolds subfolder rather than being permanently purged. They remain searchable and discoverable via content search within the case — applying both retroactively and prospectively while the hold is active. A is wrong because eDiscovery holds preserve future deletions too, not just past content. C is wrong because items are not automatically added to a review set on deletion — they are preserved in DiscoveryHolds and discoverable on demand. D is wrong because eDiscovery holds work prospectively just like Litigation Hold; both technologies preserve future deletions."
+  },
+  {
+   "id": "sc401-3-30",
+   "domain": "MC",
+   "stem": "SharePoint content is covered by two retention policies: Policy A — Delete only after 1 year, and Policy B — Retain only for 5 years. After 1 year, what happens to the content?",
+   "options": [
+    "The content is deleted by Policy A — delete actions take precedence over retain actions",
+    "The content is retained for 5 years — retention always wins over deletion for the same content",
+    "The content is retained for 5 years and then automatically deleted — both policies apply in sequence",
+    "An administrator must manually resolve the conflict before either policy takes effect"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Microsoft Purview retention conflict resolution: retention wins over deletion when both apply to the same content. With Policy A (delete after 1 year) and Policy B (retain for 5 years), content is retained for the full 5 years; the 1-year deletion is suppressed. After 5 years, the deletion can then take effect. A is wrong because the deletion does NOT trump the retain action. C is wrong because the policies do not 'apply in sequence' — retain wins outright during overlap. D is wrong because retention conflicts are resolved automatically per documented rules; no admin intervention is required."
+  },
+  {
+   "id": "sc401-3-31",
+   "domain": "MC",
+   "stem": "A retention policy covers Microsoft Teams channel messages for 3 years. A user deletes a channel message. Where is the deleted message preserved?",
+   "options": [
+    "In the team connected SharePoint Preservation Hold Library",
+    "In the deleting user Exchange Online Recoverable Items folder",
+    "In a hidden SubstrateHolds folder within the team Exchange Online group mailbox",
+    "In the eDiscovery case hold container within the Microsoft Purview portal"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Teams channel messages are stored in the team's Exchange Online group mailbox. When a retention policy applies and a message is deleted, the message is moved to the hidden SubstrateHolds folder within Recoverable Items of the group mailbox. This hidden folder is not user-accessible but is discoverable through eDiscovery. A is wrong because the SharePoint Preservation Hold Library preserves files in the connected SharePoint site, not Teams chat messages. B is wrong because Teams channel messages are not retained in the deleting user's personal mailbox. D is wrong because the eDiscovery case hold container is the search/result space, not the underlying preservation location."
+  },
+  {
+   "id": "sc401-3-32",
+   "domain": "MC",
+   "stem": "A compliance admin wants to run a content search that includes an inactive mailbox (belonging to a user whose account was deleted 6 months ago). Which parameter is required?",
+   "options": [
+    "-InactiveMailboxOnly $true",
+    "-IncludeInactiveMailboxes $true",
+    "-AllowNotFoundExchangeLocationsEnabled $true",
+    "-ExchangeLocation InactiveMailboxes"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. When adding inactive mailboxes (or other Exchange locations that do not have an active user mailbox) to a content search via PowerShell, you must include -AllowNotFoundExchangeLocationsEnabled $true on New-ComplianceSearch or Set-ComplianceSearch. Without it, specifying an inactive mailbox SMTP address returns an error because Exchange cannot find an active mailbox at that address. A is wrong because there is no -InactiveMailboxOnly parameter. B is wrong because -IncludeInactiveMailboxes is not the correct switch. D is wrong because -ExchangeLocation InactiveMailboxes is not a valid syntax."
+  },
+  {
+   "id": "sc401-3-33",
+   "domain": "MC",
+   "stem": "A Confidential sensitivity label has a header text CONFIDENTIAL — DO NOT DISTRIBUTE but no encryption configured. Can a user delete the header text from the document?",
+   "options": [
+    "No — sensitivity label visual markings cannot be modified or deleted while the label remains applied",
+    "Yes — visual markings are document text content; users can manually delete the header without removing the label",
+    "Yes — but Office automatically restores the header the next time the document is saved with the label",
+    "No — deleting the header triggers automatic label removal and a mandatory re-labeling prompt"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Visual content markings (headers, footers, watermarks) are inserted into the document as text — they are NOT technically enforced. Without encryption, a user can manually select and delete the header text without removing the sensitivity label itself. For enforceable protection, encryption (not just content markings) is required. A is wrong because visual markings can be modified by users on labels that lack encryption. C is wrong because Office does not auto-restore deleted markings on save unless the label settings are re-applied — and on save, the markings are re-inserted only in the way Office applies the label at that moment. D is wrong because no automatic label removal happens when a header is deleted."
+  },
+  {
+   "id": "sc401-3-34",
+   "domain": "MC",
+   "stem": "For Microsoft Purview to capture Microsoft 365 Copilot interaction events in the unified audit log, what is required?",
+   "options": [
+    "Microsoft Defender for Endpoint deployed on all devices used with Copilot",
+    "Unified audit logging must be enabled in the Microsoft Purview compliance portal",
+    "DSPM for AI must have an active policy configured before Copilot events are logged",
+    "Microsoft 365 E5 Advanced Audit licensing is required for all Copilot event types"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Copilot interaction events (CopilotInteraction record type) are captured in the unified audit log when unified audit logging is enabled — which is on by default for most M365 tenants. Basic Copilot events are captured at the Standard Audit tier. A is wrong because MDE on all devices is unrelated to Copilot service-side audit logging. C is wrong because DSPM for AI is not a prerequisite for audit log capture — it consumes audit data but doesn't unlock it. D is wrong because E5 Advanced Audit is not required for basic Copilot interaction events (although Premium events would need it)."
+  },
+  {
+   "id": "sc401-3-35",
+   "domain": "MC",
+   "stem": "An auto-labeling policy is actively applying the Internal sensitivity label (no encryption) to Exchange emails. You update the Internal label to add Assign permissions now encryption. What happens to future emails matched by the policy?",
+   "options": [
+    "The auto-labeling policy stops functioning until the admin re-enables it with the updated label settings",
+    "Future matched emails will have the updated Internal label applied — including the new encryption settings",
+    "Future emails continue receiving the old Internal label configuration for 72 hours during the policy cache refresh",
+    "The policy must be deleted and recreated referencing the updated label to use the new configuration"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Auto-labeling policies reference labels by identity. When the underlying label configuration is updated (e.g., adding encryption), the policy automatically uses the new settings for new applications — no policy reconfiguration required. The encryption takes effect for emails newly matched after the label-change propagates. A is wrong because the policy does not stop functioning when the label is updated. C is wrong because there is no 72-hour cache window that uses the old configuration. D is wrong because policy deletion/recreation is unnecessary — references are by identity."
+  },
+  {
+   "id": "sc401-3-36",
+   "domain": "MC",
+   "stem": "A compliance officer uses Content Explorer and sees that 18,432 SharePoint items currently carry the Strictly Confidential sensitivity label. What does this count represent?",
+   "options": [
+    "The number of times the Strictly Confidential label was applied or changed in the past 30 days",
+    "The number of SharePoint items that currently carry the Strictly Confidential sensitivity label",
+    "The number of DLP policy rule matches involving Strictly Confidential labeled items",
+    "The number of unique users who have ever applied the Strictly Confidential label"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Content Explorer shows the CURRENT inventory of labeled items — 18,432 SharePoint items currently carry the Strictly Confidential label. It is a snapshot of current state. A is wrong because Content Explorer is not a 30-day event count — that is what Activity Explorer surfaces. C is wrong because DLP rule match counts are surfaced in DLP reports and Activity Explorer, not Content Explorer. D is wrong because unique-applier counts are not what Content Explorer reports."
+  },
+  {
+   "id": "sc401-3-37",
+   "domain": "MC",
+   "stem": "You want a Proprietary Research retention label to auto-apply to documents that resemble research reports, without relying on specific keywords or consistent content patterns. Which auto-apply trigger should you use?",
+   "options": [
+    "Auto-apply using a KQL keyword query searching for research-related terminology",
+    "Auto-apply using a sensitive information type matching research report patterns",
+    "Auto-apply using a trainable classifier trained on example research report documents",
+    "Auto-apply triggered by event-based retention with a research completion event type"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "C is correct. Trainable classifiers use ML to identify content based on training examples — ideal when content has variable structure and no consistent keyword or data pattern, like research reports that share a topic and style but not a fixed format. A (KQL) is wrong because no specific keyword set is reliable — research reports vary in terminology. B (SIT) is wrong because research reports lack a structured data pattern a SIT could match. D (event-based) is wrong because event-based retention starts the clock from an event but does not auto-apply to content based on content similarity."
+  },
+  {
+   "id": "sc401-3-38",
+   "domain": "MC",
+   "stem": "What is the difference between a DLP alert and a DLP report in Microsoft Purview?",
+   "options": [
+    "DLP alerts are generated per user; DLP reports are generated per content location",
+    "DLP alerts notify admins of specific rule matches in near real time; DLP reports provide aggregated historical views of DLP activity and trends",
+    "DLP reports are available only with Microsoft 365 E5 licensing; DLP alerts require only E3",
+    "DLP alerts cover Exchange Online only; DLP reports aggregate activity across all DLP-enabled workloads"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. DLP alerts are near-real-time notifications about specific rule matches — providing incident-specific detail for investigation. DLP reports (in the Purview portal under Reports) provide aggregated historical views: trend charts, top matched rules, top content locations, and policy match volumes. Alerts are for incident response; reports are for trend analysis. A is wrong because alert vs report is not split by user vs location. C is wrong because both alerts and reports are available regardless of license tier (subject to feature licensing). D is wrong because DLP alerts and reports both cover all DLP-enabled workloads."
+  },
+  {
+   "id": "sc401-3-39",
+   "domain": "MC",
+   "stem": "Information Barriers policies in Microsoft 365 restrict communication and collaboration in which workloads?",
+   "options": [
+    "Microsoft Teams, SharePoint Online, and OneDrive for Business (plus Exchange Online when configured)",
+    "Microsoft Teams and SharePoint Online only — OneDrive and Exchange are not supported",
+    "Microsoft Teams only — Exchange and SharePoint have separate built-in isolation controls",
+    "All Microsoft 365 workloads including Power BI, Dynamics 365, and Microsoft Viva"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A is correct. Information Barriers enforce communication and collaboration restrictions in: Microsoft Teams (chat and channels), SharePoint Online (sharing), and OneDrive for Business (sharing). Exchange Online can also be configured to enforce IB email restrictions. B is wrong because OneDrive IS supported (and Exchange can be configured). C is wrong because IB extends beyond Teams. D is wrong because IB does not directly enforce in Power BI, Dynamics 365, or Viva — those are not standard IB-enforced workloads."
+  },
+  {
+   "id": "sc401-3-40",
+   "domain": "MC",
+   "stem": "Which role group must a user belong to in order to create and manage Communication Compliance policies in Microsoft Purview?",
+   "options": [
+    "eDiscovery Manager",
+    "Compliance Administrator or Communication Compliance Admin",
+    "Records Management",
+    "Information Protection Admin"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Creating and managing Communication Compliance policies requires the Communication Compliance Admin role group (or higher: Compliance Administrator, Global Administrator). A (eDiscovery Manager) is wrong because eDiscovery rights do not include CC policy creation. C (Records Management) is wrong because that role manages retention/records, not CC. D (Information Protection Admin) is wrong because that role manages sensitivity labels, not CC policies."
+  },
+  {
+   "id": "sc401-3-41",
+   "domain": "MC",
+   "stem": "What is a key difference between Exchange Online Litigation Hold and a Microsoft Purview retention policy applied to Exchange mailboxes?",
+   "options": [
+    "Litigation Hold preserves all mailbox content indefinitely regardless of age; retention policies require a defined time period",
+    "Litigation Hold is configured per individual mailbox; retention policies can target all mailboxes at scale with a single policy",
+    "Retention policies preserve content for eDiscovery; Litigation Hold preserves content only for legal proceedings",
+    "Only retention policies are searchable via Content Search; Litigation Hold content is not discoverable"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Litigation Hold is configured per individual mailbox via Exchange Online PowerShell (Set-Mailbox -LitigationHoldEnabled $true) and applies only to that mailbox. Retention policies can target mailboxes at scale — all users, static-scope user lists, or dynamic adaptive scopes — with a single policy. Both preserve content for eDiscovery, but retention policies scale more efficiently. A is wrong because Litigation Hold and retention policies can both preserve content indefinitely or for a defined period — duration is configurable in both. C is wrong because both preserve content for eDiscovery — they are not differentiated by 'compliance vs litigation' purpose. D is wrong because both retention policies and Litigation Hold content are searchable via Content Search."
+  },
+  {
+   "id": "sc401-3-42",
+   "domain": "MC",
+   "stem": "A Communication Compliance policy has 50 specific users in the supervised population. Two supervised users exchange messages with each other. Are those messages captured by the policy?",
+   "options": [
+    "Only messages FROM supervised users TO non-supervised users are captured",
+    "Messages between two supervised users ARE captured — all inbound, outbound, and internal communications for supervised users are in scope",
+    "Only one message per conversation pair is sampled daily to limit captured volume",
+    "Messages between supervised users in the same department are excluded by default"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Communication Compliance captures inbound, outbound, AND internal communications for supervised users. Messages exchanged between two supervised users are fully in scope — the policy captures the complete communication universe of supervised users. A is wrong because internal messages between supervised users ARE captured, not excluded. C is wrong because there is no daily one-message sampling — the policy captures messages per its conditions. D is wrong because same-department supervised users are NOT excluded by default."
+  },
+  {
+   "id": "sc401-3-43",
+   "domain": "MC",
+   "stem": "A Compliance Manager assessment shows a score of 420/1000 for GDPR. What does this score primarily reflect?",
+   "options": [
+    "The number of GDPR articles Litware is fully compliant with out of 1,000 regulatory articles",
+    "The weighted percentage of GDPR improvement actions that have been implemented and validated",
+    "The estimated dollar value of potential GDPR fines avoided through current compliance controls",
+    "The number of days since the last GDPR-related data breach was reported to the supervisory authority"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Compliance Manager scores reflect the weighted percentage of improvement actions implemented and validated, mapped to the selected regulation. Each action carries a point value based on risk impact and control importance. A higher score means more controls are implemented. A is wrong because the score is not a count of articles complied with — it is action-implementation weighted. C is wrong because the score is not a financial fine estimate. D is wrong because the score does not reflect time since last breach."
+  },
+  {
+   "id": "sc401-3-44",
+   "domain": "MC",
+   "stem": "Before activating a new auto-labeling policy for Exchange Online in production, what should you do first to validate the policy scope and accuracy?",
+   "options": [
+    "Deploy the policy to a single pilot mailbox using a static scope before expanding",
+    "Enable the policy in simulation mode and review the matched items report before turning on enforcement",
+    "Configure a low instance count threshold and gradually raise it after initial deployment",
+    "Run the policy against the previous 90 days of email using the historical analysis setting"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "B is correct. Auto-labeling policies include a simulation mode that runs against existing content and reports what WOULD be labeled — without applying any labels. Reviewing simulation results lets admins assess accuracy (false positives and false negatives), refine conditions, and only then enable enforcement. A (pilot mailbox with static scope) is wrong because static scoping doesn't show the policy's accuracy against the broader content set — simulation does. C (low instance count threshold) is wrong because that affects which items match, not whether the policy applies labels. D (historical 90-day analysis) is wrong because such a setting is not part of auto-labeling configuration — simulation mode is the right tool."
+  },
+  {
+   "id": "sc401-3-45",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "The Search-UnifiedAuditLog command requires Connect-ExchangeOnline to be run first before it executes successfully.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Search-UnifiedAuditLog is an Exchange Online PowerShell cmdlet — Connect-ExchangeOnline must be established before running it. Despite querying the unified audit log that spans all M365 workloads, the cmdlet belongs to the Exchange Online PowerShell module. Connect-IPPSSession does NOT give access to this cmdlet — a frequently tested SC-401 trap. No would be wrong because it implies a different connection works, which is incorrect."
+  },
+  {
+   "id": "sc401-3-46",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "The command as written retrieves audit events across ALL Microsoft 365 workloads within the specified date range.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. The -RecordType SharePointFileOperation parameter limits results to SharePoint file operation events; -Operations FileAccessed further narrows to file-access events specifically. The command does NOT retrieve events across all workloads — it is scoped to SharePoint FileAccessed only. Yes would be wrong because it ignores the explicit -RecordType and -Operations filters."
+  },
+  {
+   "id": "sc401-3-47",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "With Microsoft 365 E5 licenses assigned, users audit logs are retained for 1 year by default without any custom audit retention policy.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Microsoft 365 E5 (and E5 Compliance) provides 1-year default audit log retention for licensed users — an upgrade from the 90-day default included with E3. Custom audit retention policies can extend this further, up to 10 years with the 10-Year Audit Retention add-on. No would be wrong because 90 days is the E3 default, not E5."
+  },
+  {
+   "id": "sc401-3-48",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "The 5-year custom SharePoint retention policy takes precedence over the 90-day default org-wide policy for the same SharePoint content.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. When multiple retention policies apply to the same content, the longest retention period wins (retain longer beats dispose sooner). The explicit 5-year custom policy also takes precedence over the org-wide 90-day default policy — content will be retained for 5 years. No would be wrong because retention conflict rules favor the longer retention."
+  },
+  {
+   "id": "sc401-3-49",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "To extend audit retention to 10 years for specific users, assigning a Microsoft 365 E5 Compliance license is sufficient — no additional license is required.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "No is correct. E5 and E5 Compliance provide 1-year default audit retention. Extending audit retention to 10 years requires BOTH an E5 (or E5 Compliance) license AND the separate Microsoft Purview Audit (Premium) 10-Year Retention add-on license. E5 alone is not sufficient. Yes would be wrong because it omits the required add-on."
+  },
+  {
+   "id": "sc401-3-50",
+   "domain": "YN",
+   "group": "yn3",
+   "stem": "A user must have the Audit Logs role in Exchange Online or the Compliance Administrator role to run Search-UnifiedAuditLog successfully.",
+   "options": [
+    "Yes",
+    "No"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Yes is correct. Running Search-UnifiedAuditLog requires the View-Only Audit Logs or Audit Logs role assigned in Exchange Online (or a higher role like Compliance Administrator or Global Administrator that includes these rights). Without the role, the cmdlet returns empty results or an access-denied error even after Connect-ExchangeOnline succeeds. No would be wrong because role assignment is required in addition to the connection."
+  }
+ ]
+}

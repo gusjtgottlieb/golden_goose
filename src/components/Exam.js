@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { markSeen } from "../lib/history";
 
 const LETTERS = "ABCDEFGH";
 
@@ -28,48 +29,28 @@ function Context({ group }) {
   );
 }
 
-function Exam({ meta }) {
-  const [exam, setExam] = useState(null);
-  const [error, setError] = useState(null);
-  const [phase, setPhase] = useState("start"); // start | exam | results
-  const [mode, setMode] = useState("exam"); // exam | study
+// One sitting of a generated exam: answering, then results.
+function Exam({ bank, questions: Q, mode, minutes, onRetake, onNew }) {
+  const [phase, setPhase] = useState("exam"); // exam | results
   const [i, setI] = useState(0);
-  const [answers, setAnswers] = useState([]);
-  const [flags, setFlags] = useState([]);
-  const [checked, setChecked] = useState([]);
-  const [secs, setSecs] = useState(meta.minutes * 60);
+  const [answers, setAnswers] = useState(() => Q.map(() => []));
+  const [flags, setFlags] = useState(() => Q.map(() => false));
+  const [checked, setChecked] = useState(() => Q.map(() => false));
+  const [secs, setSecs] = useState(minutes * 60);
   const [paletteOpen, setPaletteOpen] = useState(false);
   const [filter, setFilter] = useState("all");
 
-  useEffect(() => {
-    meta
-      .load()
-      .then((mod) => setExam(mod.default))
-      .catch(() => setError("This exam couldn't be loaded. Check your connection and refresh."));
-  }, [meta]);
-
-  const Q = useMemo(() => (exam ? exam.questions : []), [exam]);
   const isRight = useCallback(
-    (n) => answers[n] && answers[n].length > 0 && sameSet(answers[n], Q[n].answer),
+    (n) => answers[n].length > 0 && sameSet(answers[n], Q[n].answer),
     [answers, Q]
   );
 
-  const begin = () => {
-    setAnswers(Q.map(() => []));
-    setFlags(Q.map(() => false));
-    setChecked(Q.map(() => false));
-    setSecs(exam.minutes * 60);
-    setI(0);
-    setFilter("all");
-    setPhase("exam");
-    window.scrollTo(0, 0);
-  };
-
   const finish = useCallback(() => {
+    markSeen(bank.id, Q.map((q) => q.id));
     setPaletteOpen(false);
     setPhase("results");
     window.scrollTo(0, 0);
-  }, []);
+  }, [bank.id, Q]);
 
   // Exam-mode clock.
   useEffect(() => {
@@ -137,11 +118,13 @@ function Exam({ meta }) {
     return { right, pct: Math.round((right / Q.length) * 100) };
   }, [phase, Q, isRight]);
 
+  const domainName = Object.fromEntries(bank.domains.map((d) => [d.id, d.name]));
+
   const bar = (
     <div className="bar">
       <div className="bar-in">
         <a className="mark" href="#/">
-          {meta.code} <span>{meta.title}</span>
+          {bank.code} <span>{mode === "exam" ? "Exam" : "Study"} · {Q.length} questions</span>
         </a>
         {phase === "exam" && (
           <div className="bar-right">
@@ -164,86 +147,19 @@ function Exam({ meta }) {
     </div>
   );
 
-  if (error) {
-    return (
-      <>
-        {bar}
-        <div className="wrap"><p className="hero">{error}</p></div>
-      </>
-    );
-  }
-  if (!exam) {
-    return (
-      <>
-        {bar}
-        <div className="wrap"><p className="hero loading">Loading exam…</p></div>
-      </>
-    );
-  }
-
-  const domainName = Object.fromEntries(exam.domains.map((d) => [d.id, d.name]));
-
-  /* ---------- START ---------- */
-  if (phase === "start") {
-    const counts = {};
-    Q.forEach((q) => (counts[q.domain] = (counts[q.domain] || 0) + 1));
-    return (
-      <>
-        {bar}
-        <div className="wrap">
-          <section className="hero">
-            <a className="back" href="#/">← All exams</a>
-            <p className="eyebrow">{exam.vendor} · {exam.code}</p>
-            <h1>{exam.name}</h1>
-            <p>{exam.title}: {Q.length} questions in the proportions you'll see on test day, each with a full explanation.</p>
-          </section>
-
-          <div className="meta">
-            <div><b>{Q.length}</b><small>questions</small></div>
-            <div><b>{exam.minutes}</b><small>minutes</small></div>
-            <div><b>{exam.domains.length}</b><small>{exam.domains.length === 1 ? "section" : "sections"}</small></div>
-            <div><b>{exam.readinessPercent}%</b><small>readiness bar</small></div>
-          </div>
-
-          <table className="bp">
-            <thead><tr><th>Section</th><th>Items here</th><th>Blueprint</th></tr></thead>
-            <tbody>
-              {exam.domains.map((d) => (
-                <tr key={d.id}><td>{d.name}</td><td>{counts[d.id] || 0}</td><td>{d.weight}</td></tr>
-              ))}
-            </tbody>
-          </table>
-
-          <div className="modes">
-            <button className="mode" aria-pressed={mode === "exam"} onClick={() => setMode("exam")}>
-              <b>Exam mode</b>
-              <small>{exam.minutes}-minute clock, no feedback until you submit. Use this once you're drilling for score.</small>
-            </button>
-            <button className="mode" aria-pressed={mode === "study"} onClick={() => setMode("study")}>
-              <b>Study mode</b>
-              <small>Answer, then reveal the explanation before moving on. No clock. Use this on the first pass.</small>
-            </button>
-          </div>
-
-          <button className="cta" onClick={begin}>Start {mode === "exam" ? "exam" : "studying"}</button>
-          <p className="fine">{exam.note}</p>
-        </div>
-      </>
-    );
-  }
-
   /* ---------- RESULTS ---------- */
   if (phase === "results") {
     const { right, pct } = score;
     const verdict =
-      pct >= exam.readinessPercent
+      pct >= bank.readinessPercent
         ? "Comfortably above the readiness bar. Work the misses and book the exam."
-        : pct >= exam.passPercent
+        : pct >= bank.passPercent
           ? "Around the likely cut score. Close the weakest section before booking."
           : "Below the bar. Treat the section breakdown as your study plan.";
     const rows = Q.map((q, n) => ({ q, n })).filter(({ n }) =>
       filter === "all" ? true : filter === "missed" ? !isRight(n) : flags[n]
     );
+    const present = bank.domains.filter((d) => Q.some((q) => q.domain === d.id));
 
     return (
       <>
@@ -252,15 +168,20 @@ function Exam({ meta }) {
           <div className="score">{pct}%</div>
           <div className="verdict">{right} of {Q.length}. {verdict}</div>
 
+          <div className="filters">
+            <button className="cta" onClick={onNew}>Build a new exam</button>
+            <button className="ghost" onClick={onRetake}>Retake these questions</button>
+          </div>
+
           <h2 className="sub">By section</h2>
-          {exam.domains.map((d) => {
+          {present.map((d) => {
             const idx = Q.map((q, n) => (q.domain === d.id ? n : -1)).filter((n) => n > -1);
             const hit = idx.filter(isRight).length;
-            const p = idx.length ? Math.round((hit / idx.length) * 100) : 0;
+            const p = Math.round((hit / idx.length) * 100);
             return (
               <div className="dom" key={d.id}>
                 <div className="dom-top"><span>{d.name}</span><span>{hit}/{idx.length} · {p}%</span></div>
-                <div className="track"><i className={p < exam.passPercent ? "weak" : ""} style={{ width: `${p}%` }} /></div>
+                <div className="track"><i className={p < bank.passPercent ? "weak" : ""} style={{ width: `${p}%` }} /></div>
               </div>
             );
           })}
@@ -269,7 +190,6 @@ function Exam({ meta }) {
             {[["all", `All ${Q.length}`], ["missed", "Missed only"], ["flagged", "Flagged"]].map(([f, label]) => (
               <button key={f} className="ghost" aria-pressed={filter === f} onClick={() => setFilter(f)}>{label}</button>
             ))}
-            <button className="ghost push" onClick={() => setPhase("start")}>Retake</button>
           </div>
 
           {rows.length === 0 && <div className="rev"><p className="muted">Nothing here. Good sign.</p></div>}
@@ -277,12 +197,12 @@ function Exam({ meta }) {
             const ok = isRight(n);
             const fmt = (list) => [...list].sort().map((x) => `${LETTERS[x]}. ${q.options[x]}`).join(" | ");
             return (
-              <div className="rev" key={n}>
+              <div className="rev" key={q.id}>
                 <div className="tagline">
                   Question {n + 1} · {domainName[q.domain]} · <b className={ok ? "hit" : "miss"}>{ok ? "Correct" : "Missed"}</b>
                   {flags[n] && " · Flagged"}
                 </div>
-                {q.group && <p className="rev-context">{exam.groups[q.group].title}</p>}
+                {q.group && <p className="rev-context">{bank.groups[q.group].title}</p>}
                 <h3>{q.stem}</h3>
                 <div className={"ansline " + (ok ? "g" : "r")}>
                   Your answer: {answers[n].length ? fmt(answers[n]) : "No answer given"}
@@ -326,7 +246,7 @@ function Exam({ meta }) {
           {multi && <span className="chip multi">Choose {q.answer.length}</span>}
         </div>
 
-        <Context group={q.group && exam.groups[q.group]} />
+        <Context group={q.group && bank.groups[q.group]} />
 
         <p className="stem">{q.stem}</p>
         <div className="opts">

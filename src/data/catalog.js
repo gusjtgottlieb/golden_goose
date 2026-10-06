@@ -1,5 +1,5 @@
-// Listing metadata for the home page. Exam content lives in ./exams/*.json and is
-// loaded on demand so the home page doesn't download every question bank.
+// Listing metadata for the home page. Question banks live in ./banks/*.json and
+// are loaded on demand so the home page doesn't download every bank.
 export const VENDORS = [
   {
     name: "ServiceNow",
@@ -11,47 +11,27 @@ export const VENDORS = [
   },
 ];
 
-export const EXAMS = [
+export const CERTS = [
   {
-    id: "servicenow-cis-tprm-1",
+    id: "servicenow-cis-tprm",
     vendor: "ServiceNow",
     code: "CIS-TPRM",
     name: "Third-party Risk Management",
-    title: "Practice Exam 1",
-    questions: 60,
+    bankSize: 60,
+    fullLength: 60,
     minutes: 90,
-    load: () => import("./exams/servicenow-cis-tprm-1.json"),
+    load: () => import("./banks/servicenow-cis-tprm.json"),
   },
   {
-    id: "microsoft-sc-401-1",
+    id: "microsoft-sc-401",
     vendor: "Microsoft",
     code: "SC-401",
     name: "Information Security Administrator",
-    title: "Practice Exam 1",
-    questions: 50,
+    bankSize: 150,
+    fullLength: 50,
     minutes: 100,
-    load: () => import("./exams/microsoft-sc-401-1.json"),
-  },
-  {
-    id: "microsoft-sc-401-2",
-    vendor: "Microsoft",
-    code: "SC-401",
-    name: "Information Security Administrator",
-    title: "Practice Exam 2",
-    questions: 50,
-    minutes: 100,
-    load: () => import("./exams/microsoft-sc-401-2.json"),
-  },
-  {
-    id: "microsoft-sc-401-3",
-    vendor: "Microsoft",
-    code: "SC-401",
-    name: "Information Security Administrator",
-    title: "Practice Exam 3",
-    questions: 50,
-    minutes: 100,
-    load: () => import("./exams/microsoft-sc-401-3.json"),
+    load: () => import("./banks/microsoft-sc-401.json"),
   },
 ];
 
-export const findExam = (id) => EXAMS.find((e) => e.id === id);
+export const findCert = (id) => CERTS.find((c) => c.id === id);
