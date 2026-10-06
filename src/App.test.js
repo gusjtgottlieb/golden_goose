@@ -1,44 +1,53 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import App from './App';
-import { EXAMS } from './data/catalog';
+import { CERTS } from './data/catalog';
 
+beforeEach(() => localStorage.clear());
 afterEach(() => {
   window.location.hash = '';
 });
 
-test('home page lists every exam grouped by vendor', () => {
+test('home page lists every certification grouped by vendor', () => {
   render(<App />);
   expect(screen.getByRole('heading', { name: 'ServiceNow' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Microsoft' })).toBeInTheDocument();
-  expect(screen.getAllByRole('link', { name: /practice exam/i })).toHaveLength(EXAMS.length);
+  CERTS.forEach((c) => expect(screen.getByText(c.code)).toBeInTheDocument());
 });
 
-test.each(EXAMS)('catalog metadata matches exam file for $id', async (meta) => {
-  const exam = (await meta.load()).default;
-  expect(exam.id).toBe(meta.id);
-  expect(exam.questions).toHaveLength(meta.questions);
-  expect(exam.minutes).toBe(meta.minutes);
-  const domains = new Set(exam.domains.map((d) => d.id));
-  exam.questions.forEach((q) => {
+test.each(CERTS)('catalog metadata matches bank for $id', async (meta) => {
+  const bank = (await meta.load()).default;
+  expect(bank.id).toBe(meta.id);
+  expect(bank.questions).toHaveLength(meta.bankSize);
+  expect(bank.fullLength).toBe(meta.fullLength);
+  expect(bank.minutes).toBe(meta.minutes);
+  expect(new Set(bank.questions.map((q) => q.id)).size).toBe(bank.questions.length);
+  const domains = new Set(bank.domains.map((d) => d.id));
+  bank.questions.forEach((q) => {
     expect(domains.has(q.domain)).toBe(true);
     expect(q.answer.length).toBeGreaterThan(0);
     q.answer.forEach((a) => expect(q.options[a]).toBeDefined());
-    if (q.group) expect(exam.groups[q.group]).toBeDefined();
+    if (q.group) expect(bank.groups[q.group]).toBeDefined();
   });
 });
 
-test('study mode reveals the explanation and results score the answer', async () => {
-  window.location.hash = '#/exam/servicenow-cis-tprm-1';
+test('builds a 10-question study exam, reveals answers, and records seen questions', async () => {
+  window.location.hash = '#/cert/servicenow-cis-tprm';
   render(<App />);
-  fireEvent.click(await screen.findByRole('button', { name: /study mode/i }));
-  fireEvent.click(screen.getByRole('button', { name: /start studying/i }));
 
-  // Q1's correct answer is B.
-  fireEvent.click(screen.getByRole('button', { name: /one third-party record with two engagements/i }));
+  fireEvent.click(await screen.findByRole('button', { name: /study mode/i }));
+  fireEvent.click(screen.getByRole('button', { name: '10 questions' }));
+  fireEvent.click(screen.getByRole('button', { name: /build my exam/i }));
+
+  expect(screen.getByText('Question 1 of 10')).toBeInTheDocument();
+  fireEvent.click(screen.getAllByRole('button', { name: /^A/ })[0]);
   fireEvent.click(screen.getByRole('button', { name: /check answer/i }));
-  expect(screen.getByText('Correct: B')).toBeInTheDocument();
+  expect(screen.getByText(/^Correct: /)).toBeInTheDocument();
 
   jest.spyOn(window, 'confirm').mockReturnValue(true);
   fireEvent.click(screen.getByRole('button', { name: 'Submit' }));
-  expect(screen.getByText(/^1 of 60\./)).toBeInTheDocument();
+  expect(screen.getByText(/ of 10\./)).toBeInTheDocument();
+  expect(JSON.parse(localStorage.getItem('gg-seen-servicenow-cis-tprm'))).toHaveLength(10);
+
+  fireEvent.click(screen.getByRole('button', { name: /build a new exam/i }));
+  expect(screen.getByText(/seen 10 of 60 questions/)).toBeInTheDocument();
 });
