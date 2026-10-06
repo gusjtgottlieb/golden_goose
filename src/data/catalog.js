@@ -83,6 +83,16 @@ export const CERTS = [
     load: () => import("./banks/servicenow-cis-vr.json"),
   },
   {
+    id: "microsoft-az-900",
+    vendor: "Microsoft",
+    code: "AZ-900",
+    name: "Azure Fundamentals",
+    bankSize: 125,
+    fullLength: 50,
+    minutes: 45,
+    load: () => import("./banks/microsoft-az-900.json"),
+  },
+  {
     id: "microsoft-sc-900",
     vendor: "Microsoft",
     code: "SC-900",
