@@ -43,6 +43,16 @@ export const CERTS = [
     load: () => import("./banks/servicenow-cis-rc.json"),
   },
   {
+    id: "servicenow-cis-sir",
+    vendor: "ServiceNow",
+    code: "CIS-SIR",
+    name: "Security Incident Response",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-sir.json"),
+  },
+  {
     id: "servicenow-cis-tprm",
     vendor: "ServiceNow",
     code: "CIS-TPRM",

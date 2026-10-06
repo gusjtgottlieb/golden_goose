@@ -1,0 +1,2339 @@
+{
+ "id": "servicenow-cis-sir",
+ "vendor": "ServiceNow",
+ "code": "CIS-SIR",
+ "name": "Certified Implementation Specialist – Security Incident Response",
+ "fullLength": 60,
+ "minutes": 90,
+ "passPercent": 70,
+ "readinessPercent": 85,
+ "sectioned": false,
+ "note": "ServiceNow doesn't publish a cut score for CIS-SIR; community consensus puts it near 70%. Treat 85% here as your readiness bar. Items marked release-sensitive reference roles, tables, workspaces, and integration features that change between releases; verify them against your own instance.",
+ "domains": [
+  {
+   "id": "OV",
+   "name": "Security Incident Response Overview and Data Visualization",
+   "weight": "15%"
+  },
+  {
+   "id": "CR",
+   "name": "Security Incident Creation and Threat Intelligence",
+   "weight": "14%"
+  },
+  {
+   "id": "IN",
+   "name": "Security Incident and Threat Intelligence Integrations",
+   "weight": "14%"
+  },
+  {
+   "id": "MG",
+   "name": "Security Incident Response Management",
+   "weight": "15%"
+  },
+  {
+   "id": "RP",
+   "name": "Risk Calculations and Post Incident Response",
+   "weight": "12%"
+  },
+  {
+   "id": "AU",
+   "name": "Automation and Standard Processes",
+   "weight": "30%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "cissir-1",
+   "domain": "OV",
+   "stem": "What problem does Security Incident Response mainly solve for a security operations team?",
+   "options": [
+    "It removes the need for analysts by closing every alert automatically",
+    "It replaces the SIEM by collecting and storing every raw log from the network",
+    "It gives one structured, trackable process for handling security incidents",
+    "It blocks malware on endpoints without any need for endpoint security tools"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "SIR brings incidents from many sources into a consistent, auditable workflow with tasks, automation, and reporting. It works with SIEMs and endpoint tools rather than replacing them, and analysts still make decisions."
+  },
+  {
+   "id": "cissir-2",
+   "domain": "OV",
+   "stem": "Which table does a security incident record extend?",
+   "options": [
+    "Configuration item",
+    "Task",
+    "Incident",
+    "Problem"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Security incidents extend task, so they inherit assignment, state, SLA, and approval capabilities. They're separate from IT incidents, which keeps sensitive security work apart.",
+   "verify": true
+  },
+  {
+   "id": "cissir-3",
+   "domain": "OV",
+   "stem": "Why are security incidents kept separate from IT service incidents?",
+   "options": [
+    "Security work is sensitive and needs tighter access and a different process",
+    "Security incidents can't use assignment groups or other task features",
+    "Security incidents are only created by external auditors, never by staff",
+    "IT incidents are stored on a different instance than security incidents"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Separating them lets security teams restrict access to sensitive investigations and follow a security-specific lifecycle. Security incidents still use task features and live on the same instance."
+  },
+  {
+   "id": "cissir-4",
+   "domain": "OV",
+   "stem": "Which framework do the default security incident states, such as analysis, contain, eradicate, and recover, follow?",
+   "options": [
+    "NIST SP 800-61",
+    "ISO 9001 quality management",
+    "PCI DSS card data storage",
+    "ITIL service transition"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "SIR's default lifecycle reflects the NIST computer security incident handling phases. ITIL, ISO 9001, and PCI DSS address other topics.",
+   "verify": true
+  },
+  {
+   "id": "cissir-5",
+   "domain": "OV",
+   "stem": "What are response tasks in Security Incident Response?",
+   "options": [
+    "Child tasks of an incident, assigned to people or groups for specific work",
+    "Reports that summarize the incident for executives once it has been closed",
+    "Automatic emails sent to the person who reported the incident at each update",
+    "Separate security incidents opened for every observable found during analysis"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Response tasks break the response into assignable pieces — such as collecting logs or reimaging a laptop — tracked under the parent security incident.",
+   "verify": true
+  },
+  {
+   "id": "cissir-6",
+   "domain": "OV",
+   "stem": "Which role is typically given to analysts who work security incidents day to day?",
+   "options": [
+    "A security incident analyst role (sn_si.analyst)",
+    "The catalog_admin role used for catalog items",
+    "The itil role used by service desk agents",
+    "The admin role, so they can see every record"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "SIR has its own roles — basic, analyst, manager, admin — so access follows least privilege. itil and catalog_admin don't grant security incident access, and admin is excessive.",
+   "verify": true
+  },
+  {
+   "id": "cissir-7",
+   "domain": "OV",
+   "stem": "An employee should be able to report a suspected security issue from the portal without seeing other security incidents. What supports this?",
+   "options": [
+    "Giving every employee the security analyst role so they can open incidents",
+    "Creating an IT incident and copying it to security once it's confirmed",
+    "A record producer for reporting security incidents, available to basic users",
+    "Asking employees to email the CISO directly with every suspected issue"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A reporting form lets employees submit concerns with minimal access, keeping investigations restricted. Granting analyst roles exposes data, and email or IT incidents lose structure.",
+   "verify": true
+  },
+  {
+   "id": "cissir-8",
+   "domain": "OV",
+   "stem": "Where do analysts typically work security incidents in recent releases?",
+   "options": [
+    "In the system log, filtered for security events",
+    "In the classic incident form used by the IT service desk",
+    "In a knowledge base article for each incident",
+    "A security-focused workspace with records and tools"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The Security Incident Response workspace gives analysts a purpose-built experience with incident details, observables, tasks, and related records. The other options aren't working environments for SIR.",
+   "verify": true
+  },
+  {
+   "id": "cissir-9",
+   "domain": "OV",
+   "stem": "What are observables in a security incident?",
+   "options": [
+    "Dashboards that display the incident's status",
+    "Users who are watching the incident for updates",
+    "Artifacts like IPs, domains, URLs, and file hashes",
+    "Audit logs showing who viewed the incident"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Observables are technical artifacts related to an incident that can be enriched with threat intelligence and searched for elsewhere. Watchers, dashboards, and audit logs are different concepts."
+  },
+  {
+   "id": "cissir-10",
+   "domain": "OV",
+   "stem": "What is the purpose of recording affected users and affected CIs on a security incident?",
+   "options": [
+    "To show who and what is impacted, informing priority, risk, and response",
+    "To give the affected users access to the full investigation details",
+    "To notify every affected user's manager that they caused the incident",
+    "To automatically retire the affected CIs from the CMDB right away"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Affected users and CIs define the incident's scope and feed risk calculations through business criticality. They don't grant access, retire CIs, or assign blame."
+  },
+  {
+   "id": "cissir-11",
+   "domain": "OV",
+   "stem": "A CISO wants a quick view of open security incidents by priority, category, and age. What's the best fit?",
+   "options": [
+    "A security operations dashboard with reports or Performance Analytics",
+    "An export of every security incident to a spreadsheet each morning",
+    "A notification emailed for each incident as soon as it's created",
+    "A knowledge article updated manually by the security team"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Dashboards give leaders a live view and can include trends. Spreadsheets, per-incident emails, and manual articles are slow and error-prone."
+  },
+  {
+   "id": "cissir-12",
+   "domain": "OV",
+   "stem": "Why use Performance Analytics for security metrics such as mean time to contain?",
+   "options": [
+    "It automatically closes incidents that exceed the target",
+    "It stores the raw logs needed to investigate each incident",
+    "It tracks scores over time, so trends and targets can be measured",
+    "It replaces the need to record containment times on incidents"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "PA collects scores on a schedule, showing whether response is improving. It doesn't store logs, close incidents, or remove the need for good data."
+  },
+  {
+   "id": "cissir-13",
+   "domain": "OV",
+   "stem": "Which metric best shows how quickly the team stops an attack from spreading?",
+   "options": [
+    "Number of dashboards",
+    "Mean time to contain",
+    "Total observables stored",
+    "Number of security roles"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Mean time to contain measures how long it takes to limit an incident's impact. Dashboard counts, observable totals, and role counts don't measure response speed."
+  },
+  {
+   "id": "cissir-14",
+   "domain": "OV",
+   "stem": "What is the relationship between a security incident and its related IT records, such as changes or problems?",
+   "options": [
+    "They're unrelated and can't reference each other in any way",
+    "They replace the security incident once remediation starts",
+    "They must be merged into one record before the incident can be closed",
+    "They can be linked, so remediation work and its tracking stay connected"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Linking related records — such as a change to patch a server — keeps remediation traceable back to the incident. They aren't merged or substituted."
+  },
+  {
+   "id": "cissir-15",
+   "domain": "OV",
+   "stem": "Why might security incident records be visible only to a restricted group?",
+   "options": [
+    "Security records take up more storage, so fewer users can open them",
+    "The platform doesn't allow more than ten users to view any record",
+    "They can contain sensitive details about attacks, users, and weaknesses",
+    "Only users in the same time zone can view security records"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Investigations may include personal data, attack details, and unpatched weaknesses, so access is tightly controlled. Storage, user limits, and time zones aren't the reason."
+  },
+  {
+   "id": "cissir-16",
+   "domain": "OV",
+   "stem": "What does the security incident's category typically help with?",
+   "options": [
+    "Setting the analyst's password for the investigation",
+    "Choosing the color of the incident in lists",
+    "Deciding which instance stores the incident",
+    "Routing, process selection, and reporting"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Categories such as phishing or malware drive which process and assignment apply and enable reporting. They don't affect passwords, colors, or storage."
+  },
+  {
+   "id": "cissir-17",
+   "domain": "OV",
+   "stem": "An analyst needs to see the timeline of what happened during an incident. What helps most?",
+   "options": [
+    "The list of users who have the security analyst role",
+    "The incident's activity and timeline of updates, tasks, and related events",
+    "The system log for the whole instance, searched by the incident number",
+    "The CMDB Health dashboard for the affected configuration items"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The incident's activity and timeline views show what was done and when, which also feeds post-incident review. System logs, CMDB health, and role lists don't tell the incident's story.",
+   "verify": true
+  },
+  {
+   "id": "cissir-18",
+   "domain": "OV",
+   "stem": "What is the role of security incident priority?",
+   "options": [
+    "Determining how many observables can be attached",
+    "Determining which analyst created the incident record",
+    "Determining the order in which incidents should be worked",
+    "Determining which instance the incident is stored on"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Priority reflects urgency and impact so analysts work the most important incidents first. It doesn't record creators, storage, or limits."
+  },
+  {
+   "id": "cissir-19",
+   "domain": "OV",
+   "stem": "Which statement about SIR and Vulnerability Response is true?",
+   "options": [
+    "They're the same application, so every vulnerability is also a security incident",
+    "They're separate apps that can be linked when a vulnerability is involved",
+    "They can't share data because they use different instances",
+    "Vulnerability Response replaces SIR for any incident involving malware"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Both are Security Operations applications. A security incident can reference vulnerable items when exploitation of a weakness is involved, but they serve different processes."
+  },
+  {
+   "id": "cissir-20",
+   "domain": "OV",
+   "stem": "Who typically uses a manager-level SIR role?",
+   "options": [
+    "External vendors who send threat intelligence feeds",
+    "Service desk agents handling password resets",
+    "Security leads overseeing queues and escalations",
+    "Every employee who reports a phishing email"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Manager roles give oversight of security operations. Employees use basic reporting, vendors don't log in for feeds, and service desk agents don't need security access.",
+   "verify": true
+  },
+  {
+   "id": "cissir-21",
+   "domain": "OV",
+   "stem": "Why are SIR dashboards often split by audience, such as analyst and CISO views?",
+   "options": [
+    "Different audiences need different levels of detail",
+    "CISO dashboards must be stored on a separate instance",
+    "Analysts can't read charts, so their dashboards show only lists",
+    "The platform requires a separate dashboard for every security role"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Analysts need actionable queues, while executives need trends, risk, and performance. That's a design choice, not a platform requirement."
+  },
+  {
+   "id": "cissir-22",
+   "domain": "OV",
+   "stem": "What is the main benefit of a single security incident record that collects alerts, observables, tasks, and notes?",
+   "options": [
+    "It removes the need for any access controls on the security data",
+    "The investigation's full context is in one place",
+    "It lets the record be shared publicly to warn other organizations",
+    "It allows analysts to skip documentation entirely during the response"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Consolidating context speeds collaboration and handoffs and supports post-incident review. Documentation, access control, and confidentiality still matter."
+  },
+  {
+   "id": "cissir-23",
+   "domain": "CR",
+   "stem": "Which of these is a common way security incidents are created?",
+   "options": [
+    "From alerts sent by a SIEM or detection tool",
+    "From routine password expiry notices",
+    "From every login to the ServiceNow instance",
+    "From each new knowledge article published"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Detection tools, user reports, email, and analysts creating incidents manually are the usual sources. Logins, articles, and password notices aren't security incidents."
+  },
+  {
+   "id": "cissir-24",
+   "domain": "CR",
+   "stem": "An analyst pastes an email body into a security incident. How can IPs, URLs, and hashes in it become observables?",
+   "options": [
+    "Retype each value into a separate new incident",
+    "Use observable extraction or parsing on the text",
+    "Attach the email to a knowledge base article",
+    "Ask the reporter to send each value separately"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Extraction finds observables in text and creates or links observable records, ready for enrichment. Retyping and re-requesting are slow and error-prone.",
+   "verify": true
+  },
+  {
+   "id": "cissir-25",
+   "domain": "CR",
+   "stem": "What does enriching an observable with threat intelligence provide?",
+   "options": [
+    "Context such as reputation and known associations with threats",
+    "A new password for the user linked to the observable",
+    "An automatic fix for the vulnerability behind the observable",
+    "A guarantee that the observable is harmless to the business"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Enrichment adds context — is this IP known to be malicious, what's associated with this hash — which helps analysts judge severity. It doesn't change passwords, fix systems, or guarantee safety."
+  },
+  {
+   "id": "cissir-26",
+   "domain": "CR",
+   "stem": "How is the MITRE ATT&CK framework used in security incidents?",
+   "options": [
+    "To map it to adversary tactics and techniques",
+    "To choose which analyst will be assigned",
+    "To calculate the financial cost of the incident",
+    "To decide the incident's number format"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Mapping incidents to ATT&CK tactics and techniques helps analysts understand attacker behavior and spot patterns. It doesn't calculate costs, assign analysts, or format numbers.",
+   "verify": true
+  },
+  {
+   "id": "cissir-27",
+   "domain": "CR",
+   "stem": "What is the difference between an observable and an indicator in threat intelligence?",
+   "options": [
+    "An observable is an artifact; an indicator adds malicious context",
+    "There's no difference; the two terms always mean the same thing",
+    "An indicator is a user; an observable is a configuration item",
+    "An observable is always malicious; an indicator is always harmless"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "An observable is a fact, such as an IP address. An indicator ties observables to a pattern or context that suggests compromise.",
+   "verify": true
+  },
+  {
+   "id": "cissir-28",
+   "domain": "CR",
+   "stem": "Which standards are commonly used to share threat intelligence between organizations and tools?",
+   "options": [
+    "HTML for describing threats and FTP for exchanging them",
+    "STIX for describing threats and TAXII for exchanging them",
+    "JSON for describing threats and USB for exchanging them",
+    "SQL for describing threats and SMTP for exchanging them"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "STIX is a language for structured threat information, and TAXII is the protocol for exchanging it. Threat intelligence feeds commonly use both."
+  },
+  {
+   "id": "cissir-29",
+   "domain": "CR",
+   "stem": "An analyst wants to know whether a malicious IP has been seen elsewhere in the environment. What capability helps?",
+   "options": [
+    "A new knowledge article describing the IP address",
+    "A change request to block the IP everywhere at once",
+    "A list filter on the user table for recent logins",
+    "A sightings search across connected security tools"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Sightings searches query connected tools, such as SIEM or EDR, for where an observable has appeared, which shows the incident's scope. Blocking may follow, but it doesn't answer where the IP was seen.",
+   "verify": true
+  },
+  {
+   "id": "cissir-30",
+   "domain": "CR",
+   "stem": "Why do many organizations create security incidents from grouped alerts instead of one incident per alert?",
+   "options": [
+    "Grouping alerts deletes the original detection data",
+    "Individual alerts can't contain any observables",
+    "The platform allows only one alert for each incident",
+    "Related alerts belong to one investigation"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Grouping related alerts avoids flooding analysts with duplicate incidents and gives a fuller picture. Alerts keep their data and can contain observables.",
+   "verify": true
+  },
+  {
+   "id": "cissir-31",
+   "domain": "CR",
+   "stem": "What role does a threat intelligence feed play in SIR?",
+   "options": [
+    "It replaces the need for detection tools such as a SIEM",
+    "It stores the organization's internal incident history for audits",
+    "It sends security incidents directly to every employee's inbox",
+    "It supplies intelligence used to enrich observables"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Feeds bring in known malicious indicators and context, which enrich observables and can raise matches. They don't notify everyone, replace detection, or store internal history."
+  },
+  {
+   "id": "cissir-32",
+   "domain": "CR",
+   "stem": "Which channel lets employees report suspicious email so it becomes a security incident?",
+   "options": [
+    "Replying to the sender and asking whether the email was legitimate",
+    "Posting the email on the company's social media pages",
+    "Forwarding it to a monitored phishing mailbox",
+    "Deleting the email and mentioning it at the next team meeting"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A reporting mailbox, often fed by a \"report phishing\" button, lets the platform parse the email and create a security incident. Replying, deleting, or posting are unsafe or lose evidence."
+  },
+  {
+   "id": "cissir-33",
+   "domain": "CR",
+   "stem": "How do email parsing rules help when security incidents are created from email?",
+   "options": [
+    "They delete any email that contains an attachment",
+    "They forward every email to the analyst's personal mailbox",
+    "They translate every email into the analyst's language",
+    "They pull sender, subject, and URLs into fields"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Parsing turns unstructured email into structured fields and observables that can drive automation. Forwarding, deleting, and translating aren't parsing.",
+   "verify": true
+  },
+  {
+   "id": "cissir-34",
+   "domain": "CR",
+   "stem": "What does threat intelligence help analysts decide during triage?",
+   "options": [
+    "Which ServiceNow release to upgrade to next",
+    "How serious it is and what to do first",
+    "Which analyst should receive a pay increase",
+    "How many CIs should be in the CMDB"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Knowing that an observable is tied to an active campaign changes priority and response. The other options aren't triage decisions."
+  },
+  {
+   "id": "cissir-35",
+   "domain": "CR",
+   "stem": "What does the Threat Intelligence Security Center bring to security teams?",
+   "options": [
+    "A dashboard that shows only the company's public website traffic",
+    "A central place to manage threat intelligence, hunting, and related cases",
+    "A replacement for the CMDB that stores only security configuration items",
+    "A tool for scheduling vulnerability scans across the network"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Threat Intelligence Security Center consolidates intelligence management and threat-focused workflows. It doesn't replace the CMDB, schedule scans, or monitor web traffic.",
+   "verify": true
+  },
+  {
+   "id": "cissir-36",
+   "domain": "CR",
+   "stem": "An analyst confirms that a reported email is harmless spam. What's a sensible outcome?",
+   "options": [
+    "Delete the incident so it doesn't appear in any reports",
+    "Leave the incident open in case the email turns malicious later",
+    "Close it with a resolution that records the finding",
+    "Escalate it to the CISO because every report must be escalated"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Recording the outcome keeps metrics accurate and supports tuning. Leaving it open, deleting it, or escalating everything distorts operations."
+  },
+  {
+   "id": "cissir-37",
+   "domain": "CR",
+   "stem": "What is a security incident's severity?",
+   "options": [
+    "An assessment of the incident's potential harm",
+    "The name of the tool that detected the threat",
+    "The time the incident was created in the system",
+    "The number of analysts assigned to the work"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Severity reflects potential harm and, with other factors, informs priority and risk. Staffing, timestamps, and detection source are separate fields."
+  },
+  {
+   "id": "cissir-38",
+   "domain": "CR",
+   "stem": "Why link security incidents that share the same observables?",
+   "options": [
+    "It prevents any further observables from being added",
+    "It assigns all of the incidents to the same employee",
+    "It merges all of the incidents into a single closed record",
+    "It can reveal a wider campaign rather than isolated events"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Shared observables across incidents can show coordinated activity, changing how the team responds. Linking doesn't merge, reassign, or freeze records."
+  },
+  {
+   "id": "cissir-39",
+   "domain": "CR",
+   "stem": "Why is it useful for a security incident to reference the detecting tool and its original alert?",
+   "options": [
+    "It hides the incident from users without admin roles",
+    "It sets the incident's priority to critical automatically",
+    "It lets the detection tool close the incident on its own",
+    "Analysts can trace back to the source data and tune detection"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Source references let analysts pivot into the original evidence and provide feedback on false positives. They don't control closure, visibility, or priority."
+  },
+  {
+   "id": "cissir-40",
+   "domain": "CR",
+   "stem": "A user reports a lost laptop that may hold sensitive data. How should this be handled?",
+   "options": [
+    "As a password reset request in the IT service catalog",
+    "As a hardware refresh order with no security review",
+    "As a knowledge article for other employees to read",
+    "As a security incident using a lost device process"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A lost device with sensitive data is a security event, typically handled by a specific process including remote wipe and data exposure assessment."
+  },
+  {
+   "id": "cissir-41",
+   "domain": "CR",
+   "stem": "Which observable type would a file hash be used for?",
+   "options": [
+    "Identifying a network's subnet range",
+    "Identifying a user's mailbox on the mail server",
+    "Identifying a specific file, like malware",
+    "Identifying a website's DNS registrar"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Hashes uniquely fingerprint files, so they're used to check whether a file is known malware. Mailboxes, subnets, and registrars are other observable or context types."
+  },
+  {
+   "id": "cissir-42",
+   "domain": "CR",
+   "stem": "Why should analysts avoid opening suspicious links directly from a reported email?",
+   "options": [
+    "Opening a link automatically closes the related security incident",
+    "They could infect the analyst's device; use safe analysis tools instead",
+    "Links in emails are always harmless, so there's no point in opening them",
+    "Links can only be opened by users with the admin role on the instance"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Analysis should happen in safe environments, such as sandboxes or reputation lookups, rather than by clicking. The other statements are false."
+  },
+  {
+   "id": "cissir-43",
+   "domain": "CR",
+   "stem": "An analyst opens a security incident manually after a phone call from a worried manager. What should they capture first?",
+   "options": [
+    "The names of every employee in the manager's department",
+    "Only the caller's name, since everything else can be added after closure",
+    "A full root cause analysis before any other fields are filled in",
+    "What happened, who and what is affected, and any observables known so far"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Early, structured details — description, affected users and CIs, observables — drive triage, priority, and automation. Root cause comes later, and listing unrelated employees isn't useful."
+  },
+  {
+   "id": "cissir-44",
+   "domain": "IN",
+   "stem": "Where should an implementer look first for a certified integration with a security tool such as a SIEM or EDR?",
+   "options": [
+    "The instance's system log",
+    "The ServiceNow Share site",
+    "The ServiceNow Store",
+    "A personal blog post"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Store apps are reviewed and supported. Share hosts community content that isn't certified, and blogs and logs aren't integration sources."
+  },
+  {
+   "id": "cissir-45",
+   "domain": "IN",
+   "stem": "What's the key difference between ServiceNow Store and ServiceNow Share content?",
+   "options": [
+    "Store apps are certified and supported; Share content isn't",
+    "Store apps are free, while Share content must always be purchased",
+    "There's no difference; both sites host the same apps under different names",
+    "Share apps are certified by ServiceNow; Store content comes from anonymous users"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Store applications pass certification and are supported, which matters for production security integrations. Share content can help, but carries more risk.",
+   "verify": true
+  },
+  {
+   "id": "cissir-46",
+   "domain": "IN",
+   "stem": "A SIEM integration creates security incidents from alerts. What should be configured so fields land in the right places?",
+   "options": [
+    "A dashboard showing the SIEM's raw log volume",
+    "A notification that emails each alert to analysts",
+    "A new custom table for each type of SIEM alert",
+    "Field mappings from alert to incident fields"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Mapping alert fields — source, severity, hosts, users — to incident fields makes incidents useful and automation-ready. Custom tables and emails add work, and dashboards don't create records."
+  },
+  {
+   "id": "cissir-47",
+   "domain": "IN",
+   "stem": "How do Security Operations integrations typically expose actions such as \"threat lookup\" or \"block IP\"?",
+   "options": [
+    "Through system properties that store each tool's commands",
+    "Through client scripts added to the security incident form",
+    "Through capabilities implemented by each tool",
+    "Through knowledge articles that analysts copy and paste"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The integration framework defines capabilities, and each tool's integration implements them, so playbooks can call \"block IP\" regardless of which firewall is behind it.",
+   "verify": true
+  },
+  {
+   "id": "cissir-48",
+   "domain": "IN",
+   "stem": "An organization uses both a commercial and an open-source threat feed. How can SIR use both?",
+   "options": [
+    "Copy the commercial feed's data into the open-source feed by hand each day",
+    "Store both feeds as attachments on a single knowledge article",
+    "Choose one feed only, since the platform supports a single feed at a time",
+    "Configure each as a feed source for enrichment"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Multiple feeds can be configured, and enrichment can draw on all of them. Manual copying and attachments don't integrate intelligence.",
+   "verify": true
+  },
+  {
+   "id": "cissir-49",
+   "domain": "IN",
+   "stem": "What does an integration with an EDR tool such as CrowdStrike or Microsoft Defender for Endpoint typically allow from SIR?",
+   "options": [
+    "Creating new CI classes for each malware family",
+    "Resetting every user's password in Microsoft Entra ID automatically",
+    "Retrieving endpoint details and taking actions such as isolating a host",
+    "Replacing the EDR console so analysts never use it again"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "EDR integrations bring endpoint context into the incident and let playbooks or analysts take containment actions. They don't reset all passwords, replace the console, or create classes.",
+   "verify": true
+  },
+  {
+   "id": "cissir-50",
+   "domain": "IN",
+   "stem": "Why is it important to keep threat intelligence feeds updated on a schedule?",
+   "options": [
+    "Updating feeds increases the number of licenses available",
+    "Old feeds automatically delete security incidents",
+    "Feeds stop working entirely if they aren't refreshed every hour",
+    "Threat data changes fast; stale data misses threats"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Indicators change constantly; regular updates keep enrichment and matching accurate. The other statements are false."
+  },
+  {
+   "id": "cissir-51",
+   "domain": "IN",
+   "stem": "How does IntegrationHub support orchestration with security tools?",
+   "options": [
+    "It replaces Security Incident Response entirely",
+    "It stores raw firewall logs for long-term retention",
+    "Spokes provide actions flows can call",
+    "It's used only for HR and payroll integrations"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Spokes for security tools let automation call external actions without custom code. IntegrationHub doesn't store logs, replace SIR, or target only HR.",
+   "verify": true
+  },
+  {
+   "id": "cissir-52",
+   "domain": "IN",
+   "stem": "A security tool sits in the company's private network. How does ServiceNow typically reach it?",
+   "options": [
+    "Through a MID Server inside the network",
+    "Through each analyst's home internet",
+    "Through a public link emailed to analysts",
+    "Through a knowledge article attachment"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "MID Servers relay communication between the instance and internal systems securely. The other options are insecure or don't work."
+  },
+  {
+   "id": "cissir-53",
+   "domain": "IN",
+   "stem": "Why might an organization build a custom integration instead of using a Store app?",
+   "options": [
+    "Because custom integrations never need maintenance",
+    "Because Store apps can't be used in production",
+    "When no supported integration exists",
+    "Because custom integrations bypass access controls"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Custom work makes sense when there's a gap. It does need maintenance, Store apps are production-grade, and integrations should respect security."
+  },
+  {
+   "id": "cissir-54",
+   "domain": "IN",
+   "stem": "An integration's credentials have expired, and threat lookups fail. Where would this usually show up?",
+   "options": [
+    "In the integration's run logs or errors",
+    "In each analyst's notification preferences",
+    "In the knowledge base feedback for security articles",
+    "In the CMDB Health score for the server class"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Integration logs and capability errors reveal authentication failures. CMDB health, knowledge feedback, and preferences don't track integrations."
+  },
+  {
+   "id": "cissir-55",
+   "domain": "IN",
+   "stem": "Why might a block request to a firewall require approval before it runs?",
+   "options": [
+    "Approvals make the block take effect faster on the firewall",
+    "Approvals are required for every action the platform takes",
+    "Firewalls can only accept requests that are approved by auditors",
+    "Blocking the wrong address could disrupt legitimate business traffic"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Containment actions can cause outages, so many organizations require a human check for high-impact blocks. Not every action needs approval, and approval doesn't speed things up.",
+   "verify": true
+  },
+  {
+   "id": "cissir-56",
+   "domain": "IN",
+   "stem": "What does a vulnerability scanner integration add to security incident investigations?",
+   "options": [
+    "Whether affected hosts have known weaknesses that may have been exploited",
+    "An automatic approval for every pending change on affected hosts",
+    "A list of all employees who have completed security awareness training",
+    "The financial value of each affected server from the asset register"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Knowing a host has an unpatched, exploitable vulnerability can explain how an attacker got in. Training records, asset values, and change approvals come from elsewhere."
+  },
+  {
+   "id": "cissir-57",
+   "domain": "IN",
+   "stem": "Why integrate SIR with identity systems such as Microsoft Entra ID or Active Directory?",
+   "options": [
+    "To give all affected users the security analyst role during response",
+    "To delete user accounts as soon as they're added to an incident",
+    "To copy every security incident into the user's personal email inbox",
+    "To look up users and disable compromised accounts"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Identity integrations provide context and containment actions for account compromise. Copying incidents, granting analyst roles, or deleting accounts automatically would be harmful."
+  },
+  {
+   "id": "cissir-58",
+   "domain": "IN",
+   "stem": "A SIEM sends the same alert many times. What helps avoid duplicate security incidents?",
+   "options": [
+    "Deduplication or correlation rules",
+    "Deleting duplicates manually at the end of each week",
+    "Raising every duplicate's priority to critical",
+    "Turning off the SIEM integration until the alerts stop"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Correlation and dedup rules attach repeats to one incident. Disabling the integration loses detections, manual cleanup wastes time, and raising priority adds noise.",
+   "verify": true
+  },
+  {
+   "id": "cissir-59",
+   "domain": "IN",
+   "stem": "What should be considered before connecting a new threat feed?",
+   "options": [
+    "Whether its data can be printed on a single page",
+    "Its reliability, relevance, and data volume",
+    "Whether it's hosted in the same city as the instance",
+    "Whether its logo matches the company's brand colors"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Noisy or low-quality feeds create false positives and load. Branding, location, and printability are irrelevant."
+  },
+  {
+   "id": "cissir-60",
+   "domain": "IN",
+   "stem": "What can sandbox integrations, which detonate files safely, provide during an investigation?",
+   "options": [
+    "A replacement for the organization's antivirus software",
+    "A backup of the analyst's laptop before the investigation starts",
+    "Behavioral analysis of a file without risking production",
+    "A permanent copy of every file sent to the company by email"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Sandboxes run suspicious files in isolation and report behavior, helping analysts judge whether a file is malicious. They aren't archives, backups, or antivirus replacements."
+  },
+  {
+   "id": "cissir-61",
+   "domain": "IN",
+   "stem": "Why should integrations use dedicated service accounts with limited permissions?",
+   "options": [
+    "Because personal accounts can't be used with any external system",
+    "To give the integration administrator rights across every tool",
+    "Because service accounts don't need passwords or other credentials",
+    "To limit damage if the account is misused and to keep actions auditable"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Least-privilege service accounts reduce risk and make it clear which actions the integration took. They still need credentials, and broad admin rights defeat the purpose."
+  },
+  {
+   "id": "cissir-62",
+   "domain": "IN",
+   "stem": "A newly installed integration should be validated before go-live. What's a sensible test?",
+   "options": [
+    "Check only that the app's icon appears in the Store",
+    "Turn it on in production and wait to see if analysts complain",
+    "Assume it works because it was downloaded from the Store",
+    "Run its capabilities on test data and check mappings"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Testing capabilities and mappings with safe data catches configuration problems before they affect real incidents. Waiting for complaints or assuming success is risky."
+  },
+  {
+   "id": "cissir-63",
+   "domain": "IN",
+   "stem": "How can SIR receive security events from Event Management?",
+   "options": [
+    "Alert rules can create security incidents from qualifying alerts",
+    "Event Management deletes alerts so SIR can recreate them",
+    "Analysts copy each alert's text into a new incident by hand",
+    "SIR can't receive events from Event Management at all"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Event Management alerts that meet security criteria can create security incidents automatically, linking operational monitoring with security response.",
+   "verify": true
+  },
+  {
+   "id": "cissir-64",
+   "domain": "IN",
+   "stem": "Why might an organization share selected intelligence with an industry ISAC?",
+   "options": [
+    "It helps peers defend against the same threats",
+    "Sharing removes the need to investigate the incident internally",
+    "Regulators require every security incident to be published publicly",
+    "ISACs pay organizations for every incident they report"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Information sharing communities let organizations warn each other about active threats. It's voluntary in most cases, isn't paid, and doesn't replace investigation. Security tags such as TLP help control what's shared."
+  },
+  {
+   "id": "cissir-65",
+   "domain": "MG",
+   "stem": "What does a process definition control in Security Incident Response?",
+   "options": [
+    "The lifecycle states and steps for a type of incident",
+    "The list of users who can log in to the instance",
+    "The color scheme used on the security incident form",
+    "The order in which threat feeds are downloaded"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Process definitions define which states and steps apply, so different incident types can follow suitable lifecycles. Colors, logins, and feed order are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cissir-66",
+   "domain": "MG",
+   "stem": "Phishing incidents should follow a different process from malware incidents. How is the right process chosen?",
+   "options": [
+    "Process selection rules based on conditions such as category",
+    "The SIEM decides which process applies before sending alerts",
+    "Every incident uses one process, so no selection is needed",
+    "The analyst types the process name in the description field"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Selection rules match incident conditions to the appropriate process definition automatically.",
+   "verify": true
+  },
+  {
+   "id": "cissir-67",
+   "domain": "MG",
+   "stem": "What are security tags used for?",
+   "options": [
+    "Granting users the admin role for a single incident",
+    "Labeling physical laptops with asset tags in the CMDB",
+    "Changing the security incident number prefix",
+    "Classifying and controlling sharing, such as TLP"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Security tags categorize incidents and can restrict access or sharing — for example, Traffic Light Protocol tags. They aren't asset labels, numbering, or role grants.",
+   "verify": true
+  },
+  {
+   "id": "cissir-68",
+   "domain": "MG",
+   "stem": "An incident involves an executive and must be visible only to a small investigation team. What helps?",
+   "options": [
+    "Changing the incident's category to \"general\" so nobody notices it",
+    "Emailing the details to the team instead of recording them",
+    "Deleting the incident after the investigation is complete",
+    "A restricting security tag or access control that limits who can see it"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Restricting tags or ACLs keep sensitive incidents on the platform with tight access. Recategorizing, using email, or deleting loses control and evidence.",
+   "verify": true
+  },
+  {
+   "id": "cissir-69",
+   "domain": "MG",
+   "stem": "How can security incidents be assigned to the right group automatically?",
+   "options": [
+    "By letting the person who reported the incident choose an analyst",
+    "By rotating incidents among all employees in alphabetical order",
+    "By assigning every incident to the CISO, who then redistributes them",
+    "With assignment rules based on category, affected CI, or other conditions"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Assignment rules route incidents by conditions, so specialists get the right work quickly. Funneling through the CISO, letting reporters choose, or rotating at random doesn't work."
+  },
+  {
+   "id": "cissir-70",
+   "domain": "MG",
+   "stem": "A security incident is escalating and needs leadership attention. What should happen?",
+   "options": [
+    "Follow the escalation path, raising priority and notifying people",
+    "Remove all response tasks so the incident is simpler to read",
+    "Close the incident and open a new one with a different number",
+    "Wait until the end of the week to report it in a status meeting"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Defined escalation paths make sure the right people know quickly. Reopening, deleting tasks, or waiting hides the problem."
+  },
+  {
+   "id": "cissir-71",
+   "domain": "MG",
+   "stem": "What should determine a security incident's priority?",
+   "options": [
+    "The alphabetical order of the reporter's surname",
+    "The time of day the incident happened to be created",
+    "Severity, business impact, and affected assets",
+    "The number of characters in the incident description"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Priority should reflect real risk to the business. Names, description length, and creation time don't."
+  },
+  {
+   "id": "cissir-72",
+   "domain": "MG",
+   "stem": "Why use SLAs on security incidents?",
+   "options": [
+    "To prevent analysts from changing the priority",
+    "To automatically close incidents after a fixed time",
+    "To bill the business for each security incident",
+    "To track whether response meets agreed targets"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SLAs measure timeliness and highlight incidents at risk of breaching targets. They don't bill, close, or lock records."
+  },
+  {
+   "id": "cissir-73",
+   "domain": "MG",
+   "stem": "Several analysts are working different parts of one investigation. How should the work be split?",
+   "options": [
+    "Into response tasks assigned to each analyst or group",
+    "Into comments on a single knowledge article",
+    "Into personal notes stored outside the platform",
+    "Into separate security incidents for each analyst"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Response tasks keep work under one incident while making each piece assignable and trackable. Splitting into separate incidents or working off-platform fragments the investigation."
+  },
+  {
+   "id": "cissir-74",
+   "domain": "MG",
+   "stem": "An incident turns out to be a false positive. What should the analyst do?",
+   "options": [
+    "Reassign it to the service desk as an IT incident",
+    "Delete the incident so it doesn't affect security metrics",
+    "Leave it open indefinitely in case it becomes real later",
+    "Close it as a false positive and feed back to tune detection"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Recording false positives improves metrics and lets detection rules be tuned. Deleting, leaving open, or reassigning loses that value."
+  },
+  {
+   "id": "cissir-75",
+   "domain": "MG",
+   "stem": "What is the purpose of a security incident's \"contain\" phase?",
+   "options": [
+    "To close the incident as quickly as possible",
+    "To calculate the cost of the incident for finance",
+    "To limit the incident's spread before eradicating it",
+    "To write the post-incident report for executives"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Containment stops things getting worse — isolating hosts, blocking IPs — before eradication removes the threat and recovery restores service."
+  },
+  {
+   "id": "cissir-76",
+   "domain": "MG",
+   "stem": "Which phase follows containment in the NIST-based lifecycle?",
+   "options": [
+    "Eradicate",
+    "Draft",
+    "Closed",
+    "Analysis"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "After containment, eradication removes the threat, followed by recovery and review. Analysis comes before containment.",
+   "verify": true
+  },
+  {
+   "id": "cissir-77",
+   "domain": "MG",
+   "stem": "How can managers see whether their team's queues are overloaded?",
+   "options": [
+    "By asking each analyst to send a daily email with their task count",
+    "With workload views or reports of open incidents and tasks by assignee",
+    "By checking how many threat feeds are configured",
+    "By counting the number of observables stored on the instance"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Workload reporting shows who has what and where delays are building. Emails are slow, and observable or feed counts don't reflect workload."
+  },
+  {
+   "id": "cissir-78",
+   "domain": "MG",
+   "stem": "Who should be able to change a security incident's state to closed?",
+   "options": [
+    "Authorized security staff, per process and roles",
+    "Any employee who reported the incident through the portal",
+    "External vendors who provided threat intelligence",
+    "Any user who can see the incident in a list"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Closure should be controlled by role and process, so incidents aren't closed prematurely. Reporters, viewers, and vendors shouldn't close them.",
+   "verify": true
+  },
+  {
+   "id": "cissir-79",
+   "domain": "MG",
+   "stem": "What is the value of using templates for common response tasks?",
+   "options": [
+    "Templates make every incident the same priority",
+    "Templates hide tasks from the security manager",
+    "Consistent, complete steps for recurring incidents",
+    "Templates let analysts skip documenting what they did"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Templates standardize response steps, reducing missed actions. They don't remove documentation, hide work, or set priority."
+  },
+  {
+   "id": "cissir-80",
+   "domain": "MG",
+   "stem": "An analyst needs input from the legal team about notifying regulators. How should this be handled?",
+   "options": [
+    "Create a response task or request assigned to legal, linked to the incident",
+    "Copy the full incident into an email and forward it to the whole company",
+    "Add the legal team members as security analysts for the rest of the year",
+    "Decide alone and record the decision after the deadline has passed"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A linked task keeps the request tracked and the conversation on the record. Broadcasting details, granting excess roles, or acting alone are inappropriate."
+  },
+  {
+   "id": "cissir-81",
+   "domain": "MG",
+   "stem": "Why might certain incidents need a dedicated major security incident process?",
+   "options": [
+    "Major incidents are stored in a different instance from minor incidents",
+    "Only external consultants can work on major security incidents",
+    "High-impact incidents need tighter coordination and leadership",
+    "Major incidents don't need any documentation or post-incident review"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Large incidents involve many teams, executives, and often external parties, so a structured major incident approach helps. They still need documentation and review."
+  },
+  {
+   "id": "cissir-82",
+   "domain": "MG",
+   "stem": "What's a good reason to add watchers to a security incident?",
+   "options": [
+    "Watchers automatically gain the security admin role",
+    "Stakeholders get updates without being assigned the work",
+    "Watchers can close the incident on the analyst's behalf",
+    "Watchers replace the need for response tasks"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Watch lists keep the right people informed. They don't grant roles, closure rights, or replace task assignment. Consider sensitivity before adding watchers."
+  },
+  {
+   "id": "cissir-83",
+   "domain": "MG",
+   "stem": "What does reopening a closed security incident usually indicate?",
+   "options": [
+    "The reporter wants a copy of the incident report",
+    "New evidence shows the threat wasn't fully resolved",
+    "The incident was closed by mistake in the wrong instance",
+    "The analyst wants to change the incident's number"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Reopening typically means the issue recurred or wasn't fully eradicated. Instance mix-ups, number changes, and report requests aren't reasons to reopen."
+  },
+  {
+   "id": "cissir-84",
+   "domain": "MG",
+   "stem": "What is the benefit of using the security workspace's list and record views over the classic UI for analysts?",
+   "options": [
+    "The classic UI can't display security incidents at all",
+    "The workspace removes the need for any access controls on security data",
+    "Analysts see related context and actions together, which speeds investigation",
+    "The workspace stores incidents in a separate, faster database"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Workspaces bring together related records, observables, and actions in one place. Access controls still apply, data is stored the same way, and classic forms still work.",
+   "verify": true
+  },
+  {
+   "id": "cissir-85",
+   "domain": "MG",
+   "stem": "Why should security incident categories and subcategories be kept consistent?",
+   "options": [
+    "So routing, selection, and reporting stay reliable",
+    "So the database uses less storage for each record",
+    "So analysts don't need any training on categories",
+    "So incidents can be shared publicly without review"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Consistent categorization drives automation and accurate metrics. Storage, public sharing, and training aren't the reasons."
+  },
+  {
+   "id": "cissir-86",
+   "domain": "MG",
+   "stem": "An incident affects a business-critical application. Who should typically be informed?",
+   "options": [
+    "Only the analyst who first opened the incident",
+    "External customers, before the investigation starts",
+    "The application owner and business stakeholders",
+    "Every employee in the company, by broadcast email"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Owners and stakeholders need to know so they can support response and make business decisions. Broadcasts, silence, and premature external notice are inappropriate."
+  },
+  {
+   "id": "cissir-87",
+   "domain": "MG",
+   "stem": "An analyst is going off shift in the middle of an active investigation. What makes the handoff smooth?",
+   "options": [
+    "Leaving the incident assigned to the absent analyst overnight",
+    "Up-to-date work notes, task status, and observables on the incident",
+    "A private message to one colleague that isn't recorded anywhere",
+    "Closing the incident and opening a new one the next morning"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Keeping the record current lets the next analyst pick up exactly where work stopped. Unrecorded messages, idle assignments, and reopening as new records break continuity."
+  },
+  {
+   "id": "cissir-88",
+   "domain": "RP",
+   "stem": "What do security incident calculator groups do?",
+   "options": [
+    "Set fields such as business impact, priority, or risk based on defined rules",
+    "Group analysts into teams based on their certifications and experience",
+    "Calculate the license cost of the Security Operations applications",
+    "Combine several security incidents into a single incident record"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Calculators evaluate conditions and set values such as impact, priority, and risk score, making scoring consistent. They don't form teams, compute licensing, or merge incidents.",
+   "verify": true
+  },
+  {
+   "id": "cissir-89",
+   "domain": "RP",
+   "stem": "Why does SIR depend on accurate CMDB data for risk calculations?",
+   "options": [
+    "The CMDB decides which analyst receives each incident",
+    "Affected CIs' business criticality feeds the risk score",
+    "The CMDB stores every security incident's raw evidence and logs",
+    "Risk calculations only work for incidents with no affected CIs"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "If a compromised server supports a critical service, the incident's risk should reflect that, and that comes from CMDB data. The CMDB doesn't store evidence or assign analysts."
+  },
+  {
+   "id": "cissir-90",
+   "domain": "RP",
+   "stem": "Two incidents have the same severity, but one affects a payroll system and the other a test server. How should risk differ?",
+   "options": [
+    "The payroll incident should score higher because of business criticality",
+    "Risk should be decided by whichever incident was reported first",
+    "The test server incident should score higher because it's less protected",
+    "Both must score the same because their severity is the same"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Risk combines severity with business impact. A critical business system raises risk, while a test server usually lowers it. Report order is irrelevant."
+  },
+  {
+   "id": "cissir-91",
+   "domain": "RP",
+   "stem": "What is the main purpose of a post-incident review?",
+   "options": [
+    "To learn what happened and improve controls",
+    "To bill the affected business unit for response time",
+    "To delete the incident's evidence once it's closed",
+    "To identify which employee should be disciplined"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Post-incident reviews focus on lessons learned and improvements. Blame, evidence destruction, and billing aren't the purpose."
+  },
+  {
+   "id": "cissir-92",
+   "domain": "RP",
+   "stem": "How does SIR typically collect input for a post-incident review?",
+   "options": [
+    "With an anonymous public survey posted on the company's website",
+    "With a phone call to each analyst that isn't documented",
+    "With a random sample of unrelated closed incidents",
+    "With a review questionnaire plus the incident record"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Review questionnaires (assessments) gather structured input, and the report pulls in the incident's timeline and details. Public surveys and undocumented calls lose value.",
+   "verify": true
+  },
+  {
+   "id": "cissir-93",
+   "domain": "RP",
+   "stem": "What should a post-incident report usually include?",
+   "options": [
+    "Every raw log line collected during the investigation",
+    "The personal contact details of every employee affected",
+    "Only the incident number and the name of the analyst who closed it",
+    "A timeline, impact, actions, root cause, and fixes"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Reports summarize what happened and what to change. A bare number is too little, raw logs are too much, and personal details should be minimized."
+  },
+  {
+   "id": "cissir-94",
+   "domain": "RP",
+   "stem": "After a post-incident review recommends changes, how should they be tracked?",
+   "options": [
+    "As a new security incident for each recommendation",
+    "As a note in the closed incident's description",
+    "As follow-up tasks with owners and due dates",
+    "As a verbal agreement at the review meeting"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Actionable follow-ups with owners make sure improvements happen. Notes and verbal agreements are easily lost, and recommendations aren't incidents."
+  },
+  {
+   "id": "cissir-95",
+   "domain": "RP",
+   "stem": "Which incidents should get a full post-incident review?",
+   "options": [
+    "Only incidents that were reported by external customers",
+    "None, because reviews slow down the security team",
+    "Every false positive, regardless of how minor it was",
+    "Significant incidents, based on defined criteria"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defined criteria focus review effort where learning matters most. Reviewing every false positive wastes time, and skipping reviews forgoes improvement.",
+   "verify": true
+  },
+  {
+   "id": "cissir-96",
+   "domain": "RP",
+   "stem": "What does \"business impact\" on a security incident represent?",
+   "options": [
+    "How many analysts the business has assigned to security operations",
+    "How long the business has been a ServiceNow customer",
+    "How many CIs the business has stored in the CMDB",
+    "How much the incident affects business operations, data, or reputation"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Business impact captures consequences for the organization and informs priority and risk. Staffing, tenure, and CI counts aren't impact."
+  },
+  {
+   "id": "cissir-97",
+   "domain": "RP",
+   "stem": "A risk score is calculated automatically, but an analyst knows the incident is more serious. What's appropriate?",
+   "options": [
+    "Leave the score alone even though it's known to be wrong",
+    "Adjust inputs or override per process, documenting why",
+    "Delete the incident and create a new one with a higher score",
+    "Change the affected CI's class so the score increases"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Calculators help consistency, but judgment matters; documented adjustments keep both. Leaving a known-wrong score, recreating incidents, or tampering with CMDB data is wrong.",
+   "verify": true
+  },
+  {
+   "id": "cissir-98",
+   "domain": "RP",
+   "stem": "How can lessons from post-incident reviews improve future response?",
+   "options": [
+    "By deleting the reviewed incidents to keep metrics clean",
+    "By lowering the priority of similar incidents in future",
+    "By updating playbooks, process definitions, and detection rules",
+    "By assigning the next incident to the same analyst every time"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Feeding lessons into playbooks, processes, and detection is how response gets better. Deleting incidents, fixed assignment, or lowering priority don't improve anything."
+  },
+  {
+   "id": "cissir-99",
+   "domain": "RP",
+   "stem": "What does Event Management contribute to post-incident analysis?",
+   "options": [
+    "Automatic approval of follow-up changes",
+    "Correlated alerts and timing for the timeline",
+    "A replacement for the post-incident questionnaire",
+    "The financial cost of the incident"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Alert data and timestamps help build the incident timeline. It doesn't replace reviews, approve changes, or calculate costs."
+  },
+  {
+   "id": "cissir-100",
+   "domain": "RP",
+   "stem": "Why is consistent risk scoring valuable across all security incidents?",
+   "options": [
+    "It hides incidents with low scores from the CISO's dashboards",
+    "It lets analysts skip triage because the score decides everything",
+    "It guarantees that no incident will ever be scored as critical",
+    "Incidents can be compared and prioritized fairly"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Consistent scoring supports fair prioritization and trend reporting. It doesn't cap scores, replace judgment, or hide incidents."
+  },
+  {
+   "id": "cissir-101",
+   "domain": "RP",
+   "stem": "Which CI attribute most directly feeds business criticality into SIR risk calculations?",
+   "options": [
+    "The CI's serial number",
+    "The CI's purchase date",
+    "Business criticality",
+    "The CI's display name"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Business criticality on CIs and services tells SIR how much the business depends on them. Serial numbers, purchase dates, and names don't express importance."
+  },
+  {
+   "id": "cissir-102",
+   "domain": "RP",
+   "stem": "What should happen to evidence collected during an incident after closure?",
+   "options": [
+    "Delete it immediately to save storage space",
+    "Retain it per policy, protecting integrity",
+    "Share it publicly to help other organizations",
+    "Give it to the affected users to keep"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Evidence may be needed for legal, regulatory, or follow-up reasons, so it's retained per policy with integrity controls. Deleting or sharing it publicly is inappropriate."
+  },
+  {
+   "id": "cissir-103",
+   "domain": "RP",
+   "stem": "Why compare risk scores before and after containment?",
+   "options": [
+    "It determines which threat feed to subscribe to",
+    "It sets the incident's number for future reference",
+    "It decides whether the analyst passed probation",
+    "It shows how much response reduced risk"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A drop in risk after containment shows the response worked and supports decisions about closure. The other options are unrelated.",
+   "verify": true
+  },
+  {
+   "id": "cissir-104",
+   "domain": "RP",
+   "stem": "A review finds that detection was slow because logs from a key system weren't collected. What's the right follow-up?",
+   "options": [
+    "Note the gap and wait for the next incident to happen",
+    "Onboard that system's logs to the SIEM",
+    "Close the review without any recommendations",
+    "Lower the system's business criticality in the CMDB"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Closing visibility gaps is a classic post-incident improvement. Waiting, downgrading criticality, or ignoring the finding leaves the risk in place."
+  },
+  {
+   "id": "cissir-105",
+   "domain": "RP",
+   "stem": "What is a \"lessons learned\" meeting most useful for?",
+   "options": [
+    "Agreeing what went well and what to change",
+    "Reading the incident's raw logs aloud to the team",
+    "Assigning blame to the person who clicked the link",
+    "Approving the analyst's vacation requests"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Blameless lessons-learned discussions surface practical improvements. Blame discourages reporting, and the other options aren't the meeting's purpose."
+  },
+  {
+   "id": "cissir-106",
+   "domain": "AU",
+   "stem": "What is a playbook in Security Incident Response?",
+   "options": [
+    "A knowledge article describing the history of the SOC team",
+    "A guided, often automated set of response activities",
+    "A report that shows how many incidents each analyst closed",
+    "A spreadsheet listing every employee's phone number for emergencies"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Playbooks define and guide response steps — some automated, some manual — so analysts respond consistently. Contact lists, reports, and history articles aren't playbooks.",
+   "verify": true
+  },
+  {
+   "id": "cissir-107",
+   "domain": "AU",
+   "stem": "Which tool is commonly used to build automation for security incidents in current releases?",
+   "options": [
+    "The Service Portal page designer",
+    "Workflow Studio (Flow Designer)",
+    "The CMDB CI Class Manager",
+    "The legacy client script editor"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Flows and playbooks are built in Workflow Studio (Flow Designer). Client scripts, Class Manager, and portal design aren't automation tools for SIR.",
+   "verify": true
+  },
+  {
+   "id": "cissir-108",
+   "domain": "AU",
+   "stem": "What is a good first candidate for automation in a SOC?",
+   "options": [
+    "Decisions to notify regulators about a data breach",
+    "Rare, complex investigations that need deep expert judgment every time",
+    "Hiring decisions for new security analysts",
+    "Repetitive steps like enriching phishing observables"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Repetitive, well-understood steps give the best return and lowest risk. Complex judgment calls, legal decisions, and hiring stay human."
+  },
+  {
+   "id": "cissir-109",
+   "domain": "AU",
+   "stem": "In a user-reported phishing process, what can be automated after the email is parsed?",
+   "options": [
+    "Publishing the email on the company intranet",
+    "Firing the employee who received the email",
+    "Extracting URLs and checking their reputation",
+    "Deleting the reporting user's mailbox"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automation can extract observables, enrich them, score the report, and even search for and remove similar emails. Disciplinary action, mailbox deletion, and publishing are inappropriate."
+  },
+  {
+   "id": "cissir-110",
+   "domain": "AU",
+   "stem": "A phishing report is confirmed malicious. What automated follow-up action is commonly added?",
+   "options": [
+    "Search for and remove the same email from other mailboxes",
+    "Send the phishing email to every employee as a warning",
+    "Disable the company's email system for a full day",
+    "Reset passwords for every employee in the company"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Finding and pulling the same message from other inboxes limits exposure. Resending it, mass password resets, or shutting down email are disproportionate."
+  },
+  {
+   "id": "cissir-111",
+   "domain": "AU",
+   "stem": "Why keep a human approval step before some automated containment actions?",
+   "options": [
+    "Approvals make automation run faster",
+    "The platform can't take any action without approval",
+    "Approvals are needed to create response tasks",
+    "High-impact actions can disrupt the business"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Approval gates balance speed with safety for disruptive actions. Many low-risk steps run without approval, and approvals don't speed anything up."
+  },
+  {
+   "id": "cissir-112",
+   "domain": "AU",
+   "stem": "What triggers a security incident flow?",
+   "options": [
+    "An incident being created or changing state",
+    "A report being exported to a spreadsheet",
+    "An administrator opening the system properties list",
+    "A user changing their profile photo in the portal"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Flows start on record events or conditions, such as a new phishing incident. The other events aren't relevant triggers."
+  },
+  {
+   "id": "cissir-113",
+   "domain": "AU",
+   "stem": "What are standard processes in Security Incident Response?",
+   "options": [
+    "The list of ServiceNow releases that support SIR",
+    "The default password policy for security analysts",
+    "The legal terms for sharing intelligence with partners",
+    "Predefined responses for common incident types"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Standard processes give consistent, often automated handling for frequent incident types. Releases, passwords, and legal terms are separate topics."
+  },
+  {
+   "id": "cissir-114",
+   "domain": "AU",
+   "stem": "How can automation help with alert fatigue?",
+   "options": [
+    "By sending every alert to the CISO instead of the analysts",
+    "By turning off detection rules that fire more than once a week",
+    "By enriching, correlating, and closing clear false positives",
+    "By hiding all alerts from analysts until the end of each day"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automated triage reduces noise while keeping evidence. Hiding alerts, redirecting them, or disabling detection increases risk."
+  },
+  {
+   "id": "cissir-115",
+   "domain": "AU",
+   "stem": "Why should automated steps record what they did on the security incident?",
+   "options": [
+    "So the incident is hidden from other analysts",
+    "Because flows can't run unless they write to the description",
+    "Because recorded steps run faster than unrecorded ones",
+    "So analysts and auditors can see actions taken and their results"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "An audit trail of automated actions supports investigation, review, and compliance. Recording doesn't change speed or visibility."
+  },
+  {
+   "id": "cissir-116",
+   "domain": "AU",
+   "stem": "A playbook needs to run the same enrichment steps for several incident types. How should it be built?",
+   "options": [
+    "As a reusable subflow each playbook calls",
+    "As a scheduled report emailed to analysts",
+    "By copying the steps into every playbook separately",
+    "As a client script on the incident form"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Reusable subflows and actions keep logic in one place. Copying creates drift, and client scripts or reports don't orchestrate."
+  },
+  {
+   "id": "cissir-117",
+   "domain": "AU",
+   "stem": "What's the risk of fully automating responses without testing?",
+   "options": [
+    "Untested automation can't be turned on in production",
+    "Untested automation runs too slowly to be useful",
+    "Faulty automation can take wrong actions at scale",
+    "There's no risk; automation is always correct"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automation multiplies mistakes as well as successes. Test with safe data and consider approval gates for disruptive steps."
+  },
+  {
+   "id": "cissir-118",
+   "domain": "AU",
+   "stem": "What can automation do when a new security incident is created from a SIEM alert?",
+   "options": [
+    "Extract and enrich observables, score, and assign it",
+    "Write the post-incident report before any analysis begins",
+    "Close the incident automatically in every case",
+    "Ask the SIEM vendor to investigate the incident"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Early automation prepares the incident for an analyst with context, scoring, and routing. Writing reports early or auto-closing everything isn't appropriate."
+  },
+  {
+   "id": "cissir-119",
+   "domain": "AU",
+   "stem": "Why might a playbook include manual tasks alongside automated ones?",
+   "options": [
+    "Manual tasks make the playbook run faster than automation does",
+    "Manual tasks are required because flows can't run more than one step",
+    "Manual tasks hide the playbook from the incident record",
+    "Some steps need human judgment, such as deciding to notify customers"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Playbooks mix automated and human steps, guiding analysts through decisions that need judgment."
+  },
+  {
+   "id": "cissir-120",
+   "domain": "AU",
+   "stem": "How can automation help meet response SLAs?",
+   "options": [
+    "By deleting incidents that are close to breaching their SLA",
+    "By triaging and routing instantly, so analysts start sooner",
+    "By pausing SLA timers whenever an incident is automated",
+    "By changing SLA targets to match current response times"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Automation removes delays at the start of the process. Pausing timers, changing targets, or deleting records just hides poor performance."
+  },
+  {
+   "id": "cissir-121",
+   "domain": "AU",
+   "stem": "A malware incident's playbook should isolate the affected host only if the risk score is high. How is this modeled?",
+   "options": [
+    "By asking the user who owns the host whether it should be isolated",
+    "With a condition in the flow that checks the risk score before isolating",
+    "By isolating the host only after the incident has been closed",
+    "By isolating every host involved in any incident, regardless of risk"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Flow logic branches on conditions such as risk, so actions fit the situation. Always isolating, asking end users, or acting after closure are poor designs."
+  },
+  {
+   "id": "cissir-122",
+   "domain": "AU",
+   "stem": "What is the benefit of starting with ServiceNow's out-of-box security processes rather than building from scratch?",
+   "options": [
+    "They work without any data from the CMDB",
+    "They remove the need for any testing",
+    "They reflect best practice and can be tailored",
+    "They can't be changed, which prevents mistakes"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Base processes give a strong starting point that you adapt. They can be changed, still need testing, and benefit from good CMDB data.",
+   "verify": true
+  },
+  {
+   "id": "cissir-123",
+   "domain": "AU",
+   "stem": "An analyst wants to run a lookup on one observable during an investigation, outside the playbook. What should be available?",
+   "options": [
+    "A request to the platform admin to run the lookup in production",
+    "A spreadsheet macro that queries the threat feed directly",
+    "On-demand actions like a threat lookup on the observable",
+    "Only the actions that run automatically when the incident is created"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Analysts can trigger enrichment and other capabilities on demand. Relying only on automatic actions or admins slows investigation, and macros bypass the platform.",
+   "verify": true
+  },
+  {
+   "id": "cissir-124",
+   "domain": "AU",
+   "stem": "How should automated playbooks handle failures, such as an integration timing out?",
+   "options": [
+    "Ignore the failure and continue as though the step succeeded",
+    "Close the security incident automatically to avoid confusion",
+    "Handle the error, record it, and create a follow-up task",
+    "Delete the playbook so it doesn't run again"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Error handling keeps the incident accurate and gets a human involved when automation can't complete. Ignoring errors, closing incidents, or deleting playbooks are harmful."
+  },
+  {
+   "id": "cissir-125",
+   "domain": "AU",
+   "stem": "Why measure how much time automation saves in the SOC?",
+   "options": [
+    "It shows automation's value and what to do next",
+    "It sets the risk score for each incident",
+    "It decides which analysts receive bonuses",
+    "It's needed to calculate the ServiceNow license fee"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Time-saved metrics justify investment and highlight further opportunities. They don't drive licensing, compensation, or risk scores."
+  },
+  {
+   "id": "cissir-126",
+   "domain": "AU",
+   "stem": "What does process selection ensure when a new security incident is created?",
+   "options": [
+    "The incident is assigned to the analyst with the fewest tickets",
+    "The incident is shared with every connected security tool",
+    "The incident is given the highest priority available",
+    "The incident follows the lifecycle and steps defined for its type"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Process selection matches incidents to the right process definition — for example, phishing versus data loss. Assignment, sharing, and priority are handled separately.",
+   "verify": true
+  },
+  {
+   "id": "cissir-127",
+   "domain": "AU",
+   "stem": "What should a standard process for a lost or stolen device typically include?",
+   "options": [
+    "Remote wipe, data exposure review, credential resets",
+    "A firewall block for every IP address the user ever accessed",
+    "A full malware sandbox analysis of the missing device's files",
+    "An immediate public announcement about the lost device"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Device loss response focuses on securing the device and the data and accounts on it. Sandboxing a missing device isn't possible, and mass blocks or announcements are excessive."
+  },
+  {
+   "id": "cissir-128",
+   "domain": "AU",
+   "stem": "What should a malware standard process typically include?",
+   "options": [
+    "Delete the affected users' accounts and create new ones",
+    "Ignore it if the antivirus already detected the file",
+    "Reset the CMDB and rediscover every CI in the environment",
+    "Find affected hosts, contain, remove, and verify"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Malware response follows identify, contain, eradicate, recover. Resetting the CMDB or deleting accounts is excessive, and antivirus detection doesn't guarantee full removal."
+  },
+  {
+   "id": "cissir-129",
+   "domain": "AU",
+   "stem": "Why should automated playbooks be reviewed after significant incidents?",
+   "options": [
+    "To delete playbooks that were used during the incident",
+    "To fix gaps the incident revealed",
+    "To give analysts permission to skip future playbooks",
+    "To lower the priority of similar incidents next time"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Incidents show where automation helped or fell short, so playbooks improve over time."
+  },
+  {
+   "id": "cissir-130",
+   "domain": "AU",
+   "stem": "A playbook step sends a notification to the affected user. Why do this?",
+   "options": [
+    "To let them close the incident if they agree",
+    "To ask them to assign the incident to an analyst",
+    "To tell them what to do, like change a password",
+    "To give them access to the full investigation details"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Users often need to act, such as resetting credentials or reporting further suspicious activity. They shouldn't see full details, close incidents, or assign work."
+  },
+  {
+   "id": "cissir-131",
+   "domain": "AU",
+   "stem": "What's a sensible way to roll out a new automated playbook?",
+   "options": [
+    "Turn off all existing processes so it's the only one that runs",
+    "Let analysts decide whether to run it on each incident at random",
+    "Test it, pilot it on some incidents, then expand",
+    "Enable it for every incident type immediately without testing"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Gradual rollout limits the impact of mistakes. Immediate full rollout, random use, or disabling everything else is risky."
+  },
+  {
+   "id": "cissir-132",
+   "domain": "AU",
+   "stem": "Why might automation create response tasks rather than taking direct action for some steps?",
+   "options": [
+    "Response tasks are the only way flows can communicate with the platform",
+    "Response tasks prevent the incident from appearing on dashboards",
+    "Response tasks make the security incident close automatically",
+    "The step needs a specific team's expertise or access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Some actions are performed by other teams or need human hands. Tasks route that work and track completion."
+  },
+  {
+   "id": "cissir-133",
+   "domain": "AU",
+   "stem": "How can automation help with evidence collection?",
+   "options": [
+    "By gathering logs and headers onto the incident",
+    "By deleting evidence that looks irrelevant to save time",
+    "By emailing evidence to the affected user for safekeeping",
+    "By storing evidence only on the analyst's laptop"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Automated collection is fast and consistent and keeps evidence with the incident. Deleting, emailing, or local storage break integrity and access control."
+  },
+  {
+   "id": "cissir-134",
+   "domain": "AU",
+   "stem": "What's the advantage of using a capability such as \"block IP\" in a playbook instead of a tool-specific script?",
+   "options": [
+    "Capabilities can't fail",
+    "Capabilities always run faster than scripts",
+    "It keeps working if the firewall product changes",
+    "Capabilities don't need any credentials to reach the firewall"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Abstracting the action decouples playbooks from specific products. Credentials are still required, speed varies, and anything can fail.",
+   "verify": true
+  },
+  {
+   "id": "cissir-135",
+   "domain": "AU",
+   "stem": "An organization wants analysts to follow the same steps for every ransomware incident. What's the best approach?",
+   "options": [
+    "Let each analyst create their own steps for each incident",
+    "Handle ransomware outside the platform to keep it confidential",
+    "Send analysts a PDF of the steps and trust them to follow it",
+    "A ransomware process with a guided playbook"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A defined process and playbook build consistency into the tool and record that steps were followed. PDFs, ad hoc steps, or off-platform handling lose consistency and evidence."
+  },
+  {
+   "id": "cissir-136",
+   "domain": "AU",
+   "stem": "What role do flow triggers on security incident state changes play?",
+   "options": [
+    "They change the incident's number each time the state changes",
+    "They prevent the state from changing until a report is printed",
+    "They start actions when the incident changes phase",
+    "They hide the incident from analysts during state changes"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "State-change triggers start phase-specific automation, such as notifying stakeholders on containment. They don't block, renumber, or hide records."
+  },
+  {
+   "id": "cissir-137",
+   "domain": "AU",
+   "stem": "Why use automation to check whether a reported email has already been reported by others?",
+   "options": [
+    "To delete the email from the phishing mailbox immediately",
+    "To group duplicate reports into one incident",
+    "To punish users who report the same email more than once",
+    "To stop users from reporting any further suspicious emails"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Many users often report the same campaign. Grouping reports avoids duplicate investigations while recording everyone who received it."
+  },
+  {
+   "id": "cissir-138",
+   "domain": "AU",
+   "stem": "What's an appropriate use of automation in the eradication phase?",
+   "options": [
+    "Deleting the incident's observables to tidy the record",
+    "Lowering the incident's priority so it leaves dashboards",
+    "Closing the incident before any cleanup has been verified",
+    "Running and verifying cleanup through integrated tools"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Automated eradication runs and verifies cleanup steps. Closing early, deleting observables, or lowering priority would undermine the response."
+  },
+  {
+   "id": "cissir-139",
+   "domain": "AU",
+   "stem": "What should happen when a standard process doesn't fit an unusual incident?",
+   "options": [
+    "Stop work until a new process has been formally approved",
+    "Force the incident through the standard process even though it doesn't fit",
+    "Analysts adapt the response and record why, and the process is reviewed later",
+    "Delete the incident and handle it outside the platform"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Standard processes guide but shouldn't block effective response. Documenting deviations helps refine processes."
+  },
+  {
+   "id": "cissir-140",
+   "domain": "AU",
+   "stem": "Why integrate automation with the CMDB in security playbooks?",
+   "options": [
+    "To change the CMDB's identification rules automatically",
+    "To find owners, criticality, and dependencies",
+    "To move affected CIs into a quarantine class",
+    "To delete CIs that appear in security incidents"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "CMDB data tells playbooks who to involve and how important a system is. Deleting CIs or changing CMDB configuration isn't part of response."
+  },
+  {
+   "id": "cissir-141",
+   "domain": "AU",
+   "stem": "A playbook has an automated step to disable a compromised account. What should the playbook also do?",
+   "options": [
+    "Record it and plan to restore access after recovery",
+    "Hide the action from the incident record to avoid alarming users",
+    "Delete the account permanently so it can't be compromised again",
+    "Disable the accounts of everyone in the same department"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Containment actions should be documented and reversed or handled properly after recovery. Deleting accounts, mass disabling, or hiding actions is harmful."
+  },
+  {
+   "id": "cissir-142",
+   "domain": "AU",
+   "stem": "Why is it useful to track which playbook steps analysts skip?",
+   "options": [
+    "So analysts who skip steps can be removed from the team",
+    "Frequent skips can reveal poorly designed steps",
+    "Because skipped steps automatically raise the incident's priority",
+    "It isn't useful; skipped steps should never be recorded"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Skip patterns point to process improvements. They aren't for punishment and don't change priority."
+  },
+  {
+   "id": "cissir-143",
+   "domain": "AU",
+   "stem": "What's a good way to automate notifications to stakeholders during a major security incident?",
+   "options": [
+    "Let each analyst decide whether to send any updates",
+    "Notify stakeholders only after the incident has closed",
+    "Milestone status updates to defined audiences",
+    "Send every work note to every employee in real time"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Milestone updates to the right audiences keep people informed without leaking details or flooding inboxes."
+  },
+  {
+   "id": "cissir-144",
+   "domain": "AU",
+   "stem": "How does automation support the \"recover\" phase?",
+   "options": [
+    "By closing the incident as soon as recovery starts",
+    "By skipping recovery when containment has succeeded",
+    "By running restoration steps and checks",
+    "By deleting containment actions from the record"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Recovery restores normal operations and confirms systems are clean, and automation can run and verify those steps. Skipping recovery or closing early is premature."
+  },
+  {
+   "id": "cissir-145",
+   "domain": "AU",
+   "stem": "Why might a SOC automate the first-pass triage of low-severity incidents only?",
+   "options": [
+    "High-severity incidents can't be automated by the platform",
+    "Low-severity incidents never turn out to be serious",
+    "Low-severity incidents can't be handled by analysts at all",
+    "It cuts workload where wrong decisions matter least"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Starting with low-risk incidents limits the impact of mistakes while freeing analysts. Analysts can handle any severity, high-severity steps can be automated carefully, and low-severity incidents can escalate."
+  },
+  {
+   "id": "cissir-146",
+   "domain": "AU",
+   "stem": "What should a playbook do if enrichment shows an observable is linked to a known active campaign?",
+   "options": [
+    "Raise priority and run the active-threat steps",
+    "Close the incident because the threat is already known",
+    "Wait for another analyst to notice the match",
+    "Remove the observable from the incident"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Known active threats warrant faster, stronger response. Closing, removing evidence, or waiting would be dangerous."
+  },
+  {
+   "id": "cissir-147",
+   "domain": "AU",
+   "stem": "Why use subflows for common steps such as \"notify the affected CI's owner\"?",
+   "options": [
+    "Changes made once apply everywhere the subflow is used",
+    "Subflows can't be edited, which prevents mistakes",
+    "Subflows run without any connection to the incident record",
+    "Subflows hide notifications from the audit trail"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Reusable subflows reduce duplication and simplify maintenance. They work with the record, can be edited, and are auditable."
+  },
+  {
+   "id": "cissir-148",
+   "domain": "AU",
+   "stem": "What is the benefit of mapping automated playbook steps to NIST phases?",
+   "options": [
+    "It's required before any flow can be activated",
+    "It removes the need for analysts to change incident states",
+    "It keeps automation aligned with the lifecycle",
+    "It lets the playbook skip the review phase"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Aligning steps with phases makes progress visible and consistent with reporting. It isn't a technical requirement and doesn't skip phases.",
+   "verify": true
+  },
+  {
+   "id": "cissir-149",
+   "domain": "AU",
+   "stem": "A playbook keeps failing at the same integration step. What's the best response?",
+   "options": [
+    "Fix the integration error and retest the playbook",
+    "Ask analysts to ignore the failure messages",
+    "Remove the step permanently and stop doing that action",
+    "Disable all playbooks until the next release"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Root-cause the failure and fix it. Removing needed steps, ignoring errors, or disabling all automation reduces capability."
+  },
+  {
+   "id": "cissir-150",
+   "domain": "AU",
+   "stem": "What's the main goal of combining standard processes with automation in SIR?",
+   "options": [
+    "Making every incident follow exactly the same steps",
+    "Replacing every security analyst with automated flows",
+    "Faster, consistent response; analysts focus on judgment",
+    "Reducing the number of incidents that are recorded"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Standard processes and automation handle the routine so people can focus on investigation and decisions. They don't replace analysts, force uniformity, or suppress records."
+  }
+ ]
+}
