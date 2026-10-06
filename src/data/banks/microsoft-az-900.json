@@ -446,7 +446,7 @@
    "answer": [
     3
    ],
-   "explanation": "IaaS suits lift-and-shift migration: servers move to cloud VMs largely as they are. PaaS, SaaS, and serverless require re-architecting or replacing the application."
+   "explanation": "IaaS suits lift-and-shift migration: servers move to cloud VMs largely as they are. PaaS, SaaS, and container platforms require re-architecting, repackaging, or replacing the application."
   },
   {
    "id": "az900-29",
@@ -1001,7 +1001,7 @@
    "answer": [
     1
    ],
-   "explanation": "The archive tier has the lowest storage cost but the highest retrieval cost, and data must be rehydrated to an online tier, which can take hours, before it can be read. Hot, cool, and cold are online tiers."
+   "explanation": "The archive tier has the lowest storage cost but the highest retrieval cost, and data must be rehydrated to an online tier, which can take hours, before it can be read. Hot and cool are online tiers with higher storage costs, and Premium is a performance option for low-latency workloads, not a cheaper tier."
   },
   {
    "id": "az900-66",
@@ -1526,7 +1526,7 @@
    "answer": [
     0
    ],
-   "explanation": "Purview maps data across sources into a catalog that users can search, with classification and lineage, so analysts can find and trust data. Advisor gives recommendations, Arc manages non-Azure resources, and Policy enforces resource rules."
+   "explanation": "Purview maps data across sources into a catalog that users can search, with classification and lineage, so analysts can find and trust data. Advisor gives recommendations, Arc manages non-Azure resources, and Log Analytics queries monitoring logs."
   },
   {
    "id": "az900-101",
