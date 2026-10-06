@@ -55,7 +55,7 @@
    "options": [
     "Encrypting data at rest so that a breach of any other layer exposes nothing",
     "Allowing all traffic by default and investigating anything suspicious afterward",
-    "Layering protections so that if one layer fails, others still slow or stop an attack",
+    "Layering protections so others still hold if one layer fails",
     "Relying on one strong perimeter firewall to stop attacks at the edge"
    ],
    "answer": [
@@ -114,7 +114,7 @@
    "stem": "What does federation enable?",
    "options": [
     "Encrypting data at rest across multiple cloud providers using a shared key",
-    "A trust between identity providers so users can sign in elsewhere with existing credentials",
+    "Trusting another identity provider's sign-ins so users keep existing credentials",
     "Blocking all guest users from accessing resources in the organization's tenant",
     "Copying users' passwords to a partner organization so they can sign in to its apps"
    ],
@@ -221,7 +221,7 @@
     "A network security group that blocks sign-ins from untrusted IPs",
     "Self-service password reset with security questions for all users",
     "Azure DDoS Protection on the organization's sign-in endpoints",
-    "A custom banned password list in Microsoft Entra Password Protection"
+    "A custom banned password list in Password Protection"
    ],
    "answer": [
     3
@@ -279,7 +279,7 @@
    "stem": "An organization wants administrators to activate the Global Administrator role only when needed, for a limited time, with approval. Which capability provides this?",
    "options": [
     "A Conditional Access policy requiring MFA",
-    "Microsoft Entra Privileged Identity Management",
+    "Privileged Identity Management",
     "Password hash synchronization from AD",
     "Microsoft Defender for Cloud Apps policies"
    ],
@@ -340,7 +340,7 @@
    "options": [
     "NSGs provide threat intelligence–based filtering, while Azure Firewall does not",
     "There is no difference; Azure Firewall is the new name for network security groups",
-    "Azure Firewall is a managed, stateful firewall with central policy and threat intelligence filtering",
+    "Azure Firewall is a managed, stateful firewall with threat intelligence",
     "Azure Firewall only filters email traffic, while NSGs filter all other network traffic"
    ],
    "answer": [
@@ -383,7 +383,7 @@
    "domain": "SEC",
    "stem": "What does Azure Key Vault store and manage?",
    "options": [
-    "Secrets, encryption keys, and certificates",
+    "Secrets, keys, and certificates",
     "Email messages and calendar items",
     "User profile photos and contact details",
     "Network traffic logs and flow records"
@@ -414,7 +414,7 @@
    "stem": "In Microsoft Defender for Cloud, what does secure score represent?",
    "options": [
     "The percentage of users in the tenant who have registered for MFA",
-    "A posture measure based on how many security recommendations are implemented",
+    "The posture level reached by implementing security recommendations",
     "The license tier that determines which Defender plans are available",
     "The number of security incidents resolved by the SOC in the past 30 days"
    ],
@@ -475,7 +475,7 @@
    "options": [
     "A compliance scoring tool that measures progress against regulations",
     "A web application firewall that blocks SQL injection and cross-site scripting",
-    "Unified detection and response across endpoints, identities, email, and cloud apps",
+    "A unified detection and response suite across endpoints, identities, email, and apps",
     "A replacement for Microsoft Entra ID as the organization's identity directory"
    ],
    "answer": [
@@ -548,7 +548,7 @@
    "domain": "SEC",
    "stem": "What does Microsoft Defender Vulnerability Management provide?",
    "options": [
-    "Discovery, risk-based prioritization, and remediation tracking for device weaknesses",
+    "Risk-based discovery and remediation of device weaknesses",
     "Encryption of email messages sent to recipients outside the organization",
     "Periodic access reviews for guest users and their group memberships",
     "Mitigation of distributed denial-of-service attacks on public endpoints"
@@ -596,7 +596,7 @@
     "Manage RDP and SSH access to virtual machines without public IP addresses",
     "Detect leaked credentials and risky sign-ins for users in the tenant",
     "Block malicious email and attachments before they reach users' mailboxes",
-    "Assess regulatory compliance, track improvement actions, and measure a score"
+    "Assess compliance, track improvement actions, and measure a score"
    ],
    "answer": [
     3
@@ -640,7 +640,7 @@
    "options": [
     "Content explorer shows sign-in logs, while Activity explorer shows device health",
     "They are the same tool, presented under different names in different portals",
-    "Content explorer shows where sensitive content is stored; Activity explorer shows what users did with it",
+    "Content explorer shows where sensitive data is; Activity explorer shows what's done with it",
     "Activity explorer stores Microsoft's audit reports, and Content explorer stores policies"
    ],
    "answer": [
@@ -655,7 +655,7 @@
    "options": [
     "They block all email sent outside the organization that contains attachments",
     "They work only on files stored in SharePoint Online document libraries",
-    "They classify content and can apply protection, such as encryption, that stays with it",
+    "They classify content and can apply protection that travels with it",
     "They delete content automatically once a configured retention period has ended"
    ],
    "answer": [
@@ -670,7 +670,7 @@
    "options": [
     "Recovers files that users deleted from OneDrive or SharePoint within 93 days",
     "Encrypts virtual machine disks in Azure using keys that the customer manages",
-    "Detects and prevents risky sharing of sensitive information across services and devices",
+    "Detects and prevents risky sharing of sensitive information",
     "Resets user passwords automatically when credentials are found in a leak"
    ],
    "answer": [
@@ -699,7 +699,7 @@
    "stem": "What does Microsoft Purview Insider Risk Management help an organization do?",
    "options": [
     "Manage and patch Azure virtual machines used by internal employees",
-    "Identify and act on risky user activity, such as data theft by departing employees",
+    "Identify and act on risky user activity, like data theft",
     "Block distributed denial-of-service attacks against the organization's websites",
     "Provide independent audit reports about the security of Microsoft's datacenters"
    ],
@@ -729,7 +729,7 @@
    "stem": "Why is identity often described as the primary security perimeter?",
    "options": [
     "Regulations require identity to be the only security control in cloud services",
-    "Users and apps reach resources from anywhere, so identity is the consistent control point",
+    "Users reach resources from anywhere, so identity is the constant",
     "Identities can't be compromised, so they're safer than any network control",
     "Firewalls no longer exist in modern networks, so nothing else can be controlled"
    ],
@@ -761,7 +761,7 @@
     "A Microsoft 365 tool for classifying and labeling sensitive documents",
     "An Azure service that protects web apps from SQL injection attacks",
     "A cloud-only identity service that replaces on-premises domain controllers",
-    "An on-premises directory service for managing users, computers, and policies"
+    "An on-premises directory for users, computers, and policies"
    ],
    "answer": [
     3
@@ -851,7 +851,7 @@
     "A license that adds premium security features to one user account",
     "A single virtual machine that runs the identity service for one user",
     "A shared directory that every Microsoft customer signs in to together",
-    "A dedicated instance of Microsoft Entra ID that represents an organization"
+    "An organization's dedicated instance of Microsoft Entra ID"
    ],
    "answer": [
     3
@@ -863,7 +863,7 @@
    "domain": "ENT",
    "stem": "How does Microsoft Entra ID differ from on-premises Active Directory Domain Services?",
    "options": [
-    "Entra ID uses web protocols like OAuth and SAML rather than OUs and Group Policy",
+    "Entra ID uses web protocols like OAuth and SAML, not Group Policy",
     "Entra ID is installed on domain controllers in the customer's own datacenter",
     "Entra ID can only be used for Microsoft 365 apps and not any other services",
     "Entra ID uses Kerberos and Group Policy objects exactly like AD DS does"
@@ -985,7 +985,7 @@
    "stem": "What does self-service password reset (SSPR) let users do?",
    "options": [
     "Reset any user's password in the tenant without verification",
-    "Reset their own password after verifying with registered methods",
+    "Reset their own password after verifying their identity",
     "Disable multifactor authentication for their own account",
     "Remove themselves from Conditional Access policies"
    ],
@@ -1001,7 +1001,7 @@
    "options": [
     "To speed up sign-in by skipping the second factor on known devices",
     "To let users sign in without having any account in the tenant",
-    "To reduce MFA fatigue attacks where users approve prompts they didn't start",
+    "To stop MFA fatigue approvals of prompts users didn't start",
     "To replace passwords entirely for every application in the tenant"
    ],
    "answer": [
@@ -1044,7 +1044,7 @@
    "domain": "ENT",
    "stem": "Legacy authentication protocols don't support MFA. What's the recommended approach?",
    "options": [
-    "Block legacy authentication with Conditional Access",
+    "Block it with Conditional Access",
     "Require longer passwords for legacy protocols",
     "Move legacy apps to a separate tenant",
     "Allow legacy protocols only for administrators"
@@ -1122,7 +1122,7 @@
    "options": [
     "Eligible assignments are for guests; active assignments are for employees",
     "Eligible users have the role permanently; active users must request it each time",
-    "Eligible users must activate the role when needed; active users have it all the time",
+    "Eligible users activate the role when needed; active users always have it",
     "There's no difference; PIM treats both assignment types the same way"
    ],
    "answer": [
@@ -1151,7 +1151,7 @@
    "stem": "What DDoS protection do Azure resources have without enabling a paid DDoS Protection tier?",
    "options": [
     "Full application-layer protection configured specifically for each app",
-    "Default infrastructure-level protection that Azure provides to all customers",
+    "Default infrastructure-level protection for all customers",
     "Protection only for virtual machines that have a public IP address",
     "No protection at all until a paid tier is purchased for each resource"
    ],
@@ -1199,7 +1199,7 @@
    "options": [
     "At random, so rules need unique names",
     "All rules are evaluated, and the most permissive one wins",
-    "By priority, with lower numbers first, until a rule matches",
+    "By priority, lowest number first, until a rule matches",
     "In alphabetical order by rule name"
    ],
    "answer": [
@@ -1230,7 +1230,7 @@
     "They replace the need for identity and access management",
     "They encrypt every file stored by the workloads they contain",
     "They automatically block all traffic to and from the internet",
-    "They segment workloads so traffic between them can be controlled"
+    "They segment workloads so traffic between them is controlled"
    ],
    "answer": [
     3
@@ -1244,7 +1244,7 @@
    "options": [
     "In Microsoft 365, as a feature of Exchange Online and Teams",
     "On each virtual machine, as an agent installed in the guest OS",
-    "In a dedicated subnet of the virtual network it provides access to",
+    "In a dedicated subnet of the virtual network",
     "On each administrator's laptop, as a desktop remote access app"
    ],
    "answer": [
@@ -1337,7 +1337,7 @@
    "options": [
     "Replaces multifactor authentication for virtual machine sign-ins",
     "Creates a new virtual machine for each administrator who signs in",
-    "Opens management ports only when access is requested, for a limited time",
+    "Opens management ports only on request, for a limited time",
     "Keeps RDP and SSH ports open permanently for approved administrators"
    ],
    "answer": [
@@ -1472,7 +1472,7 @@
    "stem": "How does Defender for Cloud Apps control what users can do inside a session, such as blocking downloads on unmanaged devices?",
    "options": [
     "With network security group rules on each app",
-    "With Conditional Access app control session policies",
+    "With Conditional Access app control",
     "With retention labels on downloaded files",
     "With Azure Firewall URL filtering only"
    ],
@@ -1487,7 +1487,7 @@
    "stem": "What can Microsoft Defender for Identity reveal about sensitive accounts?",
    "options": [
     "Their mailbox retention policies and archive settings",
-    "Lateral movement paths an attacker could use to reach them",
+    "Lateral movement paths an attacker could use",
     "Their email attachments and their calendar entries",
     "Their Azure subscription billing details and invoices"
    ],
@@ -1504,7 +1504,7 @@
     "Compliance scores for regulations such as GDPR",
     "Automatic patching for every vulnerable device in the tenant",
     "A replacement for Microsoft Sentinel's data ingestion",
-    "Information about threat actors, their infrastructure, and indicators"
+    "Context on threat actors, infrastructure, and indicators"
    ],
    "answer": [
     3
@@ -1551,7 +1551,7 @@
     "A portal for managing virtual machines and networks in Azure subscriptions",
     "A portal for investigating security incidents across endpoints and email",
     "A portal where Microsoft publishes its datacenter audit reports for customers",
-    "A unified portal for Microsoft's data security, governance, and compliance solutions"
+    "A unified portal for data security, governance, and compliance"
    ],
    "answer": [
     3
@@ -1564,7 +1564,7 @@
    "stem": "In Compliance Manager, what are assessments based on?",
    "options": [
     "The number of incidents raised in the Defender portal",
-    "Regulation and standard templates, such as ISO 27001 or GDPR",
+    "Templates for regulations and standards, such as GDPR",
     "Random samples of documents stored in SharePoint",
     "Each user's personal sign-in history over the past year"
    ],
@@ -1580,7 +1580,7 @@
    "options": [
     "A list of users who failed phishing simulations last month",
     "An automatic fix that changes settings without anyone reviewing it",
-    "Implementation guidance, an owner, and a place to track status and evidence",
+    "A set of implementation steps, an owner, and status and evidence tracking",
     "A firewall rule that blocks traffic from non-compliant countries"
    ],
    "answer": [
@@ -1623,10 +1623,10 @@
    "domain": "CMP",
    "stem": "What do trainable classifiers recognize?",
    "options": [
-    "Only the identity of the user who created each document",
-    "Only exact numeric patterns such as credit card numbers with checksums",
-    "Categories of content, such as resumes or source code, learned from examples",
-    "Only the file extension of each document stored in SharePoint"
+    "The identity of the user who created each document",
+    "Exact numeric patterns, such as credit card numbers with checksums",
+    "Types of content, such as resumes, learned from examples",
+    "The file extension of each document stored in SharePoint"
    ],
    "answer": [
     2
@@ -1685,7 +1685,7 @@
    "options": [
     "Encrypt every file a user saves to OneDrive or SharePoint",
     "Delete email messages that contain any type of attachment",
-    "Warn users in apps like Outlook when content may violate a policy",
+    "Warn users in apps when content may violate a policy",
     "Reset the password of any user who shares sensitive data"
    ],
    "answer": [
@@ -1716,7 +1716,7 @@
     "It's deleted after 3 years, because the shorter period always wins",
     "It's deleted immediately, because the settings conflict",
     "Neither applies until an administrator chooses one manually",
-    "It's kept for 7 years, because retention takes precedence over deletion"
+    "It's kept for 7 years, because retention wins over deletion"
    ],
    "answer": [
     3
@@ -1744,7 +1744,7 @@
    "stem": "What is special about content labeled as a regulatory record?",
    "options": [
     "It's deleted as soon as the label is applied to the content",
-    "It can't be edited or deleted, and the label can't be removed",
+    "It's locked against edits and deletion, and its label can't be removed",
     "It's encrypted so that only its original author can open it",
     "It's shared automatically with the organization's external auditors"
    ],
@@ -1761,7 +1761,7 @@
     "The ability to see audit logs at all, which Standard doesn't provide",
     "Automatic deletion of audit records after one day",
     "Phishing simulations and security awareness training",
-    "Longer audit log retention and additional intelligent events for investigations"
+    "Longer log retention and extra events for investigations"
    ],
    "answer": [
     3
