@@ -33,6 +33,16 @@ export const CERTS = [
     load: () => import("./banks/servicenow-cis-df.json"),
   },
   {
+    id: "servicenow-cis-itsm",
+    vendor: "ServiceNow",
+    code: "CIS-ITSM",
+    name: "IT Service Management",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-itsm.json"),
+  },
+  {
     id: "servicenow-cis-rc",
     vendor: "ServiceNow",
     code: "CIS-RC",

@@ -9,6 +9,7 @@ Current question banks:
 |--------|---------------|-----------|------------------|
 | ServiceNow | CSA (Certified System Administrator) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-DF (Data Foundations: CMDB and CSDM) | 188 | 75 questions / 90 min |
+| ServiceNow | CIS-ITSM (IT Service Management) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-RC (Risk and Compliance) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-SIR (Security Incident Response) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-TPRM (Third-party Risk Management) | 150 | 60 questions / 90 min |
