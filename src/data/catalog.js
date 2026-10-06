@@ -93,6 +93,16 @@ export const CERTS = [
     load: () => import("./banks/microsoft-az-900.json"),
   },
   {
+    id: "microsoft-ai-901",
+    vendor: "Microsoft",
+    code: "AI-901",
+    name: "Azure AI Fundamentals",
+    bankSize: 125,
+    fullLength: 50,
+    minutes: 45,
+    load: () => import("./banks/microsoft-ai-901.json"),
+  },
+  {
     id: "microsoft-sc-900",
     vendor: "Microsoft",
     code: "SC-900",
