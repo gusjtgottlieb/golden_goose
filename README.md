@@ -12,6 +12,7 @@ Current question banks:
 | ServiceNow | CIS-RC (Risk and Compliance) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-SIR (Security Incident Response) | 150 | 60 questions / 90 min |
 | ServiceNow | CIS-TPRM (Third-party Risk Management) | 150 | 60 questions / 90 min |
+| ServiceNow | CIS-VR (Vulnerability Response) | 150 | 60 questions / 90 min |
 | Microsoft | SC-900 (Security, Compliance, and Identity Fundamentals) | 115 | 45 questions / 45 min |
 | Microsoft | SC-401 (Information Security Administrator) | 150 | 50 questions / 100 min |
 

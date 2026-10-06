@@ -63,6 +63,16 @@ export const CERTS = [
     load: () => import("./banks/servicenow-cis-tprm.json"),
   },
   {
+    id: "servicenow-cis-vr",
+    vendor: "ServiceNow",
+    code: "CIS-VR",
+    name: "Vulnerability Response",
+    bankSize: 150,
+    fullLength: 60,
+    minutes: 90,
+    load: () => import("./banks/servicenow-cis-vr.json"),
+  },
+  {
     id: "microsoft-sc-900",
     vendor: "Microsoft",
     code: "SC-900",
