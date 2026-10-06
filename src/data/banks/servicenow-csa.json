@@ -126,7 +126,7 @@
    "options": [
     "It shows the ServiceNow release history for the instance",
     "It shows every change ever made to every record on the instance",
-    "It lists recently viewed records and lists so users can return to them",
+    "It lists recently viewed records so users can return",
     "It lets users undo the last change they made to any record"
    ],
    "answer": [
@@ -189,7 +189,7 @@
     "A replacement for access controls based on user behavior",
     "Automatic approval of every change request that's submitted",
     "A second database that stores AI-generated copies of every record",
-    "Generative AI capabilities, such as summarizing records and drafting responses"
+    "Generative AI capabilities, like summarizing records"
    ],
    "answer": [
     3
@@ -203,7 +203,7 @@
    "stem": "An administrator needs a capability that comes in a plugin not yet active on the instance. What's the usual approach?",
    "options": [
     "Copy the plugin's files from another customer's instance using an update set",
-    "Activate the plugin from the plugins or Application Manager list, or request it if required",
+    "Activate it from Application Manager, or request it if required",
     "Write custom tables and scripts to rebuild the plugin's functionality from scratch",
     "Upgrade the instance to the next family release, which activates every plugin"
    ],
@@ -219,7 +219,7 @@
    "stem": "What should an administrator know before activating a plugin in production?",
    "options": [
     "Plugins are removed automatically after 30 days",
-    "Most plugins can't be deactivated once activated, so test first",
+    "Most plugins can't be deactivated, so test first",
     "Plugins have no effect until the next upgrade",
     "Plugins activate only for the admin who turned them on"
    ],
@@ -235,7 +235,7 @@
    "stem": "Where are applications from the ServiceNow Store installed and managed?",
    "options": [
     "In each user's personal preferences",
-    "In Application Manager on the instance",
+    "In Application Manager",
     "In the system log of the instance",
     "In the instance's email properties"
    ],
@@ -424,7 +424,7 @@
    "options": [
     "By the user's time zone and date format preferences",
     "By the number of records in the module's table",
-    "By module and application menu roles and active settings",
+    "By module and menu roles and active flags",
     "By the order users first visited each module"
    ],
    "answer": [
@@ -547,7 +547,7 @@
    "stem": "Service desk agents and self-service users should see different fields on the same incident form. What should be used?",
    "options": [
     "Different update sets for each group",
-    "Form views, with view rules where needed",
+    "Form views, with view rules",
     "A new instance for self-service users",
     "Two separate incident tables"
    ],
@@ -607,7 +607,7 @@
    "domain": "CO",
    "stem": "Which statement about the task table is true?",
    "options": [
-    "Incident, problem, and change extend it, inheriting fields like number and assignment group",
+    "Incident, problem, and change extend it and inherit its fields",
     "It's a stand-alone table that only stores to-do items created by individual users",
     "It's used only by HR applications to track onboarding work for new hires",
     "It extends the incident table, which is the base table for all processes"
@@ -672,7 +672,7 @@
     "Sends an email to the assigned group whenever a record closes",
     "Prevents any user from changing the assignment group on a record",
     "Assigns roles to new users based on their department",
-    "Automatically sets the assignment group or assignee when conditions match"
+    "Automatically sets the assignment when conditions match"
    ],
    "answer": [
     3
@@ -745,7 +745,7 @@
    "stem": "How does Performance Analytics differ from standard reporting?",
    "options": [
     "It shows the current state only, with no history kept",
-    "It collects scores over time, so trends can be compared with the past",
+    "It collects scores over time for trend comparison",
     "It only reports on data from the incident table and nothing else",
     "It replaces the need for any dashboards on the instance"
    ],
@@ -819,7 +819,7 @@
    "domain": "CO",
    "stem": "A user no longer wants a particular notification. When can they turn it off themselves?",
    "options": [
-    "When the notification isn't mandatory, using their notification preferences",
+    "When it isn't mandatory, using their preferences",
     "Never; users can't change any notification settings for themselves",
     "Only by asking an admin to delete their email address",
     "Always, even when the notification has been marked mandatory"
@@ -869,7 +869,7 @@
     "Users whose time zones should be used for the record's dates",
     "Users who must approve the record before it can be closed",
     "Users who are blocked from viewing the record for security reasons",
-    "Users who should receive updates about the record without being assigned to it"
+    "Users who get updates without being assigned"
    ],
    "answer": [
     3
@@ -946,7 +946,7 @@
    "options": [
     "The article's short description field",
     "A system property naming the HR department",
-    "User criteria for \"Can read\" on the knowledge base",
+    "User criteria for \"Can read\"",
     "The color of the knowledge base icon"
    ],
    "answer": [
@@ -961,7 +961,7 @@
    "stem": "A knowledge base needs articles reviewed before they're published. What should be configured?",
    "options": [
     "A business rule that deletes unapproved articles",
-    "An approval publishing workflow on the knowledge base",
+    "An approval publishing workflow",
     "A notification to every user for each draft",
     "A separate instance for draft articles"
    ],
@@ -991,7 +991,7 @@
    "domain": "SA",
    "stem": "What is the relationship between a request (REQ), a requested item (RITM), and a catalog task (SCTASK)?",
    "options": [
-    "A request holds requested items, and each item can have catalog tasks to fulfill it",
+    "A request holds items, and each item has tasks to fulfill it",
     "A catalog task holds requests, and each request holds a single requested item",
     "A requested item holds requests, and catalog tasks approve each request",
     "They're three names for the same record at different stages of its life"
@@ -1112,7 +1112,7 @@
    "domain": "SA",
    "stem": "A flow needs to create a user in Microsoft Entra ID. What provides that ready-made action?",
    "options": [
-    "An IntegrationHub spoke for the service",
+    "An IntegrationHub spoke",
     "A UI policy on the user form",
     "A knowledge base article template",
     "A new list layout for sys_user"
@@ -1130,7 +1130,7 @@
    "options": [
     "Medication records stored by HR applications",
     "Error messages shown when a flow fails",
-    "Values from earlier steps that can be dragged into later steps",
+    "Values from earlier steps used in later steps",
     "Small reports that summarize how often the flow has run"
    ],
    "answer": [
@@ -1204,7 +1204,7 @@
    "domain": "SA",
    "stem": "What is Virtual Agent used for?",
    "options": [
-    "Conversational self-service, answering questions and completing tasks in a chat",
+    "Conversational self-service in a chat",
     "Running scheduled imports from external systems overnight for the CMDB",
     "Calculating SLA timers for task records based on their schedules",
     "Encrypting fields that contain sensitive personal data in the database"
@@ -1295,7 +1295,7 @@
    "domain": "SA",
    "stem": "A manager approves a requested item. What usually happens next in a typical fulfillment flow?",
    "options": [
-    "Catalog tasks are created for the fulfillment groups",
+    "Catalog tasks are created for fulfillment",
     "The requester's password is reset automatically",
     "The request is closed without any further work",
     "A new knowledge article is published"
@@ -1311,7 +1311,7 @@
    "stem": "What are knowledge base categories used for?",
    "options": [
     "Defining the approval workflow for publishing",
-    "Organizing articles so readers can browse to them",
+    "Organizing articles for browsing",
     "Controlling which users can read each article",
     "Setting how long articles stay published"
    ],
@@ -1328,7 +1328,7 @@
     "Email the fix to every agent on the team as an attachment",
     "Change the incident's table from incident to knowledge",
     "Copy the incident into a new update set and commit it",
-    "Use the option to create a knowledge article from the incident"
+    "Create a knowledge article from the incident"
    ],
    "answer": [
     3
@@ -1359,7 +1359,7 @@
     "A tool for designing database tables and their relationships",
     "A way to schedule reports and email them to managers",
     "A replacement for the knowledge base that stores workflow articles",
-    "A central place to build and manage flows, subflows, actions, and playbooks"
+    "A central place to build flows, subflows, and playbooks"
    ],
    "answer": [
     3
@@ -1418,7 +1418,7 @@
    "stem": "What is a base table?",
    "options": [
     "Any table that has fewer than ten fields defined in the dictionary",
-    "A table that doesn't extend another table but is extended by others, like task",
+    "A table that others extend but that extends none, like task",
     "A table that stores only system logs and can't be extended",
     "A table created by a user in their personal workspace"
    ],
@@ -1451,7 +1451,7 @@
     "In the system log (syslog)",
     "In the user preferences table",
     "In each report that uses the table",
-    "In the data dictionary (sys_dictionary)"
+    "In the data dictionary"
    ],
    "answer": [
     3
@@ -1553,7 +1553,7 @@
    "domain": "DB",
    "stem": "What are the three conditions in an ACL that must all evaluate to true to grant access?",
    "options": [
-    "Required roles, condition, and script",
+    "Roles, condition, and script",
     "Table name, field name, and sys_id",
     "Read, write, and delete operations",
     "User, group, and department"
@@ -1569,7 +1569,7 @@
    "stem": "A user needs to read the short description on an incident. Which ACLs must they pass?",
    "options": [
     "Only the table-level read ACL for incident",
-    "Both the table-level read ACL and the field-level read ACL",
+    "Both the table-level and field-level read ACLs",
     "Neither, because read access is never restricted",
     "Only the field-level read ACL for short description"
    ],
@@ -1646,7 +1646,7 @@
     "Users must request each contained role separately",
     "Nothing; roles can't contain other roles",
     "The contained role is removed from all other users",
-    "Users with the parent role also get the contained role"
+    "Parent-role users also get the contained role"
    ],
    "answer": [
     3
@@ -1688,7 +1688,7 @@
    "domain": "DB",
    "stem": "What is the purpose of an import set's staging table?",
    "options": [
-    "To hold imported data before transforming it into target tables",
+    "To hold imported data before it's transformed",
     "To keep a backup of the instance's configuration",
     "To record which users have viewed each record",
     "To store the final records that users work with every day"
@@ -1719,7 +1719,7 @@
    "stem": "An import should update existing users instead of creating duplicates. What should be set on the transform map?",
    "options": [
     "A new staging table for each import",
-    "A coalesce field, such as email or employee number",
+    "A coalesce field, such as email",
     "A higher priority for the transform map",
     "A business rule that deletes duplicates later"
    ],
@@ -1734,7 +1734,7 @@
    "stem": "An import needs to fix the format of phone numbers before they're saved. Where can this logic go?",
    "options": [
     "The notification settings for the import's data source",
-    "A transform script, such as onBefore, or a field map script",
+    "A transform or field map script",
     "A UI policy on the import set table for the field",
     "A client script on the user form that runs on load"
    ],
@@ -1811,7 +1811,7 @@
    "options": [
     "A tool for importing spreadsheets of CIs directly into the CMDB",
     "A data model that's used only for HR case management processes",
-    "Standard guidance for modeling services and applications in the CMDB",
+    "Standard guidance for modeling services and applications",
     "A list of every system property and the default value for each"
    ],
    "answer": [
@@ -2055,7 +2055,7 @@
    "domain": "DM",
    "stem": "Previewing a retrieved update set shows errors and warnings. What do they indicate?",
    "options": [
-    "Potential conflicts, such as newer local versions or missing records, to resolve",
+    "Potential conflicts to resolve, such as newer local versions",
     "That the update set will be deleted automatically if it isn't committed",
     "That every user on the target instance must log out before committing",
     "That the update set has already been committed successfully in the target"
@@ -2089,7 +2089,7 @@
     "Moving them by exporting each to a spreadsheet",
     "Committing them in alphabetical order by name",
     "Merging them into one large set without previewing",
-    "Update set batching, with a parent set grouping the others"
+    "Update set batching under a parent set"
    ],
    "answer": [
     3
@@ -2105,7 +2105,7 @@
     "A faster database connection for applications in the global scope",
     "A way to share every table with every application automatically",
     "A license that allows the app to be sold in the ServiceNow Store",
-    "Separation that protects an app's files and data from changes by other apps"
+    "Separation that protects an app from other apps' changes"
    ],
    "answer": [
     3
@@ -2120,12 +2120,12 @@
     "A UI policy",
     "A scheduled job",
     "A business rule",
-    "A data policy"
+    "A script include"
    ],
    "answer": [
     0
    ],
-   "explanation": "UI policies change field behavior on forms — mandatory, visible, read-only — without code. Business rules and data policies run on the server, and scheduled jobs run on timers."
+   "explanation": "UI policies change field behavior on forms — mandatory, visible, read-only — without code. Business rules and script includes run on the server, and scheduled jobs run on timers."
   },
   {
    "id": "csa-137",

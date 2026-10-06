@@ -271,7 +271,7 @@
    "options": [
     "It stores the instance's update sets",
     "It replaces the incident table entirely",
-    "Faster resolution and more self-service",
+    "It speeds resolution and enables self-service",
     "It sets SLA targets for each team"
    ],
    "answer": [
@@ -532,7 +532,7 @@
    "stem": "How can an end user check the status of their incident?",
    "options": [
     "By reading the system log",
-    "The self-service portal",
+    "Through the self-service portal",
     "By asking for the admin role",
     "By opening the CMDB"
    ],
@@ -578,7 +578,7 @@
    "stem": "What does the \"Resolved\" state indicate compared with \"Closed\"?",
    "options": [
     "The incident has been permanently archived",
-    "Fixed, awaiting confirmation or auto-close",
+    "The incident is fixed, pending confirmation",
     "The incident was canceled as a duplicate",
     "The incident is waiting for the caller's reply"
    ],
@@ -639,7 +639,7 @@
    "domain": "IM",
    "stem": "Why use categories and subcategories on incidents?",
    "options": [
-    "For routing, reporting, and spotting trends",
+    "To support routing, reporting, and trend spotting",
     "To decide which instance stores the incident",
     "To set the incident's number prefix",
     "To encrypt the incident's description"
@@ -808,7 +808,7 @@
    "options": [
     "Fix in Progress",
     "Resolved",
-    "Root cause",
+    "Root Cause Analysis",
     "Closed"
    ],
    "answer": [
@@ -1052,7 +1052,7 @@
    "options": [
     "It shows which agents opened the most incidents",
     "It shows how many users logged into the portal",
-    "Where workarounds replace fixes",
+    "It shows where workarounds replace fixes",
     "It shows the number of changes approved by CAB"
    ],
    "answer": [
@@ -1221,7 +1221,7 @@
    "domain": "CM",
    "stem": "How is a change's risk typically determined?",
    "options": [
-    "Risk conditions and an assessment",
+    "From risk conditions and an assessment",
     "From the length of the implementation plan",
     "From the number of approvers assigned to it",
     "From the requester's job title"
@@ -1287,7 +1287,7 @@
     "A standard change",
     "A normal change",
     "An emergency change",
-    "Unauthorized"
+    "An unauthorized change"
    ],
    "answer": [
     3
@@ -1334,7 +1334,7 @@
     "To assign the CI's owner as the change requester",
     "To retire the CIs after implementation",
     "To stop the CIs from being discovered",
-    "For impact analysis, conflict detection, and risk"
+    "To support impact analysis, conflicts, and risk"
    ],
    "answer": [
     3
@@ -1349,7 +1349,7 @@
     "The number of standard change templates available",
     "The time taken to approve a change request",
     "The number of changes the CAB reviewed this month",
-    "Changes done without causing problems"
+    "The share of changes done without problems"
    ],
    "answer": [
     3
@@ -1362,7 +1362,7 @@
    "stem": "What's an advantage of moving low-risk, repeatable changes to standard changes?",
    "options": [
     "They skip testing in all cases",
-    "Faster delivery and less CAB workload",
+    "They speed delivery and reduce CAB workload",
     "They automatically fix related problems",
     "They no longer need to be recorded"
    ],
@@ -1453,7 +1453,7 @@
    "domain": "CM",
    "stem": "What does change risk assessment typically ask about?",
    "options": [
-    "Impact, complexity, testing, and backout",
+    "Its impact, complexity, testing, and backout",
     "The number of CIs in the CMDB",
     "The requester's preferred working hours",
     "The color of the change form"
@@ -1579,7 +1579,7 @@
     "The problem manager for the service",
     "The CAB, during its weekly meeting",
     "The requester, by updating the RITM",
-    "Fulfillment groups via tasks"
+    "The fulfillment groups, via tasks"
    ],
    "answer": [
     3
@@ -1853,7 +1853,7 @@
    "options": [
     "It replaces the catalog for all items",
     "It fulfills hardware requests physically",
-    "Users can make common requests in a chat",
+    "It lets users make common requests in a chat",
     "It approves every request automatically"
    ],
    "answer": [
@@ -2022,7 +2022,7 @@
    "options": [
     "So the caller can see the agent's notes",
     "So the incident's priority is lowered",
-    "So teams aren't timed on waits",
+    "So teams aren't timed while they wait",
     "So the incident is closed without a resolution"
    ],
    "answer": [
@@ -2296,7 +2296,7 @@
     "The update set list for the instance",
     "The system log for their user account",
     "The CI Class Manager in the CMDB",
-    "Workspace dashboards"
+    "The workspace dashboards"
    ],
    "answer": [
     3

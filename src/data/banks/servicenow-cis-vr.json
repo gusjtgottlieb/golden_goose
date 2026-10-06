@@ -59,7 +59,7 @@
    "stem": "What is the difference between a vulnerability and a vulnerable item?",
    "options": [
     "A vulnerable item is a patch that has been applied to fix a weakness",
-    "A vulnerability is the weakness; a vulnerable item is it found on a CI",
+    "A vulnerability is the weakness; a vulnerable item is that weakness on a CI",
     "A vulnerability is found on one CI; a vulnerable item describes the weakness in general",
     "There's no difference; both terms refer to the same record"
    ],
@@ -151,7 +151,7 @@
    "options": [
     "The CMDB stores the raw scan results collected by each scanner",
     "The CMDB decides which CVEs are imported from the NVD",
-    "CIs supply owners, support groups, and business criticality",
+    "The CMDB's CIs supply owners, support groups, and criticality",
     "The CMDB runs the scans on a schedule for the security team"
    ],
    "answer": [
@@ -339,7 +339,7 @@
     "Risk scores are required by the NVD for every vulnerability",
     "CVSS scores change every day for every vulnerability",
     "CVSS scores are always wrong for Windows vulnerabilities",
-    "CVSS ignores exploitation and asset criticality"
+    "CVSS doesn't reflect active exploitation or asset criticality"
    ],
    "answer": [
     3
@@ -1464,7 +1464,7 @@
     "The item is deleted from the workspace",
     "The item's risk score drops to zero",
     "The item is closed automatically as resolved",
-    "It's flagged overdue and escalated"
+    "The item is flagged overdue and escalated"
    ],
    "answer": [
     3
@@ -1541,7 +1541,7 @@
     "It increases the task's risk score automatically",
     "It lets owners close tasks without applying the fix",
     "It hides the CVE details from the owner",
-    "Owners see exactly which fix resolves the grouped items"
+    "It shows owners exactly which fix resolves the items"
    ],
    "answer": [
     3
@@ -1601,7 +1601,7 @@
    "options": [
     "By reading the NVD's monthly summary",
     "By counting rows in each scanner's console",
-    "Reports of overdue items by group",
+    "By reporting overdue items by group",
     "By asking each team lead in a weekly meeting"
    ],
    "answer": [
@@ -1722,7 +1722,7 @@
    "stem": "What does it mean if most of a team's vulnerable items are in a \"deferred\" state?",
    "options": [
     "The team has fixed all of its vulnerabilities",
-    "Many items have approved exceptions",
+    "The team has many approved exceptions",
     "The items were imported from the wrong scanner",
     "The items have no CI and can't be assigned"
    ],
@@ -1755,7 +1755,7 @@
    "options": [
     "The exception renews automatically",
     "The items are deleted",
-    "They return to active remediation",
+    "The items return to active remediation",
     "The items are closed as fixed"
    ],
    "answer": [
@@ -1896,7 +1896,7 @@
     "They can approve exceptions on behalf of analysts",
     "They can replace VR's need for scanner data",
     "They can change NVD records for installed patches",
-    "Flows trigger deployments and record results"
+    "They can be triggered by flows that record results"
    ],
    "answer": [
     3
@@ -1909,7 +1909,7 @@
    "domain": "AU",
    "stem": "What should an exception request include?",
    "options": [
-    "Justification, compensating controls, end date",
+    "Justification, compensating controls, and an end date",
     "A promise that the vulnerability isn't real",
     "The scanner vendor's support contract number",
     "Only the remediation owner's name and nothing else"
@@ -1924,7 +1924,7 @@
    "domain": "AU",
    "stem": "What's the risk of approving exceptions with no expiry?",
    "options": [
-    "Accepted risk is forgotten and never revisited",
+    "The accepted risk is forgotten and never revisited",
     "The scanner will stop scanning the CI",
     "The exception will be deleted at the next import",
     "The vulnerable item will be closed as fixed"
@@ -2292,7 +2292,7 @@
    "options": [
     "The scanners are finding fewer vulnerabilities",
     "The remediation program is fully on track",
-    "More risk is being accepted",
+    "The organization is accepting more risk",
     "The NVD is publishing fewer CVEs"
    ],
    "answer": [

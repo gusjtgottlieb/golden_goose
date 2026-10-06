@@ -161,7 +161,7 @@
     "In the system log, filtered for security events",
     "In the classic incident form used by the IT service desk",
     "In a knowledge base article for each incident",
-    "A security-focused workspace with records and tools"
+    "In a security-focused workspace with its tools"
    ],
    "answer": [
     3
@@ -282,7 +282,7 @@
     "Setting the analyst's password for the investigation",
     "Choosing the color of the incident in lists",
     "Deciding which instance stores the incident",
-    "Routing, process selection, and reporting"
+    "Driving routing, process selection, and reporting"
    ],
    "answer": [
     3
@@ -372,7 +372,7 @@
    "stem": "What is the main benefit of a single security incident record that collects alerts, observables, tasks, and notes?",
    "options": [
     "It removes the need for any access controls on the security data",
-    "The investigation's full context is in one place",
+    "It keeps the investigation's full context in one place",
     "It lets the record be shared publicly to warn other organizations",
     "It allows analysts to skip documentation entirely during the response"
    ],
@@ -636,7 +636,7 @@
     "It hides the incident from users without admin roles",
     "It sets the incident's priority to critical automatically",
     "It lets the detection tool close the incident on its own",
-    "Analysts can trace back to the source data and tune detection"
+    "It lets analysts trace back to source data and tune detection"
    ],
    "answer": [
     3
@@ -957,7 +957,7 @@
    "options": [
     "A replacement for the organization's antivirus software",
     "A backup of the analyst's laptop before the investigation starts",
-    "Behavioral analysis of a file without risking production",
+    "A behavioral analysis of a file without risking production",
     "A permanent copy of every file sent to the company by email"
    ],
    "answer": [
@@ -1127,7 +1127,7 @@
    "options": [
     "The alphabetical order of the reporter's surname",
     "The time of day the incident happened to be created",
-    "Severity, business impact, and affected assets",
+    "The severity, business impact, and affected assets",
     "The number of characters in the incident description"
    ],
    "answer": [
@@ -1308,7 +1308,7 @@
    "stem": "What does reopening a closed security incident usually indicate?",
    "options": [
     "The reporter wants a copy of the incident report",
-    "New evidence shows the threat wasn't fully resolved",
+    "The threat wasn't fully resolved after all",
     "The incident was closed by mistake in the wrong instance",
     "The analyst wants to change the incident's number"
    ],
@@ -1324,7 +1324,7 @@
    "options": [
     "The classic UI can't display security incidents at all",
     "The workspace removes the need for any access controls on security data",
-    "Analysts see related context and actions together, which speeds investigation",
+    "The workspace puts context and actions together, speeding work",
     "The workspace stores incidents in a separate, faster database"
    ],
    "answer": [
@@ -1570,7 +1570,7 @@
     "It hides incidents with low scores from the CISO's dashboards",
     "It lets analysts skip triage because the score decides everything",
     "It guarantees that no incident will ever be scored as critical",
-    "Incidents can be compared and prioritized fairly"
+    "It lets incidents be compared and prioritized fairly"
    ],
    "answer": [
     3
@@ -1584,7 +1584,7 @@
    "options": [
     "The CI's serial number",
     "The CI's purchase date",
-    "Business criticality",
+    "The CI's criticality",
     "The CI's display name"
    ],
    "answer": [
@@ -1768,7 +1768,7 @@
     "The list of ServiceNow releases that support SIR",
     "The default password policy for security analysts",
     "The legal terms for sharing intelligence with partners",
-    "Predefined responses for common incident types"
+    "The predefined responses for common incident types"
    ],
    "answer": [
     3
@@ -2085,7 +2085,7 @@
    "options": [
     "Capabilities can't fail",
     "Capabilities always run faster than scripts",
-    "It keeps working if the firewall product changes",
+    "The playbook keeps working if the firewall changes",
     "Capabilities don't need any credentials to reach the firewall"
    ],
    "answer": [
@@ -2102,7 +2102,7 @@
     "Let each analyst create their own steps for each incident",
     "Handle ransomware outside the platform to keep it confidential",
     "Send analysts a PDF of the steps and trust them to follow it",
-    "A ransomware process with a guided playbook"
+    "Define a ransomware process with a guided playbook"
    ],
    "answer": [
     3
@@ -2221,7 +2221,7 @@
    "options": [
     "Let each analyst decide whether to send any updates",
     "Notify stakeholders only after the incident has closed",
-    "Milestone status updates to defined audiences",
+    "Send milestone updates to defined audiences",
     "Send every work note to every employee in real time"
    ],
    "answer": [
@@ -2327,7 +2327,7 @@
    "options": [
     "Making every incident follow exactly the same steps",
     "Replacing every security analyst with automated flows",
-    "Faster, consistent response; analysts focus on judgment",
+    "Speeding consistent response so analysts focus on judgment",
     "Reducing the number of incidents that are recorded"
    ],
    "answer": [
