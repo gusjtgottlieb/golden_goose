@@ -123,6 +123,16 @@ export const CERTS = [
     load: () => import("./banks/microsoft-sc-200.json"),
   },
   {
+    id: "microsoft-sc-300",
+    vendor: "Microsoft",
+    code: "SC-300",
+    name: "Identity and Access Administrator",
+    bankSize: 125,
+    fullLength: 50,
+    minutes: 100,
+    load: () => import("./banks/microsoft-sc-300.json"),
+  },
+  {
     id: "microsoft-sc-401",
     vendor: "Microsoft",
     code: "SC-401",

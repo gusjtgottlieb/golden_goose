@@ -1,0 +1,1912 @@
+{
+ "id": "microsoft-sc-300",
+ "vendor": "Microsoft",
+ "code": "SC-300",
+ "name": "Microsoft Certified: Identity and Access Administrator Associate",
+ "fullLength": 50,
+ "minutes": 100,
+ "passPercent": 70,
+ "readinessPercent": 80,
+ "sectioned": false,
+ "note": "Microsoft scores SC-300 on a 1–1000 scale with 700 to pass. This practice exam reports a straight percentage; treat 80% as your readiness bar. Questions follow the skills measured as of October 28, 2026. The real exam can include case studies and labs, which this practice exam doesn't simulate.",
+ "domains": [
+  {
+   "id": "USR",
+   "name": "Implement and manage user identities",
+   "weight": "20–25%"
+  },
+  {
+   "id": "AUT",
+   "name": "Implement authentication and access management",
+   "weight": "25–30%"
+  },
+  {
+   "id": "WKL",
+   "name": "Plan and implement workload identities",
+   "weight": "20–25%"
+  },
+  {
+   "id": "GOV",
+   "name": "Plan and automate identity governance",
+   "weight": "20–25%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "sc300-1",
+   "domain": "USR",
+   "stem": "The Paris office's helpdesk must reset passwords only for Paris users. What should you configure?",
+   "options": [
+    "A Conditional Access policy for Paris sign-ins",
+    "A dynamic group of Paris users with an owner",
+    "A separate Microsoft Entra tenant for Paris",
+    "An administrative unit with a scoped role"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Administrative units contain a subset of users, groups, or devices, and role assignments scoped to an administrative unit apply only to its members — so Paris helpdesk staff can manage only Paris users."
+  },
+  {
+   "id": "sc300-2",
+   "domain": "USR",
+   "stem": "Which kind of administrative unit prevents even tenant-wide administrators from modifying its members unless they're assigned at the unit's scope?",
+   "options": [
+    "A restricted management administrative unit",
+    "A cross-tenant administrative unit",
+    "A hidden membership administrative unit",
+    "A dynamic membership administrative unit"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Restricted management administrative units protect sensitive objects, such as executive accounts, so only administrators assigned at that unit's scope can modify them. Tenant-level admins, including Global Administrators, can't change those objects unless they hold a role assigned at the unit's scope."
+  },
+  {
+   "id": "sc300-3",
+   "domain": "USR",
+   "stem": "No built-in role grants exactly the permissions a team needs to manage app registrations' credentials. What should you create?",
+   "options": [
+    "A new Microsoft 365 group",
+    "A new administrative unit",
+    "An access package",
+    "A custom Microsoft Entra role"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Custom roles let you combine specific permissions, such as updating application credentials, and assign them at tenant, administrative unit, or individual app scope. They require Entra ID P1 or P2."
+  },
+  {
+   "id": "sc300-4",
+   "domain": "USR",
+   "stem": "A user has the User Administrator role assigned at an administrative unit's scope and the Helpdesk Administrator role tenant-wide. How do you determine what they can do?",
+   "options": [
+    "Combine the permissions of each assignment within its scope",
+    "Tenant-wide roles are ignored if any scoped role exists",
+    "The more restrictive role overrides the other one",
+    "Only the most recently assigned role applies"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Effective permissions are the union of all role assignments, each limited to its own scope. Reviewing the user's role assignments in the admin center shows each role and its scope."
+  },
+  {
+   "id": "sc300-5",
+   "domain": "USR",
+   "stem": "An organization adds contoso.com as a custom domain in Microsoft Entra ID. What must it do before users can use the domain?",
+   "options": [
+    "Run Microsoft Entra Connect in staging mode",
+    "Purchase the domain again through the Azure portal",
+    "Add a TXT or MX record at the DNS registrar to verify it",
+    "Create an administrative unit named after the domain"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft Entra ID verifies domain ownership through a DNS record — usually TXT, or MX — that you add at your DNS host. After verification, you can assign the domain to users' sign-in names."
+  },
+  {
+   "id": "sc300-6",
+   "domain": "USR",
+   "stem": "Users should see the company logo and a custom message on the Microsoft sign-in page. What should you configure?",
+   "options": [
+    "Application collections",
+    "Authentication context",
+    "Company branding",
+    "Terms of use"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Company branding customizes the sign-in experience with logos, background images, colors, and sign-in page text."
+  },
+  {
+   "id": "sc300-7",
+   "domain": "USR",
+   "stem": "New hires should be added to the Sales group automatically when their Department attribute is Sales. What should you create?",
+   "options": [
+    "A group with a dynamic membership rule",
+    "A distribution list owned by HR",
+    "An administrative unit for Sales",
+    "A group with assigned membership"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Dynamic membership rules evaluate user attributes, such as (user.department -eq \"Sales\"), and add or remove members automatically. They require Entra ID P1."
+  },
+  {
+   "id": "sc300-8",
+   "domain": "USR",
+   "stem": "What's the main difference between a security group and a Microsoft 365 group?",
+   "options": [
+    "Security groups always require dynamic membership",
+    "Security groups can contain only devices, not users",
+    "Microsoft 365 groups include shared collaboration resources",
+    "Microsoft 365 groups can't be used to assign licenses"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft 365 groups come with a shared mailbox, calendar, SharePoint site, and more for collaboration. Security groups control access to resources and are used for licensing and policy assignment."
+  },
+  {
+   "id": "sc300-9",
+   "domain": "USR",
+   "stem": "The organization wants to tag users with a sensitive \"Project\" attribute that only specific admins can read or assign. What should it use?",
+   "options": [
+    "Administrative units",
+    "Directory extension attributes",
+    "Dynamic group rules",
+    "Custom security attributes"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Custom security attributes are business-specific key-value attributes with their own access control: only users with Attribute Assignment or Attribute Definition roles can read or set them — not even Global Administrators by default."
+  },
+  {
+   "id": "sc300-10",
+   "domain": "USR",
+   "stem": "Which tool should you use to create hundreds of users from a script today?",
+   "options": [
+    "The Microsoft Graph PowerShell SDK",
+    "The AzureAD PowerShell module",
+    "The Exchange Management Shell",
+    "The MSOnline PowerShell module"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Microsoft Graph PowerShell (for example, New-MgUser) is the supported module. MSOnline and AzureAD PowerShell are retired. The admin center's bulk create with a CSV template is another option."
+  },
+  {
+   "id": "sc300-11",
+   "domain": "USR",
+   "stem": "Personal phones need access to company email, and the organization doesn't own the devices. Which device identity fits?",
+   "options": [
+    "Microsoft Entra hybrid joined",
+    "Microsoft Entra joined",
+    "Domain joined only",
+    "Microsoft Entra registered"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Registered devices suit bring-your-own-device scenarios: users sign in with a personal account on the device and add a work account. Joined and hybrid joined devices are organization-owned."
+  },
+  {
+   "id": "sc300-12",
+   "domain": "USR",
+   "stem": "Users should have to complete MFA before joining a device to Microsoft Entra ID. What's the recommended way to enforce this?",
+   "options": [
+    "A Conditional Access user action policy",
+    "The device setting that limits devices per user",
+    "A dynamic device group with an MFA rule",
+    "A custom role for device join"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Conditional Access can target the \"Register or join devices\" user action to require MFA. Microsoft recommends this over the older device setting, which must be turned off when using the Conditional Access approach."
+  },
+  {
+   "id": "sc300-13",
+   "domain": "USR",
+   "stem": "Group-based licensing fails for a new user with the error that usage location isn't set. What's the fix?",
+   "options": [
+    "Assign the license directly instead",
+    "Add the user to a second group",
+    "Enable self-service password reset",
+    "Set the user's usage location"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Licenses can't be assigned without a usage location, because service availability varies by country. Set the user's usage location (or a tenant default), and the group license will apply."
+  },
+  {
+   "id": "sc300-14",
+   "domain": "USR",
+   "stem": "Only members of the \"Guest Inviters\" role and admins should be able to invite external users. Where do you configure this?",
+   "options": [
+    "The external identity provider configuration",
+    "Guest invite settings",
+    "The enterprise application user settings",
+    "Cross-tenant access settings for the partner"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "External collaboration settings control who can invite guests (from anyone to only admins and the Guest Inviter role), what guests can see, and which domains collaboration is allowed or blocked with."
+  },
+  {
+   "id": "sc300-15",
+   "domain": "USR",
+   "stem": "B2B invitations to a competitor's domain must be blocked. What should you configure?",
+   "options": [
+    "A restricted administrative unit",
+    "A custom banned password list",
+    "A deny list in collaboration restrictions",
+    "A Conditional Access policy for the domain"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Collaboration restrictions in External collaboration settings let you allow invitations only to specified domains or deny invitations to specified domains."
+  },
+  {
+   "id": "sc300-16",
+   "domain": "USR",
+   "stem": "An admin needs to invite 300 partner users as guests at once. What's the simplest approach in the admin center?",
+   "options": [
+    "Set up cross-tenant synchronization",
+    "Add them to a dynamic group",
+    "Bulk invite with a CSV file",
+    "Create each guest with New-MgUser"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The admin center's bulk invite feature uploads a CSV of email addresses and redirect URLs and sends invitations. PowerShell with New-MgInvitation is another option."
+  },
+  {
+   "id": "sc300-17",
+   "domain": "USR",
+   "stem": "A partner tenant enforces MFA. You want your Conditional Access policies to accept their MFA claims so guests aren't prompted twice. What should you configure?",
+   "options": [
+    "Outbound access settings for your users",
+    "Inbound trust settings in cross-tenant access",
+    "A terms of use policy for the guests",
+    "Guest invite settings for the partner"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Inbound trust settings in cross-tenant access settings let you trust MFA, compliant device, and hybrid joined device claims from specific external Microsoft Entra organizations."
+  },
+  {
+   "id": "sc300-18",
+   "domain": "USR",
+   "stem": "Users in your tenant must be blocked from accessing a specific external organization's apps as guests. Which setting controls this?",
+   "options": [
+    "The tenant's company branding settings",
+    "Inbound access settings for that organization",
+    "The guest user access restrictions setting",
+    "Outbound access settings for that organization"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Outbound access settings control whether your users can access other organizations' resources through B2B collaboration or B2B direct connect. Inbound settings control external users accessing your resources."
+  },
+  {
+   "id": "sc300-19",
+   "domain": "USR",
+   "stem": "A company with two Microsoft Entra tenants wants users from tenant A to appear automatically as B2B users in tenant B. What should it configure?",
+   "options": [
+    "Microsoft Entra Connect Sync",
+    "An access review of guests",
+    "Cross-tenant synchronization",
+    "A SAML identity provider"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Cross-tenant synchronization provisions, updates, and deprovisions users from a source tenant into a target tenant as B2B users, for multitenant organizations. Connect Sync is for on-premises AD."
+  },
+  {
+   "id": "sc300-20",
+   "domain": "USR",
+   "stem": "For cross-tenant synchronization, what must the target tenant allow in its cross-tenant access settings?",
+   "options": [
+    "Outbound B2B direct connect for every user",
+    "User sync and automatic redemption",
+    "Self-service sign-up for external users",
+    "Guest access equal to member access"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The target tenant must allow users to be synchronized into it and enable automatic invitation redemption, so synced users don't have to accept consent prompts. The configuration itself runs in the source tenant."
+  },
+  {
+   "id": "sc300-21",
+   "domain": "USR",
+   "stem": "A partner uses a third-party SAML 2.0 identity provider, not Microsoft Entra ID. How can their users sign in to your apps as guests with their own credentials?",
+   "options": [
+    "Set up cross-tenant synchronization",
+    "Set up SAML/WS-Fed IdP federation",
+    "Create local accounts for each partner user",
+    "Enable password hash sync for the partner"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "SAML/WS-Fed identity provider federation lets guests from a partner domain authenticate with the partner's IdP. Cross-tenant sync needs both organizations to use Microsoft Entra ID."
+  },
+  {
+   "id": "sc300-22",
+   "domain": "USR",
+   "stem": "An organization needs to sync users from several disconnected AD forests with minimal on-premises infrastructure. Which tool fits?",
+   "options": [
+    "Cross-tenant synchronization",
+    "Microsoft Entra Cloud Sync",
+    "Microsoft Entra Connect Health",
+    "Microsoft Entra Connect Sync"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cloud Sync uses lightweight provisioning agents managed from the cloud and supports disconnected forests. Connect Sync installs a full sync server, which suits more complex scenarios."
+  },
+  {
+   "id": "sc300-23",
+   "domain": "USR",
+   "stem": "What's the purpose of a Microsoft Entra Connect Sync server in staging mode?",
+   "options": [
+    "A standby server ready to take over",
+    "A test tenant used before syncing production",
+    "A server that syncs devices but not users",
+    "A server that syncs only staged password changes"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A staging-mode server receives and processes changes but doesn't export them, so it can be switched to active quickly for high availability or used to validate configuration changes."
+  },
+  {
+   "id": "sc300-24",
+   "domain": "USR",
+   "stem": "Which hybrid authentication method lets users keep signing in to cloud apps even if on-premises domain controllers are unavailable?",
+   "options": [
+    "Federation with AD FS",
+    "Password hash synchronization",
+    "Seamless SSO alone",
+    "Pass-through authentication"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "With password hash sync, Microsoft Entra ID validates passwords in the cloud. Pass-through authentication and AD FS depend on on-premises components at sign-in."
+  },
+  {
+   "id": "sc300-25",
+   "domain": "USR",
+   "stem": "How should pass-through authentication be deployed for high availability?",
+   "options": [
+    "Pair it with a staging-mode Connect server",
+    "Configure the agent on a single domain controller",
+    "Install one agent on every user's workstation",
+    "Install several agents on separate servers"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Each PTA agent can validate sign-ins, and Microsoft recommends at least three agents on separate servers so sign-ins continue if one fails."
+  },
+  {
+   "id": "sc300-26",
+   "domain": "USR",
+   "stem": "Seamless single sign-on uses which object in on-premises AD?",
+   "options": [
+    "The AZUREADSSOACC computer account",
+    "A gMSA named for Entra Connect",
+    "A user account in Domain Admins",
+    "The krbtgt account of each domain"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Seamless SSO creates the AZUREADSSOACC computer account, whose Kerberos decryption key is shared with Microsoft Entra ID. Microsoft recommends rolling over that key regularly."
+  },
+  {
+   "id": "sc300-27",
+   "domain": "USR",
+   "stem": "An organization is moving from AD FS to cloud authentication and wants to test PHS with a pilot group first. What should it use?",
+   "options": [
+    "Staging mode",
+    "Staged rollout",
+    "Cloud Sync",
+    "Connect Health"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Staged rollout lets selected groups use password hash sync or pass-through authentication while the domain stays federated, so you can test before converting the domain to managed authentication."
+  },
+  {
+   "id": "sc300-28",
+   "domain": "USR",
+   "stem": "What does Microsoft Entra Connect Health provide?",
+   "options": [
+    "Password writeback for cloud-only users",
+    "Monitoring and alerts for sync, AD FS, and AD DS",
+    "Automatic upgrades of every domain controller",
+    "A replacement for Connect Sync servers"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Connect Health uses agents to monitor Connect Sync, AD FS, and AD DS, showing alerts, performance, and usage analytics in the admin center. It requires Entra ID P1."
+  },
+  {
+   "id": "sc300-29",
+   "domain": "AUT",
+   "stem": "New employees need to set up passwordless sign-in on their first day without ever having a password. What should IT issue?",
+   "options": [
+    "A Temporary Access Pass",
+    "A security question set",
+    "A one-time SMS code",
+    "A shared admin password"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A Temporary Access Pass is a time-limited passcode that meets strong authentication requirements, so new users can sign in and register passwordless methods such as passkeys or Windows Hello."
+  },
+  {
+   "id": "sc300-30",
+   "domain": "AUT",
+   "stem": "Which authentication method lets users sign in with an X.509 certificate from their smart card, without federation?",
+   "options": [
+    "Temporary Access Pass",
+    "Certificate-based authentication",
+    "Voice call verification",
+    "SMS-based passwordless sign-in"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Microsoft Entra certificate-based authentication validates user certificates directly against your configured certificate authorities, with no AD FS needed. It can satisfy phishing-resistant MFA."
+  },
+  {
+   "id": "sc300-31",
+   "domain": "AUT",
+   "stem": "Where should admins enable and target methods such as passkeys, Authenticator, and TAP?",
+   "options": [
+    "The company branding settings",
+    "The Authentication methods policy",
+    "The enterprise app settings",
+    "The legacy per-user MFA page"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The Authentication methods policy is where methods are enabled and scoped to users and groups. The legacy MFA and SSPR method settings were migrated to it."
+  },
+  {
+   "id": "sc300-32",
+   "domain": "AUT",
+   "stem": "Which method is phishing-resistant?",
+   "options": [
+    "Passkeys (FIDO2)",
+    "Voice call verification",
+    "Email one-time passcodes",
+    "SMS one-time codes"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Passkeys use public-key cryptography bound to the site's origin, so credentials can't be replayed on a phishing site. Windows Hello for Business and certificate-based authentication are also phishing-resistant."
+  },
+  {
+   "id": "sc300-33",
+   "domain": "AUT",
+   "stem": "Which Conditional Access grant control requires a specific combination of methods, such as phishing-resistant MFA?",
+   "options": [
+    "Require multifactor authentication",
+    "Require authentication strength",
+    "Require terms of use",
+    "Require password change"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Authentication strengths define which methods satisfy a policy — built-in options include MFA, passwordless MFA, and phishing-resistant MFA — and can be required in Conditional Access."
+  },
+  {
+   "id": "sc300-34",
+   "domain": "AUT",
+   "stem": "Users should be able to report MFA prompts they didn't initiate, automatically raising their user risk. Which setting enables this?",
+   "options": [
+    "Account lockout threshold",
+    "Number of methods required to reset",
+    "Report suspicious activity",
+    "Remember MFA on trusted devices"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Report suspicious activity lets users flag unexpected MFA prompts. Reported users get high user risk, which risk-based Conditional Access policies can act on."
+  },
+  {
+   "id": "sc300-35",
+   "domain": "AUT",
+   "stem": "How many authentication methods are always required for administrators to reset their own passwords with SSPR?",
+   "options": [
+    "Three methods",
+    "None, admins can't use SSPR",
+    "One method",
+    "Two methods"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Administrators always use a stronger two-method policy for SSPR, regardless of the policy configured for regular users."
+  },
+  {
+   "id": "sc300-36",
+   "domain": "AUT",
+   "stem": "Users who reset passwords with SSPR need the new password to work on-premises too. What must be enabled?",
+   "options": [
+    "Staged rollout",
+    "Seamless SSO",
+    "Device writeback",
+    "Password writeback"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Password writeback, configured through Connect Sync or Cloud Sync, writes cloud password changes and resets back to on-premises AD."
+  },
+  {
+   "id": "sc300-37",
+   "domain": "AUT",
+   "stem": "Which Windows Hello for Business deployment model is recommended for hybrid environments because it doesn't need a PKI?",
+   "options": [
+    "Federated trust",
+    "Cloud Kerberos trust",
+    "Certificate trust",
+    "Key trust"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cloud Kerberos trust uses Microsoft Entra Kerberos to issue partial TGTs for on-premises resources, so you don't need to deploy certificates or wait for key sync. It's the recommended hybrid model."
+  },
+  {
+   "id": "sc300-38",
+   "domain": "AUT",
+   "stem": "A user's laptop was stolen. Besides disabling the account, how do you immediately invalidate their refresh tokens?",
+   "options": [
+    "Revoke the user's sessions",
+    "Delete the user's photo",
+    "Remove the user's manager",
+    "Change the user's license"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Revoking sessions invalidates refresh tokens and session cookies, so the user — or a thief — must reauthenticate. With continuous access evaluation, supported apps react almost immediately."
+  },
+  {
+   "id": "sc300-39",
+   "domain": "AUT",
+   "stem": "Users keep creating passwords like \"Contoso2026!\". What should you configure?",
+   "options": [
+    "A password expiration policy",
+    "A custom banned password list",
+    "A longer smart lockout period",
+    "Self-service password reset"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Microsoft Entra Password Protection blocks weak passwords using Microsoft's global list plus your custom banned terms, including variations with common substitutions."
+  },
+  {
+   "id": "sc300-40",
+   "domain": "AUT",
+   "stem": "What's needed to enforce Microsoft Entra Password Protection for on-premises AD password changes?",
+   "options": [
+    "The DC agent and proxy services on-premises",
+    "Seamless SSO on every domain controller",
+    "Pass-through authentication agents",
+    "A Connect Sync server in staging mode"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Password Protection for AD DS uses a proxy service to download policies from Microsoft Entra ID and a DC agent on domain controllers to check password changes against them."
+  },
+  {
+   "id": "sc300-41",
+   "domain": "AUT",
+   "stem": "Hybrid users need to access Azure Files shares with their Microsoft Entra identities from Entra-joined devices. What should be enabled?",
+   "options": [
+    "Pass-through authentication",
+    "Seamless single sign-on",
+    "SAML-based single sign-on",
+    "Microsoft Entra Kerberos"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Microsoft Entra Kerberos lets Entra ID issue Kerberos tickets for resources such as Azure Files, so hybrid identities can access SMB shares from cloud-joined devices without line of sight to DCs."
+  },
+  {
+   "id": "sc300-42",
+   "domain": "AUT",
+   "stem": "Before enforcing a new Conditional Access policy, an admin wants to see its impact without blocking anyone. What should they do?",
+   "options": [
+    "Turn it on in report-only mode",
+    "Create it in a test tenant only",
+    "Exclude all users from it",
+    "Enable it for Global Administrators first"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Report-only mode evaluates the policy at sign-in and records the result in sign-in logs without enforcing it, so you can assess impact with the Conditional Access insights workbook."
+  },
+  {
+   "id": "sc300-43",
+   "domain": "AUT",
+   "stem": "A user says they were blocked at sign-in. How can an admin see which Conditional Access policies applied?",
+   "options": [
+    "Check the user's license assignment history",
+    "Check the sign-in log's Conditional Access tab",
+    "Check the tenant's company branding page",
+    "Check the audit log for role assignments"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Each sign-in log entry shows which Conditional Access policies applied, whether they succeeded or failed, and why. The What If tool can also simulate a sign-in."
+  },
+  {
+   "id": "sc300-44",
+   "domain": "AUT",
+   "stem": "Which tool lets an admin simulate how Conditional Access would treat a sign-in by a given user, app, and location?",
+   "options": [
+    "Connect Health",
+    "The bulk operations page",
+    "The What If tool",
+    "The access review wizard"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The What If tool evaluates which policies would apply to a hypothetical sign-in with the conditions you specify, helping troubleshoot without the user signing in."
+  },
+  {
+   "id": "sc300-45",
+   "domain": "AUT",
+   "stem": "Users on shared kiosk browsers should have to sign in again every hour. Which Conditional Access control fits?",
+   "options": [
+    "Require compliant device",
+    "Authentication context",
+    "Persistent browser session",
+    "Sign-in frequency"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The sign-in frequency session control sets how often users must reauthenticate. Persistent browser session controls whether sessions survive closing the browser."
+  },
+  {
+   "id": "sc300-46",
+   "domain": "AUT",
+   "stem": "Access to an admin portal should be allowed only from Intune-compliant devices. Which grant control should the policy use?",
+   "options": [
+    "Require terms of use",
+    "Require Microsoft Entra hybrid joined device",
+    "Require approved client app",
+    "Require device to be marked as compliant"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Requiring a compliant device uses Intune compliance status reported to Microsoft Entra ID. Hybrid joined devices can be required with a separate grant control."
+  },
+  {
+   "id": "sc300-47",
+   "domain": "AUT",
+   "stem": "A policy must apply only to devices with a specific extension attribute, such as \"Kiosk\". Which condition should you use?",
+   "options": [
+    "A user risk level",
+    "A named location",
+    "A client app type",
+    "A filter for devices"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Filter for devices targets or excludes devices by properties such as extensionAttribute values, model, or trust type, enabling device-specific policies."
+  },
+  {
+   "id": "sc300-48",
+   "domain": "AUT",
+   "stem": "What does continuous access evaluation (CAE) do?",
+   "options": [
+    "Reacts quickly to critical events",
+    "Evaluates policies only once a day",
+    "Requires MFA at every single request",
+    "Blocks all sign-ins from new devices"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CAE lets supporting services, such as Exchange and SharePoint, react to critical events — account disabled, password changed, user risk raised, or network location changes — in near real time instead of waiting for tokens to expire."
+  },
+  {
+   "id": "sc300-49",
+   "domain": "AUT",
+   "stem": "Users should need phishing-resistant MFA only when opening SharePoint sites labeled \"Highly Confidential\". What should you configure?",
+   "options": [
+    "Terms of use",
+    "Sign-in frequency",
+    "Persistent browser session",
+    "Authentication context"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Authentication context lets apps request extra conditions for sensitive actions or content. A sensitivity label can apply an authentication context to a site, and a Conditional Access policy targets that context."
+  },
+  {
+   "id": "sc300-50",
+   "domain": "AUT",
+   "stem": "Admins must use phishing-resistant MFA before they can delete Conditional Access policies. Which feature fits?",
+   "options": [
+    "Restricted management units",
+    "Protected actions",
+    "Staged rollout",
+    "Report-only mode"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Protected actions associate sensitive operations, such as changing Conditional Access policies or cross-tenant settings, with an authentication context, so a Conditional Access policy can demand stronger authentication first."
+  },
+  {
+   "id": "sc300-51",
+   "domain": "AUT",
+   "stem": "What's the quickest way to create a Conditional Access policy that follows Microsoft's recommended baseline, such as requiring MFA for admins?",
+   "options": [
+    "Create a policy from a template",
+    "Use the What If tool to generate it",
+    "Clone a policy from another tenant",
+    "Enable security defaults per user"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Conditional Access templates provide preconfigured policies aligned with Microsoft recommendations, which you can review and deploy, often first in report-only mode."
+  },
+  {
+   "id": "sc300-52",
+   "domain": "AUT",
+   "stem": "Users should be able to view but not download SharePoint files from unmanaged devices. Which session control is simplest?",
+   "options": [
+    "Use app enforced restrictions",
+    "Set sign-in frequency to one hour",
+    "Block all sign-ins from new browsers",
+    "Require a compliant device for all access"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Use app enforced restrictions passes device information to SharePoint and Exchange Online, which then provide limited, web-only access on unmanaged devices."
+  },
+  {
+   "id": "sc300-53",
+   "domain": "AUT",
+   "stem": "An organization has Microsoft Entra ID Free licenses only. How can it enforce MFA for all users?",
+   "options": [
+    "Use authentication context",
+    "Create Conditional Access policies",
+    "Enable security defaults",
+    "Configure ID Protection policies"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Security defaults provide baseline protections, including requiring MFA registration and MFA for admins and risky activities, at no extra cost. Conditional Access requires Entra ID P1."
+  },
+  {
+   "id": "sc300-54",
+   "domain": "AUT",
+   "stem": "High-risk users should be required to change their password securely. Where does Microsoft recommend configuring this?",
+   "options": [
+    "The custom banned password list",
+    "The legacy per-user MFA settings",
+    "The Conditional Access risk policies",
+    "The SSPR registration settings"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft recommends configuring user risk and sign-in risk responses as Conditional Access policies, which offer more flexibility than the legacy ID Protection risk policies."
+  },
+  {
+   "id": "sc300-55",
+   "domain": "AUT",
+   "stem": "Which control is typically required for a medium or high sign-in risk?",
+   "options": [
+    "An approved client app",
+    "Terms of use acceptance",
+    "A secure password change",
+    "Multifactor authentication"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Sign-in risk suggests that a specific sign-in may not be from the account owner, so requiring MFA proves identity. User risk, which suggests the account itself is compromised, is typically remediated with a secure password change."
+  },
+  {
+   "id": "sc300-56",
+   "domain": "AUT",
+   "stem": "How can admins encourage users who rely on SMS to register Microsoft Authenticator?",
+   "options": [
+    "A sign-in risk policy",
+    "A registration campaign",
+    "An access review",
+    "A custom security attribute"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Registration campaigns nudge users to set up Microsoft Authenticator (or passkeys) during sign-in, with a configurable number of snoozes."
+  },
+  {
+   "id": "sc300-57",
+   "domain": "AUT",
+   "stem": "Which license is needed to see full risk detections and use risk-based Conditional Access?",
+   "options": [
+    "Microsoft Entra ID Free",
+    "Microsoft 365 Business Basic",
+    "Microsoft Entra ID P1",
+    "Microsoft Entra ID P2"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "ID Protection's full capabilities, including risky user and sign-in reports with details and risk-based Conditional Access, require Entra ID P2 (included in Microsoft 365 E5)."
+  },
+  {
+   "id": "sc300-58",
+   "domain": "AUT",
+   "stem": "A service principal shows leaked credentials in ID Protection. Where do admins investigate it?",
+   "options": [
+    "The Risky workload identities report",
+    "The Secure Score page",
+    "The provisioning logs",
+    "The Risky users report in ID Protection"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "ID Protection detects risks for service principals, such as leaked credentials or suspicious sign-ins, in the Risky workload identities report. Responding includes rotating credentials and reviewing the app's activity."
+  },
+  {
+   "id": "sc300-59",
+   "domain": "AUT",
+   "stem": "Remote users need access to on-premises file servers and internal apps without a traditional VPN. Which service fits?",
+   "options": [
+    "Microsoft Entra Cloud Sync",
+    "Microsoft Entra Connect Health",
+    "Microsoft Entra Internet Access",
+    "Microsoft Entra Private Access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Private Access, part of Global Secure Access, provides Zero Trust network access to private apps through connectors, applying Conditional Access per app rather than giving broad network access like a VPN."
+  },
+  {
+   "id": "sc300-60",
+   "domain": "AUT",
+   "stem": "What must be deployed on users' devices to route traffic through Global Secure Access?",
+   "options": [
+    "A pass-through authentication agent",
+    "The Microsoft Entra Connect agent",
+    "The Defender for Identity sensor",
+    "The Global Secure Access client"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The Global Secure Access client, available for Windows, macOS, iOS, and Android, acquires traffic from the device and routes it according to the enabled traffic forwarding profiles."
+  },
+  {
+   "id": "sc300-61",
+   "domain": "AUT",
+   "stem": "An organization wants to filter users' web traffic by category, such as blocking gambling sites. Which service fits?",
+   "options": [
+    "Microsoft Entra Private Access",
+    "Microsoft Entra Application Proxy",
+    "Microsoft Entra Internet Access",
+    "Microsoft Entra Connect Sync"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Internet Access provides a secure web gateway with web content filtering policies for internet and SaaS traffic."
+  },
+  {
+   "id": "sc300-62",
+   "domain": "AUT",
+   "stem": "Which Global Secure Access traffic profile enables tenant restrictions and source IP restoration for Exchange Online and SharePoint?",
+   "options": [
+    "The internet access profile",
+    "The Microsoft traffic profile",
+    "The private access profile",
+    "The VPN fallback profile"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The Microsoft traffic profile handles Microsoft 365 traffic, enabling features such as universal tenant restrictions and restoring the original source IP for Conditional Access and logs."
+  },
+  {
+   "id": "sc300-63",
+   "domain": "AUT",
+   "stem": "What does Private Access use on-premises to reach internal resources?",
+   "options": [
+    "Cloud Sync provisioning agents",
+    "Connect Health agents",
+    "Pass-through authentication agents",
+    "Private network connectors"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Private network connectors (shared with Application Proxy) are installed on-premises and make outbound connections to the service, so no inbound firewall ports need to be opened."
+  },
+  {
+   "id": "sc300-64",
+   "domain": "WKL",
+   "stem": "An Azure function needs to read secrets from Key Vault without any credentials stored in code or configuration. Which identity should it use?",
+   "options": [
+    "A guest account",
+    "A managed identity",
+    "A shared user account",
+    "A client secret in app settings"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Managed identities are created and rotated by Azure, so the function gets tokens for Key Vault without anyone managing secrets."
+  },
+  {
+   "id": "sc300-65",
+   "domain": "WKL",
+   "stem": "Ten web apps need the same identity and permissions, and the identity must outlive any single app. Which option fits?",
+   "options": [
+    "A separate guest account per app",
+    "A Global Administrator account",
+    "A user-assigned managed identity",
+    "A system-assigned managed identity"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A user-assigned managed identity is a standalone Azure resource that can be attached to many resources and isn't deleted with any of them. System-assigned identities are tied to one resource's lifecycle."
+  },
+  {
+   "id": "sc300-66",
+   "domain": "WKL",
+   "stem": "An application runs on servers outside Azure and needs to call Microsoft Graph as itself. Which identity fits?",
+   "options": [
+    "A service principal",
+    "A system-assigned managed identity",
+    "A personal user account with MFA",
+    "A group-managed service account"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Managed identities only work for supported Azure resources (or Arc-enabled servers). An app registration's service principal, ideally with a certificate or federated credential, suits apps running elsewhere."
+  },
+  {
+   "id": "sc300-67",
+   "domain": "WKL",
+   "stem": "An on-premises Windows service needs a domain identity whose password is rotated automatically by AD. Which option fits?",
+   "options": [
+    "A B2B guest account",
+    "A Microsoft Entra managed identity",
+    "A group managed service account",
+    "A cloud-only user account"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Group managed service accounts are AD accounts whose passwords AD manages and rotates automatically, which suits on-premises services. Managed identities are for Azure resources."
+  },
+  {
+   "id": "sc300-68",
+   "domain": "WKL",
+   "stem": "After enabling a system-assigned managed identity on a VM, what's needed for it to read blobs in a storage account?",
+   "options": [
+    "A Microsoft Entra ID P2 license for the VM",
+    "A Conditional Access policy for the VM",
+    "A client secret added to the VM's configuration",
+    "An Azure RBAC role on the storage account"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The managed identity authenticates automatically, but it needs authorization: assign it a role such as Storage Blob Data Reader on the storage account or container."
+  },
+  {
+   "id": "sc300-69",
+   "domain": "WKL",
+   "stem": "How does code running on an Azure VM get a token for its managed identity?",
+   "options": [
+    "By signing in with the VM admin account",
+    "By asking the user for MFA",
+    "By calling the local IMDS endpoint",
+    "By reading a password from a text file"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Code requests tokens from the Azure Instance Metadata Service (IMDS) endpoint on the VM. Azure SDKs, such as DefaultAzureCredential, do this automatically."
+  },
+  {
+   "id": "sc300-70",
+   "domain": "WKL",
+   "stem": "Only users assigned to an enterprise app should be able to sign in to it. Which app property should you set?",
+   "options": [
+    "Enabled for sign-in = No",
+    "Owners = Helpdesk team",
+    "Assignment required = Yes",
+    "Visible to users = No"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "With assignment required, users and groups must be assigned to the app to get a token. Visible to users only controls whether it appears in My Apps."
+  },
+  {
+   "id": "sc300-71",
+   "domain": "WKL",
+   "stem": "Which role can manage enterprise apps and app registrations but not Application Proxy settings?",
+   "options": [
+    "Helpdesk Administrator",
+    "Privileged Role Administrator",
+    "Application Administrator",
+    "Cloud Application Administrator"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Cloud Application Administrator has the same app permissions as Application Administrator except for managing Application Proxy, so it's the least-privileged choice when Application Proxy isn't needed."
+  },
+  {
+   "id": "sc300-72",
+   "domain": "WKL",
+   "stem": "An on-premises web app must be published to remote users with Microsoft Entra pre-authentication, without opening inbound firewall ports. What should you use?",
+   "options": [
+    "Azure Application Gateway with WAF",
+    "Azure Front Door only",
+    "Microsoft Entra Application Proxy",
+    "A site-to-site VPN"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Application Proxy publishes on-premises web apps through connectors that make outbound connections, with Microsoft Entra ID handling pre-authentication and Conditional Access."
+  },
+  {
+   "id": "sc300-73",
+   "domain": "WKL",
+   "stem": "An Application Proxy app uses Integrated Windows Authentication on-premises. What lets users get SSO to it?",
+   "options": [
+    "Kerberos constrained delegation",
+    "A Temporary Access Pass",
+    "A SAML token signing certificate",
+    "Password hash synchronization"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "For IWA apps, the connector uses Kerberos constrained delegation to obtain Kerberos tickets on the user's behalf, providing single sign-on after Microsoft Entra pre-authentication."
+  },
+  {
+   "id": "sc300-74",
+   "domain": "WKL",
+   "stem": "A SaaS app from the gallery supports SAML. What must you exchange between Microsoft Entra ID and the app to set up SSO?",
+   "options": [
+    "Identifiers, reply URLs, and a certificate",
+    "The tenant's Global Administrator credentials",
+    "The app's database connection string",
+    "Each user's password for the app"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "SAML SSO needs the app's identifier (entity ID) and reply URL configured in Microsoft Entra ID, and the app configured with Microsoft Entra ID's sign-in URL and token signing certificate (or federation metadata)."
+  },
+  {
+   "id": "sc300-75",
+   "domain": "WKL",
+   "stem": "Users should be created and removed in a SaaS app automatically based on group assignment. What should you configure?",
+   "options": [
+    "Password writeback",
+    "A dynamic administrative unit",
+    "SCIM-based provisioning",
+    "Cross-tenant synchronization"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automatic provisioning uses the SCIM protocol (or app-specific connectors) to create, update, and deprovision accounts in the app for assigned users, with results in the provisioning logs."
+  },
+  {
+   "id": "sc300-76",
+   "domain": "WKL",
+   "stem": "Users should be able to consent only to apps from verified publishers that request low-risk permissions. What should you configure?",
+   "options": [
+    "Admin consent for each app",
+    "User consent settings",
+    "App roles in the manifest",
+    "The app's redirect URIs"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "User consent settings can allow consent for apps from verified publishers for selected low-impact permissions, block user consent entirely, or allow it for all apps."
+  },
+  {
+   "id": "sc300-77",
+   "domain": "WKL",
+   "stem": "Users who are blocked from consenting should be able to ask an admin to approve an app. What should you enable?",
+   "options": [
+    "Self-service group management",
+    "A registration campaign",
+    "Self-service password reset",
+    "The admin consent workflow"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The admin consent workflow lets users request access to apps that need admin consent. Designated reviewers get the request and can approve or deny it."
+  },
+  {
+   "id": "sc300-78",
+   "domain": "WKL",
+   "stem": "What's the difference between granting admin consent and user consent for an app's permissions?",
+   "options": [
+    "User consent grants permissions for the whole tenant",
+    "User consent can grant any application permission",
+    "Admin consent works only for application permissions",
+    "Admin consent grants permissions for all users"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "An admin can consent on behalf of all users in the organization, which is required for application permissions and high-privilege delegated permissions. User consent only covers that user's delegated access."
+  },
+  {
+   "id": "sc300-79",
+   "domain": "WKL",
+   "stem": "How can admins group related apps, such as all HR tools, into a section of the My Apps portal?",
+   "options": [
+    "Create an administrative unit",
+    "Create a dynamic group",
+    "Create an app collection",
+    "Create a catalog"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Collections group apps into tabs in My Apps, making them easier for users to find."
+  },
+  {
+   "id": "sc300-80",
+   "domain": "WKL",
+   "stem": "An app must allow sign-in from users in any Microsoft Entra organization. What account type should the registration support?",
+   "options": [
+    "Multitenant (any organizational directory)",
+    "Accounts in this organizational directory only",
+    "Guest accounts in this directory only",
+    "Personal Microsoft accounts only"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Multitenant registrations accept users from any Microsoft Entra tenant, and a service principal is created in each tenant that uses the app. Single-tenant apps accept only your organization's users."
+  },
+  {
+   "id": "sc300-81",
+   "domain": "WKL",
+   "stem": "Which credential type is preferred over client secrets for an app registration that authenticates as itself?",
+   "options": [
+    "A user's password stored in config",
+    "A client secret with a longer expiry",
+    "A Temporary Access Pass",
+    "A certificate or federated credential"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Certificates are more secure than secrets, and federated identity credentials (workload identity federation) let external workloads like GitHub Actions authenticate with no secret at all."
+  },
+  {
+   "id": "sc300-82",
+   "domain": "WKL",
+   "stem": "A GitHub Actions workflow needs to deploy to Azure without storing any secret in GitHub. What should you configure on the app registration?",
+   "options": [
+    "A federated identity credential",
+    "An app role for GitHub",
+    "A redirect URI for GitHub",
+    "A client secret with a long expiry"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Workload identity federation trusts tokens issued by GitHub for a specific repository and branch, exchanging them for Microsoft Entra access tokens without secrets."
+  },
+  {
+   "id": "sc300-83",
+   "domain": "WKL",
+   "stem": "A web app that signs users in returns an error that the reply URL doesn't match. What should you fix?",
+   "options": [
+    "The app's token signing certificate",
+    "The user's assignment to the app",
+    "The app's API permissions list",
+    "The app's redirect URI"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Redirect URIs, configured per platform under Authentication, must exactly match the URL the app sends in the sign-in request."
+  },
+  {
+   "id": "sc300-84",
+   "domain": "WKL",
+   "stem": "A background service reads all users' calendars with no user signed in. Which permission type does it need?",
+   "options": [
+    "Delegated permissions with user consent",
+    "Application permissions with admin consent",
+    "An app role assigned to a user",
+    "A directory role for each user"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Application permissions let an app act as itself without a signed-in user, and they always require admin consent. Delegated permissions act on behalf of a signed-in user."
+  },
+  {
+   "id": "sc300-85",
+   "domain": "WKL",
+   "stem": "An app needs \"Approver\" and \"Viewer\" roles that admins assign to users and groups and that appear in tokens. What should you create?",
+   "options": [
+    "Administrative units per role",
+    "Custom Microsoft Entra roles",
+    "App roles in the app registration",
+    "Dynamic groups per role"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "App roles are defined in the app registration, assigned to users, groups, or apps in the enterprise app, and emitted in the roles claim so the app can authorize users."
+  },
+  {
+   "id": "sc300-86",
+   "domain": "WKL",
+   "stem": "What's the relationship between an app registration and an enterprise application?",
+   "options": [
+    "The registration exists only for gallery apps",
+    "The enterprise app is the registration's per-tenant service principal",
+    "They're two names for the same object in different portals",
+    "The enterprise app defines permissions; the registration assigns users"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "An app registration creates the application object (the global definition). Each tenant using the app gets a service principal — the enterprise application — where users are assigned and policies applied."
+  },
+  {
+   "id": "sc300-87",
+   "domain": "WKL",
+   "stem": "How can an organization find out which unsanctioned cloud apps employees are using?",
+   "options": [
+    "The Identity Secure Score page",
+    "Cloud discovery in Defender for Cloud Apps",
+    "An access review of all enterprise apps",
+    "The provisioning logs in Microsoft Entra ID"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cloud discovery analyzes traffic logs — uploaded from firewalls or proxies, or collected through Defender for Endpoint integration — to identify cloud apps in use and their risk."
+  },
+  {
+   "id": "sc300-88",
+   "domain": "WKL",
+   "stem": "After discovering a risky file-sharing app, how do you mark it so Defender for Endpoint blocks it on devices?",
+   "options": [
+    "Add it to a collection",
+    "Create an app role",
+    "Mark it as unsanctioned",
+    "Mark it as monitored"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Unsanctioning an app in the Cloud app catalog, with Defender for Endpoint integration enabled, can block access to it on onboarded devices."
+  },
+  {
+   "id": "sc300-89",
+   "domain": "WKL",
+   "stem": "What does connecting an app, such as Box or Salesforce, through an API connector in Defender for Cloud Apps provide?",
+   "options": [
+    "A VPN tunnel to the app's datacenter",
+    "Single sign-on for the app's users through SAML",
+    "Automatic licensing of the app for all users",
+    "Activity and file visibility and governance"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "App connectors use the app's APIs to give Defender for Cloud Apps visibility into activities, files, and accounts, and to take governance actions such as quarantining files."
+  },
+  {
+   "id": "sc300-90",
+   "domain": "WKL",
+   "stem": "Downloads of sensitive files from a SaaS app must be blocked on unmanaged devices in real time. What should you configure?",
+   "options": [
+    "An activity policy with daily email alerts",
+    "A file policy scanning stored files nightly",
+    "An app control session policy",
+    "A cloud discovery report for the app"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Conditional Access app control routes sessions through Defender for Cloud Apps, where session policies can block downloads, apply labels, or monitor activity as it happens."
+  },
+  {
+   "id": "sc300-91",
+   "domain": "WKL",
+   "stem": "What must be configured in Microsoft Entra ID for Defender for Cloud Apps session policies to take effect?",
+   "options": [
+    "An access review for the app's users",
+    "Cross-tenant access settings",
+    "A Conditional Access policy using app control",
+    "A registration campaign for Authenticator"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A Conditional Access policy with the \"Use Conditional Access App Control\" session control routes the app's sessions to Defender for Cloud Apps so its access and session policies can apply."
+  },
+  {
+   "id": "sc300-92",
+   "domain": "WKL",
+   "stem": "How can you be alerted when an OAuth app with high permissions and few users suddenly appears in the tenant?",
+   "options": [
+    "An application collection in My Apps",
+    "An OAuth app policy",
+    "A user consent setting in Entra ID",
+    "A dynamic group of app owners"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "OAuth app policies alert on, or automatically revoke, apps based on permission level, community use, and authorization patterns. App governance adds deeper monitoring of app behavior."
+  },
+  {
+   "id": "sc300-93",
+   "domain": "WKL",
+   "stem": "What does the Cloud app catalog provide for each app?",
+   "options": [
+    "A license key for unlimited use of the app",
+    "A list of users' passwords for that app",
+    "A risk score for each app",
+    "The app's source code for security review"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The Cloud app catalog rates many cloud apps with a risk score based on general, security, compliance, and legal factors, which you can customize to your priorities."
+  },
+  {
+   "id": "sc300-94",
+   "domain": "WKL",
+   "stem": "Which Defender for Cloud Apps policy type blocks access to an app from unmanaged devices at sign-in?",
+   "options": [
+    "A file policy",
+    "A discovery policy",
+    "An anomaly policy",
+    "An access policy"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Access policies, enforced through Conditional Access app control, allow or block access at sign-in based on conditions such as device state or location. Session policies control activity within the session."
+  },
+  {
+   "id": "sc300-95",
+   "domain": "GOV",
+   "stem": "A project team needs a bundle of groups, apps, and SharePoint sites that users request with approval and that expires after 90 days. What should you create?",
+   "options": [
+    "A custom role",
+    "A dynamic group",
+    "An administrative unit",
+    "An access package"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Access packages bundle resources with policies that define who can request access, approvals, and expiration. They're part of entitlement management in Microsoft Entra ID Governance."
+  },
+  {
+   "id": "sc300-96",
+   "domain": "GOV",
+   "stem": "In entitlement management, what's a catalog?",
+   "options": [
+    "A collection of Conditional Access policies",
+    "A list of all users with expired licenses",
+    "A report of access review decisions",
+    "A container for resources and packages"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Catalogs hold the resources and access packages that can be built from them, and they can have their own owners so business teams manage their own access."
+  },
+  {
+   "id": "sc300-97",
+   "domain": "GOV",
+   "stem": "Users at a partner company should be able to request an access package even though they aren't in your directory yet. What should you configure?",
+   "options": [
+    "A connected organization",
+    "An administrative unit for partner users",
+    "A cross-tenant synchronization configuration",
+    "A dynamic group for the partner's domain"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Connected organizations represent external partners. An access package policy that allows users from connected organizations to request access creates them as guests when approved."
+  },
+  {
+   "id": "sc300-98",
+   "domain": "GOV",
+   "stem": "External users who lose their last access package assignment should be blocked and later removed automatically. Where is this configured?",
+   "options": [
+    "External user lifecycle settings",
+    "External collaboration guest invite settings",
+    "The guest user access restrictions setting",
+    "Cross-tenant access inbound settings"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Entitlement management settings can block sign-in for external users when their last assignment expires and remove them after a set number of days."
+  },
+  {
+   "id": "sc300-99",
+   "domain": "GOV",
+   "stem": "Guests must accept the company's acceptable use policy before accessing apps. What should you configure?",
+   "options": [
+    "A custom banned password list for guests",
+    "An app role for guests",
+    "A registration campaign for guests",
+    "A terms of use policy in Conditional Access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Terms of use policies present a document users must accept. A Conditional Access policy with the terms of use grant control enforces acceptance before access."
+  },
+  {
+   "id": "sc300-100",
+   "domain": "GOV",
+   "stem": "An access package request is waiting for approval. Who approves it?",
+   "options": [
+    "Any Global Administrator automatically",
+    "The requester's manager in every case",
+    "The approvers set in the package's policy",
+    "The owner of the Microsoft Entra tenant"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Each access package policy defines approval stages and approvers — such as specific users, the requester's manager, or a sponsor — and an alternate approver if needed."
+  },
+  {
+   "id": "sc300-101",
+   "domain": "GOV",
+   "stem": "Group owners should confirm every quarter whether each guest member still needs access. What should you configure?",
+   "options": [
+    "A recurring access review",
+    "A PIM eligible assignment",
+    "A dynamic membership rule",
+    "A Conditional Access policy"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Access reviews can recur on a schedule, with reviewers such as group owners, managers, or the users themselves, and can remove access automatically based on decisions."
+  },
+  {
+   "id": "sc300-102",
+   "domain": "GOV",
+   "stem": "Reviewers often don't respond. What setting removes access for users who weren't reviewed?",
+   "options": [
+    "Self-review enabled for every user",
+    "Auto-apply results disabled",
+    "Reminders disabled for all reviewers",
+    "Non-response set to remove access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The \"If reviewers don't respond\" setting can remove access, approve access, make no change, or take recommendations. With auto-apply results enabled, decisions are applied when the review ends."
+  },
+  {
+   "id": "sc300-103",
+   "domain": "GOV",
+   "stem": "What recommendations do access reviews show reviewers to help their decisions?",
+   "options": [
+    "Suggestions generated from users' email content",
+    "Suggestions copied from the previous year's review",
+    "Suggestions based on users' job satisfaction surveys",
+    "Suggestions based on users' recent sign-in activity"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Reviewer recommendations are based on factors such as whether the user signed in during the last 30 days and, in some cases, peer access, highlighting accounts that likely no longer need access."
+  },
+  {
+   "id": "sc300-104",
+   "domain": "GOV",
+   "stem": "Which access review option asks users' managers to review first and then resource owners?",
+   "options": [
+    "An access review of PIM roles only",
+    "A self-review access review",
+    "A multi-stage access review",
+    "A recurring single-stage review"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Multi-stage reviews chain reviewers in sequence, such as managers then resource owners, and can pass only some decisions to later stages."
+  },
+  {
+   "id": "sc300-105",
+   "domain": "GOV",
+   "stem": "Where can an admin see the progress of an ongoing access review and which reviewers haven't responded?",
+   "options": [
+    "The tenant's company branding page",
+    "The provisioning logs for each user",
+    "The Identity Secure Score recommendations",
+    "The review's results and reviewer progress pages"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Each access review instance shows its status, decisions so far, and reviewers, and admins can send reminders, stop the review, or apply results manually."
+  },
+  {
+   "id": "sc300-106",
+   "domain": "GOV",
+   "stem": "An access review ended, but auto-apply was off. What must the admin do so denied users lose access?",
+   "options": [
+    "Delete the reviewed group",
+    "Assign the users to a new review",
+    "Apply the review results manually",
+    "Restart the review from the beginning"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "If auto-apply is off, decisions take effect only when an admin applies them from the completed review."
+  },
+  {
+   "id": "sc300-107",
+   "domain": "GOV",
+   "stem": "Admins should have the Exchange Administrator role only when they activate it, for up to four hours, with justification. What should you use?",
+   "options": [
+    "An administrative unit with expiry",
+    "A custom role with a time limit",
+    "Permanent active role assignments",
+    "PIM eligible role assignments"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Privileged Identity Management makes users eligible for roles that they activate just in time, with settings such as maximum duration, MFA or authentication context, justification, ticket information, and approval."
+  },
+  {
+   "id": "sc300-108",
+   "domain": "GOV",
+   "stem": "Activation of the Global Administrator role in PIM must be approved by the security team. Where do you configure this?",
+   "options": [
+    "The role's settings in PIM",
+    "The tenant's External collaboration settings",
+    "The Global Administrator's user profile",
+    "The role's Conditional Access policy"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Each role's PIM settings define activation requirements, including requiring approval and choosing approvers."
+  },
+  {
+   "id": "sc300-109",
+   "domain": "GOV",
+   "stem": "Developers need the Contributor role on a production subscription only when deploying fixes. What should you configure?",
+   "options": [
+    "PIM for Azure resources",
+    "An access package with no expiry",
+    "A custom Microsoft Entra role",
+    "PIM for Microsoft Entra roles"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "PIM for Azure resources manages just-in-time access to Azure RBAC roles at management group, subscription, resource group, or resource scope."
+  },
+  {
+   "id": "sc300-110",
+   "domain": "GOV",
+   "stem": "A group grants access to several sensitive apps. Admins want members to activate group membership just in time. What should you use?",
+   "options": [
+    "Dynamic group membership",
+    "PIM for Groups",
+    "An access review of the group",
+    "Group-based licensing"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "PIM for Groups provides eligible, time-bound membership or ownership of security and Microsoft 365 groups, with activation requirements like other PIM roles."
+  },
+  {
+   "id": "sc300-111",
+   "domain": "GOV",
+   "stem": "Where can auditors see who activated privileged roles and when?",
+   "options": [
+    "The custom security attributes page",
+    "The PIM audit history and reports",
+    "The provisioning logs",
+    "The Cloud app catalog"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "PIM keeps resource and my audit history of assignments and activations, including justification and approvers, and it can be exported or sent to Log Analytics through audit logs."
+  },
+  {
+   "id": "sc300-112",
+   "domain": "GOV",
+   "stem": "Which practice does Microsoft recommend for emergency access (break-glass) accounts?",
+   "options": [
+    "A personal Microsoft account owned by the CIO",
+    "An account that's excluded from all monitoring",
+    "One shared synced account with a simple password",
+    "Two cloud-only accounts with strong MFA"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Keep at least two cloud-only emergency accounts with phishing-resistant authentication such as FIDO2, exclude them carefully from policies that could lock everyone out, and alert on every sign-in."
+  },
+  {
+   "id": "sc300-113",
+   "domain": "GOV",
+   "stem": "How should an organization know if an emergency access account is used?",
+   "options": [
+    "Check its last sign-in once a year",
+    "Disable logging for the account",
+    "Rely on users to report its use",
+    "Alert on its sign-ins"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Send sign-in logs to Log Analytics and create alert rules that fire whenever an emergency access account signs in, since these accounts should almost never be used."
+  },
+  {
+   "id": "sc300-114",
+   "domain": "GOV",
+   "stem": "Sign-in logs must be kept for two years for investigations. What should you configure?",
+   "options": [
+    "A longer password expiration policy",
+    "A diagnostic settings export",
+    "A Conditional Access policy for logging",
+    "An access review of all users' sign-ins"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Microsoft Entra keeps sign-in logs for 30 days with P1/P2 licenses. Diagnostic settings stream them to a Log Analytics workspace, storage account, or event hub for longer retention or SIEM integration."
+  },
+  {
+   "id": "sc300-115",
+   "domain": "GOV",
+   "stem": "Logs must be streamed to a third-party SIEM in near real time. Which diagnostic settings destination fits?",
+   "options": [
+    "An Azure storage account",
+    "An application collection",
+    "A Microsoft 365 group",
+    "An Azure event hub"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Event Hubs is the streaming destination for third-party SIEMs. Storage accounts are for archiving, and Log Analytics is for querying and Azure Monitor alerts."
+  },
+  {
+   "id": "sc300-116",
+   "domain": "GOV",
+   "stem": "Which Log Analytics table holds interactive user sign-ins from Microsoft Entra ID?",
+   "options": [
+    "AuditLogs",
+    "SecurityEvent",
+    "AzureActivity",
+    "SigninLogs"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SigninLogs holds interactive user sign-ins. Non-interactive, service principal, and managed identity sign-ins have their own tables, and AuditLogs records directory changes."
+  },
+  {
+   "id": "sc300-117",
+   "domain": "GOV",
+   "stem": "Where do you check why a user wasn't created in a SaaS app by automatic provisioning?",
+   "options": [
+    "The Secure Score page",
+    "The sign-in logs",
+    "The provisioning logs",
+    "The audit logs of the app"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Provisioning logs record each create, update, and delete attempt for provisioned apps, with status and error details."
+  },
+  {
+   "id": "sc300-118",
+   "domain": "GOV",
+   "stem": "Which KQL query finds failed sign-ins in the last day?",
+   "options": [
+    "AuditLogs | where TimeGenerated > ago(1d) and Result == \"Allow\"",
+    "AzureActivity | where Caller == \"failed\" | take 1",
+    "SigninLogs | where TimeGenerated < ago(1d) and ResultType == \"0\"",
+    "SigninLogs | where TimeGenerated > ago(1d) and ResultType != \"0\""
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "In SigninLogs, ResultType \"0\" means success, so filtering for other values over the last day returns failures. AuditLogs records directory changes, not sign-ins."
+  },
+  {
+   "id": "sc300-119",
+   "domain": "GOV",
+   "stem": "Which feature gives a prioritized list of identity security improvements, such as enabling MFA for admins?",
+   "options": [
+    "Company branding",
+    "Identity Secure Score",
+    "Connect Health",
+    "The Cloud app catalog"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Identity Secure Score measures your identity security posture against Microsoft recommendations and lists improvement actions with their score impact."
+  },
+  {
+   "id": "sc300-120",
+   "domain": "GOV",
+   "stem": "Which tool provides prebuilt visual reports, such as Conditional Access insights and sign-in analysis, over Entra logs in Log Analytics?",
+   "options": [
+    "Defender for Cloud Apps catalog",
+    "Microsoft Entra workbooks",
+    "The PIM activation page",
+    "The bulk operations page"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Microsoft Entra workbooks visualize sign-in, audit, and Conditional Access data stored in Log Analytics, such as the Conditional Access insights and reporting workbook."
+  },
+  {
+   "id": "sc300-121",
+   "domain": "GOV",
+   "stem": "Which log shows that an admin added a user to a privileged group yesterday?",
+   "options": [
+    "The audit logs",
+    "The provisioning logs",
+    "The sign-in logs",
+    "The usage and insights report"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Audit logs record directory changes such as user, group, role, and app modifications, including who made them and when."
+  },
+  {
+   "id": "sc300-122",
+   "domain": "GOV",
+   "stem": "Which PIM feature warns admins when privileged roles are assigned outside PIM or aren't being used?",
+   "options": [
+    "Company branding",
+    "Access package policies",
+    "PIM alerts",
+    "Registration campaigns"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "PIM alerts flag risky configurations such as roles assigned outside PIM, too many Global Administrators, or eligible admins who never activate their roles, with remediation steps."
+  },
+  {
+   "id": "sc300-123",
+   "domain": "GOV",
+   "stem": "The security team wants Global Administrators to justify every quarter why they still need the role. What should it configure?",
+   "options": [
+    "An access review of the role in PIM",
+    "A dynamic group of administrators",
+    "A Conditional Access sign-in frequency",
+    "An administrative unit for admins"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Access reviews can target Microsoft Entra roles and Azure resource roles through PIM, asking members to self-review or reviewers to confirm whether privileged assignments are still needed."
+  },
+  {
+   "id": "sc300-124",
+   "domain": "GOV",
+   "stem": "The HR team should manage access packages for HR resources without being Identity Governance Administrators. What should you do?",
+   "options": [
+    "Make them owners of an HR catalog",
+    "Make them owners of every HR app registration",
+    "Assign them the Global Reader role",
+    "Add them to a restricted administrative unit"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Catalog owners can add resources they own and create and manage access packages in their catalog, delegating access management to the business without tenant-wide admin roles."
+  },
+  {
+   "id": "sc300-125",
+   "domain": "GOV",
+   "stem": "Which Log Analytics table holds non-interactive sign-ins, such as token refreshes made by apps on a user's behalf?",
+   "options": [
+    "SigninLogs",
+    "AADServicePrincipalSignInLogs",
+    "AADNonInteractiveUserSignInLogs",
+    "AADManagedIdentitySignInLogs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Non-interactive user sign-ins, which happen without user input, are in AADNonInteractiveUserSignInLogs. Interactive sign-ins are in SigninLogs, and service principal and managed identity sign-ins have their own tables."
+  }
+ ]
+}
