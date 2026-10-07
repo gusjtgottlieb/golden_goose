@@ -113,6 +113,16 @@ export const CERTS = [
     load: () => import("./banks/microsoft-sc-900.json"),
   },
   {
+    id: "microsoft-sc-100",
+    vendor: "Microsoft",
+    code: "SC-100",
+    name: "Cybersecurity Architect",
+    bankSize: 125,
+    fullLength: 50,
+    minutes: 120,
+    load: () => import("./banks/microsoft-sc-100.json"),
+  },
+  {
     id: "microsoft-sc-200",
     vendor: "Microsoft",
     code: "SC-200",
