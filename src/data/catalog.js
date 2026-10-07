@@ -142,6 +142,16 @@ export const CERTS = [
     minutes: 100,
     load: () => import("./banks/microsoft-sc-401.json"),
   },
+  {
+    id: "microsoft-sc-500",
+    vendor: "Microsoft",
+    code: "SC-500",
+    name: "Cloud and AI Security Engineer",
+    bankSize: 125,
+    fullLength: 50,
+    minutes: 100,
+    load: () => import("./banks/microsoft-sc-500.json"),
+  },
 ];
 
 export const findCert = (id) => CERTS.find((c) => c.id === id);
