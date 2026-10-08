@@ -7,7 +7,7 @@
  "minutes": 100,
  "passPercent": 70,
  "readinessPercent": 80,
- "note": "Microsoft scores SC-401 on a 1–1000 scale with 700 to pass. Practice exams here report a straight percentage; treat 80% as your readiness bar.",
+ "note": "Microsoft scores SC-401 on a 1–1000 scale with 700 to pass. Practice exams here report a straight percentage; treat 80% as your readiness bar. Questions follow the skills measured as of October 28, 2026, and Microsoft renames products often, so check current names on Microsoft Learn.",
  "sectioned": true,
  "domains": [
   {
@@ -675,32 +675,32 @@
   {
    "id": "sc401-1-42",
    "domain": "MC",
-   "stem": "Employees in the trading division are sending regulatory non-compliant investment advice in Microsoft Teams. Which Microsoft Purview solution should you configure to detect and review these communications?",
+   "stem": "Endpoint DLP is being rolled out, but some files haven't been evaluated by policy yet. What does just-in-time protection do for those files?",
    "options": [
-    "A Communication Compliance policy using a regulatory compliance template",
-    "An Insider Risk Management data leaks policy targeted at the trading division",
-    "An eDiscovery case with a Teams-location keyword search for regulatory terminology",
-    "A DLP policy targeting Teams messages for financial sensitive information types"
+    "Deletes them from the device until a DLP policy is assigned",
+    "Encrypts them with the default sensitivity label immediately",
+    "Uploads them to SharePoint for scanning before users can open them",
+    "Blocks egress activity on them until policy evaluation completes"
    ],
    "answer": [
-    0
+    3
    ],
-   "explanation": "A is correct. Communication Compliance with the financial-regulatory communications template applies classifiers tuned to detect regulatory non-compliance language — insider-trading indicators, Reg FD violations, fiduciary conflicts, and inappropriate investment advice — in email and Teams messages. D is wrong because DLP detects sensitive DATA (credit cards, SSNs); it cannot infer whether advice is regulatory-compliant. B is wrong because IRM detects user RISK behaviors (downloads, exfiltration) — not message content compliance. C is wrong because eDiscovery searches existing content; it does not provide ongoing supervision or content classification."
+   "explanation": "Just-in-time protection detects and blocks egress activities, such as copying to USB or uploading, on monitored files while DLP policy evaluation completes. A fallback setting decides whether actions are allowed or blocked if classification fails. It doesn't delete, encrypt, or move files."
   },
   {
    "id": "sc401-1-43",
    "domain": "MC",
-   "stem": "The Legal and M&A Advisory teams must be prevented from communicating with each other in Microsoft Teams due to conflict of interest rules. Which Microsoft Purview feature enforces this?",
+   "stem": "An admin needs to see every retention policy and retention label policy that applies to a specific user's mailbox and OneDrive. Which tool fits?",
    "options": [
-    "Microsoft Purview Information Barriers configured between the two organizational segments",
-    "Microsoft Entra ID access packages restricting Teams membership for both groups",
-    "Sensitivity labels with restricted user-based access on shared Teams channels",
-    "Communication Compliance policies monitoring cross-team message content for conflict keywords"
+    "Content explorer filtered by retention label",
+    "An Activity explorer report for the user",
+    "Policy lookup in data lifecycle management",
+    "The Defender for Cloud Apps file policy list"
    ],
    "answer": [
-    0
+    2
    ],
-   "explanation": "A is correct. Information Barriers (IB) define organizational segments and prevent specified segments from communicating in Teams chat/channels, SharePoint sharing, and OneDrive sharing — explicitly designed for ethical walls between groups like Legal/M&A advisory and trading/research. C is wrong because sensitivity labels gate access to CONTENT, not communication between user populations. D is wrong because Communication Compliance MONITORS messages but does not prevent the communication itself. B is wrong because Entra ID access packages govern application/resource access, not interpersonal communication blocks."
+   "explanation": "Policy lookup shows the retention policies and retention label policies assigned to a specific user, site, or Microsoft 365 group, which helps interpret precedence. Content explorer shows labeled items, and Activity explorer shows events."
   },
   {
    "id": "sc401-1-44",
@@ -1393,32 +1393,32 @@
   {
    "id": "sc401-2-40",
    "domain": "MC",
-   "stem": "Who can review flagged communications in a Communication Compliance policy?",
+   "stem": "A user purged an important email from Recoverable Items, but the mailbox is covered by a retention policy. How can an admin recover it?",
    "options": [
-    "Any member of the Communication Compliance role group regardless of policy assignment",
-    "Only users explicitly designated as reviewers when the policy was created",
-    "Any member of the eDiscovery Manager role group assigned to the policy",
-    "Any member of the Compliance Administrator role group in the tenant"
+    "Recreate it from the sender's Sent Items folder only",
+    "Restore it from the user's Deleted Items folder",
+    "Ask Microsoft support to restore the whole mailbox",
+    "Find it with an eDiscovery search, then export it"
    ],
    "answer": [
-    1
+    3
    ],
-   "explanation": "B is correct. Communication Compliance policies have designated reviewers specified at policy creation time. Only users explicitly added as reviewers for that specific policy can access and review the flagged communications — protecting employee privacy by strictly scoping access. D is wrong because Compliance Administrators do not automatically gain review access to flagged content. C is wrong because eDiscovery Manager role does not unlock Communication Compliance review. A is wrong because the Communication Compliance role group has rights only when assigned to that specific policy."
+   "explanation": "Retained items stay in hidden Recoverable Items folders even after users purge them, so an eDiscovery search can find them, and they can be exported (or copied back) to restore them."
   },
   {
    "id": "sc401-2-41",
    "domain": "MC",
-   "stem": "What is the primary purpose of Microsoft Purview Compliance Manager?",
+   "stem": "Sensitive files stored in Box must be detected with the same sensitive information types used in Microsoft Purview DLP. What should you configure?",
    "options": [
-    "Enforcing DLP and retention policies across all Microsoft 365 workloads",
-    "Monitoring and alerting on insider risk behavioral activities using machine learning analytics",
-    "Providing a compliance score and guided improvement actions for compliance with regulations and standards",
-    "Managing sensitivity label configurations and deployment across the entire tenant"
+    "A Defender for Cloud Apps file policy using SITs",
+    "An Endpoint DLP rule for every device that syncs Box",
+    "A SharePoint DLP policy that targets the Box site",
+    "A retention label policy published to Box users"
    ],
    "answer": [
-    2
+    0
    ],
-   "explanation": "C is correct. Compliance Manager helps organizations assess and improve compliance posture against regulations (GDPR, HIPAA, ISO 27001, NIST, etc.). It produces a compliance score based on implemented controls, maps Microsoft controls to regulatory requirements, and offers prioritized improvement actions. A is wrong because Compliance Manager does not enforce DLP/retention — those are dedicated policy solutions. B is wrong because IRM, not Compliance Manager, monitors insider-risk behaviors. D is wrong because sensitivity labels are managed in Information Protection, not Compliance Manager."
+   "explanation": "Defender for Cloud Apps file policies can inspect files in connected apps such as Box using Microsoft Purview data classification (sensitive information types) and apply governance actions. Purview DLP locations don't cover third-party cloud storage directly."
   },
   {
    "id": "sc401-2-42",
@@ -1661,17 +1661,17 @@
   {
    "id": "sc401-3-8",
    "domain": "MC",
-   "stem": "Your financial services organization needs to detect potentially non-compliant investment advice and conflicts of interest in employee email and Teams messages. Which Communication Compliance policy template is designed for this scenario?",
+   "stem": "Files in a connected third-party cloud app should automatically receive a sensitivity label when they contain credit card numbers. What should you configure?",
    "options": [
-    "Regulatory compliance — uses classifiers trained to detect financial regulatory language and potential policy violations",
-    "Custom policy — no built-in template covers financial regulatory compliance scenarios",
-    "Offensive language — uses classifiers to detect harassment, threats, and discriminatory content",
-    "Sensitive information — detects messages containing sensitive information types such as credit card numbers or SSNs"
+    "A default label for SharePoint document libraries",
+    "A label policy that requires users to label manually",
+    "A Defender for Cloud Apps file policy that applies the label",
+    "An auto-labeling policy for Exchange Online only"
    ],
    "answer": [
-    0
+    2
    ],
-   "explanation": "A is correct. The Regulatory compliance template in Communication Compliance uses ML classifiers trained on financial-regulatory language — detecting potential insider-trading indicators, Reg FD violations, fiduciary conflicts, and inappropriate investment advice. Financial-services firms should use this template as a starting point. C (Offensive language) is wrong because it targets harassment/discrimination, not regulatory matters. D (Sensitive information) is wrong because it detects structured DATA types (SSNs, credit cards), not regulatory content. B is wrong because a built-in regulatory compliance template DOES exist — a custom policy isn't required as the starting point."
+   "explanation": "Defender for Cloud Apps file policies can apply a sensitivity label as a governance action to matching files in connected apps. Purview service-side auto-labeling covers Exchange, SharePoint, and OneDrive."
   },
   {
    "id": "sc401-3-9",
@@ -2126,32 +2126,32 @@
   {
    "id": "sc401-3-39",
    "domain": "MC",
-   "stem": "Information Barriers policies in Microsoft 365 restrict communication and collaboration in which workloads?",
+   "stem": "Investigators want short video clips of a user's screen around risky activity, such as copying sensitive files to USB. Which Insider Risk Management feature provides this?",
    "options": [
-    "Microsoft Teams only, with no file-sharing coverage",
-    "Microsoft Teams and SharePoint Online, but not OneDrive",
-    "All Microsoft 365 workloads, including Power BI and Viva",
-    "Microsoft Teams, SharePoint Online, and OneDrive"
+    "Notice templates",
+    "Sequence detection",
+    "Priority user groups",
+    "Forensic evidence"
    ],
    "answer": [
     3
    ],
-   "explanation": "D is correct. Information Barriers enforce communication and collaboration restrictions in: Microsoft Teams (chat and channels), SharePoint Online (sharing), and OneDrive for Business (sharing). B is wrong because OneDrive IS supported. A is wrong because IB extends beyond Teams. C is wrong because IB does not directly enforce in Power BI, Dynamics 365, or Viva — those are not standard IB-enforced workloads."
+   "explanation": "Forensic evidence captures visual clips of security-related user activity on onboarded devices with the Purview client. It's off by default, requires approval before any user is captured, and supports pseudonymization."
   },
   {
    "id": "sc401-3-40",
    "domain": "MC",
-   "stem": "Which role group must a user belong to in order to create and manage Communication Compliance policies in Microsoft Purview?",
+   "stem": "IRM should raise risk when users try to disable antivirus or tamper with endpoint security. Which integration supplies these security policy violation signals?",
    "options": [
-    "Information Protection Admin",
-    "eDiscovery Manager",
-    "Communication Compliance Admins",
-    "Records Management"
+    "Exchange Online mail flow rules",
+    "Microsoft Defender for Endpoint",
+    "Microsoft Entra Connect Health",
+    "Azure Policy guest configuration"
    ],
    "answer": [
-    2
+    1
    ],
-   "explanation": "C is correct. Creating and managing Communication Compliance policies requires the Communication Compliance Admins role group (or a broader one, such as Compliance Administrator). B (eDiscovery Manager) is wrong because eDiscovery rights do not include CC policy creation. D (Records Management) is wrong because that role manages retention/records, not CC. A (Information Protection Admin) is wrong because that role manages sensitivity labels, not CC policies."
+   "explanation": "Security policy violation indicators come from Microsoft Defender for Endpoint alerts, such as attempts to disable security tools or install unwanted software, so Defender for Endpoint must be integrated with Insider Risk Management."
   },
   {
    "id": "sc401-3-41",
@@ -2171,32 +2171,32 @@
   {
    "id": "sc401-3-42",
    "domain": "MC",
-   "stem": "A Communication Compliance policy has 50 specific users in the supervised population. Two supervised users exchange messages with each other. Are those messages captured by the policy?",
+   "stem": "DSPM for AI should show when users paste sensitive data into third-party AI sites, such as ChatGPT, from Windows devices. What's required?",
    "options": [
-    "Only one message per conversation pair is sampled daily to limit captured volume",
-    "Messages between two supervised users are captured",
-    "Messages between supervised users in the same department are excluded by default",
-    "Only messages FROM supervised users TO non-supervised users are captured"
+    "A sensitivity label on every AI website",
+    "A Microsoft 365 Copilot license for every user",
+    "A retention policy for the AI sites' content",
+    "A Purview browser extension on onboarded devices"
    ],
    "answer": [
-    1
+    3
    ],
-   "explanation": "B is correct. Communication Compliance captures inbound, outbound, AND internal communications for supervised users. Messages exchanged between two supervised users are fully in scope — the policy captures the complete communication universe of supervised users. D is wrong because internal messages between supervised users ARE captured, not excluded. A is wrong because there is no daily one-message sampling — the policy captures messages per its conditions. C is wrong because same-department supervised users are NOT excluded by default."
+   "explanation": "Visibility into third-party generative AI sites requires devices onboarded to Microsoft Purview and the Purview browser extension (for Chrome; Edge has the integration built in), so Endpoint DLP and Insider Risk Management can detect the activity."
   },
   {
    "id": "sc401-3-43",
    "domain": "MC",
-   "stem": "A Compliance Manager assessment shows a score of 420/1000 for GDPR. What does this score primarily reflect?",
+   "stem": "Which prerequisite must be in place for DSPM for AI to show users' interactions with Microsoft 365 Copilot?",
    "options": [
-    "The estimated dollar value of potential GDPR fines avoided through current compliance controls",
-    "The number of GDPR articles Litware is fully compliant with out of 1,000 regulatory articles",
-    "The weighted percentage of GDPR improvement actions that have been implemented and validated",
-    "The number of days since the last GDPR-related data breach was reported to the supervisory authority"
+    "A custom trainable classifier is published",
+    "Microsoft Purview auditing is turned on",
+    "Every user has a Defender for Endpoint license",
+    "Information Barriers are configured"
    ],
    "answer": [
-    2
+    1
    ],
-   "explanation": "C is correct. Compliance Manager scores reflect the weighted percentage of improvement actions implemented and validated, mapped to the selected regulation. Each action carries a point value based on risk impact and control importance. A higher score means more controls are implemented. B is wrong because the score is not a count of articles complied with — it is action-implementation weighted. A is wrong because the score is not a financial fine estimate. D is wrong because the score does not reflect time since last breach."
+   "explanation": "DSPM for AI uses audit data for Microsoft 365 Copilot interactions, so Microsoft Purview auditing must be enabled (it is by default) and users must be licensed for Copilot."
   },
   {
    "id": "sc401-3-44",
