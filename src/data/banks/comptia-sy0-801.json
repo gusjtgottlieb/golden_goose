@@ -131,17 +131,17 @@
   {
    "id": "sy0801-7",
    "domain": "GSC",
-   "stem": "In a Zero Trust architecture, which component decides whether to grant a subject access to a resource?",
+   "stem": "Which Zero Trust principle tells defenders to design controls as though an attacker is already inside the network?",
    "options": [
-    "The data plane",
-    "The internal DNS resolver",
-    "The policy engine",
-    "The bastion or jump server"
+    "Implicit trust",
+    "Security through obscurity",
+    "Assume breach",
+    "Fail open"
    ],
    "answer": [
     2
    ],
-   "explanation": "In the control plane, the policy engine makes access decisions and the policy administrator carries them out. Policy enforcement points in the data plane allow or block traffic accordingly."
+   "explanation": "Assume breach means limiting the blast radius with segmentation, least privilege, and continuous verification, rather than relying on a trusted internal network."
   },
   {
    "id": "sy0801-8",
@@ -721,7 +721,7 @@
     "Supply chain-based",
     "Message-based (SMS)",
     "Signal-based (RF)",
-    "Physical-based (removable media)"
+    "External media-based (USB)"
    ],
    "answer": [
     1
@@ -2771,17 +2771,17 @@
   {
    "id": "sy0801-183",
    "domain": "OPS",
-   "stem": "Which incident response phase comes right before eradication?",
+   "stem": "A ransomware group demands payment, and the organization engages specialists and legal counsel to communicate with the attackers. Which incident response activity is this?",
    "options": [
-    "Lessons learned",
-    "Recovery",
     "Containment",
-    "Preparation"
+    "Post-incident",
+    "Negotiation",
+    "Eradication/recovery"
    ],
    "answer": [
     2
    ],
-   "explanation": "A common sequence is preparation, detection/identification, analysis, containment, eradication, recovery, and lessons learned. Containment limits damage before eradication."
+   "explanation": "SY0-801 lists negotiation as an incident response activity alongside containment and eradication/recovery. Any decision about paying a ransom involves leadership and counsel because of legal and sanctions risks."
   },
   {
    "id": "sy0801-184",
@@ -2819,7 +2819,7 @@
    "stem": "An infected laptop is disconnected from the network but left powered on for analysis. Which phase is this?",
    "options": [
     "Preparation",
-    "Lessons learned",
+    "Post-incident",
     "Eradication",
     "Containment"
    ],
@@ -2833,15 +2833,15 @@
    "domain": "OPS",
    "stem": "After an incident is resolved, the team meets to discuss what went well and what to improve. Which phase is this?",
    "options": [
-    "Eradication",
-    "Identification and scoping",
-    "Containment of the threat",
-    "Lessons learned"
+    "Eradication and recovery",
+    "Identification and detection",
+    "Containment and isolation",
+    "Post-incident (lessons learned)"
    ],
    "answer": [
     3
    ],
-   "explanation": "Lessons learned reviews the response, identifies root causes, and drives improvements to controls, plans, and training."
+   "explanation": "Post-incident activities include lessons learned, root cause analysis, and post-incident reporting, which drive improvements to controls, plans, and training."
   },
   {
    "id": "sy0801-188",
