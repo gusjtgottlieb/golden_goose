@@ -1,0 +1,1912 @@
+{
+ "id": "microsoft-sc-100",
+ "vendor": "Microsoft",
+ "code": "SC-100",
+ "name": "Microsoft Certified: Cybersecurity Architect Expert",
+ "fullLength": 50,
+ "minutes": 120,
+ "passPercent": 70,
+ "readinessPercent": 80,
+ "sectioned": false,
+ "note": "Microsoft scores SC-100 on a 1–1000 scale with 700 to pass. This practice exam reports a straight percentage; treat 80% as your readiness bar. Questions follow the skills measured as of October 21, 2026. The real exam includes case studies, which this practice exam doesn't simulate.",
+ "domains": [
+  {
+   "id": "BPR",
+   "name": "Design solutions that align with security best practices and priorities",
+   "weight": "20–25%"
+  },
+  {
+   "id": "SOI",
+   "name": "Design security operations, identity, and compliance capabilities",
+   "weight": "25–30%"
+  },
+  {
+   "id": "INF",
+   "name": "Design security solutions for infrastructure",
+   "weight": "25–30%"
+  },
+  {
+   "id": "APD",
+   "name": "Design security solutions for applications and data",
+   "weight": "20–25%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "sc100-1",
+   "domain": "BPR",
+   "stem": "According to Microsoft's ransomware guidance, what should be the first priority when designing protection?",
+   "options": [
+    "Move every workload to a single cloud region",
+    "Block all email attachments organization-wide",
+    "Prepare a recovery plan with protected backups",
+    "Buy cyber insurance before any other control"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft's ransomware guidance prioritizes, in order: prepare a recovery plan so you can recover without paying, limit the scope of damage by protecting privileged roles, and make it harder for attackers to get in."
+  },
+  {
+   "id": "sc100-2",
+   "domain": "BPR",
+   "stem": "Attackers commonly try to destroy backups before encrypting data. Which backup design best counters this?",
+   "options": [
+    "Backups stored on the same file server as the data",
+    "Immutable, isolated backups with MUA",
+    "A single backup copy kept for seven days",
+    "Backups that any domain admin can delete instantly"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Protect backups with immutability, soft delete, separate credentials or tenants, and multi-user authorization (MUA) so a compromised admin can't delete them. Test restores regularly."
+  },
+  {
+   "id": "sc100-3",
+   "domain": "BPR",
+   "stem": "After a recovery plan, what does Microsoft's ransomware guidance prioritize next to limit the scope of damage?",
+   "options": [
+    "Encrypting all email messages",
+    "Protecting privileged access",
+    "Upgrading all network switches",
+    "Training users on password length"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Ransomware operators rely on privileged accounts to spread and disable defenses, so securing privileged access — with the enterprise access model, PIM, and privileged access workstations — limits the blast radius."
+  },
+  {
+   "id": "sc100-4",
+   "domain": "BPR",
+   "stem": "How should a security architect prioritize threats when designing a business resiliency strategy?",
+   "options": [
+    "By how recently each threat appeared in the news",
+    "By the number of alerts each threat generated last year",
+    "By impact on business-critical assets and processes",
+    "By the cost of the cheapest available control"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Resiliency planning starts with identifying business-critical assets and processes and the threats most likely to disrupt them, so investment goes where impact is highest."
+  },
+  {
+   "id": "sc100-5",
+   "domain": "BPR",
+   "stem": "A hybrid and multicloud estate needs consistent backup protection. What should the design include?",
+   "options": [
+    "Snapshots that share credentials with production",
+    "Backups only for Azure workloads, not other clouds",
+    "Central backup policies with tested restores",
+    "Separate unmanaged backup scripts for each server"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "A BCDR design should centrally govern backups across environments (for example, with Azure Backup, Backup center, and Azure Business Continuity Center), protect them from tampering, and routinely test restoration against recovery objectives."
+  },
+  {
+   "id": "sc100-6",
+   "domain": "BPR",
+   "stem": "Servers across Azure, on-premises, and other clouds must be patched consistently. Which solution fits?",
+   "options": [
+    "Azure Backup instant restore",
+    "Azure Update Manager with Azure Arc",
+    "Defender for Storage scans",
+    "Manual patching by each server owner"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Azure Update Manager assesses and deploys updates for Azure VMs and Arc-enabled servers across environments, with schedules and compliance reporting. Defender Vulnerability Management helps prioritize what to fix."
+  },
+  {
+   "id": "sc100-7",
+   "domain": "BPR",
+   "stem": "Which metric best shows whether an organization can survive a ransomware attack without paying?",
+   "options": [
+    "Count of security tools purchased",
+    "Percentage of users with long passwords",
+    "Tested recovery time for critical systems",
+    "Number of firewall rules configured"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "If critical systems can be restored from protected backups within acceptable recovery time and point objectives, the organization doesn't depend on paying the ransom."
+  },
+  {
+   "id": "sc100-8",
+   "domain": "BPR",
+   "stem": "Which Microsoft resource provides diagrams of Microsoft security capabilities and how they integrate with each other and third-party tools?",
+   "options": [
+    "The Cybersecurity Reference Architectures (MCRA)",
+    "The Azure pricing calculator and TCO tools",
+    "The Azure status page",
+    "The Microsoft 365 public roadmap site"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "MCRA describes Microsoft's cybersecurity capabilities, how they map to Zero Trust and common architectures, and how they integrate with multicloud and third-party technologies."
+  },
+  {
+   "id": "sc100-9",
+   "domain": "BPR",
+   "stem": "Which framework provides prescriptive, cloud-agnostic security controls that Defender for Cloud uses by default?",
+   "options": [
+    "The Azure Well-Architected cost pillar",
+    "The MITRE ATT&CK for ICS matrix of techniques",
+    "The Microsoft 365 adoption guide",
+    "The Microsoft cloud security benchmark"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "MCSB provides security controls and guidance across domains such as network, identity, data, and DevOps, with mappings to standards like CIS and NIST. It's Defender for Cloud's default standard."
+  },
+  {
+   "id": "sc100-10",
+   "domain": "BPR",
+   "stem": "Which practice best protects against software supply chain attacks?",
+   "options": [
+    "Download libraries from any public mirror available",
+    "Verify dependencies; sign and scan artifacts",
+    "Skip code review for trusted vendors",
+    "Give build agents Owner rights on production"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Supply chain controls include dependency scanning, approved package sources, signed artifacts, least-privilege build pipelines, and reviewing third-party access."
+  },
+  {
+   "id": "sc100-11",
+   "domain": "BPR",
+   "stem": "Which control best reduces insider risk for highly privileged administrators?",
+   "options": [
+    "A shared admin account for the whole IT team",
+    "Just-in-time access with monitoring and approval",
+    "Disabling audit logs to protect admin privacy",
+    "Permanent Global Administrator rights for all admins"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Just-in-time, approved, and monitored privileged access limits what any insider can do and creates accountability. Insider Risk Management adds behavior-based detection."
+  },
+  {
+   "id": "sc100-12",
+   "domain": "BPR",
+   "stem": "An organization is designing AI workloads. Which source should guide the security controls for them in Azure?",
+   "options": [
+    "The MCSB guidance for AI workloads",
+    "The Microsoft 365 licensing guide",
+    "The MITRE ATT&CK Mobile matrix",
+    "The Azure pricing calculator for AI services"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "The Microsoft cloud security benchmark includes AI security guidance — such as protecting models, data, and AI endpoints — that Defender for Cloud can assess."
+  },
+  {
+   "id": "sc100-13",
+   "domain": "BPR",
+   "stem": "What does the Zero Trust adoption framework help an organization do?",
+   "options": [
+    "Replace every firewall with a single cloud product",
+    "Certify the organization as Zero Trust compliant",
+    "Plan Zero Trust by business scenario, in phases",
+    "Remove the need for identity verification"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The Zero Trust adoption framework organizes adoption into business scenarios — such as rapidly modernizing security posture, securing remote work, and preventing business damage from a breach — with phased, measurable steps."
+  },
+  {
+   "id": "sc100-14",
+   "domain": "BPR",
+   "stem": "Which is one of the three Zero Trust principles?",
+   "options": [
+    "Trust the corporate network",
+    "Use least-privilege access",
+    "Allow all internal traffic",
+    "Verify users once a year"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Zero Trust rests on verify explicitly, use least-privilege access, and assume breach."
+  },
+  {
+   "id": "sc100-15",
+   "domain": "BPR",
+   "stem": "Which part of the Cloud Adoption Framework provides guidance for security throughout the cloud adoption journey?",
+   "options": [
+    "The Migrate methodology",
+    "The Innovate methodology",
+    "The Plan methodology",
+    "The Secure methodology"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The CAF Secure methodology describes how to improve security over the adoption journey, covering risk insights, security integration, and resilience, alongside the Govern and Manage methodologies."
+  },
+  {
+   "id": "sc100-16",
+   "domain": "BPR",
+   "stem": "An organization wants a repeatable, policy-governed foundation for new Azure subscriptions. What should the architect recommend?",
+   "options": [
+    "Manually configured subscriptions per request",
+    "Azure landing zones with a management group hierarchy",
+    "One subscription shared by every application team",
+    "A separate Microsoft Entra tenant per workload"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Azure landing zones provide a scalable architecture with management groups, policy-driven governance, identity, networking, and management baselines, so new subscriptions inherit security controls."
+  },
+  {
+   "id": "sc100-17",
+   "domain": "BPR",
+   "stem": "In an Azure landing zone design, where should security policies be assigned so they apply to all application subscriptions?",
+   "options": [
+    "At the tenant's company branding settings",
+    "On each individual resource after deployment",
+    "In each application's source code repository",
+    "At a management group above the subscriptions"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Assigning Azure Policy and RBAC at management groups lets governance inherit down to every subscription in the hierarchy, including new ones."
+  },
+  {
+   "id": "sc100-18",
+   "domain": "BPR",
+   "stem": "Which Azure Well-Architected Framework pillar covers protecting workloads against threats?",
+   "options": [
+    "Operational Excellence",
+    "Security",
+    "Performance Efficiency",
+    "Cost Optimization"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The Security pillar provides design principles and recommendations for confidentiality, integrity, and availability of workloads. The other pillars are Reliability, Cost Optimization, Operational Excellence, and Performance Efficiency."
+  },
+  {
+   "id": "sc100-19",
+   "domain": "BPR",
+   "stem": "What's the core idea of a DevSecOps process?",
+   "options": [
+    "Let the security team write all application code",
+    "Add a security review only after production release",
+    "Build security checks into every stage",
+    "Remove automated testing to speed up delivery"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "DevSecOps \"shifts left,\" building security into planning, coding, building, and deployment — with threat modeling, code and secret scanning, dependency checks, and IaC scanning in pipelines."
+  },
+  {
+   "id": "sc100-20",
+   "domain": "BPR",
+   "stem": "Which tool set helps find exposed secrets, vulnerable dependencies, and code flaws in GitHub repositories?",
+   "options": [
+    "Microsoft Purview eDiscovery",
+    "GitHub Advanced Security",
+    "Azure Bastion",
+    "Azure Update Manager"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "GitHub Advanced Security provides secret scanning, code scanning, and dependency review. Defender for Cloud DevOps security can bring these findings into posture management."
+  },
+  {
+   "id": "sc100-21",
+   "domain": "BPR",
+   "stem": "An organization wants employees to use generative AI safely. What should the AI adoption strategy include first?",
+   "options": [
+    "A ban on every AI tool with no alternatives",
+    "Governance, approved tools, and data controls",
+    "Unrestricted use of any public AI service",
+    "AI use only by the security team"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A secure AI adoption strategy defines governance and acceptable use, provides approved AI tools, protects sensitive data with labels and DLP, and monitors AI use, rather than banning AI or allowing everything."
+  },
+  {
+   "id": "sc100-22",
+   "domain": "BPR",
+   "stem": "Which CAF governance practice helps keep security standards enforced automatically as teams deploy resources?",
+   "options": [
+    "Manual approvals for every deployment",
+    "Separate tenants for each developer",
+    "Monthly spreadsheets of resources",
+    "Policy as code with Azure Policy"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defining governance as code with Azure Policy initiatives, assigned at management groups and versioned in source control, enforces standards consistently and at scale."
+  },
+  {
+   "id": "sc100-23",
+   "domain": "SOI",
+   "stem": "An organization wants detection and response across endpoints, identities, email, and cloud apps, plus third-party logs. What should the architect recommend?",
+   "options": [
+    "Defender for Endpoint alone",
+    "Azure Monitor metrics and alerts alone",
+    "A separate SIEM for each security product",
+    "Defender XDR with Microsoft Sentinel"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defender XDR correlates Microsoft workload signals, and Sentinel adds SIEM for third-party and custom data, with both managed together in the Defender portal."
+  },
+  {
+   "id": "sc100-24",
+   "domain": "SOI",
+   "stem": "Microsoft 365 activity must be retained and searchable for forensic investigations for a year. Which solution fits?",
+   "options": [
+    "Defender for Endpoint timeline",
+    "Microsoft Secure Score history reports",
+    "Microsoft Purview Audit (Premium)",
+    "Azure Advisor security recommendations"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Audit (Premium) retains key workload audit records for a year by default (longer with add-ons or custom policies) and adds intelligent insights for investigations."
+  },
+  {
+   "id": "sc100-25",
+   "domain": "SOI",
+   "stem": "An organization has workloads in AWS and GCP. How should it centralize their security logs?",
+   "options": [
+    "Email daily log exports to the SOC",
+    "Store them in a shared Excel workbook",
+    "Ingest them into Sentinel with connectors",
+    "Leave each cloud's logs only in that cloud"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Sentinel has connectors for AWS (such as CloudTrail via S3) and GCP, so the SOC can correlate multicloud activity in one place. Defender for Cloud connectors cover posture."
+  },
+  {
+   "id": "sc100-26",
+   "domain": "SOI",
+   "stem": "Common response steps, like isolating devices and disabling users, should run consistently and fast. What should the design include?",
+   "options": [
+    "Separate tools with no integration",
+    "Manual steps documented in a wiki only",
+    "SOAR with playbooks and XDR automation",
+    "A rule that closes all low-severity incidents"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Automation rules and playbooks in Sentinel, plus automated investigation and response and attack disruption in Defender XDR, provide SOAR capabilities that standardize and accelerate response."
+  },
+  {
+   "id": "sc100-27",
+   "domain": "SOI",
+   "stem": "How should an architect evaluate whether detections cover an organization's most likely threats?",
+   "options": [
+    "Map detections to MITRE ATT&CK techniques",
+    "Compare the SOC headcount to peers",
+    "Check how many alerts were closed",
+    "Count the number of analytics rules enabled"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Mapping detections to ATT&CK techniques — Enterprise, Mobile, or ICS as relevant — shows coverage gaps against techniques used by threat actors that target the organization."
+  },
+  {
+   "id": "sc100-28",
+   "domain": "SOI",
+   "stem": "A manufacturer runs industrial control systems. Which MITRE ATT&CK matrix should guide its OT detection coverage?",
+   "options": [
+    "ATT&CK for Enterprise only",
+    "ATT&CK for Containers only",
+    "ATT&CK for Mobile",
+    "ATT&CK for ICS"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "ATT&CK for ICS describes adversary behavior against industrial control systems, which differs from IT-focused enterprise techniques."
+  },
+  {
+   "id": "sc100-29",
+   "domain": "SOI",
+   "stem": "Which practice should a SOC workflow design include to find threats that evade existing detections?",
+   "options": [
+    "Closing incidents after 24 hours",
+    "Reviewing alerts once a month",
+    "Running hypothesis-driven hunts",
+    "Disabling noisy data sources"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Proactive hunting with hypotheses based on threat intelligence uncovers activity that rules miss, and successful hunts become new detections."
+  },
+  {
+   "id": "sc100-30",
+   "domain": "SOI",
+   "stem": "AI agents across the organization need governed identities and access policies like other identities. What should the architect recommend?",
+   "options": [
+    "API keys embedded in each agent",
+    "Shared user accounts for all agents",
+    "Entra Agent ID with Conditional Access",
+    "One Global Administrator account per agent"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft Entra Agent ID gives agents their own identities, created from blueprints, so Conditional Access, ID Protection, governance, and logging apply to them."
+  },
+  {
+   "id": "sc100-31",
+   "domain": "SOI",
+   "stem": "Partners should prove facts, such as current employment, with credentials they control, without the organization federating with each partner. Which technology fits?",
+   "options": [
+    "Cross-tenant synchronization",
+    "Seamless single sign-on",
+    "Microsoft Entra Verified ID",
+    "Password hash synchronization"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Verified ID implements decentralized identity with verifiable credentials that holders store and present, and verifiers can check them without direct integration with the issuer."
+  },
+  {
+   "id": "sc100-32",
+   "domain": "SOI",
+   "stem": "Which design best supports modern authentication and authorization for a Zero Trust strategy?",
+   "options": [
+    "Conditional Access with risk and CAE",
+    "One policy that allows every sign-in",
+    "Network location as the only access control",
+    "Passwords that never expire and no MFA"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Conditional Access evaluates identity, device, location, and risk signals, and continuous access evaluation revokes access quickly when conditions change — central to verifying explicitly."
+  },
+  {
+   "id": "sc100-33",
+   "domain": "SOI",
+   "stem": "How should an architect validate that Conditional Access policies align with Zero Trust?",
+   "options": [
+    "Verify that admins are excluded from all policies",
+    "Check coverage of users, apps, and risks",
+    "Count the total number of policies created",
+    "Confirm that every policy is in report-only mode"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Validate that policies cover all users and apps (with minimal, monitored exclusions), require strong authentication, use device and risk signals, and block legacy authentication. Gaps, not policy count, matter."
+  },
+  {
+   "id": "sc100-34",
+   "domain": "SOI",
+   "stem": "Changes to Conditional Access policies themselves should require phishing-resistant MFA. What should the design use?",
+   "options": [
+    "Report-only mode for policies",
+    "Terms of use",
+    "Protected actions",
+    "Named locations for admins"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Protected actions tie sensitive operations, such as modifying Conditional Access policies, to an authentication context that Conditional Access can require stronger authentication for."
+  },
+  {
+   "id": "sc100-35",
+   "domain": "SOI",
+   "stem": "Which requirement best hardens on-premises Active Directory Domain Services?",
+   "options": [
+    "NTLMv1 enabled for legacy compatibility",
+    "Domain Admin rights for all helpdesk staff",
+    "Admin tiering plus Windows LAPS",
+    "The same local admin password on every server"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "AD hardening includes separating privileged accounts, using LAPS for unique local admin passwords, disabling legacy protocols, using the Protected Users group, and monitoring with Defender for Identity."
+  },
+  {
+   "id": "sc100-36",
+   "domain": "SOI",
+   "stem": "An organization needs centralized management of secrets, keys, and certificates for apps, with HSM-backed keys for sensitive workloads. What should the architect recommend?",
+   "options": [
+    "A shared spreadsheet of keys",
+    "Secrets stored in each app's config file",
+    "Key Vault, plus Managed HSM where needed",
+    "Certificates emailed to developers"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Key Vault centralizes secrets, keys, and certificates with RBAC, logging, and rotation. Managed HSM offers single-tenant, FIPS 140-3 Level 3 validated HSMs for the most sensitive keys."
+  },
+  {
+   "id": "sc100-37",
+   "domain": "SOI",
+   "stem": "Users need secure access to SaaS apps, on-premises web apps, and private resources. Which combination fits a Zero Trust design?",
+   "options": [
+    "Public exposure of all internal apps",
+    "Separate passwords for each application",
+    "A single VPN that allows full network access",
+    "Entra SSO, Conditional Access, Private Access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Centralizing app access on Entra ID with SSO and Conditional Access, and using Private Access for private apps, applies identity-based, per-app controls instead of broad network trust."
+  },
+  {
+   "id": "sc100-38",
+   "domain": "SOI",
+   "stem": "An organization uses AWS and GCP alongside Azure. How should identities be designed?",
+   "options": [
+    "Use static access keys for all admins",
+    "Create separate local accounts in each cloud",
+    "Federate everything with Entra ID",
+    "Share one root account across clouds"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Federating other clouds' consoles and workloads with Microsoft Entra ID centralizes authentication, MFA, Conditional Access, and lifecycle management, and avoids standing local credentials."
+  },
+  {
+   "id": "sc100-39",
+   "domain": "SOI",
+   "stem": "In Microsoft's enterprise access model, which plane includes identity systems and other assets that control the whole environment?",
+   "options": [
+    "The data and workload plane",
+    "The app access plane",
+    "The control plane",
+    "The user access plane"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The enterprise access model separates the control plane (identity and other systems with broad control), management plane, data/workload plane, and user and app access paths, replacing the older tiering model."
+  },
+  {
+   "id": "sc100-40",
+   "domain": "SOI",
+   "stem": "Admins who manage the control plane should use which kind of device?",
+   "options": [
+    "Their regular email device",
+    "Any personal laptop with antivirus",
+    "A privileged access workstation",
+    "A shared kiosk in the office"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Privileged access workstations are hardened, dedicated devices for sensitive administration, reducing the risk that phishing or malware on productivity devices leads to privileged compromise."
+  },
+  {
+   "id": "sc100-41",
+   "domain": "SOI",
+   "stem": "How should an architect evaluate the governance of privileged Microsoft Entra roles?",
+   "options": [
+    "Check PIM, approvals, and access reviews",
+    "Count how many Global Administrators exist only",
+    "Verify that admins never use MFA",
+    "Confirm that all roles are permanently active"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Strong governance uses PIM for just-in-time roles, approvals for the most privileged roles, entitlement management for access requests, and access reviews to remove unneeded access."
+  },
+  {
+   "id": "sc100-42",
+   "domain": "SOI",
+   "stem": "Which design best protects AD DS against common attacks like credential theft and lateral movement?",
+   "options": [
+    "Let domain admins sign in to every workstation",
+    "Use the krbtgt password indefinitely",
+    "Tiered admin logons plus Defender for Identity",
+    "Disable all auditing on domain controllers"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Prevent privileged credentials from being exposed on lower-trust systems, rotate the krbtgt account periodically, and monitor DCs with Defender for Identity for attacks like DCSync and pass-the-ticket."
+  },
+  {
+   "id": "sc100-43",
+   "domain": "SOI",
+   "stem": "Administration of SaaS apps and multicloud consoles should be secured. What should the design require?",
+   "options": [
+    "Admin access from any device without checks",
+    "Shared admin accounts for each SaaS app",
+    "Long-lived access keys for console sign-in",
+    "Phishing-resistant MFA and JIT admin roles"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Use separate admin identities, phishing-resistant authentication, just-in-time elevation, and compliant privileged devices for tenant and cloud console administration."
+  },
+  {
+   "id": "sc100-44",
+   "domain": "SOI",
+   "stem": "An organization needs to discover and right-size excessive permissions across Azure, AWS, and GCP. Which capability fits?",
+   "options": [
+    "Cloud infrastructure entitlement management (CIEM)",
+    "Self-service password reset for admins",
+    "Microsoft Purview eDiscovery (Premium) cases",
+    "Azure Update Manager"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CIEM analyzes identities' granted versus used permissions across clouds and recommends removing excessive access. Defender for Cloud provides CIEM capabilities as part of Defender CSPM."
+  },
+  {
+   "id": "sc100-45",
+   "domain": "SOI",
+   "stem": "Admins need remote access to privileged systems from home. Which design is most secure?",
+   "options": [
+    "A shared VPN account for all admins",
+    "PAWs plus Bastion or Private Access",
+    "Direct RDP over the internet to each server",
+    "Remote desktop tools installed on servers by users"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Combine privileged access workstations, strong Conditional Access, and brokered, identity-aware access such as Azure Bastion or Private Access, avoiding exposed management ports."
+  },
+  {
+   "id": "sc100-46",
+   "domain": "SOI",
+   "stem": "How should access reviews be evaluated as part of privileged access governance?",
+   "options": [
+    "Whether they run regularly and remove access automatically",
+    "Whether they run once when the tenant is created",
+    "Whether they exclude all privileged roles",
+    "Whether reviewers can approve everyone without reading"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Effective reviews recur, use appropriate reviewers, cover privileged roles and guests, and apply results automatically so unneeded access is actually removed."
+  },
+  {
+   "id": "sc100-47",
+   "domain": "SOI",
+   "stem": "A regulation requires that personal data be encrypted and access to it logged. What should the architect do first?",
+   "options": [
+    "Map requirements to specific controls",
+    "Wait for an audit to find the gaps",
+    "Ask each team to interpret it on their own",
+    "Buy every available compliance add-on"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Architects map regulatory requirements to concrete controls — such as encryption with managed keys, access control, and audit logging — and then to technologies and policies that implement them."
+  },
+  {
+   "id": "sc100-48",
+   "domain": "SOI",
+   "stem": "Which Microsoft Purview solution helps track compliance against regulations with assessments and improvement actions?",
+   "options": [
+    "Compliance Manager",
+    "Insider Risk Management",
+    "Communication Compliance",
+    "eDiscovery (Premium)"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Compliance Manager provides regulation templates, improvement actions, and a compliance score to track progress. Other Purview solutions implement specific controls."
+  },
+  {
+   "id": "sc100-49",
+   "domain": "SOI",
+   "stem": "Azure resources must comply with a data residency requirement that allows only two EU regions. Which control enforces it?",
+   "options": [
+    "An Entra ID access review",
+    "A Purview sensitivity label",
+    "A Defender for Cloud alert rule",
+    "An Azure Policy for allowed locations"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "The Allowed locations built-in policy denies deployments to other regions. Assigned at a management group, it applies to all subscriptions beneath it."
+  },
+  {
+   "id": "sc100-50",
+   "domain": "SOI",
+   "stem": "How can an architect validate that Azure workloads align with PCI DSS?",
+   "options": [
+    "Review the Entra ID sign-in logs",
+    "Check Microsoft Secure Score for Microsoft 365",
+    "Count the number of firewalls deployed",
+    "Add PCI DSS to Defender for Cloud"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defender for Cloud's regulatory compliance dashboard assesses resources against standards such as PCI DSS, showing passing and failing controls."
+  },
+  {
+   "id": "sc100-51",
+   "domain": "SOI",
+   "stem": "Which design best enforces a compliance control that all storage accounts use customer-managed keys?",
+   "options": [
+    "A Sentinel workbook of storage accounts",
+    "An Azure Policy in deny or audit mode",
+    "A wiki page describing the rule",
+    "A quarterly email reminder to owners"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Azure Policy can audit or deny resources that don't meet requirements, such as storage accounts without customer-managed keys, providing continuous enforcement and evidence."
+  },
+  {
+   "id": "sc100-52",
+   "domain": "SOI",
+   "stem": "A requirement says \"retain financial records for seven years and prevent deletion.\" Which Purview capability implements it?",
+   "options": [
+    "Sensitivity labels with encryption",
+    "Retention labels that declare records",
+    "Communication Compliance policies",
+    "Information Barriers between departments"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Records management uses retention labels that keep content for a set period and, when declared as records, restrict editing and deletion."
+  },
+  {
+   "id": "sc100-53",
+   "domain": "SOI",
+   "stem": "What's a sound approach when Microsoft-managed controls are part of a compliance assessment?",
+   "options": [
+    "Remove those workloads from the assessment",
+    "Ignore them because they can't be verified",
+    "Duplicate them with customer controls anyway",
+    "Use Microsoft's audit reports for those controls"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Under shared responsibility, Microsoft documents its controls in audit reports on the Service Trust Portal, and Compliance Manager credits Microsoft-managed actions. Customers focus on their own controls."
+  },
+  {
+   "id": "sc100-54",
+   "domain": "SOI",
+   "stem": "An organization must detect and respond to sign-in risk across its workforce. Which component belongs in the identity design?",
+   "options": [
+    "A weekly manual review of all sign-ins",
+    "ID Protection with risk-based policies",
+    "Disabled MFA for frequent travelers",
+    "A static list of trusted IPs only"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "ID Protection scores user and sign-in risk using Microsoft's signals, and risk-based Conditional Access requires MFA or password changes automatically."
+  },
+  {
+   "id": "sc100-55",
+   "domain": "SOI",
+   "stem": "Which logging design best supports investigations across Microsoft 365, Azure, and on-premises systems?",
+   "options": [
+    "Screenshots of consoles saved by analysts",
+    "Each system keeps its own logs for seven days",
+    "Central collection in Sentinel with defined retention",
+    "Logs collected only after an incident occurs"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Centralizing security-relevant logs in Sentinel (with analytics and data lake tiers for retention) and Purview Audit for Microsoft 365 enables correlation and long-term investigation."
+  },
+  {
+   "id": "sc100-56",
+   "domain": "SOI",
+   "stem": "What should a SOC's incident management design include so lessons improve defenses?",
+   "options": [
+    "Blaming individual analysts for misses",
+    "Holding reviews that update detections",
+    "Ignoring false positives entirely",
+    "Deleting incident records after closure"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Post-incident reviews identify gaps in prevention, detection, and response, and feed improvements into analytics rules, playbooks, and controls."
+  },
+  {
+   "id": "sc100-57",
+   "domain": "SOI",
+   "stem": "How should an organization manage certificates for hundreds of web apps to avoid outages from expired certificates?",
+   "options": [
+    "Track expiry dates in a spreadsheet",
+    "Issue certificates that never expire",
+    "Automate renewal through Key Vault",
+    "Let each team buy certificates manually"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Key Vault can issue and auto-renew certificates through integrated certificate authorities, and services such as App Service can use the renewed certificates automatically."
+  },
+  {
+   "id": "sc100-58",
+   "domain": "INF",
+   "stem": "Which tool gives a single posture view across Azure, AWS, GCP, and on-premises servers?",
+   "options": [
+    "Azure Advisor recommendations",
+    "Azure Bastion session logs",
+    "Microsoft Defender for Cloud",
+    "Microsoft Purview Audit"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Defender for Cloud assesses posture across Azure, AWS, GCP, and Arc-enabled servers against MCSB and other standards, with recommendations and secure score."
+  },
+  {
+   "id": "sc100-59",
+   "domain": "INF",
+   "stem": "Which score measures security posture across Microsoft 365, identity, and devices?",
+   "options": [
+    "Microsoft Secure Score",
+    "Azure Advisor reliability score",
+    "Compliance score",
+    "Microsoft Adoption Score"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Microsoft Secure Score in the Defender portal measures posture for identities, devices, apps, and data across Microsoft 365 workloads, with improvement actions."
+  },
+  {
+   "id": "sc100-60",
+   "domain": "INF",
+   "stem": "Which Defender for Cloud plans should be selected to protect VMs, SQL databases, and Kubernetes clusters?",
+   "options": [
+    "Foundational CSPM only, with no workload plans",
+    "Defender for Servers, Databases, Containers",
+    "Defender for App Service for all workloads",
+    "Defender for DNS, Key Vault, and Storage"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Workload protection plans match workload types: Defender for Servers for VMs, Defender for Databases for SQL and other databases, and Defender for Containers for Kubernetes and registries."
+  },
+  {
+   "id": "sc100-61",
+   "domain": "INF",
+   "stem": "On-premises servers need Azure Policy, Defender for Servers, and Update Manager. What should the design use?",
+   "options": [
+    "Azure Arc-enabled servers",
+    "Azure Migrate only",
+    "A site-to-site VPN connection only",
+    "Azure Bastion hosts in each site"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Azure Arc projects on-premises and other cloud servers into Azure, so Azure management and security services apply to them without migration."
+  },
+  {
+   "id": "sc100-62",
+   "domain": "INF",
+   "stem": "An organization wants to discover internet-facing assets it doesn't know about, such as forgotten subdomains. What should the architect recommend?",
+   "options": [
+    "Microsoft Purview Data Map",
+    "Defender for Storage malware scanning",
+    "Azure Policy allowed locations",
+    "Defender External Attack Surface Management"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defender EASM continuously discovers and inventories externally exposed assets from known seeds and flags vulnerabilities and risky configurations."
+  },
+  {
+   "id": "sc100-63",
+   "domain": "INF",
+   "stem": "Which Microsoft solution prioritizes posture issues by showing attack paths to critical assets across domains, such as identity, endpoints, and cloud?",
+   "options": [
+    "Azure Monitor workbooks and alerts",
+    "Microsoft Purview Compliance Manager",
+    "Microsoft Security Exposure Management",
+    "Microsoft Intune device compliance reports"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Security Exposure Management unifies exposure data across products, defines critical assets, shows attack paths and choke points, and tracks initiatives and metrics."
+  },
+  {
+   "id": "sc100-64",
+   "domain": "INF",
+   "stem": "In Security Exposure Management, what helps focus remediation on a business goal, such as ransomware resilience?",
+   "options": [
+    "Security initiatives with metrics",
+    "A single global secure score only",
+    "Separate tenants per goal",
+    "Daily email digests of alerts"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Initiatives group related recommendations and metrics around goals like ransomware protection or cloud security, so teams can track progress over time."
+  },
+  {
+   "id": "sc100-65",
+   "domain": "INF",
+   "stem": "What should a posture management process prioritize first?",
+   "options": [
+    "The oldest recommendations regardless of risk",
+    "Exposures on attack paths to critical assets",
+    "Findings that are easiest to dismiss",
+    "Low-severity findings on test systems"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Prioritize issues that attackers can actually exploit to reach critical assets — attack path choke points — rather than treating every finding equally."
+  },
+  {
+   "id": "sc100-66",
+   "domain": "INF",
+   "stem": "Which requirement best secures Windows and Linux servers across environments?",
+   "options": [
+    "The same local admin password on every server",
+    "Open management ports for easier support",
+    "Antivirus signatures updated once a year",
+    "EDR, baselines, patching, and least privilege"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Server security requirements include EDR (such as Defender for Endpoint), security baselines, timely patching, vulnerability management, and restricted administrative access."
+  },
+  {
+   "id": "sc100-67",
+   "domain": "INF",
+   "stem": "Company and personal mobile devices access corporate email. Which design protects data on personal devices without full device management?",
+   "options": [
+    "A shared mailbox password for all devices",
+    "Blocking all personal devices",
+    "Intune app protection policies",
+    "Full device wipe on enrollment"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "App protection policies (MAM) protect corporate data inside managed apps — preventing copy-paste or saving to personal locations — without enrolling personal devices."
+  },
+  {
+   "id": "sc100-68",
+   "domain": "INF",
+   "stem": "A factory network has PLCs and HMIs that can't run agents. How can it monitor them for threats?",
+   "options": [
+    "Intune compliance policies",
+    "Defender for Endpoint on each PLC",
+    "Defender for IoT network sensors",
+    "Azure Bastion sessions"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Defender for IoT uses agentless network sensors connected to SPAN ports to discover OT/ICS assets, identify vulnerabilities, and detect threats without affecting operations."
+  },
+  {
+   "id": "sc100-69",
+   "domain": "INF",
+   "stem": "Which is a key security requirement for IoT devices?",
+   "options": [
+    "Unique identities and signed updates",
+    "Open inbound ports for remote support",
+    "A shared default password for all devices",
+    "No monitoring, to save bandwidth"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "IoT security requirements include unique device identities and credentials, secure boot and signed firmware updates, network segmentation, and monitoring."
+  },
+  {
+   "id": "sc100-70",
+   "domain": "INF",
+   "stem": "Which source should define security baselines for Windows clients and servers?",
+   "options": [
+    "The device vendor's marketing guide",
+    "Default settings with no changes",
+    "Each user's personal preferences",
+    "Microsoft baselines and CIS benchmarks"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Microsoft security baselines (deployable with Intune or Group Policy) and CIS benchmarks provide tested configuration standards, which Defender Vulnerability Management can assess."
+  },
+  {
+   "id": "sc100-71",
+   "domain": "INF",
+   "stem": "Every server shares the same local administrator password, enabling lateral movement. What should the architect recommend?",
+   "options": [
+    "Windows LAPS",
+    "Azure Bastion",
+    "Group-based licensing",
+    "Seamless SSO"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Windows LAPS gives each device a unique, rotated local admin password stored in Microsoft Entra ID or AD, so one compromised password doesn't unlock every machine."
+  },
+  {
+   "id": "sc100-72",
+   "domain": "INF",
+   "stem": "Where can Windows LAPS back up local administrator passwords for cloud-joined devices?",
+   "options": [
+    "Azure Key Vault",
+    "A SharePoint list",
+    "The device's registry",
+    "Microsoft Entra ID"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Windows LAPS can back up passwords to Microsoft Entra ID (for Entra-joined and hybrid devices) or to on-premises AD, with access controlled by roles."
+  },
+  {
+   "id": "sc100-73",
+   "domain": "INF",
+   "stem": "Which source should define security baselines for Azure PaaS services such as App Service and Azure SQL?",
+   "options": [
+    "Each developer's preferences",
+    "The Azure pricing pages",
+    "The MCSB service baselines",
+    "The Azure status page"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Microsoft publishes security baselines for Azure services based on the Microsoft cloud security benchmark, describing the controls each service supports."
+  },
+  {
+   "id": "sc100-74",
+   "domain": "INF",
+   "stem": "Which requirement best secures public web workloads?",
+   "options": [
+    "Unencrypted HTTP for faster responses",
+    "Database connection strings in client code",
+    "WAF, TLS, and managed identities",
+    "Admin pages exposed to the internet"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Web workload requirements include WAF protection, HTTPS with modern TLS, secure authentication, managed identities for back-end access, and secrets in Key Vault."
+  },
+  {
+   "id": "sc100-75",
+   "domain": "INF",
+   "stem": "Which is a key security requirement for containers?",
+   "options": [
+    "Pulling images from any public source",
+    "Running every container as root",
+    "Storing secrets in image layers",
+    "Using scanned, signed, trusted images"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Container requirements include minimal base images, vulnerability scanning, image signing, trusted private registries, non-root execution, and secrets from a vault."
+  },
+  {
+   "id": "sc100-76",
+   "domain": "INF",
+   "stem": "Which requirement best secures a Kubernetes cluster?",
+   "options": [
+    "No limits on what images can run",
+    "Entra auth, network policies, admission control",
+    "A public API server with static tokens",
+    "Cluster-admin rights for every developer"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Orchestration requirements include identity-based access with RBAC, private or restricted API servers, network policies, policy-based admission control, and runtime threat detection with Defender for Containers."
+  },
+  {
+   "id": "sc100-77",
+   "domain": "INF",
+   "stem": "IoT workloads in Azure send telemetry to cloud services. Which requirement should the design include?",
+   "options": [
+    "Per-device X.509 or TPM authentication",
+    "Unauthenticated telemetry endpoints",
+    "Shared access keys reused by all devices",
+    "Devices with permanent admin rights in Azure"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Each device should authenticate individually (for example, with X.509 certificates through IoT Hub or Device Provisioning Service), with least-privilege access and the ability to revoke a single device."
+  },
+  {
+   "id": "sc100-78",
+   "domain": "INF",
+   "stem": "Which control is most important when evaluating Azure AI services security?",
+   "options": [
+    "Public endpoints with shared API keys",
+    "Disabled logging to protect user privacy",
+    "Training data stored without access controls",
+    "Managed identities, private access, content safety"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Secure AI services with Microsoft Entra authentication or managed identities instead of keys, private endpoints, guardrails and content safety, and monitoring with Defender for AI Services."
+  },
+  {
+   "id": "sc100-79",
+   "domain": "INF",
+   "stem": "What's the right baseline approach for SaaS apps the organization uses?",
+   "options": [
+    "Unique passwords stored by each user",
+    "No visibility into which SaaS apps exist",
+    "SSO, Conditional Access, app governance",
+    "Admin accounts shared across vendors"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "SaaS baselines include integrating apps with Entra ID for SSO and Conditional Access, discovering shadow IT with Defender for Cloud Apps, and governing app permissions and configurations."
+  },
+  {
+   "id": "sc100-80",
+   "domain": "INF",
+   "stem": "Which network design principle aligns with Zero Trust?",
+   "options": [
+    "Trust everything inside the corporate network",
+    "Allow all outbound traffic without inspection",
+    "Use one flat network for all workloads",
+    "Segment and inspect between segments"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Zero Trust networking assumes breach: segment workloads, filter and inspect east-west and north-south traffic, use private connectivity, and avoid implicit trust based on location."
+  },
+  {
+   "id": "sc100-81",
+   "domain": "INF",
+   "stem": "Remote users' internet traffic must be filtered and inspected without backhauling it through the datacenter. What should the architect evaluate?",
+   "options": [
+    "A site-to-site VPN for each user",
+    "Azure ExpressRoute",
+    "Microsoft Entra Internet Access",
+    "A larger datacenter firewall"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Internet Access is a cloud-delivered secure web gateway, part of Microsoft's Security Service Edge, that applies web filtering and Conditional Access-aware policies wherever users are."
+  },
+  {
+   "id": "sc100-82",
+   "domain": "INF",
+   "stem": "Users must be prevented from signing in to other organizations' Microsoft 365 tenants from corporate devices, to reduce data exfiltration. What fits?",
+   "options": [
+    "A Conditional Access policy for each app",
+    "An NSG blocking Microsoft 365 IPs",
+    "Disabling guest access in your tenant",
+    "Universal tenant restrictions"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Tenant restrictions v2, enforced through the Global Secure Access Microsoft traffic profile, blocks access to unauthorized external tenants' Microsoft services from managed devices and networks."
+  },
+  {
+   "id": "sc100-83",
+   "domain": "INF",
+   "stem": "An organization wants to replace its legacy VPN for private apps with per-app, identity-based access. What should be evaluated?",
+   "options": [
+    "Azure DDoS Protection",
+    "Microsoft Purview DLP for endpoints",
+    "Azure Front Door with WAF policies",
+    "Microsoft Entra Private Access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Private Access provides Zero Trust network access to private apps with per-app segmentation and Conditional Access, reducing the broad network exposure of VPNs."
+  },
+  {
+   "id": "sc100-84",
+   "domain": "INF",
+   "stem": "What does Security Service Edge (SSE) typically combine?",
+   "options": [
+    "Secure web gateway, ZTNA, and cloud app security",
+    "Patching, imaging, and device enrollment",
+    "Billing, licensing, and cost management",
+    "Backup, restore, and disaster recovery"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "SSE converges secure web gateway, Zero Trust network access, and CASB capabilities into a cloud service. Microsoft's SSE includes Entra Internet Access, Private Access, and Defender for Cloud Apps."
+  },
+  {
+   "id": "sc100-85",
+   "domain": "INF",
+   "stem": "Which Azure network design best protects PaaS data services from internet exposure?",
+   "options": [
+    "Public endpoints with IP allow lists for everyone",
+    "Service tags allowing the entire internet",
+    "Private endpoints with public access disabled",
+    "Shared access keys distributed to all apps"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Private endpoints place PaaS services on private IPs in your network, and disabling public network access removes the internet attack surface."
+  },
+  {
+   "id": "sc100-86",
+   "domain": "INF",
+   "stem": "A hub-and-spoke Azure network needs centralized traffic inspection. Which component belongs in the hub?",
+   "options": [
+    "Azure Firewall",
+    "A Key Vault",
+    "A storage account",
+    "Azure Bastion only"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A central Azure Firewall (or NVA) in the hub inspects traffic between spokes, to on-premises, and to the internet, with user-defined routes or Virtual WAN routing intent."
+  },
+  {
+   "id": "sc100-87",
+   "domain": "INF",
+   "stem": "Which component protects public Azure endpoints from volumetric attacks?",
+   "options": [
+    "Azure Key Vault with purge protection",
+    "Azure Policy allowed locations",
+    "Azure DDoS Protection",
+    "Microsoft Purview"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Azure DDoS Protection (Network or IP Protection) adds adaptive tuning, telemetry, and rapid response for public IPs, beyond Azure's default infrastructure protection."
+  },
+  {
+   "id": "sc100-88",
+   "domain": "INF",
+   "stem": "Which control reduces risk when admins must reach VMs in Azure?",
+   "options": [
+    "Shared local admin accounts",
+    "Disabling NSGs on VM subnets",
+    "Public IPs with RDP open to all",
+    "Bastion or just-in-time access"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Bastion provides brokered RDP/SSH without public IPs, and JIT access opens management ports only when needed, from approved sources."
+  },
+  {
+   "id": "sc100-89",
+   "domain": "INF",
+   "stem": "Which evaluation criterion matters most for network designs supporting AI workloads?",
+   "options": [
+    "Unrestricted outbound internet access",
+    "Shared keys for every client app",
+    "Public endpoints for faster experimentation",
+    "Private model and data access with egress control"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "AI workloads should reach models, data, and tools through private networking, with controlled egress and gateways (such as API Management) to enforce authentication and policies."
+  },
+  {
+   "id": "sc100-90",
+   "domain": "INF",
+   "stem": "What should a design for container orchestration include to limit pod-to-pod traffic?",
+   "options": [
+    "A larger node pool",
+    "A single namespace for all apps",
+    "Public load balancers for every service",
+    "Kubernetes network policies"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Network policies restrict which pods and namespaces can communicate, enforcing segmentation inside the cluster."
+  },
+  {
+   "id": "sc100-91",
+   "domain": "APD",
+   "stem": "How should an architect measure and track Microsoft 365 security posture improvements?",
+   "options": [
+    "The number of Teams channels created",
+    "The volume of email sent per day",
+    "The count of SharePoint sites",
+    "The Microsoft Secure Score"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Secure Score quantifies posture across Microsoft 365 workloads, tracks history, and recommends improvement actions, which helps measure progress."
+  },
+  {
+   "id": "sc100-92",
+   "domain": "APD",
+   "stem": "Phishing with malicious links and attachments is the top threat. Which solution should the design include?",
+   "options": [
+    "Azure Firewall application rules",
+    "Defender for Storage malware scanning",
+    "Intune device compliance policies",
+    "Defender for Office 365"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Defender for Office 365 provides Safe Links, Safe Attachments, anti-phishing, and automated investigation for email and collaboration tools."
+  },
+  {
+   "id": "sc100-93",
+   "domain": "APD",
+   "stem": "An organization needs visibility into and control over unsanctioned SaaS apps. Which solution fits?",
+   "options": [
+    "Microsoft Defender for Identity",
+    "Microsoft Purview Audit",
+    "Microsoft Defender for Cloud Apps",
+    "Azure Update Manager with Arc"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Defender for Cloud Apps discovers shadow IT, assesses app risk, governs OAuth apps, and applies session controls through Conditional Access app control."
+  },
+  {
+   "id": "sc100-94",
+   "domain": "APD",
+   "stem": "Corporate and personal devices need configuration, compliance checks, and app protection. Which solution fits?",
+   "options": [
+    "Azure Arc",
+    "Microsoft Intune",
+    "Microsoft Sentinel",
+    "Azure Bastion"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Intune manages devices and apps, enforces compliance that Conditional Access uses, and applies app protection policies for personal devices."
+  },
+  {
+   "id": "sc100-95",
+   "domain": "APD",
+   "stem": "Sensitive documents in Microsoft 365 must be classified, protected, and kept from leaving the organization. Which solutions fit?",
+   "options": [
+    "Defender for Servers and JIT",
+    "Sensitivity labels and DLP",
+    "Azure Firewall and NSGs",
+    "Azure Policy and resource locks"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Sensitivity labels classify and protect content with encryption and markings, and DLP policies prevent risky sharing across Microsoft 365 and endpoints."
+  },
+  {
+   "id": "sc100-96",
+   "domain": "APD",
+   "stem": "Before deploying Microsoft 365 Copilot, what's the most important data security step?",
+   "options": [
+    "Disable sensitivity labels",
+    "Give Copilot global admin rights",
+    "Turn off all audit logging",
+    "Fix oversharing and label content"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Copilot respects existing permissions, so oversharing becomes discoverable. Fix overshared sites, apply sensitivity labels, and use DSPM for AI and DLP for Copilot to protect sensitive data."
+  },
+  {
+   "id": "sc100-97",
+   "domain": "APD",
+   "stem": "Copilot must not use files labeled Highly Confidential in its responses. Which control fits?",
+   "options": [
+    "An NSG on the SharePoint subnet",
+    "A Conditional Access policy for guests",
+    "A retention label set to delete after a year",
+    "A DLP policy for the Copilot location"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Purview DLP can target the Microsoft 365 Copilot location and exclude content with specific sensitivity labels from Copilot processing."
+  },
+  {
+   "id": "sc100-98",
+   "domain": "APD",
+   "stem": "An architect must identify threats to a new business-critical app before it's built. What should the team do?",
+   "options": [
+    "A cost analysis of the hosting plan",
+    "Threat modeling, such as with STRIDE",
+    "A review of user interface colors",
+    "Penetration testing after release only"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Threat modeling (for example, STRIDE with the Microsoft Threat Modeling Tool) identifies threats to the design early, when mitigations are cheapest."
+  },
+  {
+   "id": "sc100-99",
+   "domain": "APD",
+   "stem": "Which approach best describes a full lifecycle application security strategy?",
+   "options": [
+    "Leaving security to the hosting provider",
+    "Security in every lifecycle phase",
+    "A single security test right before launch",
+    "Security reviews only after an incident"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Following a secure development lifecycle (such as Microsoft SDL) builds security into requirements, design, implementation, verification, release, and response."
+  },
+  {
+   "id": "sc100-100",
+   "domain": "APD",
+   "stem": "Which practice should be standard for securing the development process?",
+   "options": [
+    "Code review plus automated scanning",
+    "Developers committing directly to production",
+    "Disabling branch protection for speed",
+    "Sharing service credentials in team chats"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Standards include protected branches, peer review, automated SAST, dependency, and secret scanning, and least-privilege pipelines."
+  },
+  {
+   "id": "sc100-101",
+   "domain": "APD",
+   "stem": "An app in Azure must access Azure SQL and Storage without secrets. Which workload identity design fits?",
+   "options": [
+    "A shared user account with MFA disabled",
+    "Connection strings stored in code",
+    "Managed identities with RBAC",
+    "Storage account keys in app settings"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Managed identities authenticate the app to Microsoft Entra ID automatically, and RBAC roles (or Entra database users) grant only the access it needs."
+  },
+  {
+   "id": "sc100-102",
+   "domain": "APD",
+   "stem": "A CI/CD pipeline in GitHub must deploy to Azure without stored secrets. Which design fits?",
+   "options": [
+    "An administrator's own password",
+    "A long-lived client secret",
+    "A federated workload identity credential",
+    "A personal access token in the repo"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Workload identity federation lets the pipeline exchange its GitHub-issued token for a Microsoft Entra token, with no secret to steal or rotate."
+  },
+  {
+   "id": "sc100-103",
+   "domain": "APD",
+   "stem": "Many internal and partner APIs need consistent authentication, throttling, and monitoring. What should the design include?",
+   "options": [
+    "Azure API Management with security policies",
+    "Public APIs with no authentication",
+    "APIs exposed directly from databases",
+    "Each API implementing its own auth separately"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "API Management centralizes authentication (such as validate-jwt), rate limiting, IP filtering, and logging, and can protect back ends with private networking."
+  },
+  {
+   "id": "sc100-104",
+   "domain": "APD",
+   "stem": "A web app needs protection against OWASP Top 10 attacks at the edge. What should the design include?",
+   "options": [
+    "Azure Key Vault certificates",
+    "Azure Web Application Firewall",
+    "Network security groups alone",
+    "Azure DDoS Protection alone"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Azure WAF, on Front Door or Application Gateway, uses managed rule sets to block common web attacks such as SQL injection and cross-site scripting, plus custom rules and bot protection."
+  },
+  {
+   "id": "sc100-105",
+   "domain": "APD",
+   "stem": "How should an architect evaluate the security posture of an existing portfolio of applications?",
+   "options": [
+    "Inventory apps; assess by risk",
+    "Check which apps have the most users only",
+    "Review only the newest application",
+    "Rely on each team's self-assessment alone"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Inventory applications, classify them by business criticality and data sensitivity, assess them against a security baseline, and prioritize remediation by risk."
+  },
+  {
+   "id": "sc100-106",
+   "domain": "APD",
+   "stem": "An organization needs to discover and classify sensitive data across Azure, multicloud, and on-premises sources. What should the architect evaluate?",
+   "options": [
+    "Microsoft Secure Score history",
+    "Purview Data Map classification",
+    "Azure Advisor recommendations",
+    "Azure Bastion session recordings and logs"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Purview scans data sources to map and classify data, giving visibility into where sensitive data lives so protection can be prioritized."
+  },
+  {
+   "id": "sc100-107",
+   "domain": "APD",
+   "stem": "Which approach best prioritizes mitigating threats to data?",
+   "options": [
+    "Encrypt only test data before production data",
+    "Delay protection until all data is classified",
+    "Treat all data identically, regardless of sensitivity",
+    "Strongest controls on the most sensitive data"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Classify data by sensitivity and business impact, then apply the strongest controls — encryption, access restrictions, DLP, and monitoring — to the most sensitive data first."
+  },
+  {
+   "id": "sc100-108",
+   "domain": "APD",
+   "stem": "Regulations require that the organization control and be able to revoke the keys that encrypt its Azure data at rest. What should the design use?",
+   "options": [
+    "Customer-managed keys",
+    "Keys stored in application code",
+    "Microsoft-managed keys only",
+    "TLS encryption in transit only"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Customer-managed keys let the organization control key lifecycle and revoke access. Many services support them, and infrastructure encryption adds a second layer."
+  },
+  {
+   "id": "sc100-109",
+   "domain": "APD",
+   "stem": "Which design best protects data used to ground and train AI models?",
+   "options": [
+    "Allow any app to read the training data",
+    "Copy all data into one open storage account",
+    "Disable logging for AI services",
+    "Classify, restrict, and monitor it"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Protect AI data with classification and labels, least-privilege access, private networking, and monitoring through DSPM for AI and Defender for AI Services, so models don't expose sensitive data."
+  },
+  {
+   "id": "sc100-110",
+   "domain": "APD",
+   "stem": "Which design best secures Azure SQL databases holding sensitive data?",
+   "options": [
+    "Entra-only auth, private access, Defender",
+    "Auditing disabled to improve performance",
+    "SQL authentication with shared logins",
+    "Public endpoint with Allow Azure services"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Use Microsoft Entra authentication, private connectivity, TDE (with customer-managed keys if required), Always Encrypted for highly sensitive columns, auditing, and Defender for SQL."
+  },
+  {
+   "id": "sc100-111",
+   "domain": "APD",
+   "stem": "Which design best secures Azure Cosmos DB access for applications?",
+   "options": [
+    "Primary keys shared with every app",
+    "Public network access from anywhere",
+    "Read-write keys embedded in mobile apps",
+    "Entra RBAC with keys disabled"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Cosmos DB supports Microsoft Entra data-plane RBAC, and disabling key-based authentication forces apps to use identities. Private endpoints limit network exposure."
+  },
+  {
+   "id": "sc100-112",
+   "domain": "APD",
+   "stem": "Which design best secures data in Azure Storage?",
+   "options": [
+    "Anonymous blob access for convenience",
+    "SAS tokens with no expiry",
+    "Entra auth, private endpoints, Defender",
+    "Account keys shared across teams"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Use Microsoft Entra authorization with shared keys disabled, private endpoints, encryption with managed keys if required, immutability where needed, and Defender for Storage for threat detection."
+  },
+  {
+   "id": "sc100-113",
+   "domain": "APD",
+   "stem": "Which Defender for Cloud plans should be included to detect threats to data stores?",
+   "options": [
+    "Foundational CSPM recommendations only",
+    "Defender for DNS and Defender for App Service",
+    "Defender for Storage and Databases",
+    "Defender for Resource Manager only"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Defender for Storage detects malware and suspicious access to storage, and Defender for Databases detects attacks such as SQL injection and anomalous access across database services."
+  },
+  {
+   "id": "sc100-114",
+   "domain": "APD",
+   "stem": "Data in transit between services must be protected. What should the design require?",
+   "options": [
+    "HTTP for internal traffic only",
+    "TLS 1.0 for legacy compatibility",
+    "Encryption only for data at rest",
+    "TLS 1.2 or later everywhere"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Require modern TLS (1.2 or later) for all connections, including internal ones, and enforce it with service settings and Azure Policy."
+  },
+  {
+   "id": "sc100-115",
+   "domain": "BPR",
+   "stem": "Endpoint security updates keep slipping. Which service automates Windows and Microsoft 365 Apps updates for managed devices in deployment rings?",
+   "options": [
+    "Defender for Storage",
+    "Microsoft Purview Audit",
+    "Windows Autopatch",
+    "Azure Bastion"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Windows Autopatch automates updates for Windows, Microsoft 365 Apps, Edge, and Teams on Intune-managed devices, rolling them out in rings to reduce risk and patch delays."
+  },
+  {
+   "id": "sc100-116",
+   "domain": "BPR",
+   "stem": "In Microsoft's Zero Trust guidance, what is the Rapid Modernization Plan (RaMP)?",
+   "options": [
+    "A plan to migrate all servers to Azure in one month",
+    "A set of prioritized initiatives for fast progress",
+    "A checklist for decommissioning firewalls",
+    "A licensing program for Microsoft security products"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "RaMP gives prioritized, practical initiatives — such as user access and productivity, data protection, and modern security operations — to make fast, measurable progress toward Zero Trust."
+  },
+  {
+   "id": "sc100-117",
+   "domain": "BPR",
+   "stem": "An architect wants to understand which threat actors and techniques target the organization's industry. Which source fits?",
+   "options": [
+    "Azure Update Manager",
+    "Microsoft Defender Threat Intelligence",
+    "Microsoft Purview Data Map",
+    "Azure Advisor security recommendations"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Defender Threat Intelligence and threat analytics reports describe actors, campaigns, and techniques, helping prioritize defenses against the threats most relevant to the organization."
+  },
+  {
+   "id": "sc100-118",
+   "domain": "BPR",
+   "stem": "What's the difference between platform and application landing zones?",
+   "options": [
+    "Platform zones host workloads; application zones host shared services",
+    "Platform: shared services; application: workloads",
+    "They're the same, named differently by each team",
+    "Platform zones are on-premises; application zones are in Azure"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Platform landing zones provide shared services such as identity, connectivity, and management, while application landing zones host workloads and inherit governance from the management group hierarchy."
+  },
+  {
+   "id": "sc100-119",
+   "domain": "BPR",
+   "stem": "A vendor needs administrative access to one Azure subscription for a project. Which design best limits supply chain risk?",
+   "options": [
+    "Owner rights on the whole tenant indefinitely",
+    "A shared admin account created for the vendor",
+    "B2B access with JIT roles, scoping, and reviews",
+    "The vendor's own credentials stored in a vault"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Give vendors their own B2B identities with just-in-time, narrowly scoped roles, strong authentication, monitoring, and access reviews, so access is attributable and removed when no longer needed."
+  },
+  {
+   "id": "sc100-120",
+   "domain": "BPR",
+   "stem": "A workload review finds that the web, app, and data tiers can all reach each other freely. Which Well-Architected security principle applies?",
+   "options": [
+    "Segment components to contain a breach",
+    "Optimize cost by merging all tiers",
+    "Scale out the data tier horizontally",
+    "Increase logging verbosity for all tiers"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "The Well-Architected security pillar recommends segmentation and least privilege so a compromise of one component doesn't give attackers access to everything — an assume-breach design."
+  },
+  {
+   "id": "sc100-121",
+   "domain": "INF",
+   "stem": "How should Google Cloud projects be brought into Defender for Cloud posture management?",
+   "options": [
+    "Create a GCP connector and run its setup script",
+    "Install Azure Bastion in each GCP project",
+    "Copy GCP logs into Microsoft Purview",
+    "Create an Azure landing zone in GCP"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "The GCP connector, set up with a script or Terraform in Google Cloud, lets Defender for Cloud assess GCP resources and enable workload protections such as Defender for Servers and Containers."
+  },
+  {
+   "id": "sc100-122",
+   "domain": "APD",
+   "stem": "An application security requirement says \"no secrets in code or configuration files.\" Which technologies meet it in Azure?",
+   "options": [
+    "Encrypted ZIP files of connection strings",
+    "Environment variables committed to Git",
+    "Managed identities and Key Vault references",
+    "Base64-encoded keys in app settings"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Managed identities remove the need for credentials to Azure services, and Key Vault references let app settings pull any remaining secrets from Key Vault at runtime."
+  },
+  {
+   "id": "sc100-123",
+   "domain": "APD",
+   "stem": "Before enabling Copilot, the organization needs to find SharePoint sites that are overshared. Which capability fits?",
+   "options": [
+    "Defender for Storage malware scanning",
+    "SharePoint data access governance reports",
+    "Microsoft Entra Connect Health",
+    "Azure Network Watcher topology"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Data access governance reports identify oversharing, such as sites shared with everyone, and SharePoint Advanced Management can restrict access or content discovery while owners fix permissions."
+  },
+  {
+   "id": "sc100-124",
+   "domain": "APD",
+   "stem": "What does infrastructure encryption add for Azure Storage data at rest?",
+   "options": [
+    "Encryption of data while it's being processed in memory",
+    "A second layer of encryption at the infrastructure level",
+    "Encryption of data in transit between regions only",
+    "Encryption that only the storage account owner can see"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Infrastructure encryption encrypts data a second time at the infrastructure layer with a different key and algorithm, in addition to service-level encryption, for double encryption at rest."
+  },
+  {
+   "id": "sc100-125",
+   "domain": "APD",
+   "stem": "Which design best protects data in Azure Synapse Analytics from exfiltration?",
+   "options": [
+    "Disabled auditing to reduce noise",
+    "Public endpoints with SQL authentication",
+    "Shared storage account keys for all users",
+    "A managed VNet with exfiltration protection"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Synapse managed virtual networks with data exfiltration protection limit outbound connections to approved tenants through managed private endpoints, combined with Entra authentication and auditing."
+  }
+ ]
+}

@@ -17,7 +17,11 @@ Current question banks:
 | Microsoft | AZ-900 (Azure Fundamentals) | 125 | 50 questions / 45 min |
 | Microsoft | AI-901 (Azure AI Fundamentals) | 125 | 50 questions / 45 min |
 | Microsoft | SC-900 (Security, Compliance, and Identity Fundamentals) | 115 | 45 questions / 45 min |
+| Microsoft | SC-100 (Cybersecurity Architect) | 125 | 50 questions / 120 min |
+| Microsoft | SC-200 (Security Operations Analyst) | 125 | 50 questions / 100 min |
+| Microsoft | SC-300 (Identity and Access Administrator) | 125 | 50 questions / 100 min |
 | Microsoft | SC-401 (Information Security Administrator) | 150 | 50 questions / 100 min |
+| Microsoft | SC-500 (Cloud and AI Security Engineer) | 125 | 50 questions / 100 min |
 
 Banks hold about 2.5× a full-length exam, split across domains by blueprint weight, so repeat
 attempts draw fresh questions.
