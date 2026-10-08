@@ -11,6 +11,7 @@ test('home page lists every certification grouped by vendor', () => {
   render(<App />);
   expect(screen.getByRole('heading', { name: 'ServiceNow' })).toBeInTheDocument();
   expect(screen.getByRole('heading', { name: 'Microsoft' })).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: 'CompTIA' })).toBeInTheDocument();
   CERTS.forEach((c) => expect(screen.getByText(c.code)).toBeInTheDocument());
 });
 
