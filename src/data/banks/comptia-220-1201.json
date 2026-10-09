@@ -1,0 +1,3417 @@
+{
+ "id": "comptia-220-1201",
+ "vendor": "CompTIA",
+ "code": "220-1201",
+ "name": "CompTIA A+ Core 1 (V15)",
+ "fullLength": 90,
+ "minutes": 90,
+ "passPercent": 68,
+ "readinessPercent": 80,
+ "sectioned": false,
+ "note": "CompTIA scores A+ Core 1 on a 100–900 scale with 675 to pass. This practice exam reports a straight percentage; treat 80% as your readiness bar. The real exam also includes performance-based questions (PBQs), which this practice exam doesn't include, so practice hands-on tasks separately. A+ certification requires passing both Core 1 (220-1201) and Core 2 (220-1202). Questions follow the 220-1201 exam objectives (version 3.0).",
+ "domains": [
+  {
+   "id": "MD",
+   "name": "Mobile Devices",
+   "weight": "13%"
+  },
+  {
+   "id": "NET",
+   "name": "Networking",
+   "weight": "23%"
+  },
+  {
+   "id": "HW",
+   "name": "Hardware",
+   "weight": "25%"
+  },
+  {
+   "id": "VC",
+   "name": "Virtualization and Cloud Computing",
+   "weight": "11%"
+  },
+  {
+   "id": "HNT",
+   "name": "Hardware and Network Troubleshooting",
+   "weight": "28%"
+  }
+ ],
+ "groups": {},
+ "questions": [
+  {
+   "id": "a1201-1",
+   "domain": "MD",
+   "stem": "A laptop runs only 40 minutes on a full charge, and its battery health shows 55%. What should the technician do?",
+   "options": [
+    "Replace the battery",
+    "Add more RAM",
+    "Replace the keyboard",
+    "Reinstall the Wi-Fi card"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Battery capacity degrades over charge cycles. Low health means the battery should be replaced with a compatible part."
+  },
+  {
+   "id": "a1201-2",
+   "domain": "MD",
+   "stem": "A user wants a laptop to boot and load apps faster. Which upgrade usually gives the biggest improvement?",
+   "options": [
+    "Replace the Wi-Fi antenna",
+    "Replace the webcam with a 4K model",
+    "Add a second keyboard",
+    "Replace the HDD with an SSD"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SSDs have much faster access times than spinning hard drives, which speeds up boot and application loading."
+  },
+  {
+   "id": "a1201-3",
+   "domain": "MD",
+   "stem": "Which memory form factor do most laptops use?",
+   "options": [
+    "SIMM (30-pin)",
+    "RIMM (Rambus)",
+    "DIMM",
+    "SODIMM"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Small outline DIMMs are compact modules for laptops and small form factor systems. Desktops typically use full-size DIMMs."
+  },
+  {
+   "id": "a1201-4",
+   "domain": "MD",
+   "stem": "After a laptop's display was replaced, Wi-Fi signal is weak. What was likely disturbed during the repair?",
+   "options": [
+    "The keyboard ribbon cable and connector",
+    "The Wi-Fi antenna leads in the display lid",
+    "The SSD's mounting screw",
+    "The battery's charge controller board"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Laptop Wi-Fi antennas usually run through the display lid. They can be pinched, disconnected, or misrouted during screen replacement."
+  },
+  {
+   "id": "a1201-5",
+   "domain": "MD",
+   "stem": "A company wants laptops that unlock with the user's fingerprint. Which component provides this?",
+   "options": [
+    "A port replicator",
+    "A docking station",
+    "An NFC antenna",
+    "A biometric reader"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Biometric readers, such as fingerprint sensors, provide physical security and convenient authentication."
+  },
+  {
+   "id": "a1201-6",
+   "domain": "MD",
+   "stem": "Employees tap their badges on a laptop's palm rest to sign in. Which feature supports this?",
+   "options": [
+    "An active stylus pen",
+    "A near-field scanner",
+    "An infrared webcam",
+    "A precision trackpad"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Near-field (NFC) scanners read badges or cards at close range for authentication."
+  },
+  {
+   "id": "a1201-7",
+   "domain": "MD",
+   "stem": "A user's laptop microphone records no sound in video calls, but the headset mic works. What should be checked first?",
+   "options": [
+    "The battery's charge level and health",
+    "The Wi-Fi card's antenna placement",
+    "The SSD's firmware version and health",
+    "The mic's privacy switch and settings"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Many laptops have hardware or software privacy controls for mics and cameras. Checking these and app permissions comes before hardware replacement."
+  },
+  {
+   "id": "a1201-8",
+   "domain": "MD",
+   "stem": "A laptop's webcam shows a black image, and the camera light doesn't turn on. The laptop has a physical slider above the lens. What should be checked first?",
+   "options": [
+    "Whether the privacy shutter is closed",
+    "Whether the Wi-Fi card is enabled",
+    "Whether the battery needs replacing",
+    "Whether the RAM is seated correctly"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Physical privacy shutters block the camera. Checking simple causes first saves time."
+  },
+  {
+   "id": "a1201-9",
+   "domain": "MD",
+   "stem": "A laptop user wants to connect to an external monitor, keyboard, mouse, and wired network through one cable at their desk. Which accessory fits?",
+   "options": [
+    "A Bluetooth headset",
+    "A docking station",
+    "An external trackpad",
+    "A pressure-sensitive stylus"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Docking stations, often over USB-C or Thunderbolt, provide display, peripheral, network, and power connections through one link."
+  },
+  {
+   "id": "a1201-10",
+   "domain": "MD",
+   "stem": "A user's laptop has no internet, but their phone has 5G. How can the laptop get online through the phone?",
+   "options": [
+    "Pair the phone as a Bluetooth keyboard",
+    "Use the phone as a hotspot or tethered connection",
+    "Use the phone as a port replicator",
+    "Connect the phone as an NFC reader for the laptop"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Tethering or a mobile hotspot shares the phone's cellular data connection over Wi-Fi, USB, or Bluetooth."
+  },
+  {
+   "id": "a1201-11",
+   "domain": "MD",
+   "stem": "Which connector is reversible and used by most modern Android phones and laptops for charging and data?",
+   "options": [
+    "MiniUSB",
+    "MicroUSB",
+    "USB-C",
+    "DB9"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "USB-C is reversible and supports data, power delivery, and video. MicroUSB and MiniUSB are older, non-reversible connectors."
+  },
+  {
+   "id": "a1201-12",
+   "domain": "MD",
+   "stem": "Which wireless technology lets a phone make contactless payments by holding it near a terminal?",
+   "options": [
+    "Infrared",
+    "NFC",
+    "Bluetooth",
+    "Wi-Fi"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Near-field communication works at a few centimeters and is used for contactless payments and badge readers."
+  },
+  {
+   "id": "a1201-13",
+   "domain": "MD",
+   "stem": "What's the difference between a port replicator and a docking station?",
+   "options": [
+    "There's no difference at all; the two terms always mean the same thing",
+    "A replicator mainly extends ports; a dock adds more features",
+    "A port replicator works only wirelessly; a dock needs cables",
+    "A port replicator charges devices; a dock can't provide power"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Port replicators simply extend the laptop's ports. Docking stations often add extra capabilities, such as additional displays, drive bays, or charging."
+  },
+  {
+   "id": "a1201-14",
+   "domain": "MD",
+   "stem": "A designer wants to draw directly on a tablet screen with pressure sensitivity. Which accessory fits?",
+   "options": [
+    "A port replicator",
+    "A Bluetooth speaker",
+    "An active stylus",
+    "A trackpoint"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Active styluses support pressure sensitivity and precise input on compatible touch screens."
+  },
+  {
+   "id": "a1201-15",
+   "domain": "MD",
+   "stem": "A user can't pair Bluetooth earbuds with a phone. What's a correct first step?",
+   "options": [
+    "Remove the SIM card and reinsert it",
+    "Disable Wi-Fi and restart the cellular modem",
+    "Enable Bluetooth and pairing mode",
+    "Turn on location services and GPS"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Bluetooth pairing steps are: enable Bluetooth, enable pairing mode, find the device, enter a PIN if needed, and test connectivity."
+  },
+  {
+   "id": "a1201-16",
+   "domain": "MD",
+   "stem": "A traveler wants to add a second phone number for a foreign carrier without inserting a physical card. Which technology supports this?",
+   "options": [
+    "eSIM",
+    "GPS roaming",
+    "MDM enrollment",
+    "NFC pairing"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "An eSIM is an embedded SIM that can be provisioned digitally with a carrier profile."
+  },
+  {
+   "id": "a1201-17",
+   "domain": "MD",
+   "stem": "A company wants to push Wi-Fi settings, require passcodes, and remotely wipe corporate data on employee phones. Which solution fits?",
+   "options": [
+    "A port replicator",
+    "A Bluetooth hotspot",
+    "Cellular location services",
+    "Mobile device management (MDM)"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "MDM enforces configurations and policies, deploys corporate apps, and can wipe devices or corporate data."
+  },
+  {
+   "id": "a1201-18",
+   "domain": "MD",
+   "stem": "On a BYOD phone enrolled in MDM, what can the company typically wipe if the employee leaves?",
+   "options": [
+    "The phone's carrier account",
+    "All personal photos and contacts",
+    "Nothing, under any policy",
+    "Corporate apps and data only"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "BYOD management usually separates work and personal data, so only corporate data is removed with a selective wipe."
+  },
+  {
+   "id": "a1201-19",
+   "domain": "MD",
+   "stem": "A user's phone shows the wrong location in maps, though GPS is enabled. Which other service helps determine location?",
+   "options": [
+    "Cellular location services",
+    "Bluetooth device pairing",
+    "USB port replication",
+    "NFC payment services"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Location services combine GPS with cellular and Wi-Fi data to estimate position, especially indoors."
+  },
+  {
+   "id": "a1201-20",
+   "domain": "MD",
+   "stem": "A user's phone stopped syncing large files to cloud storage partway through the month. What should be checked?",
+   "options": [
+    "Whether the screen brightness is low",
+    "Whether NFC is turned off",
+    "Whether the stylus battery is low",
+    "Whether the data cap was reached"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Data caps can throttle or stop sync over cellular. Syncing over Wi-Fi or adjusting sync settings can help."
+  },
+  {
+   "id": "a1201-21",
+   "domain": "MD",
+   "stem": "A new employee's phone isn't showing company calendar events. Which sync setting should be checked?",
+   "options": [
+    "The hotspot password",
+    "The phone's NFC payment setting",
+    "The mail account's calendar sync",
+    "The screen timeout and lock"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Calendars, contacts, and mail sync through account settings, such as Exchange or Google accounts."
+  },
+  {
+   "id": "a1201-22",
+   "domain": "MD",
+   "stem": "A phone needs to connect to a laptop over Bluetooth, and the laptop displays a six-digit code. What should the user do?",
+   "options": [
+    "Type the code into the browser",
+    "Enter the code into the SIM settings",
+    "Ignore it and enable NFC",
+    "Confirm the matching code on the phone"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Pairing often requires confirming or entering a PIN on both devices to complete secure pairing."
+  },
+  {
+   "id": "a1201-23",
+   "domain": "MD",
+   "stem": "A user disables cellular data while traveling abroad to avoid roaming charges but still needs email. What should they use?",
+   "options": [
+    "NFC",
+    "GPS",
+    "Wi-Fi",
+    "An eSIM swap only"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "With cellular data disabled, Wi-Fi provides data connectivity for email and apps."
+  },
+  {
+   "id": "a1201-24",
+   "domain": "MD",
+   "stem": "A company issues corporate-owned phones that employees can't use for personal apps. Which MDM configuration is this?",
+   "options": [
+    "Corporate-owned device configuration",
+    "Unmanaged personal configuration",
+    "Guest kiosk configuration",
+    "Bring your own device configuration"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Corporate configurations give the company full control. BYOD configurations protect corporate data while respecting personal use."
+  },
+  {
+   "id": "a1201-25",
+   "domain": "MD",
+   "stem": "Which cellular generation offers the highest speeds and lowest latency?",
+   "options": [
+    "3G",
+    "2G",
+    "4G LTE",
+    "5G"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "5G provides higher throughput and lower latency than 4G LTE and older generations."
+  },
+  {
+   "id": "a1201-26",
+   "domain": "MD",
+   "stem": "An employee's phone can't open a corporate app that MDM marks as required. What should the technician check?",
+   "options": [
+    "Whether the phone uses a USB-C cable",
+    "Whether the screen protector is installed",
+    "Whether the phone's stylus is paired",
+    "Whether MDM deployed the app"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "MDM distributes and manages corporate applications, so the device must be enrolled and assigned the app."
+  },
+  {
+   "id": "a1201-27",
+   "domain": "MD",
+   "stem": "A laptop has a pointing stick in the middle of the keyboard. What is this called?",
+   "options": [
+    "A port replicator",
+    "A track point",
+    "A digitizer",
+    "A drawing pad"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Track points (pointing sticks) are small joysticks between keys that control the cursor."
+  },
+  {
+   "id": "a1201-28",
+   "domain": "MD",
+   "stem": "A user wants wireless audio while video conferencing on a laptop. Which accessory and connection fit best?",
+   "options": [
+    "A Bluetooth headset",
+    "A port replicator",
+    "A wired stylus",
+    "An NFC tag"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Bluetooth headsets provide wireless audio and microphone input for calls."
+  },
+  {
+   "id": "a1201-29",
+   "domain": "MD",
+   "stem": "An older iPhone uses which proprietary connector for charging and data?",
+   "options": [
+    "MicroUSB",
+    "USB-C",
+    "MiniUSB (Mini-B)",
+    "Lightning"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Older iPhones use Apple's Lightning connector. Newer iPhone models switched to USB-C."
+  },
+  {
+   "id": "a1201-30",
+   "domain": "NET",
+   "stem": "Which port does an email client use to download mail with POP3?",
+   "options": [
+    "143",
+    "443",
+    "25",
+    "110"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "POP3 uses 110. IMAP uses 143, SMTP uses 25 to send mail, and HTTPS uses 443."
+  },
+  {
+   "id": "a1201-31",
+   "domain": "NET",
+   "stem": "A user wants mail kept on the server and synced across a phone and laptop. Which protocol and port fit?",
+   "options": [
+    "IMAP on 143",
+    "SMTP on 25",
+    "Telnet on 23",
+    "POP3 on 110"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "IMAP keeps messages on the server and syncs folders across devices. POP3 typically downloads and removes mail from the server."
+  },
+  {
+   "id": "a1201-32",
+   "domain": "NET",
+   "stem": "Which protocol sends outgoing email between mail servers?",
+   "options": [
+    "IMAP",
+    "SMTP",
+    "LDAP",
+    "POP3"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "SMTP (port 25) transfers mail between servers and from clients to servers. POP3 and IMAP retrieve mail."
+  },
+  {
+   "id": "a1201-33",
+   "domain": "NET",
+   "stem": "A technician needs to remotely control a Windows desktop graphically. Which port must be open?",
+   "options": [
+    "3306",
+    "3389",
+    "22",
+    "23"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Remote Desktop Protocol uses 3389. SSH uses 22, Telnet uses 23, and 3306 is the default port for MySQL databases."
+  },
+  {
+   "id": "a1201-34",
+   "domain": "NET",
+   "stem": "Which protocol sends commands to a remote device in plaintext and should be replaced with SSH?",
+   "options": [
+    "HTTPS",
+    "LDAPS",
+    "SFTP",
+    "Telnet"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Telnet (port 23) sends everything, including passwords, unencrypted. SSH (port 22) encrypts the session."
+  },
+  {
+   "id": "a1201-35",
+   "domain": "NET",
+   "stem": "Which ports are used by NetBIOS over TCP/IP for legacy Windows name and session services?",
+   "options": [
+    "67–68",
+    "161–162",
+    "137–139",
+    "20–21"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "NetBIOS/NetBT uses 137–139. FTP uses 20–21, DHCP uses 67–68, and SNMP uses 161–162."
+  },
+  {
+   "id": "a1201-36",
+   "domain": "NET",
+   "stem": "Windows file sharing uses which port for SMB/CIFS?",
+   "options": [
+    "143",
+    "389",
+    "5353",
+    "445"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "SMB/CIFS uses TCP 445 for file and printer sharing. LDAP uses 389, IMAP uses 143, and 5353 is multicast DNS (mDNS)."
+  },
+  {
+   "id": "a1201-37",
+   "domain": "NET",
+   "stem": "Which port does LDAP use to query a directory such as Active Directory?",
+   "options": [
+    "443",
+    "389",
+    "3389",
+    "110"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "LDAP uses 389 to query directories such as Active Directory. Secure LDAP (LDAPS) uses 636, HTTPS uses 443, and RDP uses 3389."
+  },
+  {
+   "id": "a1201-38",
+   "domain": "NET",
+   "stem": "What's the main difference between TCP and UDP?",
+   "options": [
+    "TCP is used only for email; UDP is used only for web traffic",
+    "UDP is connection-oriented and reliable; TCP is connectionless",
+    "TCP is connection-oriented and reliable; UDP is connectionless",
+    "TCP works only on wireless networks; UDP works only on wired"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "TCP uses a handshake, acknowledgments, and retransmission. UDP is faster with less overhead, which suits streaming, DNS queries, and VoIP."
+  },
+  {
+   "id": "a1201-39",
+   "domain": "NET",
+   "stem": "Which protocol and port transfer files with separate control and data channels and no encryption?",
+   "options": [
+    "HTTPS on 443",
+    "SSH on 22 with keys",
+    "SMB on 445",
+    "FTP on 20–21"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "FTP uses 21 for control and 20 for data in active mode, and sends credentials in plaintext."
+  },
+  {
+   "id": "a1201-40",
+   "domain": "NET",
+   "stem": "Which Wi-Fi band offers the longest range and best wall penetration but the fewest channels?",
+   "options": [
+    "5 GHz",
+    "6 GHz",
+    "60 GHz",
+    "2.4 GHz"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "2.4 GHz travels farther and penetrates walls better, but it has only three non-overlapping channels and more interference."
+  },
+  {
+   "id": "a1201-41",
+   "domain": "NET",
+   "stem": "A home user wants the fastest Wi-Fi on a new router and supported devices, using the 6 GHz band. Which standard is needed?",
+   "options": [
+    "Wi-Fi 5 (802.11ac)",
+    "Wi-Fi 4 (802.11n)",
+    "802.11g",
+    "Wi-Fi 6E (802.11ax)"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Wi-Fi 6E extends 802.11ax into 6 GHz. Wi-Fi 7 (802.11be) also supports 6 GHz."
+  },
+  {
+   "id": "a1201-42",
+   "domain": "NET",
+   "stem": "A warehouse tracks pallets with tags that are read by scanners from a few meters away, without line of sight. Which technology is this?",
+   "options": [
+    "NFC",
+    "RFID",
+    "Bluetooth",
+    "Infrared"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "RFID tags are read by radio from short to moderate distances, which suits inventory tracking. NFC works only within a few centimeters."
+  },
+  {
+   "id": "a1201-43",
+   "domain": "NET",
+   "stem": "Why might a Wi-Fi router's available channels differ between countries?",
+   "options": [
+    "Channels depend on the router's color",
+    "Regulations limit allowed channels",
+    "Wi-Fi uses only one channel worldwide",
+    "Some countries don't allow encryption at all"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Regulatory bodies set allowed channels and power levels, so available channels vary by region."
+  },
+  {
+   "id": "a1201-44",
+   "domain": "NET",
+   "stem": "A user wants maximum throughput in an apartment with few nearby networks. Which channel width setting helps on 5 GHz?",
+   "options": [
+    "A wider channel, like 80 MHz",
+    "Channel 1 on 2.4 GHz",
+    "Disabling all channel bonding",
+    "A narrower 20 MHz channel only"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Wider channels increase throughput when there's little interference. In crowded areas, narrower channels may perform better."
+  },
+  {
+   "id": "a1201-45",
+   "domain": "NET",
+   "stem": "Which short-range wireless technology connects keyboards, mice, and headsets to a computer?",
+   "options": [
+    "Cellular",
+    "WISP fixed wireless",
+    "Bluetooth",
+    "RFID"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Bluetooth creates personal area network connections for peripherals over short distances."
+  },
+  {
+   "id": "a1201-46",
+   "domain": "NET",
+   "stem": "Which server automatically assigns IP addresses, subnet masks, and gateways to clients?",
+   "options": [
+    "A DHCP server",
+    "An NTP server",
+    "A syslog server",
+    "A DNS server"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "DHCP servers lease IP configuration to clients. DNS resolves names, syslog collects logs, and NTP synchronizes time."
+  },
+  {
+   "id": "a1201-47",
+   "domain": "NET",
+   "stem": "Which server keeps clocks synchronized across computers so logs and authentication work correctly?",
+   "options": [
+    "A file server",
+    "A mail server",
+    "A print server",
+    "An NTP server"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Network Time Protocol keeps clocks consistent. Time skew can break Kerberos authentication and confuse log timelines."
+  },
+  {
+   "id": "a1201-48",
+   "domain": "NET",
+   "stem": "Which server role verifies users' identities and controls and records what they can access?",
+   "options": [
+    "A web server",
+    "A database server",
+    "A proxy server",
+    "An AAA server"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "AAA servers, such as RADIUS or TACACS+, handle authentication, authorization, and accounting."
+  },
+  {
+   "id": "a1201-49",
+   "domain": "NET",
+   "stem": "Network devices send event messages to a central server for storage and review. What is this server?",
+   "options": [
+    "A syslog server",
+    "A file server",
+    "A DHCP server",
+    "A web server running HTTPS"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Syslog servers collect logs from many devices for troubleshooting and security monitoring."
+  },
+  {
+   "id": "a1201-50",
+   "domain": "NET",
+   "stem": "A small business wants one appliance that combines firewall, antivirus, content filtering, and IDS/IPS. What should they buy?",
+   "options": [
+    "A DOCSIS cable modem",
+    "A PoE injector with surge protection",
+    "An unmanaged eight-port switch",
+    "A unified threat management (UTM) device"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "UTM appliances bundle multiple security functions into one device, which suits small organizations."
+  },
+  {
+   "id": "a1201-51",
+   "domain": "NET",
+   "stem": "An appliance filters incoming email to block junk and phishing messages before they reach users. What is it?",
+   "options": [
+    "A spam gateway",
+    "A load balancer",
+    "A patch panel",
+    "A proxy server"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Spam gateways inspect inbound mail and block spam, phishing, and malware."
+  },
+  {
+   "id": "a1201-52",
+   "domain": "NET",
+   "stem": "A factory's legacy system monitors and controls equipment across several remote sites. Which type of system is this?",
+   "options": [
+    "SCADA",
+    "UTM firewall",
+    "VDI desktops",
+    "SaaS email"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Supervisory control and data acquisition systems manage industrial processes. They're often legacy or embedded and need careful isolation."
+  },
+  {
+   "id": "a1201-53",
+   "domain": "NET",
+   "stem": "Smart thermostats, cameras, and voice assistants that connect to a home network are examples of what?",
+   "options": [
+    "IoT devices",
+    "Patch panels",
+    "Load balancers",
+    "SCADA servers"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Internet of Things devices are network-connected embedded devices. They often need separate networks and firmware updates for security."
+  },
+  {
+   "id": "a1201-54",
+   "domain": "NET",
+   "stem": "Which DNS record type holds SPF, DKIM, and DMARC policies for email authentication?",
+   "options": [
+    "AAAA",
+    "CNAME",
+    "MX",
+    "TXT"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "TXT records store text data, including SPF, DKIM, and DMARC entries that help receiving servers detect spoofed mail."
+  },
+  {
+   "id": "a1201-55",
+   "domain": "NET",
+   "stem": "Which email authentication method lets a domain owner tell receiving servers whether to reject or quarantine messages that fail SPF or DKIM?",
+   "options": [
+    "MX priority",
+    "DKIM",
+    "DMARC",
+    "SPF"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "DMARC sets the policy for failed checks and requests reports. SPF lists allowed senders, and DKIM signs messages."
+  },
+  {
+   "id": "a1201-56",
+   "domain": "NET",
+   "stem": "Which email authentication method adds a digital signature to outgoing messages so receivers can verify they weren't altered?",
+   "options": [
+    "DMARC",
+    "CNAME",
+    "SPF",
+    "DKIM"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "DomainKeys Identified Mail signs messages with a private key, and receivers check the signature using a public key in DNS."
+  },
+  {
+   "id": "a1201-57",
+   "domain": "NET",
+   "stem": "A DNS record maps mail.example.com to 203.0.113.10. Which record type is this?",
+   "options": [
+    "TXT",
+    "A",
+    "AAAA",
+    "MX"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A records map a hostname to an IPv4 address. AAAA records map to IPv6 addresses."
+  },
+  {
+   "id": "a1201-58",
+   "domain": "NET",
+   "stem": "A DHCP server should never hand out 192.168.1.1–192.168.1.20 because those are used by servers. What should be configured?",
+   "options": [
+    "A new VLAN",
+    "A reservation",
+    "An exclusion range",
+    "A shorter lease"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Exclusions remove addresses from the DHCP pool. Reservations assign a specific address to a specific device."
+  },
+  {
+   "id": "a1201-59",
+   "domain": "NET",
+   "stem": "What does a DHCP scope define?",
+   "options": [
+    "The VLAN each switch port belongs to",
+    "The encryption method used for all Wi-Fi traffic",
+    "The list of websites users are allowed to visit",
+    "The address range and settings to hand out"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A scope is the pool of addresses for a subnet, along with options such as the gateway and DNS servers."
+  },
+  {
+   "id": "a1201-60",
+   "domain": "NET",
+   "stem": "A DHCP lease time is set to eight days on a busy guest network, and addresses run out. What would help?",
+   "options": [
+    "Lengthen the lease time",
+    "Shorten the lease time",
+    "Disable DNS on the scope",
+    "Remove the default gateway"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Shorter leases return unused addresses to the pool faster, which suits networks with many transient devices."
+  },
+  {
+   "id": "a1201-61",
+   "domain": "NET",
+   "stem": "A company separates its phones, guest devices, and staff PCs into different logical networks on the same switches. What is this?",
+   "options": [
+    "VLANs",
+    "A WISP",
+    "A VPN",
+    "A PAN"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "VLANs logically segment a switched network, improving security and reducing broadcast traffic."
+  },
+  {
+   "id": "a1201-62",
+   "domain": "NET",
+   "stem": "A remote employee needs encrypted access to internal resources over the internet. What should they use?",
+   "options": [
+    "A PoE injector",
+    "A VPN",
+    "A VLAN",
+    "A patch panel"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Virtual private networks create encrypted tunnels across untrusted networks."
+  },
+  {
+   "id": "a1201-63",
+   "domain": "NET",
+   "stem": "A small office needs a switch it can configure with VLANs and monitor remotely. Which type should they buy?",
+   "options": [
+    "A PoE injector",
+    "A managed switch",
+    "A cable modem",
+    "An unmanaged switch"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Managed switches support configuration, such as VLANs, QoS, and monitoring. Unmanaged switches are plug-and-play with no settings."
+  },
+  {
+   "id": "a1201-64",
+   "domain": "NET",
+   "stem": "An access point needs power, but the existing switch doesn't support PoE. What's the simplest fix?",
+   "options": [
+    "Add a PoE injector",
+    "Replace the AP's antenna",
+    "Install a patch panel",
+    "Use a crossover cable"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A PoE injector adds power to an Ethernet cable between a non-PoE switch and the powered device."
+  },
+  {
+   "id": "a1201-65",
+   "domain": "NET",
+   "stem": "A home receives internet service over fiber, and a box on the wall converts the optical signal to Ethernet. What is this device?",
+   "options": [
+    "A cable modem",
+    "An optical network terminal (ONT)",
+    "A wireless access point with PoE",
+    "A DSL modem with a splitter"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The ONT terminates fiber service at the customer premises. Cable modems use coax, and DSL modems use telephone lines."
+  },
+  {
+   "id": "a1201-66",
+   "domain": "NET",
+   "stem": "Which device forwards traffic between different networks, such as a home LAN and the internet?",
+   "options": [
+    "An unmanaged switch",
+    "A PoE injector",
+    "A router",
+    "A patch panel"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Routers connect networks and forward traffic by IP address. Switches connect devices within a network."
+  },
+  {
+   "id": "a1201-67",
+   "domain": "NET",
+   "stem": "What uniquely identifies a network interface card at Layer 2?",
+   "options": [
+    "Its default gateway",
+    "Its hostname",
+    "Its IP address",
+    "Its MAC address"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "MAC addresses are 48-bit hardware addresses assigned to NICs and used for local delivery on Ethernet."
+  },
+  {
+   "id": "a1201-68",
+   "domain": "NET",
+   "stem": "Which device filters traffic based on rules to protect a network from unauthorized access?",
+   "options": [
+    "A firewall",
+    "A cable modem",
+    "An unmanaged switch",
+    "A patch panel"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Firewalls allow or block traffic based on rules about addresses, ports, protocols, and applications."
+  },
+  {
+   "id": "a1201-69",
+   "domain": "NET",
+   "stem": "An internet connection uses existing telephone lines. Which device does the customer need?",
+   "options": [
+    "A PoE switch",
+    "A DSL modem",
+    "An ONT",
+    "A cable modem"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "DSL delivers internet over telephone copper. Cable modems use coax, and ONTs terminate fiber."
+  },
+  {
+   "id": "a1201-70",
+   "domain": "NET",
+   "stem": "A home router hands out addresses in 192.168.1.0/24. What type of addresses are these?",
+   "options": [
+    "APIPA addresses",
+    "Private IPv4 addresses",
+    "Public IPv4 addresses",
+    "IPv6 link-local addresses"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "192.168.0.0/16 is a private range. The router uses NAT to share one public address for internet access."
+  },
+  {
+   "id": "a1201-71",
+   "domain": "NET",
+   "stem": "A printer must keep the same IP address so users can always reach it. What's a common SOHO approach?",
+   "options": [
+    "Assign a static IP or DHCP reservation",
+    "Give it an APIPA address",
+    "Remove its default gateway",
+    "Let it pick a new address each day"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Static addressing or a DHCP reservation keeps a printer's address consistent."
+  },
+  {
+   "id": "a1201-72",
+   "domain": "NET",
+   "stem": "A PC has the address 192.168.1.50 and mask 255.255.255.0. What is its gateway most likely to be?",
+   "options": [
+    "10.0.0.1",
+    "255.255.255.0",
+    "192.168.1.1",
+    "169.254.1.1"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The default gateway must be on the same subnet. SOHO routers commonly use .1 or .254 on the local network."
+  },
+  {
+   "id": "a1201-73",
+   "domain": "NET",
+   "stem": "Which addressing type uses 128-bit addresses written in hexadecimal?",
+   "options": [
+    "IPv6",
+    "APIPA",
+    "IPv4",
+    "MAC"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "IPv6 addresses are 128 bits, written as eight groups of hexadecimal digits. IPv4 uses 32-bit dotted-decimal addresses."
+  },
+  {
+   "id": "a1201-74",
+   "domain": "NET",
+   "stem": "A rural home has no cable or fiber, and a provider beams internet from a nearby tower to an antenna on the roof. Which connection type is this?",
+   "options": [
+    "A wireless ISP (WISP)",
+    "Low-earth orbit satellite internet",
+    "A metropolitan area network",
+    "DSL over phone lines"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "WISPs deliver fixed wireless internet from towers to customer antennas, which is common in rural areas."
+  },
+  {
+   "id": "a1201-75",
+   "domain": "NET",
+   "stem": "Which internet connection type usually has the highest latency because signals travel to orbit and back?",
+   "options": [
+    "Cable",
+    "Fiber",
+    "DSL over copper",
+    "Satellite"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Satellite connections, especially geostationary ones, have high latency. Low-earth orbit services reduce it but still vary."
+  },
+  {
+   "id": "a1201-76",
+   "domain": "NET",
+   "stem": "A city connects its government buildings across town with a high-speed network. Which network type is this?",
+   "options": [
+    "A MAN",
+    "A PAN",
+    "A SAN",
+    "A campus LAN"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A metropolitan area network spans a city or campus area, larger than a LAN but smaller than a WAN."
+  },
+  {
+   "id": "a1201-77",
+   "domain": "NET",
+   "stem": "A user's smartwatch, phone, and earbuds connect to each other over Bluetooth. Which network type is this?",
+   "options": [
+    "A MAN",
+    "A leased-line WAN",
+    "A SAN",
+    "A PAN"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Personal area networks connect devices around one person over short distances."
+  },
+  {
+   "id": "a1201-78",
+   "domain": "NET",
+   "stem": "Which network type provides high-speed, block-level storage access to servers?",
+   "options": [
+    "A SAN",
+    "A PAN",
+    "A WLAN",
+    "A MAN"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Storage area networks connect servers to shared block storage, often over Fibre Channel or iSCSI."
+  },
+  {
+   "id": "a1201-79",
+   "domain": "NET",
+   "stem": "A technician needs to attach an RJ45 connector to the end of a network cable. Which tool is used?",
+   "options": [
+    "A loopback plug",
+    "A crimper",
+    "A toner probe",
+    "A punchdown tool"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Crimpers press RJ45 connectors onto cable ends. Punchdown tools seat wires into patch panels and keystone jacks."
+  },
+  {
+   "id": "a1201-80",
+   "domain": "NET",
+   "stem": "A technician is terminating cable runs into a patch panel. Which tool seats the wires?",
+   "options": [
+    "A crimper",
+    "A cable stripper",
+    "A Wi-Fi spectrum analyzer",
+    "A punchdown tool"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Punchdown tools push wires into IDC terminals on patch panels and keystone jacks and trim the excess."
+  },
+  {
+   "id": "a1201-81",
+   "domain": "NET",
+   "stem": "A technician wants to test whether a NIC port can send and receive without connecting to another device. Which tool fits?",
+   "options": [
+    "A toner probe",
+    "A punchdown tool",
+    "A loopback plug",
+    "A crimper"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Loopback plugs route a port's transmit pins back to its receive pins so diagnostics can test the port."
+  },
+  {
+   "id": "a1201-82",
+   "domain": "HW",
+   "stem": "A graphic designer needs an LCD monitor with the most accurate colors and widest viewing angles. Which panel type fits best?",
+   "options": [
+    "VA",
+    "IPS",
+    "CRT (tube)",
+    "TN"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "In-plane switching panels offer the best color accuracy and viewing angles. TN panels are fast but have weaker color and angles, and VA sits in between with strong contrast."
+  },
+  {
+   "id": "a1201-83",
+   "domain": "HW",
+   "stem": "A competitive gamer wants a cheap LCD with the fastest response time and doesn't care about color accuracy. Which panel type fits?",
+   "options": [
+    "IPS",
+    "TN",
+    "Mini-LED",
+    "OLED"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Twisted nematic panels are inexpensive with very fast response times but have poorer color and viewing angles."
+  },
+  {
+   "id": "a1201-84",
+   "domain": "HW",
+   "stem": "Which display technology produces light per pixel, giving true blacks without a backlight?",
+   "options": [
+    "TN LCD",
+    "OLED",
+    "VA LCD",
+    "IPS LCD"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "OLED pixels emit their own light and can turn off completely. LCDs need a backlight, such as LED or Mini-LED."
+  },
+  {
+   "id": "a1201-85",
+   "domain": "HW",
+   "stem": "An older laptop's screen is very dim, but an image is faintly visible with a flashlight. Which component has likely failed?",
+   "options": [
+    "The inverter or backlight",
+    "The display cable's audio wire",
+    "The GPU's driver",
+    "The digitizer"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "CCFL-backlit displays use an inverter to power the backlight. A failed inverter or backlight leaves a faint image."
+  },
+  {
+   "id": "a1201-86",
+   "domain": "HW",
+   "stem": "A tablet displays images correctly but doesn't respond to touch. Which component has likely failed?",
+   "options": [
+    "The GPU and its driver",
+    "The backlight",
+    "The digitizer",
+    "The inverter"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The digitizer converts touch input into signals. It can fail while the display panel still shows images."
+  },
+  {
+   "id": "a1201-87",
+   "domain": "HW",
+   "stem": "What does a monitor's refresh rate measure?",
+   "options": [
+    "The range of colors the display can show",
+    "How often the image is redrawn per second",
+    "How many pixels fit in one inch of the screen",
+    "The maximum brightness of the backlight"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Refresh rate, in hertz, is how often the screen updates. Pixel density is pixels per inch, and color gamut is the range of colors."
+  },
+  {
+   "id": "a1201-88",
+   "domain": "HW",
+   "stem": "A photo editor needs a monitor that can display a wide range of colors, such as most of DCI-P3. Which attribute matters most?",
+   "options": [
+    "Refresh rate",
+    "Color gamut",
+    "Pixel pitch only",
+    "Response time"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Color gamut describes the range of colors a display can reproduce, often given as a percentage of sRGB or DCI-P3."
+  },
+  {
+   "id": "a1201-89",
+   "domain": "HW",
+   "stem": "Which wiring standard is most commonly used for new Ethernet installations in the US?",
+   "options": [
+    "IEEE 1394",
+    "T568B",
+    "T568A",
+    "RS-232"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "T568A and T568B define pin assignments. T568B is common in US commercial installs, and using the same standard on both ends makes a straight-through cable."
+  },
+  {
+   "id": "a1201-90",
+   "domain": "HW",
+   "stem": "A cable must be buried underground between two buildings without a conduit. Which cable type fits?",
+   "options": [
+    "Standard indoor Cat 6 patch cable",
+    "Plenum-rated indoor UTP",
+    "USB 3.0 active extension cable",
+    "Direct-burial shielded twisted pair"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Direct-burial cable has a jacket rated for moisture and soil. Indoor cable isn't designed for underground use."
+  },
+  {
+   "id": "a1201-91",
+   "domain": "HW",
+   "stem": "Which video connector carries both digital video and audio and is common on TVs and consoles?",
+   "options": [
+    "DB9",
+    "DVI-D",
+    "HDMI",
+    "VGA"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "HDMI carries digital audio and video. VGA is analog video only, and DVI carries video without audio in most implementations."
+  },
+  {
+   "id": "a1201-92",
+   "domain": "HW",
+   "stem": "Which video interface is analog and uses a 15-pin connector?",
+   "options": [
+    "USB-C",
+    "VGA",
+    "DisplayPort",
+    "HDMI"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "VGA (DE-15) carries analog video and is found on older monitors and projectors."
+  },
+  {
+   "id": "a1201-93",
+   "domain": "HW",
+   "stem": "A single port on a laptop supports 40 Gbps data, daisy-chained displays, and charging with a USB-C connector. Which technology is this?",
+   "options": [
+    "DVI-D dual link",
+    "eSATAp (powered)",
+    "Thunderbolt",
+    "USB 2.0 Hi-Speed"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Thunderbolt 3 and later use the USB-C connector and support high-speed data, video, and power delivery."
+  },
+  {
+   "id": "a1201-94",
+   "domain": "HW",
+   "stem": "An external hard drive enclosure connects with a dedicated external SATA port. Which connector is this?",
+   "options": [
+    "RJ11 jack",
+    "Molex",
+    "eSATA",
+    "DB9 serial"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "eSATA provides an external SATA connection. Molex is an older internal power connector, and DB9 is a serial connector."
+  },
+  {
+   "id": "a1201-95",
+   "domain": "HW",
+   "stem": "An older lab instrument connects to a PC with a 9-pin serial cable. Which connector is this?",
+   "options": [
+    "DB9",
+    "RJ45",
+    "HDMI",
+    "Lightning"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "DB9 is commonly used for RS-232 serial connections, such as console cables and legacy equipment."
+  },
+  {
+   "id": "a1201-96",
+   "domain": "HW",
+   "stem": "Which connector is used for analog telephone lines and DSL?",
+   "options": [
+    "LC",
+    "RJ11",
+    "RJ45",
+    "F-type"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "RJ11 is a smaller connector for phone lines. RJ45 is used for Ethernet."
+  },
+  {
+   "id": "a1201-97",
+   "domain": "HW",
+   "stem": "Which connector supplies power to older IDE drives and some case fans from the power supply?",
+   "options": [
+    "DB9",
+    "eSATA",
+    "Molex",
+    "SATA data"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "4-pin Molex connectors provide 5 V and 12 V power to legacy drives and accessories."
+  },
+  {
+   "id": "a1201-98",
+   "domain": "HW",
+   "stem": "What is the maximum data rate of USB 3.0 (USB 3.2 Gen 1)?",
+   "options": [
+    "5 Gbps",
+    "40 Gbps",
+    "480 Mbps",
+    "20 Gbps"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "USB 3.0 (USB 3.2 Gen 1) supports 5 Gbps. USB 2.0 supports 480 Mbps, and 20 and 40 Gbps belong to newer USB and Thunderbolt versions."
+  },
+  {
+   "id": "a1201-99",
+   "domain": "HW",
+   "stem": "A user needs to connect a laptop with only HDMI output to a projector with only VGA input. What do they need?",
+   "options": [
+    "A USB 2.0 extension cable",
+    "An active HDMI-to-VGA adapter",
+    "A passive DVI-to-HDMI cable",
+    "A DB9 null modem cable"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "HDMI is digital and VGA is analog, so an active adapter converts the signal."
+  },
+  {
+   "id": "a1201-100",
+   "domain": "HW",
+   "stem": "A server must detect and correct single-bit memory errors automatically. Which RAM type is needed?",
+   "options": [
+    "VRAM",
+    "ECC RAM",
+    "Non-ECC RAM",
+    "SODIMM RAM"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Error-correcting code memory detects and fixes single-bit errors. It needs motherboard and CPU support."
+  },
+  {
+   "id": "a1201-101",
+   "domain": "HW",
+   "stem": "A user installed one 16 GB DIMM and wants better memory performance. What should they do?",
+   "options": [
+    "Install the DIMM in a PCIe slot instead",
+    "Disable XMP memory profiles in the BIOS",
+    "Add a matching DIMM for dual-channel",
+    "Replace it with a SODIMM laptop module"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Matched modules in the proper slots enable dual-channel mode, increasing memory bandwidth."
+  },
+  {
+   "id": "a1201-102",
+   "domain": "HW",
+   "stem": "Can a DDR4 module be installed in a DDR5 motherboard slot?",
+   "options": [
+    "Only if the BIOS is updated",
+    "No, the notches and voltages differ",
+    "Yes, DDR versions are fully interchangeable",
+    "Yes, but only in laptops"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Each DDR generation has a different key notch and electrical requirements, so they aren't interchangeable."
+  },
+  {
+   "id": "a1201-103",
+   "domain": "HW",
+   "stem": "Which SSD interface connects directly to PCIe lanes for the highest performance?",
+   "options": [
+    "eSATA",
+    "IDE",
+    "NVMe",
+    "SATA"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "NVMe is designed for flash storage over PCIe and is much faster than SATA-based SSDs."
+  },
+  {
+   "id": "a1201-104",
+   "domain": "HW",
+   "stem": "A technician installs an M.2 drive, but the system only runs it at SATA speeds. What's the likely reason?",
+   "options": [
+    "The RAM isn't in dual-channel mode",
+    "The drive needs a separate Molex power cable",
+    "M.2 drives always run at SATA speeds",
+    "It's an M.2 SATA drive or slot"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "M.2 is a form factor that can carry SATA or PCIe/NVMe. The drive and slot must both support NVMe for full speed."
+  },
+  {
+   "id": "a1201-105",
+   "domain": "HW",
+   "stem": "Which RAID level stripes data across disks with no redundancy?",
+   "options": [
+    "RAID 1",
+    "RAID 5",
+    "RAID 0",
+    "RAID 10"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "RAID 0 improves performance but loses all data if any one disk fails."
+  },
+  {
+   "id": "a1201-106",
+   "domain": "HW",
+   "stem": "Which RAID level mirrors data across two disks?",
+   "options": [
+    "RAID 6 (double parity)",
+    "RAID 0",
+    "RAID 5",
+    "RAID 1"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "RAID 1 duplicates data on two drives, so either drive can fail without data loss."
+  },
+  {
+   "id": "a1201-107",
+   "domain": "HW",
+   "stem": "Which RAID level uses striping with distributed parity and survives one disk failure with at least three disks?",
+   "options": [
+    "RAID 5",
+    "RAID 0",
+    "RAID 1",
+    "RAID 10"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "RAID 5 needs at least three disks and tolerates one failure. RAID 6 uses double parity and tolerates two."
+  },
+  {
+   "id": "a1201-108",
+   "domain": "HW",
+   "stem": "An array must survive two simultaneous disk failures. Which RAID level fits?",
+   "options": [
+    "RAID 6",
+    "RAID 5",
+    "RAID 0 (striping)",
+    "RAID 1"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "RAID 6 uses two parity blocks, so it tolerates two disk failures and needs at least four disks."
+  },
+  {
+   "id": "a1201-109",
+   "domain": "HW",
+   "stem": "Which RAID level combines mirroring and striping and needs at least four disks?",
+   "options": [
+    "RAID 5",
+    "RAID 6",
+    "RAID 0 (striping)",
+    "RAID 10"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "RAID 10 stripes across mirrored pairs, giving high performance and redundancy."
+  },
+  {
+   "id": "a1201-110",
+   "domain": "HW",
+   "stem": "Which drive interface is common in enterprise servers and supports dual-port connections for redundancy?",
+   "options": [
+    "mSATA",
+    "SATA",
+    "SAS",
+    "USB"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Serial Attached SCSI is designed for enterprise reliability and performance, with features such as dual-porting."
+  },
+  {
+   "id": "a1201-111",
+   "domain": "HW",
+   "stem": "A user wants the smallest motherboard form factor for a compact home theater PC. Which fits?",
+   "options": [
+    "Extended ATX",
+    "microATX",
+    "Mini-ITX",
+    "ATX"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Mini-ITX boards are 170 × 170 mm, smaller than microATX and ATX, which suits small form factor builds."
+  },
+  {
+   "id": "a1201-112",
+   "domain": "HW",
+   "stem": "Which firmware setting prevents unsigned bootloaders and boot-level malware from loading?",
+   "options": [
+    "Boot order",
+    "Secure Boot",
+    "USB permissions",
+    "Fan curve"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Secure Boot, a UEFI feature, verifies that bootloaders are signed by trusted keys."
+  },
+  {
+   "id": "a1201-113",
+   "domain": "HW",
+   "stem": "BitLocker needs a hardware chip that stores encryption keys and measures boot integrity. Which component is this?",
+   "options": [
+    "HSM",
+    "TPM",
+    "NIC firmware",
+    "ECC memory"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "The Trusted Platform Module stores keys and supports measured boot. HSMs are dedicated, often external, key management devices."
+  },
+  {
+   "id": "a1201-114",
+   "domain": "HW",
+   "stem": "A bank needs a dedicated, tamper-resistant device to generate and protect large numbers of cryptographic keys for servers. What should it use?",
+   "options": [
+    "A hardware security module (HSM)",
+    "A USB flash drive",
+    "A Trusted Platform Module in each PC",
+    "A BIOS password"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "HSMs are specialized devices for secure key generation, storage, and cryptographic operations at scale."
+  },
+  {
+   "id": "a1201-115",
+   "domain": "HW",
+   "stem": "A user can't run virtual machines in a hypervisor, and it reports that hardware virtualization is unavailable. What should be checked?",
+   "options": [
+    "Whether the boot password is set",
+    "Whether Secure Boot is disabled",
+    "Whether virtualization is enabled in firmware",
+    "Whether the case fans are running at full speed"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Intel VT-x or AMD-V must be enabled in firmware for most hypervisors to run."
+  },
+  {
+   "id": "a1201-116",
+   "domain": "HW",
+   "stem": "A company wants to prevent users from booting computers from USB drives. Where should this be configured?",
+   "options": [
+    "In the printer's driver settings",
+    "In the monitor's on-screen menu",
+    "In BIOS/UEFI boot and USB settings",
+    "In the router's DHCP scope options page"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Firmware settings control boot order and can disable USB booting. A BIOS password stops users from changing them."
+  },
+  {
+   "id": "a1201-117",
+   "domain": "HW",
+   "stem": "Which processor architecture is common in smartphones and many power-efficient laptops?",
+   "options": [
+    "x64 only",
+    "ARM",
+    "x86",
+    "Itanium"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "ARM uses a reduced instruction set focused on power efficiency. x86/x64 dominates traditional desktops and servers."
+  },
+  {
+   "id": "a1201-118",
+   "domain": "HW",
+   "stem": "When installing a CPU and cooler, what should be applied between the CPU and heat sink?",
+   "options": [
+    "Double-sided foam",
+    "Thermal paste or a thermal pad",
+    "Electrical tape",
+    "Nothing, for best contact"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Thermal compound fills microscopic gaps so heat transfers efficiently from the CPU to the heat sink."
+  },
+  {
+   "id": "a1201-119",
+   "domain": "HW",
+   "stem": "A streamer wants to record gameplay from a console on a PC. Which expansion card fits?",
+   "options": [
+    "A sound card",
+    "A NIC",
+    "A RAID controller",
+    "A capture card"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Capture cards ingest video from external sources, such as consoles or cameras, for recording or streaming."
+  },
+  {
+   "id": "a1201-120",
+   "domain": "HW",
+   "stem": "Which motherboard connector does a modern GPU typically use?",
+   "options": [
+    "SATA III",
+    "Conventional PCI",
+    "PCIe x16",
+    "M.2 only"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Graphics cards use PCIe x16 slots for maximum bandwidth. PCI is an older, slower standard."
+  },
+  {
+   "id": "a1201-121",
+   "domain": "HW",
+   "stem": "Front-panel USB ports and the power button connect to which part of the motherboard?",
+   "options": [
+    "SATA ports",
+    "PCIe slots",
+    "Headers",
+    "DIMM slots"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Motherboard headers provide connections for front-panel controls, USB, audio, and fans."
+  },
+  {
+   "id": "a1201-122",
+   "domain": "HW",
+   "stem": "A workstation board has two CPU sockets. What must be true of the processors installed?",
+   "options": [
+    "They must be supported matching models",
+    "They can be any mix of AMD and Intel",
+    "They must use different socket types",
+    "Only one socket can ever be used"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Multisocket boards require compatible, usually identical, CPUs that match the socket and chipset."
+  },
+  {
+   "id": "a1201-123",
+   "domain": "HW",
+   "stem": "A user is moving a PC to a country that uses 230 V power. What should be checked on the power supply?",
+   "options": [
+    "Whether it has an 80 Plus rating",
+    "Whether it supports 3.3 V output",
+    "Whether it has a modular cable",
+    "Whether it supports 220–240 VAC input"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Power supplies must support the local input voltage, either auto-switching or through a selector switch."
+  },
+  {
+   "id": "a1201-124",
+   "domain": "HW",
+   "stem": "Which power supply output voltage powers CPUs and GPUs?",
+   "options": [
+    "3.3 V",
+    "5 V",
+    "12 V",
+    "-12 V"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The 12 V rail supplies high-power components such as CPUs, GPUs, and drive motors. 3.3 V and 5 V power logic circuits."
+  },
+  {
+   "id": "a1201-125",
+   "domain": "HW",
+   "stem": "A builder wants to reduce cable clutter by attaching only the power cables a system needs. Which PSU type fits?",
+   "options": [
+    "A redundant power supply",
+    "A 110 V-only power supply",
+    "A modular power supply",
+    "A 20+4 pin power supply"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Modular PSUs have detachable cables, improving airflow and cable management."
+  },
+  {
+   "id": "a1201-126",
+   "domain": "HW",
+   "stem": "A critical server must keep running if one power supply fails. What should it have?",
+   "options": [
+    "A modular power supply",
+    "Redundant power supplies",
+    "A higher wattage single PSU",
+    "A 20+4 pin connector"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Redundant, hot-swappable power supplies let a server keep running when one unit fails."
+  },
+  {
+   "id": "a1201-127",
+   "domain": "HW",
+   "stem": "What does an 80 Plus Gold rating on a power supply indicate?",
+   "options": [
+    "High energy efficiency at typical loads",
+    "A higher maximum wattage than other PSUs",
+    "Support for 220 V input only",
+    "A modular cable design"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "80 Plus ratings measure efficiency. Higher tiers waste less power as heat."
+  },
+  {
+   "id": "a1201-128",
+   "domain": "HW",
+   "stem": "Which connector supplies main power to a modern ATX motherboard?",
+   "options": [
+    "A 4-pin Molex connector",
+    "A SATA power connector",
+    "The 20+4 pin connector",
+    "A 6-pin PCIe connector"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "ATX boards use a 24-pin main connector, often supplied as 20+4 pins for compatibility with older boards."
+  },
+  {
+   "id": "a1201-129",
+   "domain": "HW",
+   "stem": "A Mac user needs a printer driver that handles complex graphics consistently across platforms. Which page description language fits best?",
+   "options": [
+    "ESC/P only",
+    "PCL",
+    "Plain ASCII text",
+    "PostScript"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "PostScript is device-independent and handles complex graphics well. PCL is common and efficient, especially on Windows."
+  },
+  {
+   "id": "a1201-130",
+   "domain": "HW",
+   "stem": "Employees must tap their badges at a shared printer before their documents print. Which security feature is this?",
+   "options": [
+    "Duplex (two-sided) printing",
+    "Draft quality mode",
+    "Paper tray assignment",
+    "Secured (badge release) printing"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Secured print holds jobs until the user authenticates at the device, preventing others from picking up sensitive pages."
+  },
+  {
+   "id": "a1201-131",
+   "domain": "HW",
+   "stem": "A company wants a record of who printed and scanned what on its multifunction devices. Which feature provides this?",
+   "options": [
+    "Audit logs",
+    "Toner density",
+    "Orientation settings",
+    "Duplex settings"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Audit logs record who printed, scanned, or copied what and when, supporting accountability and compliance."
+  },
+  {
+   "id": "a1201-132",
+   "domain": "HW",
+   "stem": "Users want to scan documents directly to a shared network folder. Which scan service fits?",
+   "options": [
+    "Scan to Bluetooth",
+    "Scan to USB only",
+    "Scan to SMB",
+    "Scan to fax"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Scan-to-SMB saves files to a network share. MFDs may also scan to email or cloud services."
+  },
+  {
+   "id": "a1201-133",
+   "domain": "HW",
+   "stem": "A user needs to scan a 40-page stack of documents quickly. Which MFD feature helps?",
+   "options": [
+    "The flatbed scanner glass",
+    "The secure print queue",
+    "The duplex print setting in the driver",
+    "The automatic document feeder (ADF)"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "ADFs feed multiple pages automatically. Flatbeds suit single pages, books, and fragile items."
+  },
+  {
+   "id": "a1201-134",
+   "domain": "HW",
+   "stem": "A laser printer has reached its page count for scheduled service. What should be installed?",
+   "options": [
+    "A new ribbon",
+    "Thermal paper",
+    "A new ink cartridge",
+    "A maintenance kit"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Laser maintenance kits typically include a fuser, rollers, and pads, replaced at recommended page counts."
+  },
+  {
+   "id": "a1201-135",
+   "domain": "HW",
+   "stem": "Thermal receipt printer output is faint and streaked. What maintenance should be done?",
+   "options": [
+    "Calibrate and align the printhead nozzles",
+    "Replace the ink ribbon",
+    "Replace the toner cartridge and drum",
+    "Clean the heating element and remove debris"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Thermal printers need clean heating elements and the correct thermal paper. They don't use toner or ink."
+  },
+  {
+   "id": "a1201-136",
+   "domain": "HW",
+   "stem": "An auto shop needs to print multipart carbon forms. Which printer type fits?",
+   "options": [
+    "Inkjet (piezoelectric)",
+    "Laser (toner)",
+    "Direct thermal",
+    "Impact (dot matrix)"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Impact printers strike the paper through a ribbon, which transfers to multipart forms."
+  },
+  {
+   "id": "a1201-137",
+   "domain": "HW",
+   "stem": "An inkjet printer's output has missing lines in some colors. What should be done first?",
+   "options": [
+    "Install a laser maintenance kit",
+    "Replace the impact printer's ribbon",
+    "Replace the fuser assembly",
+    "Run the printhead cleaning utility"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Clogged nozzles cause missing lines. Cleaning printheads, then aligning or calibrating, usually fixes it."
+  },
+  {
+   "id": "a1201-138",
+   "domain": "VC",
+   "stem": "A security team wants to open a suspicious file in an isolated environment that can be discarded afterward. What should they use?",
+   "options": [
+    "A mirrored RAID 1 array",
+    "A port replicator",
+    "A docking station with USB-C",
+    "A virtual machine as a sandbox"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "VMs used as sandboxes isolate untrusted code from the host, and they can be reverted or deleted afterward."
+  },
+  {
+   "id": "a1201-139",
+   "domain": "VC",
+   "stem": "Which hypervisor type runs directly on the hardware with no host operating system?",
+   "options": [
+    "Type 1",
+    "Hosted",
+    "Container runtime",
+    "Type 2"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Type 1 (bare-metal) hypervisors, such as ESXi or Hyper-V Server, run directly on hardware. Type 2 runs as an application on a host OS."
+  },
+  {
+   "id": "a1201-140",
+   "domain": "VC",
+   "stem": "A developer runs VirtualBox on a Windows laptop to test Linux. Which hypervisor type is this?",
+   "options": [
+    "Embedded",
+    "Bare-metal",
+    "Type 2",
+    "Type 1"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Type 2 hypervisors run on top of a host operating system, which suits desktops and testing."
+  },
+  {
+   "id": "a1201-141",
+   "domain": "VC",
+   "stem": "How do containers differ from virtual machines?",
+   "options": [
+    "Containers can only run on physical servers",
+    "Containers need a Type 1 hypervisor to run at all",
+    "Containers each run a full OS; VMs share the host kernel",
+    "Containers share the host kernel; VMs run full OSs"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Containers package apps with dependencies and share the host kernel, so they're lightweight. VMs virtualize hardware and run separate operating systems."
+  },
+  {
+   "id": "a1201-142",
+   "domain": "VC",
+   "stem": "A company delivers full desktops to employees from central servers so users can work from any device. What is this?",
+   "options": [
+    "A shared RAID storage array",
+    "Software as a service (SaaS) email",
+    "A Type 2 hypervisor",
+    "Virtual Desktop Infrastructure (VDI)"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "VDI hosts desktop operating systems on servers and streams them to client devices."
+  },
+  {
+   "id": "a1201-143",
+   "domain": "VC",
+   "stem": "A business still needs an application that only runs on Windows XP. How can it keep using it more safely?",
+   "options": [
+    "Install Windows XP on every new PC",
+    "Run it as a cloud SaaS app",
+    "Run it in an isolated virtual machine",
+    "Connect XP directly to the internet"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Virtualization can run legacy software and operating systems in isolated VMs, limiting exposure."
+  },
+  {
+   "id": "a1201-144",
+   "domain": "VC",
+   "stem": "A user wants to run a Linux-only application on a macOS laptop. Which use of virtualization fits?",
+   "options": [
+    "A Type 1 hypervisor on a phone",
+    "Cross-platform virtualization",
+    "Hardware RAID",
+    "A port replicator"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cross-platform virtualization runs software built for one OS on a different host OS."
+  },
+  {
+   "id": "a1201-145",
+   "domain": "VC",
+   "stem": "Which resource requirement is most important when planning to run several VMs on one host?",
+   "options": [
+    "A monitor for each virtual machine",
+    "A dedicated printer for each virtual machine",
+    "Enough CPU, RAM, and storage",
+    "A separate keyboard for each guest"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Each VM consumes host CPU, memory, storage, and network resources, so the host must be sized for the combined load."
+  },
+  {
+   "id": "a1201-146",
+   "domain": "VC",
+   "stem": "Why should a VM's network settings be planned carefully?",
+   "options": [
+    "Bridged, NAT, or isolated modes change exposure",
+    "VMs always share the host's IP address",
+    "VMs can't connect to any network at all",
+    "VM network settings can't be changed after creation"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Virtual network options determine whether a VM is reachable from the LAN, shares the host's address through NAT, or is isolated."
+  },
+  {
+   "id": "a1201-147",
+   "domain": "VC",
+   "stem": "A VM running outdated software is compromised. Why is VM security still important?",
+   "options": [
+    "VMs are automatically immune to malware",
+    "VMs need patching like physical systems",
+    "VMs delete themselves automatically after an infection",
+    "VMs can never reach the host network"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Guest OSs need updates, antivirus, and access controls. Hypervisors must also be patched to prevent VM escape attacks."
+  },
+  {
+   "id": "a1201-148",
+   "domain": "VC",
+   "stem": "A developer needs a temporary environment to test a software update before deploying it to production. Which purpose of VMs is this?",
+   "options": [
+    "Data sovereignty",
+    "USB port replication",
+    "Test development",
+    "Load balancing"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "VMs make it easy to create, snapshot, and discard test environments without affecting production."
+  },
+  {
+   "id": "a1201-149",
+   "domain": "VC",
+   "stem": "Which virtualization concept lets users run a single application in an isolated package without installing it locally?",
+   "options": [
+    "Hardware RAID mirroring",
+    "Application virtualization",
+    "Bare-metal imaging",
+    "CPU thermal throttling"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Application virtualization delivers apps that run isolated from the local OS, which helps with compatibility and management."
+  },
+  {
+   "id": "a1201-150",
+   "domain": "VC",
+   "stem": "A company uses a hosted email and office suite that the provider fully manages. Which cloud model is this?",
+   "options": [
+    "IaaS",
+    "SaaS",
+    "PaaS",
+    "On-premises"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Software as a service delivers complete applications. The customer manages only users, data, and settings."
+  },
+  {
+   "id": "a1201-151",
+   "domain": "VC",
+   "stem": "Several hospitals share cloud infrastructure built for their common regulatory needs. Which deployment model is this?",
+   "options": [
+    "Public cloud",
+    "Community cloud",
+    "Private cloud",
+    "Hybrid multicloud"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Community clouds are shared by organizations with common requirements, such as compliance."
+  },
+  {
+   "id": "a1201-152",
+   "domain": "VC",
+   "stem": "A company keeps sensitive systems in its own datacenter and bursts extra workloads to a public cloud. Which model is this?",
+   "options": [
+    "Public cloud",
+    "Community cloud",
+    "Private cloud",
+    "Hybrid cloud"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Hybrid cloud combines private or on-premises infrastructure with public cloud services."
+  },
+  {
+   "id": "a1201-153",
+   "domain": "VC",
+   "stem": "A company runs a cloud environment used only by itself, on dedicated infrastructure. Which deployment model is this?",
+   "options": [
+    "Hybrid cloud",
+    "Community cloud",
+    "Private cloud",
+    "Public cloud"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Private clouds serve one organization, either on-premises or hosted by a provider on dedicated resources."
+  },
+  {
+   "id": "a1201-154",
+   "domain": "VC",
+   "stem": "A cloud bill includes charges for data transferred out of the provider's network. What is this charge for?",
+   "options": [
+    "Multitenancy",
+    "Egress",
+    "Ingress",
+    "Elasticity"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Metered utilization often charges for egress (data leaving the cloud). Ingress is data coming in and is often free."
+  },
+  {
+   "id": "a1201-155",
+   "domain": "VC",
+   "stem": "Cloud resources are billed only for the compute hours and storage actually used. Which characteristic is this?",
+   "options": [
+    "High availability",
+    "File synchronization",
+    "Dedicated resources",
+    "Metered utilization"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Metered (pay-as-you-go) billing charges based on actual consumption."
+  },
+  {
+   "id": "a1201-156",
+   "domain": "VC",
+   "stem": "An online store automatically adds servers for a holiday sale and removes them afterward. Which cloud characteristic is this?",
+   "options": [
+    "Multitenancy",
+    "Data sovereignty",
+    "Egress",
+    "Elasticity"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Elasticity scales resources up and down automatically to match demand."
+  },
+  {
+   "id": "a1201-157",
+   "domain": "VC",
+   "stem": "A user saves a document on a laptop, and it appears on their phone a moment later through the cloud. Which feature is this?",
+   "options": [
+    "Multitenancy",
+    "File synchronization",
+    "Egress data billing",
+    "Metered utilization"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Cloud file synchronization keeps copies of files consistent across a user's devices."
+  },
+  {
+   "id": "a1201-158",
+   "domain": "VC",
+   "stem": "A provider runs many customers' virtual machines on the same physical hosts, with logical isolation between them. What is this?",
+   "options": [
+    "Dedicated hosting",
+    "File synchronization",
+    "A Type 2 hypervisor",
+    "Multitenancy"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Multitenancy shares infrastructure among customers. Dedicated resources give one customer exclusive hardware."
+  },
+  {
+   "id": "a1201-159",
+   "domain": "VC",
+   "stem": "A regulated company requires that its cloud VMs never share physical hardware with other customers. What should it choose?",
+   "options": [
+    "Shared resources",
+    "Dedicated resources",
+    "File synchronization",
+    "Metered egress"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Dedicated hosts or instances provide physical isolation, usually at higher cost than shared resources."
+  },
+  {
+   "id": "a1201-160",
+   "domain": "VC",
+   "stem": "A provider guarantees services stay reachable during a datacenter failure by running across multiple zones. Which characteristic is this?",
+   "options": [
+    "Egress control",
+    "Metered utilization",
+    "File synchronization",
+    "High availability"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Availability is improved through redundancy across zones and regions, with failover."
+  },
+  {
+   "id": "a1201-161",
+   "domain": "VC",
+   "stem": "A developer deploys a web app to a managed platform and doesn't manage the OS or runtime. Which model is this?",
+   "options": [
+    "PaaS",
+    "On-premises",
+    "SaaS",
+    "IaaS"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Platform as a service provides managed runtimes and tools, so developers focus on code and data."
+  },
+  {
+   "id": "a1201-162",
+   "domain": "VC",
+   "stem": "A company rents virtual servers and installs and patches the operating systems itself. Which model is this?",
+   "options": [
+    "IaaS",
+    "PaaS",
+    "DaaS (desktops)",
+    "SaaS"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Infrastructure as a service provides virtual hardware. The customer manages the OS, middleware, and apps."
+  },
+  {
+   "id": "a1201-163",
+   "domain": "HNT",
+   "stem": "A PC powers on but beeps in a repeating pattern and shows nothing on screen. What should the technician do?",
+   "options": [
+    "Reset the CMOS and reboot repeatedly",
+    "Look up the POST beep code",
+    "Replace the monitor immediately",
+    "Reinstall the operating system"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "POST beep codes identify hardware failures, such as RAM or video, before the display initializes. Codes vary by firmware vendor."
+  },
+  {
+   "id": "a1201-164",
+   "domain": "HNT",
+   "stem": "A PC shows a blue stop error screen during heavy use and restarts. Which hardware should be tested first?",
+   "options": [
+    "The RAM, with a memory diagnostic",
+    "The keyboard and mouse drivers",
+    "The optical drive's firmware",
+    "The monitor's video cable"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Faulty RAM commonly causes stop errors and crashes. Memory diagnostics can confirm it. Overheating and drivers are other common causes."
+  },
+  {
+   "id": "a1201-165",
+   "domain": "HNT",
+   "stem": "A PC shuts down randomly during games, and the CPU fan is caked with dust. What's the most likely cause?",
+   "options": [
+    "A corrupt game install",
+    "A failing hard drive",
+    "A failing CMOS battery",
+    "Overheating"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Dust buildup reduces cooling, so the CPU overheats and the system shuts down to protect itself."
+  },
+  {
+   "id": "a1201-166",
+   "domain": "HNT",
+   "stem": "A technician notices bulging, leaking capacitors on a motherboard. What should be done?",
+   "options": [
+    "Clean the capacitors with alcohol",
+    "Update the BIOS",
+    "Reseat the RAM",
+    "Replace the motherboard"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Swollen capacitors indicate failure and cause instability. The motherboard should be replaced."
+  },
+  {
+   "id": "a1201-167",
+   "domain": "HNT",
+   "stem": "A PC's clock resets to a date years ago every time it's unplugged. What should be replaced?",
+   "options": [
+    "The power supply",
+    "The hard drive",
+    "The CMOS battery",
+    "The RAM modules"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The CMOS battery keeps firmware settings and the real-time clock when the PC has no power."
+  },
+  {
+   "id": "a1201-168",
+   "domain": "HNT",
+   "stem": "A user reports a burning smell from a desktop. What should the technician do first?",
+   "options": [
+    "Power it off and unplug it",
+    "Update the chipset drivers",
+    "Increase the fan speed",
+    "Run a disk check on the drive"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A burning smell can indicate a failing power supply or component. Remove power immediately for safety, then inspect."
+  },
+  {
+   "id": "a1201-169",
+   "domain": "HNT",
+   "stem": "A desktop is completely dead: no fans, no lights. The outlet works. What should be checked next?",
+   "options": [
+    "The network adapter settings",
+    "The monitor's input source",
+    "The keyboard and mouse connections",
+    "The PSU's switch, cable, and output"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "No power at all points to the power supply, its switch, or cabling. A PSU tester can confirm whether it outputs power."
+  },
+  {
+   "id": "a1201-170",
+   "domain": "HNT",
+   "stem": "A PC is sluggish, and Task Manager shows the CPU at 100% with temperatures near its limit. What's a likely cause?",
+   "options": [
+    "A failing CMOS battery on the board",
+    "A failing Wi-Fi adapter driver",
+    "Too little free space on the system drive",
+    "Thermal throttling from poor cooling"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "CPUs slow themselves when hot. Cleaning, reapplying thermal paste, or improving airflow restores performance."
+  },
+  {
+   "id": "a1201-171",
+   "domain": "HNT",
+   "stem": "A PC makes a loud grinding noise from inside the case near the CPU cooler. What's the likely cause?",
+   "options": [
+    "Coil whine from the GPU",
+    "A failing fan bearing",
+    "A failing RAM module",
+    "A loose SATA data cable"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Unusual noise often comes from failing fan bearings. Replacing the fan prevents overheating."
+  },
+  {
+   "id": "a1201-172",
+   "domain": "HNT",
+   "stem": "A Mac displays a proprietary crash screen asking the user to restart. Which component is a common hardware cause?",
+   "options": [
+    "A dead CMOS battery",
+    "A failing case fan",
+    "Faulty RAM",
+    "A loose keyboard cable"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Proprietary crash screens, such as a macOS kernel panic, are often caused by faulty RAM, drivers, or other hardware."
+  },
+  {
+   "id": "a1201-173",
+   "domain": "HNT",
+   "stem": "After a RAM upgrade, a PC powers on but shows a blank screen and no POST. What should be checked first?",
+   "options": [
+    "Whether the monitor needs a firmware update",
+    "Whether the OS needs reinstalling",
+    "Whether the keyboard layout is correct",
+    "Whether the RAM is compatible and seated"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Incompatible or poorly seated memory often prevents POST. Reseating or testing modules one at a time isolates the problem."
+  },
+  {
+   "id": "a1201-174",
+   "domain": "HNT",
+   "stem": "Several applications crash on a PC, and Event Viewer shows memory errors. What should the technician run?",
+   "options": [
+    "A check of the CMOS battery",
+    "A defragmentation of the drive",
+    "A disk cleanup of temp files",
+    "A memory diagnostic"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Repeated app crashes with memory errors suggest failing RAM. Windows Memory Diagnostic or MemTest86 can confirm it."
+  },
+  {
+   "id": "a1201-175",
+   "domain": "HNT",
+   "stem": "A hard drive makes a repeated clicking sound and files are becoming corrupted. What should the technician do?",
+   "options": [
+    "Increase the virtual memory page file size",
+    "Back up the data and replace the drive",
+    "Update the graphics driver",
+    "Defragment the drive to fix it"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Clicking often means mechanical failure. Back up what you can right away, then replace the drive."
+  },
+  {
+   "id": "a1201-176",
+   "domain": "HNT",
+   "stem": "Monitoring software reports a S.M.A.R.T. failure warning on a drive. What does this mean?",
+   "options": [
+    "The drive is encrypted",
+    "The drive is nearly out of free space",
+    "The drive predicts it may fail soon",
+    "The drive needs a driver update"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "S.M.A.R.T. tracks drive health. Warnings indicate likely failure, so data should be backed up and the drive replaced."
+  },
+  {
+   "id": "a1201-177",
+   "domain": "HNT",
+   "stem": "A PC shows \"bootable device not found\" after a power outage. What should be checked first?",
+   "options": [
+    "The boot order and drive detection",
+    "The RAM's dual-channel configuration",
+    "The CPU fan's speed setting",
+    "The monitor's input source"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Confirm that firmware detects the drive and that boot order is correct before assuming the drive has failed."
+  },
+  {
+   "id": "a1201-178",
+   "domain": "HNT",
+   "stem": "A RAID 5 array shows \"degraded\" after one disk failed. What should be done?",
+   "options": [
+    "Replace the failed disk and rebuild the array",
+    "Delete the array and recreate it",
+    "Convert the array to RAID 0",
+    "Add the failed disk back without testing"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "A degraded RAID 5 has lost redundancy. Replacing the failed disk and rebuilding restores protection, ideally after confirming backups."
+  },
+  {
+   "id": "a1201-179",
+   "domain": "HNT",
+   "stem": "A server's RAID controller sounds an audible alarm and a drive's LED is amber. What does this indicate?",
+   "options": [
+    "The network cable is disconnected",
+    "Normal activity during a backup",
+    "The server's fans are running at full speed",
+    "A drive or array problem needing attention"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Audible alarms and amber or red LED indicators usually signal a failed or failing drive in an array."
+  },
+  {
+   "id": "a1201-180",
+   "domain": "HNT",
+   "stem": "A database server's disk response times are high, and monitoring shows low IOPS. What would most improve performance?",
+   "options": [
+    "Upgrading the server's network card",
+    "Replacing the RAID controller's battery",
+    "Adding more CPU cores to the server",
+    "Moving to SSDs or a faster RAID level"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Low IOPS limits disk-heavy workloads. SSDs or RAID 10 typically increase performance."
+  },
+  {
+   "id": "a1201-181",
+   "domain": "HNT",
+   "stem": "A newly installed second drive doesn't appear in File Explorer, but BIOS detects it. What should the technician do?",
+   "options": [
+    "Initialize and format it in Disk Management",
+    "Change the SATA mode from AHCI to IDE",
+    "Replace the drive immediately under warranty",
+    "Update the motherboard's BIOS firmware"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "New drives must be initialized and partitioned before they appear as volumes."
+  },
+  {
+   "id": "a1201-182",
+   "domain": "HNT",
+   "stem": "After a motherboard replacement, a RAID array is reported as missing. What's a likely cause?",
+   "options": [
+    "The new board needs more RAM installed",
+    "The drives need new SATA power cables",
+    "The RAID settings aren't on the new board",
+    "The drives were wiped by the new board"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Arrays depend on controller settings. A new board or controller may need RAID mode enabled or the array imported."
+  },
+  {
+   "id": "a1201-183",
+   "domain": "HNT",
+   "stem": "A drive takes much longer than usual to read and write files, and S.M.A.R.T. shows reallocated sectors increasing. What should be done?",
+   "options": [
+    "Disable S.M.A.R.T. monitoring",
+    "Reset the network adapter settings",
+    "Overclock the CPU to compensate",
+    "Back up data and plan a replacement"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Extended read/write times and growing reallocated sectors suggest a failing drive."
+  },
+  {
+   "id": "a1201-184",
+   "domain": "HNT",
+   "stem": "A monitor shows \"No signal,\" but the PC is running. What should be checked first?",
+   "options": [
+    "The monitor's refresh rate setting",
+    "The PC's RAM configuration",
+    "The GPU driver's version",
+    "The monitor's input source and cable"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "An incorrect input source or loose cable is the most common cause of \"No signal.\""
+  },
+  {
+   "id": "a1201-185",
+   "domain": "HNT",
+   "stem": "A projector shuts off by itself after 20 minutes, and its vents are clogged with dust. What's the likely cause?",
+   "options": [
+    "An incorrect input source",
+    "A wrong color profile in Windows",
+    "Overheating from blocked airflow",
+    "A dead pixel in the DLP chip"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Projectors shut down to protect themselves from heat. Cleaning filters and vents fixes intermittent shutdowns."
+  },
+  {
+   "id": "a1201-186",
+   "domain": "HNT",
+   "stem": "A projector shows no image, its lamp indicator is lit, and it's past its rated lamp hours. What should be replaced?",
+   "options": [
+    "The bulb",
+    "The HDMI cable",
+    "The ceiling mount",
+    "The remote control"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Projector lamps have limited lifespans. A burnt-out bulb causes no image or a very dim image."
+  },
+  {
+   "id": "a1201-187",
+   "domain": "HNT",
+   "stem": "A static taskbar remains faintly visible on an OLED screen even when other content is shown. What is this?",
+   "options": [
+    "Burn-in",
+    "Incorrect input source",
+    "Dead pixels",
+    "A fuzzy image"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Burn-in is permanent image retention from static content, especially on OLED displays."
+  },
+  {
+   "id": "a1201-188",
+   "domain": "HNT",
+   "stem": "Text on an LCD monitor looks blurry, even though the cable is fine. What should be checked?",
+   "options": [
+    "That it's set to the native resolution",
+    "That the brightness is at 100 percent",
+    "That the refresh rate is set to the maximum",
+    "That the GPU driver supports HDR output"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Running an LCD below its native resolution causes scaling and a fuzzy image."
+  },
+  {
+   "id": "a1201-189",
+   "domain": "HNT",
+   "stem": "A monitor shows one tiny spot that always stays black. What is this?",
+   "options": [
+    "An incorrect input",
+    "A dead pixel",
+    "Burn-in",
+    "A driver crash"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Dead pixels stay dark. Stuck pixels stay one color. Both are panel defects."
+  },
+  {
+   "id": "a1201-190",
+   "domain": "HNT",
+   "stem": "Colors on a monitor look tinted purple after a cable was replaced. What's a likely cause?",
+   "options": [
+    "An outdated GPU driver",
+    "A damaged cable or loose pin",
+    "Burn-in on the panel",
+    "A failing monitor backlight"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Incorrect colors often come from loose or damaged video cables, especially analog VGA with bent pins."
+  },
+  {
+   "id": "a1201-191",
+   "domain": "HNT",
+   "stem": "A user connects a laptop to a TV over HDMI, and video works but sound still comes from the laptop speakers. What should be changed?",
+   "options": [
+    "The Wi-Fi channel and band",
+    "The default audio output device",
+    "The screen resolution",
+    "The Windows power plan"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "HDMI carries audio, but the OS must use the HDMI device as its audio output."
+  },
+  {
+   "id": "a1201-192",
+   "domain": "HNT",
+   "stem": "A laptop screen flickers when the lid is moved. What's the likely cause?",
+   "options": [
+    "A damaged display cable in the hinge",
+    "A failing laptop battery cell in the base",
+    "A misconfigured display refresh rate",
+    "An outdated integrated graphics driver"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Flicker that changes with lid movement points to the display cable running through the hinge."
+  },
+  {
+   "id": "a1201-193",
+   "domain": "HNT",
+   "stem": "The desktop doesn't fit the screen, with edges cut off on a TV. Which setting should be adjusted?",
+   "options": [
+    "The TV's refresh rate and motion setting",
+    "The HDMI cable's version and length",
+    "The GPU driver's color depth setting",
+    "Display scaling or overscan settings"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Sizing issues are usually fixed with scaling, overscan, or resolution settings."
+  },
+  {
+   "id": "a1201-194",
+   "domain": "HNT",
+   "stem": "A projected image is stretched into a trapezoid shape. What should be adjusted?",
+   "options": [
+    "Keystone correction",
+    "Bulb wattage setting",
+    "Audio output",
+    "Network settings"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Keystone correction fixes distortion caused when the projector isn't perpendicular to the screen."
+  },
+  {
+   "id": "a1201-195",
+   "domain": "HNT",
+   "stem": "A phone's case is bulging and the screen is lifting. What should the technician do?",
+   "options": [
+    "Replace only the screen protector",
+    "Recalibrate the battery by fully draining it",
+    "Update the phone's operating system",
+    "Stop using it and replace the battery"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A swollen lithium-ion battery is a fire hazard. Power down, avoid puncturing it, and replace and recycle it properly."
+  },
+  {
+   "id": "a1201-196",
+   "domain": "HNT",
+   "stem": "A phone charges only when the cable is held at an angle. What's the likely cause?",
+   "options": [
+    "A failing battery",
+    "A faulty wireless charging coil",
+    "A damaged or dirty charging port",
+    "An outdated mobile OS version"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Physically damaged or lint-filled ports cause improper charging. Cleaning or replacing the port fixes it."
+  },
+  {
+   "id": "a1201-197",
+   "domain": "HNT",
+   "stem": "A phone was dropped in water and now behaves erratically. What should be done first?",
+   "options": [
+    "Charge it immediately to test it",
+    "Use a hair dryer on high heat",
+    "Power it off and don't charge it",
+    "Install a new app to check sensors"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Liquid damage can short circuits. Powering off and keeping it unplugged reduces damage before inspection or repair."
+  },
+  {
+   "id": "a1201-198",
+   "domain": "HNT",
+   "stem": "A tablet's cursor moves on its own, and taps register in the wrong place. What should be checked?",
+   "options": [
+    "Outdated apps from the app store",
+    "A weak Wi-Fi signal in the room",
+    "Digitizer calibration or damage",
+    "A failing battery that's swelling"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Cursor drift and misplaced touches indicate digitizer or calibration problems."
+  },
+  {
+   "id": "a1201-199",
+   "domain": "HNT",
+   "stem": "A user can't install new apps on a phone, which shows a storage warning. What should be done?",
+   "options": [
+    "Replace the battery",
+    "Free up storage space",
+    "Reset network settings",
+    "Enable airplane mode"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Insufficient storage prevents app installation. Removing unused apps and media or moving data to the cloud helps."
+  },
+  {
+   "id": "a1201-200",
+   "domain": "HNT",
+   "stem": "A phone runs hot, its battery drains fast, and it shows pop-up ads, even on the home screen. What's a likely cause?",
+   "options": [
+    "A cracked screen",
+    "A failing battery",
+    "An outdated OS",
+    "Malware"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Malware can cause overheating, battery drain, unexpected ads, and degraded performance. Removing suspicious apps and scanning help."
+  },
+  {
+   "id": "a1201-201",
+   "domain": "HNT",
+   "stem": "A phone has no cellular signal in a location where other phones on the same carrier work. What should be checked first?",
+   "options": [
+    "The phone's camera settings",
+    "Airplane mode and the SIM/eSIM status",
+    "The phone's screen brightness and timeout",
+    "The phone's stylus pairing"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Airplane mode, a disabled line, or a faulty SIM often cause no connectivity on one device."
+  },
+  {
+   "id": "a1201-202",
+   "domain": "HNT",
+   "stem": "A tablet's stylus doesn't work, but finger touch does. What should be checked?",
+   "options": [
+    "The tablet's Wi-Fi channel and band",
+    "The tablet's screen resolution",
+    "The stylus's charge and Bluetooth pairing",
+    "The tablet's free storage space"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Active styluses often need charging and pairing. Compatibility with the specific tablet also matters."
+  },
+  {
+   "id": "a1201-203",
+   "domain": "HNT",
+   "stem": "A phone has become slow after years of use, and its battery health is poor. What may be happening?",
+   "options": [
+    "The screen protector is slowing the touch input",
+    "The OS is throttling to protect the battery",
+    "The SIM card is overloaded with contacts",
+    "The cellular carrier is limiting the CPU"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Some phones reduce performance when battery health is poor to prevent unexpected shutdowns. Replacing the battery can restore speed."
+  },
+  {
+   "id": "a1201-204",
+   "domain": "HNT",
+   "stem": "Users near a microwave lose Wi-Fi every time it runs. What's the likely cause?",
+   "options": [
+    "External interference on 2.4 GHz",
+    "An incorrect subnet mask on laptops",
+    "A weak WPA2 passphrase on the AP",
+    "A DHCP lease conflict on the router"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Microwave ovens operate near 2.4 GHz and can interfere with Wi-Fi. Using 5 GHz or moving devices helps."
+  },
+  {
+   "id": "a1201-205",
+   "domain": "HNT",
+   "stem": "A PC shows \"No internet access\" and has the address 169.254.10.5. What's the problem?",
+   "options": [
+    "The firewall is blocking HTTPS",
+    "The browser cache is full",
+    "The DNS server is returning wrong records",
+    "It couldn't get an address from DHCP"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "A 169.254.x.x APIPA address means DHCP failed, causing limited connectivity."
+  },
+  {
+   "id": "a1201-206",
+   "domain": "HNT",
+   "stem": "VoIP calls are choppy and robotic during busy hours. Which issue is the most likely cause?",
+   "options": [
+    "An expired DHCP lease on the phones",
+    "Jitter and latency from congestion",
+    "An incorrect DNS server on phones",
+    "A duplicate IP address on one phone"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Real-time voice is sensitive to jitter, latency, and packet loss. QoS and more bandwidth improve call quality."
+  },
+  {
+   "id": "a1201-207",
+   "domain": "HNT",
+   "stem": "A switch log shows a port going up and down repeatedly. What is this called?",
+   "options": [
+    "Port mirroring",
+    "Port triggering",
+    "Port forwarding",
+    "Port flapping"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Port flapping is a link repeatedly going up and down, often from a bad cable, faulty NIC, or duplex issues."
+  },
+  {
+   "id": "a1201-208",
+   "domain": "HNT",
+   "stem": "Users can't join the corporate Wi-Fi after their passwords changed, but other users connect fine. What's the likely issue?",
+   "options": [
+    "Outdated saved credentials",
+    "A failed DHCP server for the whole site",
+    "A broken patch panel port in the closet",
+    "Channel overlap on the access points"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Outdated saved credentials cause authentication failures. Forgetting the network and reconnecting usually fixes it."
+  },
+  {
+   "id": "a1201-209",
+   "domain": "HNT",
+   "stem": "File transfers on the office network are much slower than usual. A technician finds a switch port negotiated 100 Mbps instead of 1 Gbps. What's a likely cause?",
+   "options": [
+    "An incorrect DNS server setting on the PCs",
+    "A full DHCP scope on the office router",
+    "A misconfigured VLAN on the switch port",
+    "A damaged cable or wrong cable category"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Bad or low-category cabling can force lower link speeds, causing slow network performance."
+  },
+  {
+   "id": "a1201-210",
+   "domain": "HNT",
+   "stem": "A user's internet works for a few minutes, drops, and returns throughout the day. The modem's lights flicker during drops. What should be checked?",
+   "options": [
+    "The PC's DNS server settings",
+    "The PC's network driver version",
+    "The ISP line and modem signal",
+    "The router's DHCP lease time"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Intermittent internet often stems from ISP signal problems, modem issues, or line noise."
+  },
+  {
+   "id": "a1201-211",
+   "domain": "HNT",
+   "stem": "Ping times to a cloud application are 400 ms over a fiber connection. What does this indicate?",
+   "options": [
+    "A duplex mismatch on the PC",
+    "High latency somewhere on the path",
+    "A DNS resolution failure",
+    "An APIPA address on the client"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "High latency slows interactive apps. traceroute can help find where delay is introduced."
+  },
+  {
+   "id": "a1201-212",
+   "domain": "HNT",
+   "stem": "A laser printer prints a faint duplicate of the image lower on the page. What's the likely cause?",
+   "options": [
+    "An incorrect print driver on the PC",
+    "A worn pickup roller in the main tray",
+    "Low toner in the cartridge for the job",
+    "A worn drum or fuser causing ghosting"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Double or echo images on laser prints usually point to the drum, cleaning blade, or fuser."
+  },
+  {
+   "id": "a1201-213",
+   "domain": "HNT",
+   "stem": "Laser printouts smear when touched right after printing. Which component is the likely cause?",
+   "options": [
+    "The transfer belt only",
+    "The network card",
+    "The fuser",
+    "The pickup roller"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "The fuser melts toner onto paper. If it fails, toner isn't bonded and smears."
+  },
+  {
+   "id": "a1201-214",
+   "domain": "HNT",
+   "stem": "A laser printer produces a vertical line down every page. What's a common cause?",
+   "options": [
+    "A worn separation pad",
+    "A scratch or debris on the drum",
+    "Low toner in the cartridge",
+    "An incorrect print driver"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Lines down the page often come from a damaged drum, dirty corona wire, or debris in the paper path."
+  },
+  {
+   "id": "a1201-215",
+   "domain": "HNT",
+   "stem": "A printer outputs pages of random symbols and characters. What's the most likely cause?",
+   "options": [
+    "A failing fuser assembly heater",
+    "An incorrect or corrupted driver",
+    "Low toner in the main cartridge",
+    "A worn pickup roller in the tray"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Garbled print usually results from the wrong driver or a mismatched page description language."
+  },
+  {
+   "id": "a1201-216",
+   "domain": "HNT",
+   "stem": "A printer feeds several sheets at once. Which component should be checked?",
+   "options": [
+    "The toner density setting",
+    "The fuser temperature setting",
+    "The imaging drum",
+    "The separation pad and rollers"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Worn separation pads and rollers cause multipage misfeeds. Humid or stuck-together paper can also contribute."
+  },
+  {
+   "id": "a1201-217",
+   "domain": "HNT",
+   "stem": "A printer doesn't pick up paper from the tray at all. What should be checked?",
+   "options": [
+    "The toner cartridge and imaging drum",
+    "The fuser assembly and its heater",
+    "The transfer roller and its alignment",
+    "The pickup roller and the paper loading"
+   ],
+   "answer": [
+    3
+   ],
+   "explanation": "Paper not feeding is often caused by worn pickup rollers, incorrect paper loading, or tray settings."
+  },
+  {
+   "id": "a1201-218",
+   "domain": "HNT",
+   "stem": "Print jobs pile up in the queue and nothing prints, even after restarting the printer. What should be done on the print server?",
+   "options": [
+    "Change the paper size",
+    "Restart the print spooler service",
+    "Recalibrate the color settings",
+    "Replace the toner cartridge"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "A frozen queue is often fixed by clearing the queue and restarting the Print Spooler service."
+  },
+  {
+   "id": "a1201-219",
+   "domain": "HNT",
+   "stem": "Laser prints are faded across the whole page. What should be checked first?",
+   "options": [
+    "The pickup roller in the main tray",
+    "The separation pad in the tray",
+    "The toner level and density setting",
+    "The paper tray guides and size"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Faded prints usually mean low toner or a low density setting. Economy modes also reduce darkness."
+  },
+  {
+   "id": "a1201-220",
+   "domain": "HNT",
+   "stem": "Pages print in portrait even though the user selected landscape in the app. What should be checked?",
+   "options": [
+    "The orientation setting in the printer driver",
+    "The fuser temperature setting on the panel",
+    "The pickup roller condition",
+    "The toner cartridge level"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Incorrect page orientation is a software setting issue between the app and driver defaults."
+  },
+  {
+   "id": "a1201-221",
+   "domain": "HNT",
+   "stem": "A multifunction printer reports \"tray 2 not installed\" though the tray is attached. What should be checked?",
+   "options": [
+    "The tray's paper guides",
+    "The driver's installed options",
+    "The pickup roller in tray 1",
+    "The fuser assembly"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Drivers must have installable options configured so the system recognizes added trays and finishers."
+  },
+  {
+   "id": "a1201-222",
+   "domain": "HNT",
+   "stem": "A printer finisher keeps jamming when stapling large jobs. What's the most likely fix?",
+   "options": [
+    "Change the screen resolution",
+    "Clear the staple jam and check capacity",
+    "Replace the network switch the printer uses",
+    "Reinstall the operating system"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "Finishing issues, such as staple jams or hole-punch problems, require clearing the mechanism and staying within capacity limits."
+  },
+  {
+   "id": "a1201-223",
+   "domain": "HNT",
+   "stem": "Laser prints show small, random dark spots across pages. What's a likely cause?",
+   "options": [
+    "Leaking toner or internal debris",
+    "An incorrect print driver on the PC",
+    "A low fuser temperature setting",
+    "A worn pickup roller in the tray"
+   ],
+   "answer": [
+    0
+   ],
+   "explanation": "Speckling often comes from loose toner, a leaking cartridge, or debris on internal components. Cleaning and replacing the cartridge help."
+  },
+  {
+   "id": "a1201-224",
+   "domain": "HNT",
+   "stem": "Users can't print to a network printer, but it prints a test page locally. What should be checked?",
+   "options": [
+    "The fuser assembly and heater",
+    "Its network connection and IP address",
+    "The toner cartridge's remaining level",
+    "The paper separation pad"
+   ],
+   "answer": [
+    1
+   ],
+   "explanation": "If local printing works, the problem is connectivity, such as a changed IP address, network cable, or port settings."
+  },
+  {
+   "id": "a1201-225",
+   "domain": "HNT",
+   "stem": "A laser printer makes a grinding noise while feeding paper. What should be checked?",
+   "options": [
+    "The print driver's quality settings",
+    "The printer's IP address and port",
+    "The gears and rollers in the paper path",
+    "The toner density setting on the panel"
+   ],
+   "answer": [
+    2
+   ],
+   "explanation": "Grinding noises usually indicate worn gears, damaged rollers, or obstructions in the paper path."
+  }
+ ]
+}
