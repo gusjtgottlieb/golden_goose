@@ -45,8 +45,8 @@
    "options": [
     "Replace the battery",
     "Add more RAM",
-    "Replace the keyboard",
-    "Reinstall the Wi-Fi card"
+    "Recalibrate the battery by draining it",
+    "Lower the screen refresh rate"
    ],
    "answer": [
     0
@@ -256,7 +256,7 @@
     "Remove the SIM card and reinsert it",
     "Disable Wi-Fi and restart the cellular modem",
     "Enable Bluetooth and pairing mode",
-    "Turn on location services and GPS"
+    "Reset all network settings on the phone"
    ],
    "answer": [
     2
@@ -456,7 +456,7 @@
    "answer": [
     0
    ],
-   "explanation": "Bluetooth headsets provide wireless audio and microphone input for calls."
+   "explanation": "Bluetooth headsets pair with the laptop to provide wireless audio and a microphone for calls. A stylus, NFC tag, or port replicator doesn't carry audio."
   },
   {
    "id": "a1201-29",
@@ -486,7 +486,7 @@
    "answer": [
     3
    ],
-   "explanation": "POP3 uses 110. IMAP uses 143, SMTP uses 25 to send mail, and HTTPS uses 443."
+   "explanation": "POP3 uses 110 to download mail, usually removing it from the server. IMAP uses 143, SMTP uses 25 to send mail, and HTTPS uses 443."
   },
   {
    "id": "a1201-31",
@@ -651,7 +651,7 @@
    "answer": [
     3
    ],
-   "explanation": "Wi-Fi 6E extends 802.11ax into 6 GHz. Wi-Fi 7 (802.11be) also supports 6 GHz."
+   "explanation": "Wi-Fi 6E extends 802.11ax into the 6 GHz band, and Wi-Fi 7 (802.11be) also supports it. Wi-Fi 5 (802.11ac) and Wi-Fi 4 (802.11n) don't use 6 GHz."
   },
   {
    "id": "a1201-42",
@@ -801,7 +801,7 @@
    "answer": [
     0
    ],
-   "explanation": "Spam gateways inspect inbound mail and block spam, phishing, and malware."
+   "explanation": "Spam gateways inspect inbound mail and block spam, phishing, and malware before messages reach users' mailboxes."
   },
   {
    "id": "a1201-52",
@@ -966,7 +966,7 @@
    "answer": [
     1
    ],
-   "explanation": "Virtual private networks create encrypted tunnels across untrusted networks."
+   "explanation": "Virtual private networks create encrypted tunnels across untrusted networks such as the internet. VLANs segment local networks but don't encrypt remote traffic."
   },
   {
    "id": "a1201-63",
@@ -1001,7 +1001,7 @@
   {
    "id": "a1201-65",
    "domain": "NET",
-   "stem": "A home receives internet service over fiber, and a box on the wall converts the optical signal to Ethernet. What is this device?",
+   "stem": "A home receives internet service over fiber, and a box on the wall converts the incoming light signal to Ethernet. What is this device?",
    "options": [
     "A cable modem",
     "An optical network terminal (ONT)",
@@ -1101,7 +1101,7 @@
    "answer": [
     0
    ],
-   "explanation": "Static addressing or a DHCP reservation keeps a printer's address consistent."
+   "explanation": "A static IP or a DHCP reservation keeps a printer's address consistent, so mapped printers and ports keep working."
   },
   {
    "id": "a1201-72",
@@ -1191,7 +1191,7 @@
    "answer": [
     3
    ],
-   "explanation": "Personal area networks connect devices around one person over short distances."
+   "explanation": "Personal area networks connect devices around one person over short distances, usually with Bluetooth. MANs and WANs span much larger areas."
   },
   {
    "id": "a1201-78",
@@ -1416,7 +1416,7 @@
    "answer": [
     1
    ],
-   "explanation": "VGA (DE-15) carries analog video and is found on older monitors and projectors."
+   "explanation": "VGA (DE-15) carries analog video only and is found on older monitors and projectors. HDMI, DisplayPort, and USB-C carry digital video."
   },
   {
    "id": "a1201-93",
@@ -1476,7 +1476,7 @@
    "answer": [
     1
    ],
-   "explanation": "RJ11 is a smaller connector for phone lines. RJ45 is used for Ethernet."
+   "explanation": "RJ11 is a smaller connector used for analog phone lines and DSL. RJ45 is the larger connector used for Ethernet."
   },
   {
    "id": "a1201-97",
@@ -1521,7 +1521,7 @@
    "answer": [
     1
    ],
-   "explanation": "HDMI is digital and VGA is analog, so an active adapter converts the signal."
+   "explanation": "HDMI is digital and VGA is analog, so an active adapter is needed to convert the signal. A passive cable can't convert digital to analog."
   },
   {
    "id": "a1201-100",
@@ -1611,7 +1611,7 @@
    "answer": [
     2
    ],
-   "explanation": "RAID 0 improves performance but loses all data if any one disk fails."
+   "explanation": "RAID 0 stripes data for performance but has no redundancy, so the whole array is lost if any one disk fails."
   },
   {
    "id": "a1201-106",
@@ -1671,7 +1671,7 @@
    "answer": [
     3
    ],
-   "explanation": "RAID 10 stripes across mirrored pairs, giving high performance and redundancy."
+   "explanation": "RAID 10 stripes across mirrored pairs, giving high performance and redundancy. It needs at least four disks and uses half the raw capacity."
   },
   {
    "id": "a1201-110",
@@ -1761,7 +1761,7 @@
    "answer": [
     2
    ],
-   "explanation": "Intel VT-x or AMD-V must be enabled in firmware for most hypervisors to run."
+   "explanation": "Hardware virtualization, Intel VT-x or AMD-V, must be enabled in BIOS/UEFI for most hypervisors to run virtual machines."
   },
   {
    "id": "a1201-116",
@@ -1911,7 +1911,7 @@
    "answer": [
     2
    ],
-   "explanation": "Modular PSUs have detachable cables, improving airflow and cable management."
+   "explanation": "Modular PSUs have detachable cables, so builders attach only what they need, improving airflow and cable management."
   },
   {
    "id": "a1201-126",
@@ -1941,7 +1941,7 @@
    "answer": [
     0
    ],
-   "explanation": "80 Plus ratings measure efficiency. Higher tiers waste less power as heat."
+   "explanation": "80 Plus ratings measure power supply efficiency at set loads. Higher tiers, such as Gold or Platinum, waste less power as heat. They don't indicate wattage."
   },
   {
    "id": "a1201-128",
@@ -2186,7 +2186,7 @@
   {
    "id": "a1201-144",
    "domain": "VC",
-   "stem": "A user wants to run a Linux-only application on a macOS laptop. Which use of virtualization fits?",
+   "stem": "A user wants to run a Linux-only application on a macOS laptop. Which approach fits?",
    "options": [
     "A Type 1 hypervisor on a phone",
     "Cross-platform virtualization",
@@ -2261,7 +2261,7 @@
   {
    "id": "a1201-149",
    "domain": "VC",
-   "stem": "Which virtualization concept lets users run a single application in an isolated package without installing it locally?",
+   "stem": "Which concept lets users run a single program in an isolated package without installing it locally?",
    "options": [
     "Hardware RAID mirroring",
     "Application virtualization",
@@ -2361,7 +2361,7 @@
    "answer": [
     3
    ],
-   "explanation": "Metered (pay-as-you-go) billing charges based on actual consumption."
+   "explanation": "Metered (pay-as-you-go) billing charges based on actual consumption of compute, storage, and data transfer, such as egress."
   },
   {
    "id": "a1201-156",
@@ -2376,7 +2376,7 @@
    "answer": [
     3
    ],
-   "explanation": "Elasticity scales resources up and down automatically to match demand."
+   "explanation": "Elasticity scales resources up and down automatically to match demand, so the store pays only for the extra capacity while it's needed."
   },
   {
    "id": "a1201-157",
@@ -2638,9 +2638,9 @@
    "domain": "HNT",
    "stem": "Several applications crash on a PC, and Event Viewer shows memory errors. What should the technician run?",
    "options": [
-    "A check of the CMOS battery",
-    "A defragmentation of the drive",
     "A disk cleanup of temp files",
+    "A defragmentation of the drive",
+    "An increase to virtual memory",
     "A memory diagnostic"
    ],
    "answer": [
@@ -2751,7 +2751,7 @@
    "answer": [
     0
    ],
-   "explanation": "New drives must be initialized and partitioned before they appear as volumes."
+   "explanation": "New drives must be initialized, partitioned, and formatted in Disk Management before they appear as volumes in File Explorer."
   },
   {
    "id": "a1201-182",
@@ -2856,7 +2856,7 @@
    "answer": [
     0
    ],
-   "explanation": "Running an LCD below its native resolution causes scaling and a fuzzy image."
+   "explanation": "LCDs have a fixed native resolution. Running them at a lower resolution forces scaling, which makes text look fuzzy."
   },
   {
    "id": "a1201-189",
@@ -2871,7 +2871,7 @@
    "answer": [
     1
    ],
-   "explanation": "Dead pixels stay dark. Stuck pixels stay one color. Both are panel defects."
+   "explanation": "Dead pixels stay dark, while stuck pixels stay one color. Both are panel defects, unlike burn-in, which is faint retained imagery."
   },
   {
    "id": "a1201-190",
@@ -2901,7 +2901,7 @@
    "answer": [
     1
    ],
-   "explanation": "HDMI carries audio, but the OS must use the HDMI device as its audio output."
+   "explanation": "HDMI carries audio, but the OS must use the HDMI or TV device as its default audio output in sound settings."
   },
   {
    "id": "a1201-192",
@@ -2931,7 +2931,7 @@
    "answer": [
     3
    ],
-   "explanation": "Sizing issues are usually fixed with scaling, overscan, or resolution settings."
+   "explanation": "TVs often overscan, cutting off the edges. Adjusting display scaling, overscan, or resolution settings fixes the fit."
   },
   {
    "id": "a1201-194",
@@ -3006,7 +3006,7 @@
    "answer": [
     2
    ],
-   "explanation": "Cursor drift and misplaced touches indicate digitizer or calibration problems."
+   "explanation": "Cursor drift and misplaced touches indicate digitizer or calibration problems. Recalibrating may help, but a damaged digitizer needs replacing."
   },
   {
    "id": "a1201-199",
@@ -3111,7 +3111,7 @@
    "answer": [
     3
    ],
-   "explanation": "A 169.254.x.x APIPA address means DHCP failed, causing limited connectivity."
+   "explanation": "A 169.254.x.x APIPA address means the PC couldn't reach a DHCP server, so it can talk only to the local segment."
   },
   {
    "id": "a1201-206",
@@ -3231,7 +3231,7 @@
    "answer": [
     2
    ],
-   "explanation": "The fuser melts toner onto paper. If it fails, toner isn't bonded and smears."
+   "explanation": "The fuser uses heat and pressure to bond toner to paper. If it fails, toner isn't fused and smears when touched."
   },
   {
    "id": "a1201-214",
@@ -3298,10 +3298,10 @@
    "domain": "HNT",
    "stem": "Print jobs pile up in the queue and nothing prints, even after restarting the printer. What should be done on the print server?",
    "options": [
-    "Change the paper size",
+    "Replace the toner cartridge",
     "Restart the print spooler service",
-    "Recalibrate the color settings",
-    "Replace the toner cartridge"
+    "Change the default paper size",
+    "Reinstall the print driver on clients"
    ],
    "answer": [
     1

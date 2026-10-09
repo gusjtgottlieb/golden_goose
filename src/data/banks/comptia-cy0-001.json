@@ -456,7 +456,7 @@
   {
    "id": "cy0001-29",
    "domain": "SAS",
-   "stem": "A risk team wants a large, categorized database of documented AI risks drawn from many published frameworks. Which resource fits?",
+   "stem": "A risk team wants a large, categorized database of documented AI failure modes and harms drawn from many published frameworks. Which resource fits?",
    "options": [
     "The CVE Numbering Authority list",
     "The OWASP Web Top 10",
@@ -701,7 +701,7 @@
     "No authentication for internal agents",
     "Full admin rights for flexibility",
     "Shared credentials with the help desk",
-    "Least privilege for agent access"
+    "Least privilege"
    ],
    "answer": [
     3
@@ -831,7 +831,7 @@
   {
    "id": "cy0001-54",
    "domain": "SAS",
-   "stem": "Documents carry labels such as \"Confidential,\" and the AI pipeline excludes those labels from public chatbot indexes. Which control is this?",
+   "stem": "Documents are marked \"Confidential,\" and the AI pipeline keeps them out of public chatbot indexes. Which control is this?",
    "options": [
     "Data classification labels",
     "Model quantization",
@@ -938,9 +938,9 @@
    "domain": "SAS",
    "stem": "An AI service's bill tripled overnight because one API key sent millions of prompts. Which monitoring would have caught this earliest?",
    "options": [
-    "Data lineage tracking",
+    "Data lineage monitoring",
     "Model output watermark checks",
-    "Training data balancing reviews",
+    "Training data drift monitoring",
     "AI cost and rate monitoring"
    ],
    "answer": [
@@ -1091,7 +1091,7 @@
     "Membership inference",
     "Model inversion",
     "Insecure output handling",
-    "Overreliance on outputs"
+    "Overreliance on output"
    ],
    "answer": [
     2
@@ -1165,7 +1165,7 @@
    "options": [
     "Model inversion",
     "Insecure plug-in design",
-    "Data balancing errors",
+    "Excessive agency",
     "Overreliance on outputs"
    ],
    "answer": [
@@ -1375,7 +1375,7 @@
    "options": [
     "They disable encryption for all API calls",
     "They make the model's training data public",
-    "The assistant can take actions through them",
+    "The AI can take actions through them",
     "They replace the need for authentication"
    ],
    "answer": [
@@ -1836,7 +1836,7 @@
   {
    "id": "cy0001-121",
    "domain": "AAS",
-   "stem": "An AI tool flags a sequence of events that matches a known lateral movement pattern across several hosts. Which use case is this?",
+   "stem": "An AI tool flags a sequence of events that matches known lateral movement behavior across several hosts. Which use case is this?",
    "options": [
     "Language translation",
     "Data augmentation",
@@ -1884,7 +1884,7 @@
    "stem": "Which role builds and maintains the pipelines that collect, clean, and deliver data for model training?",
    "options": [
     "AI governance engineer",
-    "AI auditor",
+    "Data scientist",
     "AI risk analyst",
     "Data engineer"
    ],
@@ -1931,7 +1931,7 @@
     "AI security architect",
     "Data scientist",
     "Cloud platform engineer",
-    "AI compliance auditor"
+    "Security operations analyst"
    ],
    "answer": [
     0
@@ -2050,8 +2050,8 @@
    "options": [
     "Model denial of service",
     "Membership inference",
-    "Intellectual property risk",
-    "Rate limit abuse"
+    "Intellectual property (IP) misuse",
+    "API rate limit abuse by users"
    ],
    "answer": [
     2
@@ -2166,7 +2166,7 @@
   {
    "id": "cy0001-143",
    "domain": "GRC",
-   "stem": "Which intergovernmental principles promote trustworthy AI that respects human rights and democratic values and have been adopted by many countries?",
+   "stem": "Which intergovernmental guidance promotes trustworthy AI that respects human rights and democratic values and has been adopted by many countries?",
    "options": [
     "The MITRE ATLAS matrix",
     "The OECD AI Principles",

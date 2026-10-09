@@ -141,12 +141,12 @@
   {
    "id": "cs0004-8",
    "domain": "SO",
-   "stem": "Which architecture gives remote users access to specific applications only after verifying identity and device posture for each request?",
+   "stem": "Which architecture lets remote users reach specific applications only after verifying identity and device posture for each request?",
    "options": [
     "A screened subnet for servers",
     "Zero Trust Network Access (ZTNA)",
     "A flat network behind NAT and a firewall",
-    "A traditional full-tunnel VPN"
+    "A remote access VPN (full tunnel)"
    ],
    "answer": [
     1
@@ -220,7 +220,7 @@
    "options": [
     "They are always located in the public cloud",
     "They use only encrypted wireless connections",
-    "They run legacy software that can't host agents",
+    "They run legacy software that can't support them",
     "They don't produce any network traffic at all"
    ],
    "answer": [
@@ -371,7 +371,7 @@
     "Expected browser cache and cookie activity",
     "A normal user profile update",
     "A routine DNS cache refresh",
-    "Possible unauthorized file system changes"
+    "Possible tampering by malware"
    ],
    "answer": [
     3
@@ -443,7 +443,7 @@
    "domain": "SO",
    "stem": "A cloud account suddenly launches dozens of GPU instances in an unused region. Which indicator is this?",
    "options": [
-    "Normal auto-scaling activity",
+    "Normal cloud auto-scaling",
     "A failed backup job",
     "An expired TLS certificate",
     "Cloud resource compromise"
@@ -459,7 +459,7 @@
    "stem": "A service account that normally reads one database begins querying every table and exporting results. What should the analyst suspect?",
    "options": [
     "IAM account compromise",
-    "A routine schema update",
+    "Expected service account behavior",
     "Expected index maintenance",
     "Normal reporting activity"
    ],
@@ -666,7 +666,7 @@
   {
    "id": "cs0004-43",
    "domain": "SO",
-   "stem": "Which capability baselines normal behavior for users and devices and alerts on deviations, such as unusual sign-in times?",
+   "stem": "Which capability baselines normal activity for users and devices and alerts on deviations, such as unusual sign-in times?",
    "options": [
     "User and entity behavior analytics",
     "Network address translation",
@@ -790,7 +790,7 @@
    "options": [
     "A hacktivist defacing websites",
     "An opportunistic script kiddie",
-    "A careless internal user",
+    "An insider threat",
     "An advanced persistent threat"
    ],
    "answer": [
@@ -1541,7 +1541,7 @@
     "Neither until a full audit is complete",
     "The 9.8 because its base score is higher",
     "Both at the next quarterly patch window",
-    "The actively exploited internet-facing one"
+    "The 7.5, despite its lower score"
    ],
    "answer": [
     3
@@ -1581,7 +1581,7 @@
   {
    "id": "cs0004-104",
    "domain": "VM",
-   "stem": "Which CVSS base metric describes whether a user must take an action, such as clicking a link, for exploitation?",
+   "stem": "Which CVSS base metric describes whether exploitation requires a victim to act, such as clicking a link?",
    "options": [
     "Attack vector",
     "Privileges required",
@@ -1926,7 +1926,7 @@
   {
    "id": "cs0004-127",
    "domain": "VM",
-   "stem": "A missing patch on a public web server has a CVSS of 8.1, no known exploit, and no patch available yet. Which criterion most limits the remediation options?",
+   "stem": "A vulnerability on a public web server has a CVSS of 8.1 and no known exploit, and the vendor hasn't released a fix. Which criterion most limits the remediation options?",
    "options": [
     "Patch availability",
     "True positive status",
@@ -2331,7 +2331,7 @@
   {
    "id": "cs0004-154",
    "domain": "IR",
-   "stem": "Legal counsel instructs IT to suspend automatic deletion of emails related to an incident because litigation is likely. What is this?",
+   "stem": "Counsel instructs IT to suspend automatic deletion of emails related to an incident because litigation is likely. What is this?",
    "options": [
     "A data retention schedule",
     "An acceptable use policy",
@@ -2691,7 +2691,7 @@
   {
    "id": "cs0004-178",
    "domain": "IR",
-   "stem": "Detection engineers map their SIEM rules to ATT&CK techniques and find that no rules cover credential dumping. What has this exercise revealed?",
+   "stem": "Engineers map their SIEM rules to ATT&CK techniques and find that no rules cover credential dumping. What has this exercise revealed?",
    "options": [
     "A new legal hold requirement",
     "A false-positive problem",
@@ -3145,7 +3145,7 @@
    "options": [
     "False-negative detection rate",
     "Total daily alert volume",
-    "Mean time to detect",
+    "Phishing report rate",
     "Phishing campaign click rate"
    ],
    "answer": [
@@ -3204,7 +3204,7 @@
    "stem": "Why should root cause analysis be included in post-incident reporting?",
    "options": [
     "So the incident can be closed faster",
-    "So corrective actions address the real cause",
+    "So corrective actions fix the underlying problem",
     "So the attacker can be identified by name",
     "So legal holds can be lifted earlier"
    ],

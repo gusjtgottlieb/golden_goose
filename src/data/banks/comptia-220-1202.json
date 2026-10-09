@@ -331,7 +331,7 @@
    "answer": [
     0
    ],
-   "explanation": "Home editions can't join a domain. Pro, Enterprise, and Education editions can."
+   "explanation": "Home editions can't join an Active Directory domain. Pro, Enterprise, and Education editions can, so Pro is the minimum."
   },
   {
    "id": "a1202-21",
@@ -411,7 +411,7 @@
   {
    "id": "a1202-26",
    "domain": "OS",
-   "stem": "A user wants to move from Windows 10 Pro to Windows 11 Pro while keeping files and apps. Which upgrade path fits?",
+   "stem": "A user wants to move from Windows 10 Pro to Windows 11 Pro while keeping files and apps. Which approach fits?",
    "options": [
     "A clean install",
     "An in-place upgrade",
@@ -481,7 +481,7 @@
    "answer": [
     0
    ],
-   "explanation": "Task Scheduler runs programs or scripts on a schedule or in response to events."
+   "explanation": "Task Scheduler runs programs or scripts on a schedule, at sign-in, or in response to events, without anyone needing to start them."
   },
   {
    "id": "a1202-31",
@@ -501,7 +501,7 @@
   {
    "id": "a1202-32",
    "domain": "OS",
-   "stem": "A technician wants to log CPU, memory, and disk counters over several days to find a performance pattern. Which tool fits?",
+   "stem": "A technician wants to log CPU, memory, and disk counters over several days to find a usage pattern. Which tool fits?",
    "options": [
     "System Information",
     "Registry Editor",
@@ -591,17 +591,17 @@
   {
    "id": "a1202-38",
    "domain": "OS",
-   "stem": "A technician needs to view and manage certificates in the current user's personal certificate store. Which tool fits?",
+   "stem": "A new hire can sign in to Microsoft 365 but can't open the desktop Office apps or email. What's the most likely missing step?",
    "options": [
-    "certmgr.msc",
-    "lusrmgr.msc",
-    "taskschd.msc",
-    "gpedit.msc"
+    "Assigning a license to the account",
+    "Joining the laptop to a workgroup",
+    "Mapping a drive to the file server",
+    "Enabling BitLocker on the laptop"
    ],
    "answer": [
     0
    ],
-   "explanation": "Certificate Manager shows and manages user certificates, such as those used for email signing or VPN authentication."
+   "explanation": "Cloud productivity suites need a license assigned to each user account to enable apps such as email, Office, and cloud storage."
   },
   {
    "id": "a1202-39",
@@ -661,7 +661,7 @@
    "answer": [
     0
    ],
-   "explanation": "net use maps network drives. net user manages user accounts."
+   "explanation": "net use maps a drive letter to a network share. net user manages user accounts, and robocopy and diskpart don't map drives."
   },
   {
    "id": "a1202-43",
@@ -706,22 +706,22 @@
    "answer": [
     3
    ],
-   "explanation": "pathping traces the route and then measures latency and loss at each hop."
+   "explanation": "pathping traces the route like tracert, then sends packets to each hop over time to measure latency and packet loss."
   },
   {
    "id": "a1202-46",
    "domain": "OS",
-   "stem": "A technician needs to know which Windows version and build a PC is running. Which command shows this quickly?",
+   "stem": "A company wants employees to sign in to Microsoft 365 with the same username and password as their on-premises Active Directory accounts. What should be configured?",
    "options": [
-    "hostname",
-    "winver",
-    "gpresult",
-    "whoami"
+    "Folder redirection",
+    "Identity synchronization",
+    "A metered connection",
+    "Mapped network drives"
    ],
    "answer": [
     1
    ],
-   "explanation": "winver opens a dialog with the Windows version and build number."
+   "explanation": "Identity synchronization, such as Microsoft Entra Connect, syncs on-premises accounts to the cloud directory so users have one identity for cloud productivity tools."
   },
   {
    "id": "a1202-47",
@@ -751,22 +751,22 @@
    "answer": [
     3
    ],
-   "explanation": "diskpart manages disks, partitions, and volumes from the command line."
+   "explanation": "diskpart manages disks, partitions, and volumes from the command line. chkdsk checks filesystems, and sfc repairs system files."
   },
   {
    "id": "a1202-49",
    "domain": "OS",
-   "stem": "How can a user display help and syntax for most Windows commands?",
+   "stem": "A Linux user needs to install a package, which requires root privileges, without signing in as root. Which command prefix should they use?",
    "options": [
-    "Add /? after the command name",
-    "Add -debug after the command name",
-    "Run the command twice in a row",
-    "Type help.exe /all"
+    "sudo",
+    "chmod",
+    "man",
+    "ps"
    ],
    "answer": [
     0
    ],
-   "explanation": "Most Windows commands show usage information with /?, such as robocopy /?."
+   "explanation": "sudo runs a single command with elevated privileges and logs it. su switches to another account entirely, chmod changes permissions, and man shows manual pages."
   },
   {
    "id": "a1202-50",
@@ -796,7 +796,7 @@
    "answer": [
     2
    ],
-   "explanation": "Power Options let you set lid, power button, sleep, and hibernate behavior."
+   "explanation": "Power Options let you set what closing the lid and pressing the power button do, plus sleep and hibernate behavior."
   },
   {
    "id": "a1202-52",
@@ -841,7 +841,7 @@
    "answer": [
     2
    ],
-   "explanation": "Metered connections limit automatic updates and some background data usage."
+   "explanation": "Marking a connection as metered tells Windows to limit automatic updates and some background data usage."
   },
   {
    "id": "a1202-55",
@@ -886,7 +886,7 @@
    "answer": [
     3
    ],
-   "explanation": "Time Machine backs up files hourly and lets users restore earlier versions."
+   "explanation": "Time Machine backs up files hourly to an external or network drive and lets users restore earlier versions."
   },
   {
    "id": "a1202-58",
@@ -916,7 +916,7 @@
    "answer": [
     0
    ],
-   "explanation": "Force Quit closes unresponsive apps. Disk Utility manages and repairs disks."
+   "explanation": "Force Quit (Command+Option+Esc) closes unresponsive apps. Disk Utility manages and repairs disks, and Keychain stores passwords."
   },
   {
    "id": "a1202-60",
@@ -1006,12 +1006,12 @@
    "answer": [
     2
    ],
-   "explanation": "Bollards block vehicle access while allowing pedestrians through."
+   "explanation": "Bollards are short, sturdy posts that block vehicles from ramming entrances while letting pedestrians through."
   },
   {
    "id": "a1202-66",
    "domain": "SEC",
-   "stem": "Employees use a credit-card-sized card with an embedded chip to unlock doors and sign in to PCs. What is this?",
+   "stem": "Employees use a credit-card-sized badge with an embedded chip to unlock doors and sign in to PCs. What is this?",
    "options": [
     "A mobile digital key",
     "A smart card",
@@ -1141,7 +1141,7 @@
    "answer": [
     3
    ],
-   "explanation": "BitLocker To Go encrypts removable drives. BitLocker encrypts fixed drives."
+   "explanation": "BitLocker To Go encrypts removable drives, such as USB flash drives, with a password. BitLocker encrypts fixed drives."
   },
   {
    "id": "a1202-75",
@@ -1411,7 +1411,7 @@
    "answer": [
     1
    ],
-   "explanation": "Trojans appear legitimate but carry hidden malicious functions."
+   "explanation": "Trojans appear legitimate, such as a free game, but carry hidden malicious functions, such as a backdoor. Worms spread on their own."
   },
   {
    "id": "a1202-93",
@@ -1476,12 +1476,12 @@
   {
    "id": "a1202-97",
    "domain": "SEC",
-   "stem": "Malware runs only in memory through PowerShell and leaves no files on disk. What type is it?",
+   "stem": "Malware runs only in memory through PowerShell and leaves nothing on disk. What type is it?",
    "options": [
     "Fileless malware",
     "A macro virus on disk",
     "A boot sector virus",
-    "A Trojan installer"
+    "Polymorphic malware"
    ],
    "answer": [
     0
@@ -1516,12 +1516,12 @@
    "answer": [
     0
    ],
-   "explanation": "Vishing is voice phishing. Smishing uses SMS, and whaling targets executives."
+   "explanation": "Vishing is voice phishing over phone calls. Smishing uses SMS, whaling targets executives, and tailgating is physical."
   },
   {
    "id": "a1202-100",
    "domain": "SEC",
-   "stem": "A parking-lot sign has a QR code that leads to a fake payment page. What is this attack?",
+   "stem": "A parking-lot sign asks drivers to scan a code with their phone camera, which opens a fake payment page. What is this attack?",
    "options": [
     "Dumpster diving",
     "QR code phishing",
@@ -1630,7 +1630,7 @@
    "options": [
     "Business email compromise (BEC)",
     "A whaling attack on the CEO",
-    "A smishing campaign",
+    "A spam email campaign",
     "A vishing call from a fake bank"
    ],
    "answer": [
@@ -1921,7 +1921,7 @@
    "answer": [
     1
    ],
-   "explanation": "Matching the hash from a trusted source confirms file integrity."
+   "explanation": "Matching the file's hash with the one the vendor publishes confirms the download wasn't altered. File names and sizes can be faked."
   },
   {
    "id": "a1202-127",
@@ -2116,17 +2116,17 @@
    "answer": [
     1
    ],
-   "explanation": "Frequent shutdowns under load often indicate overheating protection kicking in."
+   "explanation": "Frequent shutdowns under load often mean overheating protection is kicking in. Cleaning dust and checking fans usually fixes it."
   },
   {
    "id": "a1202-140",
    "domain": "ST",
-   "stem": "After a failed update, Windows shows \"boot configuration data is missing.\" What can repair this?",
+   "stem": "After a failed update, Windows shows \"boot configuration data is missing.\" What can fix this?",
    "options": [
-    "Resetting the browser",
+    "Resetting the BIOS administrator password",
     "Startup Repair or rebuilding the BCD",
-    "Mapping a network drive",
-    "Changing the desktop resolution"
+    "Rolling back the graphics driver",
+    "Running chkdsk on the data drive"
    ],
    "answer": [
     1
@@ -2251,7 +2251,7 @@
    "answer": [
     3
    ],
-   "explanation": "Contactless payments need NFC enabled and a configured payment wallet."
+   "explanation": "Contactless payments need NFC turned on and a payment wallet set up with a card. Bluetooth and Wi-Fi aren't used."
   },
   {
    "id": "a1202-149",
@@ -2393,7 +2393,7 @@
    "domain": "ST",
    "stem": "A browser keeps redirecting searches to an unfamiliar search engine. What's the likely cause?",
    "options": [
-    "A corrupted DNS cache on the PC",
+    "A corrupted browser cache",
     "An outdated network adapter driver",
     "A misconfigured proxy on the router",
     "A browser hijacker or malicious extension"
@@ -2746,12 +2746,12 @@
    "answer": [
     0
    ],
-   "explanation": "Escalation levels route issues to staff with the right skills or authority."
+   "explanation": "Escalation levels route issues to staff with the right skills or authority, such as tier 2 or system administrators."
   },
   {
    "id": "a1202-182",
    "domain": "OP",
-   "stem": "Which database stores configuration items, such as servers and applications, and the relationships between them?",
+   "stem": "Which system tracks configuration items, such as servers and applications, and the relationships between them?",
    "options": [
     "A configuration management database",
     "A knowledge base article library",
@@ -2821,7 +2821,7 @@
    "answer": [
     0
    ],
-   "explanation": "Knowledge base articles document solutions and reduce repeat tickets."
+   "explanation": "Knowledge base articles document solutions so users and staff can fix common issues themselves, reducing repeat tickets."
   },
   {
    "id": "a1202-187",
@@ -2836,7 +2836,7 @@
    "answer": [
     2
    ],
-   "explanation": "Rollback plans describe how to return to the previous state if a change fails."
+   "explanation": "Rollback plans describe how to return to the previous working state if a change fails during implementation."
   },
   {
    "id": "a1202-188",
@@ -2851,7 +2851,7 @@
    "answer": [
     3
    ],
-   "explanation": "Emergency changes follow an expedited approval process for urgent issues."
+   "explanation": "Emergency changes follow an expedited approval process for urgent issues, such as actively exploited vulnerabilities."
   },
   {
    "id": "a1202-189",
@@ -2881,7 +2881,7 @@
    "answer": [
     3
    ],
-   "explanation": "Change freezes block nonessential changes during critical business periods."
+   "explanation": "Change freezes block nonessential changes during critical business periods, such as peak sales seasons."
   },
   {
    "id": "a1202-191",
@@ -2896,7 +2896,7 @@
    "answer": [
     0
    ],
-   "explanation": "Sandbox testing finds problems without affecting production systems."
+   "explanation": "Sandbox testing runs changes in an isolated environment to find problems without affecting production systems."
   },
   {
    "id": "a1202-192",
@@ -2986,7 +2986,7 @@
    "answer": [
     0
    ],
-   "explanation": "The 3-2-1 rule protects against device failure, site disasters, and ransomware."
+   "explanation": "The 3-2-1 rule (three copies, two media, one offsite) protects against device failure, site disasters, and ransomware."
   },
   {
    "id": "a1202-198",
@@ -3016,7 +3016,7 @@
    "answer": [
     2
    ],
-   "explanation": "Restore testing proves backups are complete and usable before a real emergency."
+   "explanation": "Restore testing proves backups are complete and usable before a real emergency, instead of discovering problems during one."
   },
   {
    "id": "a1202-200",
@@ -3091,7 +3091,7 @@
    "answer": [
     1
    ],
-   "explanation": "Goggles protect eyes from debris, and masks prevent inhaling dust."
+   "explanation": "Safety goggles protect eyes from blown debris, and an air filter mask prevents inhaling dust while using compressed air."
   },
   {
    "id": "a1202-205",
@@ -3276,17 +3276,17 @@
   {
    "id": "a1202-217",
    "domain": "OP",
-   "stem": "A Linux administrator writes a script to automate log cleanup. Which file extension is most typical?",
+   "stem": "A student submits an essay generated entirely by an AI tool as their own original work. Which AI policy concern does this raise?",
    "options": [
-    ".sh",
-    ".ps1",
-    ".bat",
-    ".vbs"
+    "Plagiarism",
+    "Hallucination",
+    "Model bias",
+    "Data sovereignty"
    ],
    "answer": [
     0
    ],
-   "explanation": "Shell scripts commonly use .sh and run in shells such as Bash."
+   "explanation": "Presenting AI-generated work as your own can violate plagiarism and appropriate-use policies. Organizations define when and how AI output may be used and disclosed."
   },
   {
    "id": "a1202-218",
@@ -3346,7 +3346,7 @@
    "answer": [
     0
    ],
-   "explanation": "WinRM enables remote command execution and PowerShell remoting on Windows."
+   "explanation": "WinRM enables remote command execution and PowerShell remoting on Windows. VNC and RDP provide graphical remote desktops instead."
   },
   {
    "id": "a1202-222",

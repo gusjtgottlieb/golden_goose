@@ -1063,8 +1063,8 @@
    "domain": "TVA",
    "stem": "An attack runs entirely in memory through PowerShell, leaving no malicious files on disk. What type of malware is this?",
    "options": [
+    "Polymorphic malware",
     "A boot sector virus",
-    "Adware",
     "A macro virus",
     "Fileless malware"
    ],
@@ -1423,9 +1423,9 @@
    "domain": "ARC",
    "stem": "A control system for a water treatment plant has no network connection to any other network. What is this design called?",
    "options": [
-    "A community cloud",
-    "A microservices architecture",
-    "A screened subnet",
+    "A community cloud network",
+    "A segmented VLAN network",
+    "A screened subnet network",
     "An air-gapped network"
    ],
    "answer": [
@@ -2023,8 +2023,8 @@
    "domain": "ARC",
    "stem": "A team switches production to a secondary datacenter to confirm it works during a planned exercise. Which test is this?",
    "options": [
-    "A vulnerability scan",
-    "A code review",
+    "A penetration test",
+    "A backup restore test",
     "A tabletop exercise",
     "A failover test"
    ],
@@ -2083,10 +2083,10 @@
    "domain": "OPS",
    "stem": "Which control inspects HTTP traffic to block attacks such as SQL injection against a web application?",
    "options": [
-    "A Layer 4 stateless packet filter",
+    "An application allow list on servers",
     "A web application firewall (WAF)",
     "A network-based IDS in passive mode",
-    "An uninterruptible power supply"
+    "A Layer 4 stateless packet filter"
    ],
    "answer": [
     1
@@ -2369,9 +2369,9 @@
    "stem": "A company pays outside researchers for reporting vulnerabilities in its web applications. What is this program called?",
    "options": [
     "A bug bounty program",
-    "A service-level agreement",
-    "A change advisory board",
-    "A tabletop exercise"
+    "A vendor risk program",
+    "A change advisory program",
+    "A security awareness program"
    ],
    "answer": [
     0
@@ -2383,10 +2383,10 @@
    "domain": "OPS",
    "stem": "Which tool helps track IP address allocations and spot unknown devices on the network?",
    "options": [
-    "A web application firewall",
-    "A password manager for admins",
+    "A DHCP address reservation list",
+    "A code signing certificate",
     "IP address management (IPAM)",
-    "A code signing certificate"
+    "A web application firewall"
    ],
    "answer": [
     2
@@ -2411,17 +2411,17 @@
   {
    "id": "sy0801-159",
    "domain": "OPS",
-   "stem": "Which tool collects logs from many sources, correlates events, and generates security alerts?",
+   "stem": "A company replaces passwords with FIDO2 security keys and platform biometrics for sign-in. Which password concept is this?",
    "options": [
-    "A SIEM",
-    "A UPS",
-    "An IPAM tool",
-    "A proxy cache"
+    "Passwordless authentication",
+    "Password expiration",
+    "Password history enforcement",
+    "Password complexity rules"
    ],
    "answer": [
     0
    ],
-   "explanation": "Security information and event management (SIEM) aggregates and correlates logs to detect threats and support investigations."
+   "explanation": "Passwordless methods, such as passkeys, FIDO2 keys, and Windows Hello, remove reusable passwords and resist phishing. Password managers are another way to reduce password reuse."
   },
   {
    "id": "sy0801-160",
@@ -3071,17 +3071,17 @@
   {
    "id": "sy0801-203",
    "domain": "PGM",
-   "stem": "A company stops offering a risky online service entirely because the risk outweighs its value. Which treatment is this?",
+   "stem": "A risk team rates threats as high, medium, or low using expert judgment rather than dollar values. Which analysis approach is this?",
    "options": [
-    "Transferring",
-    "Accepting",
-    "Mitigating",
-    "Avoiding"
+    "Quantitative risk analysis",
+    "Annualized loss expectancy",
+    "Single loss expectancy",
+    "Qualitative risk analysis"
    ],
    "answer": [
     3
    ],
-   "explanation": "Avoidance eliminates the risk by stopping the activity that creates it, giving up the activity's benefits along with its risk."
+   "explanation": "Qualitative analysis uses ratings and judgment. Quantitative analysis assigns monetary values, such as SLE and ALE calculated from asset value, exposure factor, and ARO."
   },
   {
    "id": "sy0801-204",

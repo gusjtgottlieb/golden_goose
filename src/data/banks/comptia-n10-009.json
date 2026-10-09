@@ -101,17 +101,17 @@
   {
    "id": "n10009-5",
    "domain": "NC",
-   "stem": "A technician finds a damaged cable and a dark link light. At which OSI layer is the problem?",
+   "stem": "An architecture separates the control plane into a central controller that programs forwarding behavior on switches through APIs. What is this?",
    "options": [
-    "Layer 1 - Physical",
-    "Layer 2 - Data link",
-    "Layer 7 - Application",
-    "Layer 3 - Network"
+    "Software-defined networking (SDN)",
+    "Network address translation (NAT)",
+    "Spanning Tree Protocol (STP)",
+    "A three-tier hierarchical design"
    ],
    "answer": [
     0
    ],
-   "explanation": "Cables, connectors, signals, and link lights are physical layer concerns."
+   "explanation": "SDN centralizes control-plane decisions in a controller, which programs the data plane on devices. This enables central policy management and automation."
   },
   {
    "id": "n10009-6",
@@ -381,7 +381,7 @@
    "answer": [
     1
    ],
-   "explanation": "RDP uses 3389. SQL Server uses 1433, SMB uses 445, and SIP uses 5060/5061."
+   "explanation": "Remote Desktop Protocol uses TCP 3389 (and UDP 3389 for better performance). SQL Server uses 1433, SMB uses 445, and SIP uses 5060/5061."
   },
   {
    "id": "n10009-24",
@@ -566,7 +566,7 @@
   {
    "id": "n10009-36",
    "domain": "NC",
-   "stem": "In a datacenter, every leaf switch connects to every spine switch, giving predictable latency for server-to-server traffic. Which architecture is this?",
+   "stem": "In a datacenter, every access switch connects to every switch in a backbone layer, giving predictable latency for server-to-server traffic. Which architecture is this?",
    "options": [
     "Spine and leaf",
     "Three-tier hierarchical",
@@ -1031,7 +1031,7 @@
   {
    "id": "n10009-67",
    "domain": "NI",
-   "stem": "Four 1 Gbps links between two switches are combined into one logical link for more bandwidth and redundancy. What is this?",
+   "stem": "Four 1 Gbps links between two switches are bundled into one logical interface for more bandwidth and redundancy. What is this?",
    "options": [
     "Spanning tree",
     "Band steering on APs",
@@ -1093,7 +1093,7 @@
    "domain": "NI",
    "stem": "Where are VLAN IDs and names stored on many switches?",
    "options": [
-    "In the DHCP scope options",
+    "In the VLAN trunk allowed list",
     "In the VLAN database",
     "In the routing table",
     "In the ARP table"
@@ -1393,7 +1393,7 @@
    "domain": "NO",
    "stem": "Which document shows the position of each device in a rack, including its height in rack units?",
    "options": [
-    "An SLA",
+    "A rack power budget",
     "A logical diagram",
     "A wireless heat map",
     "A rack diagram"
@@ -1496,7 +1496,7 @@
   {
    "id": "n10009-98",
    "domain": "NO",
-   "stem": "Before changing a core router's configuration, an engineer submits a request describing the change, risk, and rollback plan. Which process is this?",
+   "stem": "Before changing a core router's configuration, an engineer submits a request describing the planned update, its risk, and a rollback plan. Which process is this?",
    "options": [
     "Wireless site surveying",
     "Packet capture analysis",
@@ -1526,7 +1526,7 @@
   {
    "id": "n10009-100",
    "domain": "NO",
-   "stem": "A vendor releases firmware that fixes a security flaw in the company's switches. Which life-cycle activity applies?",
+   "stem": "A vendor releases an update that fixes a security flaw in the company's switches. Which life-cycle activity applies?",
    "options": [
     "Software management, including firmware patching",
     "Creating a new wireless heat map",
@@ -1661,7 +1661,7 @@
   {
    "id": "n10009-109",
    "domain": "NO",
-   "stem": "A tool scans the network every night to find newly connected devices. Which monitoring solution is this?",
+   "stem": "A tool sweeps every subnet nightly to find newly connected devices. Which monitoring solution is this?",
    "options": [
     "Scheduled network discovery",
     "Configuration rollback",
@@ -1751,7 +1751,7 @@
   {
    "id": "n10009-115",
    "domain": "NO",
-   "stem": "The DR team actually fails over a test application to the backup site to prove it works. Which type of test is this?",
+   "stem": "The DR team actually fails over a test application to the backup site to prove it works. Which DR activity is this?",
    "options": [
     "A tabletop exercise",
     "A wireless survey",
@@ -1901,7 +1901,7 @@
   {
    "id": "n10009-125",
    "domain": "NO",
-   "stem": "Which protocol encrypts DNS queries inside HTTPS on port 443?",
+   "stem": "Which protocol encrypts DNS queries so they blend in with ordinary web traffic on port 443?",
    "options": [
     "DNS over TLS (DoT)",
     "DNSSEC",
@@ -2216,7 +2216,7 @@
   {
    "id": "n10009-146",
    "domain": "NS",
-   "stem": "An attacker sends frames with a double 802.1Q tag to reach a VLAN they aren't assigned to. Which attack is this?",
+   "stem": "An attacker sends frames with a double 802.1Q tag to reach a network segment they aren't assigned to. Which attack is this?",
    "options": [
     "MAC flooding",
     "DNS spoofing",
@@ -2261,7 +2261,7 @@
   {
    "id": "n10009-149",
    "domain": "NS",
-   "stem": "An unauthorized server on the network hands out IP settings with the attacker's address as the default gateway. Which threat is this?",
+   "stem": "An unauthorized device on the network hands out IP settings with the attacker's address as the default gateway. Which threat is this?",
    "options": [
     "A rogue access point",
     "A rogue DHCP server",
@@ -2576,7 +2576,7 @@
   {
    "id": "n10009-170",
    "domain": "NI",
-   "stem": "Where are incoming fiber runs terminated and organized in a rack before patching to switches?",
+   "stem": "Where are incoming optical cable runs terminated and organized in a rack before patching to switches?",
    "options": [
     "A fiber distribution panel",
     "A demarcation point extension",
@@ -3356,17 +3356,17 @@
   {
    "id": "n10009-222",
    "domain": "NT",
-   "stem": "Which command on a network device shows interface status, errors, and counters such as CRC and drops?",
+   "stem": "A technician wants to find which hosts on a subnet are up and which TCP ports each one has open. Which tool fits?",
    "options": [
-    "show running-config",
-    "show ip route",
-    "show interface",
-    "show arp"
+    "arp -a",
+    "pathping",
+    "Nmap",
+    "dig"
    ],
    "answer": [
     2
    ],
-   "explanation": "show interface displays link status, speed, duplex, and error counters for troubleshooting physical and data link issues."
+   "explanation": "Nmap discovers live hosts and scans ports and service versions. dig queries DNS, arp -a shows the local ARP cache, and pathping measures loss along a path."
   },
   {
    "id": "n10009-223",
@@ -3386,7 +3386,7 @@
   {
    "id": "n10009-224",
    "domain": "NT",
-   "stem": "An engineer needs to inspect the full contents and headers of packets to diagnose an application protocol error. Which tool fits?",
+   "stem": "An engineer needs to inspect the full contents and headers of packets to diagnose an application-layer error. Which tool fits?",
    "options": [
     "A cable tester for copper Ethernet runs",
     "A toner and probe kit",
