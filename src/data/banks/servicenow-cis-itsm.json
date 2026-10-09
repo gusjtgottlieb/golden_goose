@@ -804,12 +804,12 @@
   {
    "id": "cisitsm-50",
    "domain": "PM",
-   "stem": "In the current problem process, which state follows Assess?",
+   "stem": "In the current problem process, which state follows Resolved?",
    "options": [
     "Fix in Progress",
-    "Resolved",
-    "Root Cause Analysis",
-    "Closed"
+    "Assess",
+    "Closed",
+    "Root Cause Analysis"
    ],
    "answer": [
     2

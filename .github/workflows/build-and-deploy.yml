@@ -25,6 +25,9 @@ jobs:
       - name: Install NPM packages
         run: npm ci
 
+      - name: Check question banks
+        run: npm run banks:check
+
       - name: Build project
         run: npm run build
 

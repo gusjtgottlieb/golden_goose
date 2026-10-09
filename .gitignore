@@ -21,3 +21,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Vendor exam objectives (converted from PDFs) are for local reference only; vendors prohibit redistribution.
+/content/objectives/

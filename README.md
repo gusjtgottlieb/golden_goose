@@ -52,15 +52,59 @@ npm ci
 npm start      # http://localhost:3000/golden_goose
 npm test
 npm run build
+npm run banks:build   # rebuild src/data/banks/*.json from content/banks/*.js
+npm run banks:check   # content standards; CI runs this on every push and pull request
 ```
 
 Pushing to `main` runs `.github/workflows/build-and-deploy.yml`, which builds, tests, and publishes
 `build/` to the `gh-pages` branch. The `homepage` field in `package.json` must stay set to the Pages
 URL or the deployed page loads blank.
 
-## Adding questions or a certification
+## Editing questions
 
-Each certification is one question bank in `src/data/banks/`:
+Question banks are written in `content/banks/<bankId>.js` and built into `src/data/banks/<bankId>.json`,
+which is what the site loads. Edit the source, never the JSON, then run `npm run banks:build` and commit
+both. CI fails if a JSON file doesn't match its source. The exception is SC-401, which has no source
+file and is edited directly in its JSON (its ids and case-study groups predate the source format).
+
+In a source file, each question looks like this, with the correct answer listed first by convention:
+
+```js
+{d:"D1",s:`Question text?`,
+o:[`Correct answer`,`Distractor`,`Distractor`,`Distractor`],
+a:[0],
+e:`Why the answer is right and why the main distractors aren't.`},
+```
+
+The build shuffles options with a seed taken from the question's id, so answer positions are balanced
+but stable across builds. Ids come from a question's position (`sy0801-12` is the 12th question), so
+add new questions at the end of a bank and replace questions in place rather than deleting them.
+
+`npm run banks:check` enforces the content standards:
+
+- every catalog entry and README row matches its bank;
+- each question has four distinct options (or Yes/No), a valid answer, and an explanation of at
+  least 60 characters, with no "all/none of the above";
+- domain shares match the blueprint weights;
+- answer positions are spread across A–D, and the correct answer is the longest option, or the
+  shortest, at most 37% of the time, and never more than 20% longer than every distractor.
+
+Authoring helpers in `tools/`:
+
+| Command | Purpose |
+|---|---|
+| `node tools/review-bank.js sheet <bankId>` | Print every question with its answer and explanation for review |
+| `node tools/review-bank.js scan [bankId ...]` | Flag stem echoes, short explanations, option letters, and near-duplicate stems |
+| `node tools/balance-bank.js <bankId> [candidates.js]` | List answers that are the longest option, or apply length-balancing candidates |
+| `node tools/edit-bank.js <bankId> <edits.js>` | Apply scripted text replacements, option rewrites, and question swaps |
+| `node tools/coverage-bank.js <objectives.txt> <bankId>` | List exam-objective bullets the bank doesn't mention yet |
+
+Vendor objectives text for `coverage-bank.js` goes in `content/objectives/`, which is gitignored
+because vendors don't allow redistributing it.
+
+## Adding a certification
+
+Each certification is one question bank. The built JSON in `src/data/banks/` looks like this:
 
 ```json
 {
@@ -98,5 +142,7 @@ Each certification is one question bank in `src/data/banks/`:
 - `sectioned: true` keeps domains in `domains` order, like SC-401's case study → multiple
   choice → yes/no layout.
 
-To add a new certification, add its bank and an entry in `CERTS` in `src/data/catalog.js` (and the
-vendor to `VENDORS` if it's new). `npm test` checks that every catalog entry matches its bank.
+To add a new certification, write `content/banks/<bankId>.js` (the bank fields above, plus `idPrefix`
+and a `Q` array of questions), run `npm run banks:build`, add an entry in `CERTS` in
+`src/data/catalog.js` (and the vendor to `VENDORS` if it's new), and add a README row.
+`npm test` and `npm run banks:check` both check that the catalog matches each bank.
