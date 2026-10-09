@@ -31,7 +31,7 @@ function App() {
       <footer className="foot">
         <div className="wrap">
           Independent practice material, free to use. Not affiliated with or endorsed by
-          ServiceNow or Microsoft; all trademarks belong to their respective owners.
+          ServiceNow, Microsoft, or CompTIA; all trademarks belong to their respective owners.
         </div>
       </footer>
     </>

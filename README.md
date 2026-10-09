@@ -22,6 +22,7 @@ Current question banks:
 | Microsoft | SC-300 (Identity and Access Administrator) | 125 | 50 questions / 100 min |
 | Microsoft | SC-401 (Information Security Administrator) | 150 | 50 questions / 100 min |
 | Microsoft | SC-500 (Cloud and AI Security Engineer) | 125 | 50 questions / 100 min |
+| CompTIA | SY0-801 (Security+) | 225 | 90 questions / 90 min |
 
 Banks hold about 2.5× a full-length exam, split across domains by blueprint weight, so repeat
 attempts draw fresh questions.

@@ -9,6 +9,10 @@ export const VENDORS = [
     name: "Microsoft",
     blurb: "Role-based Microsoft 365 and Azure certifications, built to the published skills outline.",
   },
+  {
+    name: "CompTIA",
+    blurb: "Vendor-neutral security and infrastructure certifications, built to the published exam objectives.",
+  },
 ];
 
 export const CERTS = [
@@ -161,6 +165,16 @@ export const CERTS = [
     fullLength: 50,
     minutes: 100,
     load: () => import("./banks/microsoft-sc-500.json"),
+  },
+  {
+    id: "comptia-sy0-801",
+    vendor: "CompTIA",
+    code: "SY0-801",
+    name: "Security+",
+    bankSize: 225,
+    fullLength: 90,
+    minutes: 90,
+    load: () => import("./banks/comptia-sy0-801.json"),
   },
 ];
 
