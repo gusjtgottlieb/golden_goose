@@ -23,6 +23,11 @@ Current question banks:
 | Microsoft | SC-401 (Information Security Administrator) | 150 | 50 questions / 100 min |
 | Microsoft | SC-500 (Cloud and AI Security Engineer) | 125 | 50 questions / 100 min |
 | CompTIA | SY0-801 (Security+) | 225 | 90 questions / 90 min |
+| CompTIA | CS0-004 (CySA+) | 212 | 85 questions / 165 min |
+| CompTIA | CY0-001 (SecAI+) | 150 | 60 questions / 60 min |
+| CompTIA | N10-009 (Network+) | 225 | 90 questions / 90 min |
+| CompTIA | 220-1201 (A+ Core 1) | 225 | 90 questions / 90 min |
+| CompTIA | 220-1202 (A+ Core 2) | 225 | 90 questions / 90 min |
 
 Banks hold about 2.5× a full-length exam, split across domains by blueprint weight, so repeat
 attempts draw fresh questions.
